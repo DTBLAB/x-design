@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "X·DESIGN个人中心",
+  "usingComponents": {
+    "tab-bar": "/component/tabBar/tabBar"
+  }
+}

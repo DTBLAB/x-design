@@ -1,0 +1,27 @@
+page.data-v-dcbcfe34 {
+  background-color: #F4F4F4;
+}
+.mine-container.data-v-dcbcfe34 {
+  width: 750rpx;
+}
+.mine-container .mine-info.data-v-dcbcfe34 {
+  width: 750rpx;
+  height: 348rpx;
+  padding-top: 192rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+}
+.mine-container .mine-info__photo.data-v-dcbcfe34 {
+  width: 124rpx;
+  height: 124rpx;
+  border-radius: 62rpx;
+  margin-left: 50rpx;
+}
+

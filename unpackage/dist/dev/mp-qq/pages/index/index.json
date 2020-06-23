@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tab-bar": "/component/tabBar/tabBar"
+  }
+}

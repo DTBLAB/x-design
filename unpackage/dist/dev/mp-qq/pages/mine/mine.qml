@@ -1,0 +1,1 @@
+<view class="container"><text>个人中心</text><tab-bar vue-id="dcbd25a0-1" position="mine" bind:__l="__l"></tab-bar></view>

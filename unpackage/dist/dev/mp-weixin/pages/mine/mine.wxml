@@ -1,0 +1,1 @@
+<view class="mine-container data-v-dcbcfe34"><view class="mine-info data-v-dcbcfe34"><image class="mine-info__photo data-v-dcbcfe34" src="{{photo}}"></image></view><tab-bar vue-id="bae1c640-1" position="mine" class="data-v-dcbcfe34" bind:__l="__l"></tab-bar></view>
