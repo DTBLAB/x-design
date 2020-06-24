@@ -12,7 +12,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+@common-color: #333333;
+@background-color: #F4F4F4;
+
+body{
+	color: @common-color;
+}
+	
+	
 /* 解决头条小程序组件内引入字体不生效的问题 */
 /* #ifdef MP-TOUTIAO */
 @font-face {

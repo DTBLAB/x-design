@@ -1,5 +1,8 @@
 {
-  "navigationBarTitleText": "X·DESIGN个人中心",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F4F4F4",
+  "backgroundColor": "#F4F4F4",
   "usingComponents": {
     "tab-bar": "/component/tabBar/tabBar"
   }

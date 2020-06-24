@@ -1,5 +1,5 @@
 .home-container.data-v-57280228 {
-  padding-bottom: 200rpx;
+  padding-bottom: 176rpx;
 }
 .home-container .home-banner.data-v-57280228 {
   width: 750rpx;
@@ -76,7 +76,8 @@
 }
 .home-container .home-commodity.data-v-57280228 {
   margin-top: 22rpx;
-  margin-bottom: 22rpx;
+  margin-bottom: 44rpx;
+  position: relative;
 }
 .home-container .home-commodity__name.data-v-57280228 {
   width: 678prx;
@@ -84,6 +85,20 @@
   font-size: 28rpx;
   height: 40rpx;
   line-height: 40rpx;
+}
+.home-container .home-commodity__more.data-v-57280228 {
+  position: absolute;
+  right: 0;
+  top: 4rpx;
+  font-size: 24rpx;
+  color: #999999;
+}
+.home-container .home-commodity__more__icon.data-v-57280228 {
+  height: 20rpx;
+  width: 10rpx;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6rpx;
 }
 .home-container .home-commodity__list.data-v-57280228 {
   width: 678rpx;
