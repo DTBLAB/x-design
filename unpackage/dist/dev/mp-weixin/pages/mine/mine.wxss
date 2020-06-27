@@ -8,7 +8,7 @@ page.data-v-dcbcfe34 {
 }
 .mine-container.data-v-dcbcfe34 {
   width: 750rpx;
-  margin-bottom: 176rpx;
+  margin-bottom: 196rpx;
 }
 .mine-container .mine-info.data-v-dcbcfe34 {
   width: 750rpx;
@@ -108,7 +108,7 @@ page.data-v-dcbcfe34 {
 .mine-container .mine-bottom.data-v-dcbcfe34 {
   width: 694rpx;
   height: 264rpx;
-  margin: 0 28rpx 20rpx 28rpx;
+  margin: 0 28rpx;
   background-color: #FFFFFF;
   border-radius: 12rpx;
   display: -webkit-box;
