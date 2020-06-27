@@ -1,7 +1,7 @@
 <template>
 	<view class="mine-container">
 		<view class="mine-info">
-			<image class="mine-info__photo" :src="photo"></image>
+			<image class="mine-info__photo" :src="photo" @click="login"></image>
 			<view class="mine-info__nickname">{{nickname}}</view>
 		</view>
 		<view class="mine-block">
@@ -58,7 +58,7 @@
 		data() {
 			return {
 				photo: '/static/image/mine/photo.png',
-				nickname: '余杭西蓝花',
+				nickname: '点击登录',
 				myImages:[
 					{src: '/static/image/mine/图库1.png', url:''},
 					{src: '/static/image/mine/图库2.png', url:''},
@@ -73,7 +73,29 @@
 			}
 		},
 		methods: {
-			
+			login(){
+				// uni.login({
+				//   provider: 'weixin',
+				//   success: function (loginRes) {
+				//     console.log(loginRes);
+				//   }
+				// });
+				// let token;
+				// this.$http.post({url: '/user/login', data: {phone: '18252605889', password: '123123'}}).then((res)=>{
+				// 	console.log(res);
+				// 	token=res.data.data.token;
+					
+				// 	console.log(token);
+				// 	uni.setStorageSync('token', token);
+				// 	this.$http.get({url: '/user/getInfo'}).then((res)=>{
+				// 		console.log(res);
+				// 	}).catch(e=>{
+				// 		console.log(e);
+				// 	})
+				// }).catch(e=>{
+				// 	console.log(e);
+				// })
+			}
 		}
 	}
 </script>
