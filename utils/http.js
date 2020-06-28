@@ -1,20 +1,20 @@
 const http = {
-	post: function(params){
-		let baseUrl = params.baseUrl || 'http://localhost:3000/api';
-		let url = baseUrl + params.url || '';
-		let data = params.data || {};
-		let timeout = params.timeout || 3000;
-		let header = params.header || {
+	post: function(theUrl, theData, config={}){
+		let baseUrl = config.baseUrl || 'http://localhost:3000/api';
+		let url = baseUrl + theUrl|| '';
+		let data = theData || {};
+		let timeout = config.timeout || 3000;
+		let header = config.header || {
 		'content-type': 'application/json;charset=UTF-8'
 		};
 		const token = uni.getStorageSync('token');
 		if(token){
 			header['authorization'] = "Bearer " + token;
 		}
-		let dataType = params.dataType || 'json';
-		let responseType = params.responseType || 'text';
-		let sslVerify = params.sslVerify || false;
-		let withCredentials = params.withCredentials || false;
+		let dataType = config.dataType || 'json';
+		let responseType = config.responseType || 'text';
+		let sslVerify = config.sslVerify || false;
+		let withCredentials = config.withCredentials || false;
 		
 		return new Promise((resolve, reject) => {
 		    uni.request({
@@ -70,21 +70,20 @@ const http = {
 		})
 		
 	},
-	get: function(params){
-		let baseUrl = params.baseUrl || 'http://localhost:3000/api';
-		let url = baseUrl + params.url || '';
-		let data = params.data || {};
-		let timeout = params.timeout || 3000;
-		let header = params.header || {};
+	get: function(theUrl, theData, config={}){
+		let baseUrl = config.baseUrl || 'http://localhost:3000/api';
+		let url = baseUrl + theUrl || '';
+		let data = theData || {};
+		let timeout = config.timeout || 3000;
+		let header = config.header || {};
 		const token = uni.getStorageSync('token');
 		if(token){
 			header['authorization'] = "Bearer " + token;
 		}
-		console.log(header.authorization);
-		let dataType = params.dataType || 'json';
-		let responseType = params.responseType || 'text';
-		let sslVerify = params.sslVerify || false;
-		let withCredentials = params.withCredentials || false;
+		let dataType = config.dataType || 'json';
+		let responseType = config.responseType || 'text';
+		let sslVerify = config.sslVerify || false;
+		let withCredentials = config.withCredentials || false;
 		
 		return new Promise((resolve, reject) => {
 		    uni.request({

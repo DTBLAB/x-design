@@ -81,13 +81,13 @@
 				//   }
 				// });
 				// let token;
-				// this.$http.post({url: '/user/login', data: {phone: '18252605889', password: '123123'}}).then((res)=>{
+				// this.$http.post('/user/login', {phone: '18252605889', password: '123123'}).then((res)=>{
 				// 	console.log(res);
 				// 	token=res.data.data.token;
 					
 				// 	console.log(token);
 				// 	uni.setStorageSync('token', token);
-				// 	this.$http.get({url: '/user/getInfo'}).then((res)=>{
+				// 	this.$http.get('/user/getInfo').then((res)=>{
 				// 		console.log(res);
 				// 	}).catch(e=>{
 				// 		console.log(e);
