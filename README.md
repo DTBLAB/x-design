@@ -11,18 +11,19 @@
 本项目使用less作为css预编译语法，优化开发体验，[less官网](http://lesscss.cn/)，请通读。
 css命名采用BEM命名法，参见[BEM官网](https://bemcss.com/)。
 
-项目目录结构如下：
-common，放置css样式资源文件；
-component，放置自定义vue组件；
-components，放置uni-ui官方拓展组件，请勿改动；
-pages，放置页面，主要的开发目录；
-static，静态资源目录，放置图片、视频等；
-unpackage，编译输出目录，请勿改动；
+项目目录结构如下：<br>
+common，放置css样式资源文件；<br>
+component，放置自定义vue组件；<br>
+components，放置uni-ui官方拓展组件，请勿改动；<br>
+pages，放置页面，主要的开发目录；<br>
+static，静态资源目录，放置图片、视频等；<br>
+unpackage，编译输出目录，请勿改动；<br>
 
 根目录下文件，除了pages.json，不建议架构师之外人员做修改。
 
 连接本地服务器时，需关闭小程序服务器域名安全校验，以微信小程序为例，点击开发者工具右上角双箭头“>>”，选择“详情”，在“本地设置”中勾选“不校验合法域名、web-view、TLS版本以及HTTPS证书”选项。
 
-本项目以uni.request方法为基础、仿照axios封装了get和post，并进行了全局配置，通过this.$http.get和this.$http.post可以发起get和post请求，包含url、data、config三个参数；
-config为对象形式，为可选参数，config可包含uni.request方法参数中除url、data、method、success、fail、complete之外的其他属性；
-请求结果通过then、catch、finally处理，同axios，无需传入success、fail、complete作为参数。
+本项目以uni.request方法为基础、仿照axios封装了get和post，并进行了全局配置，通过this.$http.get和this.$http.post可以发起get和post请求，包含url、data、config三个参数；<br>
+config为对象形式，为可选参数，config可包含uni.request方法参数中除url、data、method、success、fail、complete之外的其他属性；<br>
+请求结果通过then、catch、finally处理，同axios，无需传入success、fail、complete作为参数；<br>
+有别于axios，get参数可以直接传参入data，不用再包装一层params。<br>
