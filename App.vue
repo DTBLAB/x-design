@@ -1,7 +1,26 @@
 <script>
+import { mapMutations } from 'vuex'
+	
 export default {
+	globalData: {  
+		provider: '微信'  
+	},  
+	methods:{
+		...mapMutations(['login']),
+	},
 	onLaunch: function() {
+		let userInfo = uni.getStorageSync('userInfo');
+		if(userInfo){
+			this.login(userInfo);
+		}
+		let that = this;
 		console.log('App Launch');
+		uni.getProvider({
+		    service: 'oauth',
+		    success: function (res) {
+				that.$scope.globalData.provider = res.provider[0];
+		    }
+		});
 	},
 	onShow: function() {
 		console.log('App Show');

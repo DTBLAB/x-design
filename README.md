@@ -1,5 +1,8 @@
 本项目为浙江大学DTBLAB的风格迁移产品设计定制小程序前端项目。
 本项目采用uni-app框架开发。
+
+开发人员需要对html、css、javascript有基础了解，推荐在[菜鸟教程](https://www.runoob.com/)学习，此网站同时可作为手册查阅
+
 本框架基于Vue，[Vue中文官网](https://cn.vuejs.org/)，需通读“学习-教程”部分，并大致了解“学习-API”部分。
 
 开发本项目建议在[uni-app官网](https://uniapp.dcloud.io/)，通读“简介”模块到"使用Vue.js注意事项"部分，请阅读“框架”模块的“pages.json”部分，大致了解“组件”和“API”部分。

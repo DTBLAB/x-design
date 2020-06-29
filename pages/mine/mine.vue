@@ -1,8 +1,10 @@
 <template>
 	<view class="mine-container">
 		<view class="mine-info">
-			<image class="mine-info__photo" :src="photo" @click="login"></image>
-			<view class="mine-info__nickname">{{nickname}}</view>
+			<image class="mine-info__avatar" :src="avatarUrl" v-if="hasLogin"></image>
+			<navigator open-type="navigate" url="/pages/login/login" v-else><image class="mine-info__avatar" src="../../static/image/default-photo.jpg"></image></navigator>
+			<view class="mine-info__nickName" v-if="hasLogin">{{nickName}}</view>
+			<view class="mine-info__nickName"  v-else>点击登录</view>
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
@@ -52,13 +54,15 @@
 
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
+	import { mapState } from 'vuex'
 	
 	export default {
 		components: {tabBar},
 		data() {
 			return {
-				photo: '/static/image/mine/photo.png',
-				nickname: '点击登录',
+				// isAuthorized: !!uni.getStorageSync('token'),
+				// photo: uni.getStorageSync('photo') || '/static/image/mine/photo.png',
+				// nickname: uni.getStorageSync('nickname') || '点击登录',
 				myImages:[
 					{src: '/static/image/mine/图库1.png', url:''},
 					{src: '/static/image/mine/图库2.png', url:''},
@@ -72,30 +76,9 @@
 				]
 			}
 		},
+		computed: mapState(['hasLogin', 'nickName' ,'avatarUrl']),
 		methods: {
-			login(){
-				// uni.login({
-				//   provider: 'weixin',
-				//   success: function (loginRes) {
-				//     console.log(loginRes);
-				//   }
-				// });
-				// let token;
-				// this.$http.post('/user/login', {phone: '18252605889', password: '123123'}).then((res)=>{
-				// 	console.log(res);
-				// 	token=res.data.data.token;
-					
-				// 	console.log(token);
-				// 	uni.setStorageSync('token', token);
-				// 	this.$http.get('/user/getInfo').then((res)=>{
-				// 		console.log(res);
-				// 	}).catch(e=>{
-				// 		console.log(e);
-				// 	})
-				// }).catch(e=>{
-				// 	console.log(e);
-				// })
-			}
+			
 		}
 	}
 </script>
