@@ -3,7 +3,7 @@
 
 开发人员需要对html、css、javascript有基础了解，推荐在[菜鸟教程](https://www.runoob.com/)学习，此网站同时可作为手册查阅
 
-各种命名规范推荐参考以下两篇文章：[基础规范](https://www.cnblogs.com/Hsong/p/9016950.html)、[更多规范](https://www.jianshu.com/p/fb07b2cbc723)
+各种命名规范推荐参考以下两篇文章：[知乎](https://zhuanlan.zhihu.com/p/47018800)、[博客](https://www.cnblogs.com/Hsong/p/9016950.html)
 
 本框架基于Vue，[Vue中文官网](https://cn.vuejs.org/)，需通读“学习-教程”部分，并大致了解“学习-API”部分。
 
