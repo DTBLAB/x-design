@@ -13,15 +13,55 @@
 	export default {
 		data() {
 			return {
+				code: '',
 				provider: getApp().globalData.provider === 'weixin' ? '微信':'QQ'
 			}
 		},
+		onLoad(){
+			this.refreshCode();
+		},
 		methods: {
 			...mapMutations(['login']),
+			refreshCode(){
+				let _this = this;
+				uni.login({
+				  success (res1) {
+				    if (res1.code) {
+				      _this.code = res1.code;
+				    } else {
+						console.log('登录凭证获取失败！' + res1.errMsg);
+				    }
+				  }
+				})
+			},
 			getUserInfo(res){
 				console.log(res);
-				this.login({nickName: res.detail.userInfo.nickName, avatarUrl: res.detail.userInfo.avatarUrl});
-				uni.navigateBack();
+				let _this = this;
+				//发起网络请求,
+				_this.$http.post('/user/login', {userInfo:res.detail, code:this.code}).then(result => {
+					console.log(result);
+					if(result.data.code === 0){
+						this.login({nickName: result.nickName, avatarUrl: result.avatarUrl, id: result.id, token: result.token});
+						uni.showToast({
+							    title: '登录成功',
+							    duration: 2000
+							});
+						uni.navigateBack();
+					}else{
+						uni.showToast({
+						    title: result.data.message,
+						    duration: 2000,
+							icon: 'none'
+						});
+					}
+				}).catch(err => {
+					uni.showToast({
+					    title: '网络错误，请重试',
+					    duration: 2000,
+						icon: 'none'
+					});
+				});
+				this.refreshCode();
 			}
 		}
 	}
