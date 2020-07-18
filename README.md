@@ -26,7 +26,7 @@ unpackage，编译输出目录，请勿改动；<br>
 
 根目录下文件，除了pages.json，不建议架构师之外人员做修改。
 
-连接本地服务器时，需关闭小程序服务器域名安全校验，以微信小程序为例，点击开发者工具右上角双箭头“>>”，选择“详情”，在“本地设置”中勾选“不校验合法域名、web-view、TLS版本以及HTTPS证书”选项。
+连接本地服务器时，需关闭小程序服务器域名安全校验，以微信小程序为例，右上角选择“详情”（非全屏下隐藏在右上双箭头“>>”中），在“本地设置”中勾选“不校验合法域名、web-view、TLS版本以及HTTPS证书”选项。
 
 本项目以uni.request方法为基础、仿照axios封装了get和post，并进行了全局配置，通过this.$http.get和this.$http.post可以发起get和post请求，包含url、data、config三个参数；<br>
 config为对象形式，为可选参数，config可包含uni.request方法参数中除url、data、method、success、fail、complete之外的其他属性；<br>

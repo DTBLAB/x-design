@@ -2,7 +2,7 @@
 	<view class="login-container">
 		<view class="login-logo"></view>
 		<view class="login-name">想定</view>
-		<button class="login-button" open-type="getUserInfo" @getphonenumber="getUserInfo" @getuserinfo="getUserInfo">{{provider}}登录</button>
+		<button class="login-button" open-type="getUserInfo" lang="zh_CN" @getuserinfo="getUserInfo">{{provider}}登录</button>
 		<navigator url="/pages/login/phone" class="login-link">手机号登录/注册</navigator>
 	</view>
 </template>
@@ -35,17 +35,16 @@
 				})
 			},
 			getUserInfo(res){
-				console.log(res);
 				let _this = this;
 				//发起网络请求,
-				_this.$http.post('/user/login', {userInfo:res.detail, code:this.code}).then(result => {
-					console.log(result);
+				_this.$http.post('/user/login', {userInfo:res.detail, code:this.code, origin: this.provider}).then(result => {
 					if(result.data.code === 0){
-						this.login({nickName: result.nickName, avatarUrl: result.avatarUrl, id: result.id, token: result.token});
+						let data = result.data.data;
+						this.login({nickname: data.nickname, avatarUrl: data.avatarUrl, token: data.token});
 						uni.showToast({
-							    title: '登录成功',
-							    duration: 2000
-							});
+						    title: '登录成功',
+						    duration: 2000
+						});
 						uni.navigateBack();
 					}else{
 						uni.showToast({

@@ -3,8 +3,8 @@
 		<view class="mine-info">
 			<image class="mine-info__avatar" :src="avatarUrl" v-if="hasLogin"></image>
 			<navigator open-type="navigate" url="/pages/login/login" v-else><image class="mine-info__avatar" src="../../static/image/default-photo.jpg"></image></navigator>
-			<view class="mine-info__nickName" v-if="hasLogin">{{nickName}}</view>
-			<view class="mine-info__nickName"  v-else>点击登录</view>
+			<view class="mine-info__nickname" v-if="hasLogin">{{nickname}}</view>
+			<view class="mine-info__nickname"  v-else>点击登录</view>
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
@@ -76,7 +76,7 @@
 				]
 			}
 		},
-		computed: mapState(['hasLogin', 'nickName' ,'avatarUrl']),
+		computed: mapState(['hasLogin', 'nickname' ,'avatarUrl']),
 		methods: {
 			
 		}

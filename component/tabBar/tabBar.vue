@@ -1,17 +1,34 @@
 <template>
 	<view class="tab-bar-container">
 		<view class="tab-bar-content">
-			<navigator :class="isHome ? 'tab-bar-item--selected' : 'tab-bar-item'" open-type="reLaunch" url="/pages/index/index">
+			<navigator :class="isHome ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toHome">
 				<image class="tab-bar-item__icon" src="/static/image/home--select.png" v-if="isHome"></image>
 				<image class="tab-bar-item__icon" src="/static/image/home.png" v-else></image>
 				<text class="tab-bar-item__text">首页</text>
 			</navigator>
-			<image class="tab-bar-item--middle" src="/static/image/add.png"></image>
-			<navigator :class="isMine ? 'tab-bar-item--selected' : 'tab-bar-item'"  open-type="reLaunch" url="/pages/mine/mine">
+			<image class="tab-bar-item--middle" src="/static/image/add.png" @click="showAddPanel"></image>
+			<navigator :class="isMine ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toMine">
 				<image class="tab-bar-item__icon" src="/static/image/user--select.png" v-if="isMine"></image>
 				<image class="tab-bar-item__icon" src="/static/image/user.png" v-else></image>
 				<text class="tab-bar-item__text">我的</text>
 			</navigator>
+		</view>
+		<view class="add-panel" v-show="ifShowAddPanel">
+			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
+			<view class="add-panel__selections">
+				<navigator class="add-panel__selection">
+					<button class="add-panel__selection__button">
+						<image class="add-panel__selection__button__picture" src="/static/image/add//picture.png"></image>
+					</button>
+					<view class="add-panel__selection__text">定制图片</view>
+				</navigator>
+				<navigator class="add-panel__selection">
+					<button class="add-panel__selection__button">
+						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
+					</button>
+					<view class="add-panel__selection__text">定制商品</view>
+				</navigator>
+			</view>
 		</view>
 	</view>
 </template>
@@ -29,62 +46,35 @@
 					'/static/image/home/微信图片_20191111155607@3x.png'
 				],
 				isHome: this.position === 'home',
-				isMine: this.position === 'mine'
+				isMine: this.position === 'mine',
+				ifShowAddPanel: false
 			}
 		},
 		methods: {
-			
+			toHome(){
+				if(!this.isHome){
+					uni.reLaunch({
+						url: "/pages/index/index"
+					})
+				}
+			},
+			toMine(){
+				if(!this.isMine){
+					uni.reLaunch({
+						url: "/pages/mine/mine"
+					})
+				}
+			},
+			showAddPanel(){
+				this.ifShowAddPanel = true;
+			},
+			hideAddPanel(){
+				this.ifShowAddPanel = false;
+			}
 		}
 	}
 </script>
 
 <style lang="less" scoped>
-	.tab-bar-container{
-		position: fixed;
-		height: 176rpx;
-		padding: 0 96rpx;
-		bottom: 0;
-		left: 0;
-		width: 558rpx;
-		background-color: #FFFFFF;
-		
-		.tab-bar-content{
-			width: 100%;
-			height: 108rpx;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: nowrap;
-			
-			.tab-bar-item{
-				height: 72rpx;
-				font-size: 20rpx;
-				color: #999999;
-				
-				&--middle{
-					height: 80rpx;
-					width: 80rpx;
-					display: block;
-				}
-				
-				&--selected{
-					height: 72rpx;
-					font-size: 20rpx;
-					color: #333333;
-				}
-				
-				&__icon{
-					width: 40rpx;
-					height: 40rpx;
-					display: block;
-				}
-				
-				&__text{
-					line-height: 28px;
-					display: block;
-				}
-				
-			}
-		}
-	}
+@import url('../../common/less/component/tabBar.less');
 </style>

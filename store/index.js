@@ -7,14 +7,15 @@ const store = new Vuex.Store({//全局变量定义
     state: {
         forcedLogin: false,//是否需要强制登录
         hasLogin: false,
-        nickName: "",
+        nickname: "",
         token:'',
-		avatarUrl:'/static/image/mine/photo.png'
+		avatarUrl:'/static/image/mine/default-photo.png'
     },
     mutations: {
         login(state, user) {
-            state.nickName = user.nickName || '';
-            state.avatarUrl = user.avatarUrl || '/static/image/mine/photo.png';
+			console.log(user)
+            state.nickname = user.nickname || '';
+            state.avatarUrl = user.avatarUrl || '/static/image/mine/default-photo.png';
             state.hasLogin = true;
             state.token = user.token || '';
 			uni.setStorage({
