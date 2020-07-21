@@ -22,6 +22,10 @@
 				"backgroundColor": "#FFFFFF"
 			}
 		}
+        ,{
+            "path" : "pages/productlist/productlist",
+            "style" : {}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",
