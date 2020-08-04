@@ -11,7 +11,7 @@
 				<view class="mine-block__title">图片库</view>
 				<navigator class="mine-block__more">
 					查看全部
-					<image src="/../../static/image/home/路径 2018@3x.png"  class="mine-block__more__icon"></image>
+					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
 			</view>
 			<view class="mine-block__list-container">
@@ -25,7 +25,7 @@
 				<view class="mine-block__title">商品订单</view>
 				<navigator class="mine-block__more">
 					查看全部
-					<image src="/../../static/image/home/路径 2018@3x.png"  class="mine-block__more__icon"></image>
+					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
 			</view>
 			<view class="mine-block__list-container">
@@ -37,15 +37,15 @@
 		<view class="mine-bottom">
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">地址管理</view>
-				<image class="mine-bottom__item__icon" src="/../../static/image/home/路径 2018@3x.png"></image>
+				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">联系客服</view>
-				<image class="mine-bottom__item__icon" src="/../../static/image/home/路径 2018@3x.png"></image>
+				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">关于我们</view>
-				<image class="mine-bottom__item__icon" src="/../../static/image/home/路径 2018@3x.png"></image>
+				<image class="mine-bottom__item__icon" src="/../../static/image/mores@3x.png"></image>
 			</view>
 		</view>
 		<tab-bar position="mine"></tab-bar>
@@ -64,15 +64,15 @@
 				// photo: uni.getStorageSync('photo') || '/static/image/mine/photo.png',
 				// nickname: uni.getStorageSync('nickname') || '点击登录',
 				myImages:[
-					{src: '/static/image/mine/图库1.png', url:''},
-					{src: '/static/image/mine/图库2.png', url:''},
-					{src: '/static/image/mine/图库3.png', url:''},
-					{src: '/static/image/mine/图库4.png', url:''},
-					{src: '/static/image/mine/图库5.png', url:''}	
+					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库1.png', url:''},
+					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库2.png', url:''},
+					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库3.png', url:''},
+					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库4.png', url:''},
+					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库5.png', url:''}	
 				],
 				myOrders:[
-					{img: '/static/image/mine/订单1.png', url:''},
-					{img: '/static/image/mine/订单2.png', url:''}
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png', url:''}
 				]
 			}
 		},
