@@ -71,14 +71,7 @@
 			hideAddPanel(){
 				this.ifShowAddPanel = false;
 			}
-			getData(){
-				
-			}
 			
-		},
-		mounted(){
-			this.getData()
-				
 		}
 			
 	}
