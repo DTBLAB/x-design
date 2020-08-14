@@ -20,6 +20,7 @@ css命名采用BEM命名法，参见[BEM官网](https://bemcss.com/)。
 common，放置css样式资源文件；<br>
 component，放置自定义vue组件；<br>
 components，放置uni-ui官方拓展组件，请勿改动；<br>
+layouts，放置布局；
 pages，放置页面，主要的开发目录；<br>
 static，静态资源目录，放置图片、视频等；<br>
 unpackage，编译输出目录，请勿改动；<br>

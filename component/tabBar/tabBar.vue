@@ -71,7 +71,9 @@
 			hideAddPanel(){
 				this.ifShowAddPanel = false;
 			}
+			
 		}
+			
 	}
 </script>
 

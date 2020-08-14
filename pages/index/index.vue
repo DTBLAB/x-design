@@ -22,7 +22,7 @@
 				<view class="home-commodity__name">{{commodity.name}}</view>
 				<navigator class="home-commodity__more" open-type="navigate" :url="commodity.url">
 					<text>查看更多</text>
-					<image src="/s../../static/image/home/路径 2018@3x.png"  class="home-commodity__more__icon"></image>
+					<image src="/s../../static/image/more@3x.png"  class="home-commodity__more__icon"></image>
 				</navigator>
 				<view class="home-commodity__list">
 					<image class="home-commodity__item"
@@ -46,27 +46,27 @@
 		data() {
 			return {
 				bannerImages: [
-					'/static/image/home/_Group4_8799ca78dc3040bf87291c9fb11df025KG_c_b_huihua(6)@3x.png',
-					'/static/image/home/banner2.jpg',
-					'/static/image/home/banner3.jpg'
+					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.jpg',
+					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
+					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
 				styleImages: [
-					{img: '/static/image/home/蒙版组 8@3x.png', name: '龙袍', url:''},
-					{img: '/static/image/home/蒙版组 9@3x.png', name: '和玺彩画', url:''},
-					{img: '/static/image/home/蒙版组 10@3x.png', name: '敦煌', url:''},
-					{img: '/static/image/home/蒙版组 11@3x.png', name: '水墨画', url:''},
-					{img: '/static/image/home/蒙版组 12@3x.png', name: '水彩', url:''}
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 8@3x.png', name: '龙袍', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 9@3x.png', name: '和玺彩画', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 10@3x.png', name: '敦煌', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 11@3x.png', name: '水墨画', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 12@3x.png', name: '水彩', url:''}
 				],
 				commodities: [
 					{name: '帆布袋', url: '', items:[
-						{img:'/static/image/home/33@3x.png', url:''},
-						{img:'/static/image/home/5d638e34a356b@3x.png', url:''},
-						{img:'/static/image/home/888@3x.png', url:''}
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/33@3x.png', url:''},
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d638e34a356b@3x.png', url:''},
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/888@3x.png', url:''}
 					]},
 					{name: '抱枕', url: '', items:[
-						{img:'/static/image/home/5d63c1c25ac60@3x.png', url:''},
-						{img:'/static/image/home/111111@3x.png', url:''},
-						{img:'/static/image/home/666@3x.png', url:''}
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d63c1c25ac60@3x.png', url:''},
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''},
+						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/666@3x.png', url:''}
 					]}
 				]
 			}
