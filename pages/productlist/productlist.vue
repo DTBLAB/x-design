@@ -17,14 +17,15 @@
 		data() {
 		return {
 			productlistImages: [
-				{img: '/static/image/product/T恤.jpg', name: 'T恤', url:''},
-				{img: '/static/image/product/手机壳.jpg', name: '手机壳', url:''},
-				{img: '/static/image/product/帆布袋.jpg', name: '帆布袋', url:''},
-				{img: '/static/image/product/明信片.jpg', name: '明信片', url:''},
-				{img: '/static/image/product/抱枕.jpg', name: '抱枕', url:''},
-				{img: '/static/image/product/笔记本.jpg', name: '笔记本', url:''},
-				{img: '/static/image/product/数字油画.jpg', name: '数字油画', url:''},
-				{img: '/static/image/product/纹身贴.jpg', name: '纹身贴', url:''},
+				{img: '/static/image/product/组 1103@3x.png', name: 'T恤', category:''},
+				{img: '/static/image/product/组 1104@3x.png', name: '手机壳', category:''},
+				{img: '/static/image/product/组 1105@3x.png', name: '帆布袋', category:''},
+				{img: '/static/image/product/组 1106@3x.png', name: '明信片', category:''},
+				{img: '/static/image/product/组 1107@3x.png', name: '抱枕', category:''},
+				{img: '/static/image/product/组 1108@3x.png', name: '笔记本', category:''},
+				{img: '/static/image/product/组 1109@3x.png', name: '胸章', category:''},
+				{img: '/static/image/product/组 1110@3x.png', name: '雨伞', category:''},
+				{img: '/static/image/product/组 1111@3x.png', name: '马克杯', category:''},
 			]
 					}
 					},
