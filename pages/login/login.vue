@@ -54,6 +54,7 @@
 						});
 					}
 				}).catch(err => {
+					console.log('err', err);
 					uni.showToast({
 					    title: '网络错误，请重试',
 					    duration: 2000,

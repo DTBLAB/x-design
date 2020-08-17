@@ -16,7 +16,7 @@
 		<view class="add-panel" v-show="ifShowAddPanel">
 			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
 			<view class="add-panel__selections">
-				<navigator class="add-panel__selection">
+				<navigator class="add-panel__selection" url="/pages/pictureDesign/pictureDesign">
 					<button class="add-panel__selection__button">
 						<image class="add-panel__selection__button__picture" src="/static/image/add//picture.png"></image>
 					</button>
