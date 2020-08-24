@@ -16,16 +16,19 @@
 		<view class="add-panel" v-show="ifShowAddPanel">
 			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
 			<view class="add-panel__selections">
-				<navigator class="add-panel__selection">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__picture" src="/static/image/add//picture.png"></image>
-					</button>
+				<navigator class="add-panel__selection" url="/pages/pictureDesign/pictureDesign">
+					<image class="add-panel__selection__button" src="/static/image/add//picture.png"></image>
 					<view class="add-panel__selection__text">定制图片</view>
 				</navigator>
-				<navigator class="add-panel__selection" url="../../pages/productlist/productlist">
+<<<<<<< HEAD
+				<navigator class="add-panel__selection" url="/pages/productlist/productlist">
 					<button class="add-panel__selection__button">
 						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
 					</button>
+=======
+				<navigator class="add-panel__selection">
+					<image class="add-panel__selection__button" src="/static/image/add//product.png"></image>
+>>>>>>> 6b672a2f7418c9b079a8d3880c3a17d62d04f86e
 					<view class="add-panel__selection__text">定制商品</view>
 				</navigator>
 			</view>

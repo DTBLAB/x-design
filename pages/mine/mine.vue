@@ -45,7 +45,7 @@
 			</view>
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">关于我们</view>
-				<image class="mine-bottom__item__icon" src="/../../static/image/mores@3x.png"></image>
+				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 		</view>
 		<tab-bar position="mine"></tab-bar>

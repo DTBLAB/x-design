@@ -21,6 +21,20 @@
 			    "navigationBarTitleText" : "登录",
 				"backgroundColor": "#FFFFFF"
 			}
+		},
+		{
+		    "path" : "pages/pictureDesign/pictureDesign",
+			"style" : {
+			    "navigationBarTitleText" : "图片定制",
+				"backgroundColor": "#FFFFFF"
+			}
+		},
+		{
+		    "path" : "pages/pictureDesign/cardShare",
+			"style" : {
+			    "navigationBarTitleText" : "生成卡片",
+				"backgroundColor": "#FFFFFF"
+			}
 		}
         ,{
             "path" : "pages/productlist/productlist",
