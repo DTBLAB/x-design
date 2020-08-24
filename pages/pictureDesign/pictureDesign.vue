@@ -41,25 +41,31 @@
 		</view>
 		
 		<canvas class="compress-canvas" canvas-id="compress-canvas" id="compressCanvas"></canvas>
+		
 		<image class="picture-close" src="../../static/image/pictureDesign/close.png" @click="clear" v-if="hasPicture"></image>
-		<view class="right-bar">
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/adjust.png"></image>
-				<view class="right-bar-item__text">调整</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/share.png"></image>
-				<view class="right-bar-item__text">分享</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/save.png"></image>
-				<view class="right-bar-item__text">保存</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/product.png"></image>
-				<view class="right-bar-item__text">商品</view>
-			</view>
+		<!-- 记得换成isTransferred -->
+		<view class="picture-finish" v-if="hasPicture" @click="generateCard">完成</view>
+		<view class="right-bar" v-if="hasPicture">
+			<view class="right-bar-item right-bar-item--adjust" @click=""></view>
+			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
 		</view>
+		
+		<!-- <view class="share-panel-cover" v-if="isSharing">
+			<view class="share-panel">
+				<view class="share-panel__title">分享</view>
+				<image src="../../static/image/add/close.png" class="share-panel__close" @click="hideSharePanel"></image>
+				<view class="share-panel__buttons">
+					<button class="share-panel__button" open-type="share" @click="wechatShare">
+						<image class="share-panel__button__image" src="../../static/image/pictureDesign/wechat-share.png"></image>
+						<view class="share-panel__button__text">微信链接</view>
+					</button>
+					<button class="share-panel__button" @click="generateCard">
+						<image class="share-panel__button__image" src="../../static/image/pictureDesign/picture-share.png"></image>
+						<view class="share-panel__button__text">生成卡片</view>
+					</button>
+				</view>
+			</view>
+		</view> -->
 	</view>
 </template>
 
@@ -94,12 +100,28 @@
 				selectedStyle: null,
 				transferredPictures:{
 				},
-				selectedTransferredPitucre: null
+				selectedTransferredPitucre: null,
+				isSharing: false
 			}
 		},
 		computed: {
 			selectedStyles(){
 				return this.styles[this.selectedKind]
+			}
+		},
+		onShareAppMessage() {
+			return {
+				title: '想定就定，定你所想',
+				path: '/pages/index/index',
+				imageUrl: this.isTransferred? this.selectedTransferredPitucre:this.pictureUrl, // 生成的分享图赋值给到小程序自定义分享图链接
+				success: function () {
+					// 转发成功
+					console.log(shareUrl)
+				},
+				fail: function () {
+					// 转发失败
+					console.log('转发失败')
+				}
 			}
 		},
 		methods: {
@@ -255,6 +277,43 @@
 				this.transferredPictures = {};
 				this.selectedTransferredPitucre = null;
 				this.loadingFinished = false;
+			},
+			
+			showSharePanel(){
+				this.isSharing = true;
+			},
+			hideSharePanel(){
+				this.isSharing = false;
+			},
+			
+			wechatShare(){
+				uni.showShareMenu({
+				  withShareTicket: true,
+				  success: function(res){
+					  console.log('res:',res);
+				  },
+				  fail: function(err){
+					  console.log(err);
+				  }
+				})
+			},
+			generateCard(){
+				let _this = this;
+				uni.showLoading({
+				    title: '卡片生成中',
+					mask: true
+				});
+				
+				// 请删除此赋值
+				this.selectedTransferredPitucre = this.pictureUrl;
+				
+				uni.getImageInfo({
+				    src: this.selectedTransferredPitucre,
+					success: function(image){
+						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${_this.selectedTransferredPitucre}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
+						uni.hideLoading();
+					},
+				})
 			}
 			
 		}

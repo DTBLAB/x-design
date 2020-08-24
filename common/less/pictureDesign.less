@@ -170,28 +170,130 @@
 .right-bar{
 	position: absolute;
 	z-index: 10;
-	bottom: 376rpx;
+	bottom: 400rpx;
 	right: 28rpx;
 	width: 68rpx;
 	
 	&-item{
 		width: 68rpx;
-		margin-bottom: 20rpx;
+		height: 68rpx;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 54rpx;
+		border-radius: 34rpx;
+		background-size: cover;
+		background-color: transparent;
 		
-		&__icon{
-			width: 68rpx;
-			height: 68rpx;
-			margin: 0;
+		&--adjust{
+			background-image: url(../../static/image/pictureDesign/adjust.png);
 		}
 		
-		&__text{
-			width: 68rpx;
-			height: 34rpx;
-			line-height: 34rpx;
-			text-align: center;
-			font-size: 26rpx;
-			color: white;
+		&--share{
+			background-image: url(../../static/image/pictureDesign/share.png);
+		}
+		
+		&&::after{
+			display: none;
 		}
 		
 	}
 }
+
+.picture-finish{
+	position: absolute;
+	z-index: 10;
+	width: 144rpx;
+	height: 60rpx;
+	top: 32rpx;
+	right: 28rpx;
+	border-radius: 10rpx;
+	text-align: center;
+	font-size: 28rpx;
+	line-height: 60rpx;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+// .share-panel-cover{
+// 	position: fixed;
+// 	width: 750rpx;
+// 	height: 100%;
+// 	z-index: 100;
+// 	top: 0;
+// 	left: 0;
+// 	background-color: rgba(0, 0, 0, 0.3);
+	
+// 	.share-panel{
+// 		width: 694rpx;
+// 		height: 346rpx;
+// 		border-radius: 20rpx;
+// 		background-color: white;
+// 		position: absolute;
+// 		bottom: 94rpx;
+// 		left: 28rpx;
+		
+// 		&__title{
+// 			position: absolute;
+// 			font-size: 32rpx;
+// 			font-weight: bold;
+// 			height: 42rpx;
+// 			line-height: 42rpx;
+// 			top: 24rpx;
+// 			left: 316rpx;
+// 		}
+		
+// 		&__close{
+// 			position: absolute;
+// 			width: 30rpx;
+// 			height: 30rpx;
+// 			right: 36rpx;
+// 			top: 36rpx;
+// 		}
+		
+// 		&__buttons{
+// 			position: absolute;
+// 			left: 134rpx;
+// 			top: 126rpx;
+// 			width: 426rpx;
+// 			height: 164rpx;
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: space-between;
+// 		}
+		
+// 		&__button{
+// 			width: 112rpx;
+// 			height: 100%;
+// 			padding: 0;
+// 			margin: 0;
+// 			background-color: transparent;
+// 			outline: 0 none transparent;
+// 			border-radius: 0;
+// 			line-height: 0;
+			
+// 			&::after{
+// 				display: none;
+// 			}
+			
+// 			&__image{
+// 				width: 112rpx;
+// 				height: 112rpx;
+// 				margin: 0;
+// 				bottom: 0;
+// 			}
+			
+// 			&__text{
+// 				width: 112rpx;
+// 				height: 38rpx;
+// 				text-align: center;
+// 				margin: 0;
+// 				bottom: 0;
+// 				margin-top: 14rpx;
+// 				line-height: 38rpx;
+// 				font-size: 28rpx;
+// 				color: #333333;
+// 			}
+// 		}
+// 	}
+	
+// }

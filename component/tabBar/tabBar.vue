@@ -17,15 +17,11 @@
 			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
 			<view class="add-panel__selections">
 				<navigator class="add-panel__selection" url="/pages/pictureDesign/pictureDesign">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__picture" src="/static/image/add//picture.png"></image>
-					</button>
+					<image class="add-panel__selection__button" src="/static/image/add//picture.png"></image>
 					<view class="add-panel__selection__text">定制图片</view>
 				</navigator>
 				<navigator class="add-panel__selection">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
-					</button>
+					<image class="add-panel__selection__button" src="/static/image/add//product.png"></image>
 					<view class="add-panel__selection__text">定制商品</view>
 				</navigator>
 			</view>
