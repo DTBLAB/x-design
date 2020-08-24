@@ -37,8 +37,11 @@
 			}
 		}
         ,{
-            "path" : "pages/productlist/productlist",
-            "style" : {}
+            "path" : "pages/productList/productList",
+            "style" : {
+				"navigationBarTitleText" : "商品分类",
+				"backgroundColor": "#FFFFFF"
+			}
         }
     ],
     "globalStyle" : {

@@ -20,15 +20,8 @@
 					<image class="add-panel__selection__button" src="/static/image/add//picture.png"></image>
 					<view class="add-panel__selection__text">定制图片</view>
 				</navigator>
-<<<<<<< HEAD
-				<navigator class="add-panel__selection" url="/pages/productlist/productlist">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
-					</button>
-=======
-				<navigator class="add-panel__selection">
+				<navigator class="add-panel__selection" url="/pages/productList/productList">
 					<image class="add-panel__selection__button" src="/static/image/add//product.png"></image>
->>>>>>> 6b672a2f7418c9b079a8d3880c3a17d62d04f86e
 					<view class="add-panel__selection__text">定制商品</view>
 				</navigator>
 			</view>

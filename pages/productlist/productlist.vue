@@ -36,5 +36,5 @@
 </script>
 
 <style lang="less" scoped>
-@import url('../../common/less/productlist.less');
+@import url('../../common/less/productList.less');
 </style>
