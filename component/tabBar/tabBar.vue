@@ -22,7 +22,7 @@
 					</button>
 					<view class="add-panel__selection__text">定制图片</view>
 				</navigator>
-				<navigator class="add-panel__selection">
+				<navigator class="add-panel__selection" url="../../pages/productlist/productlist">
 					<button class="add-panel__selection__button">
 						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
 					</button>
