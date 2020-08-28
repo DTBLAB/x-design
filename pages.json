@@ -43,6 +43,10 @@
 				"backgroundColor": "#FFFFFF"
 			}
         }
+        ,{
+            "path" : "pages/product/product",
+            "style" : {}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",
