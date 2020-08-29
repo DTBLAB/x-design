@@ -52,28 +52,28 @@
 			
 		<view class="product-comment">
 			<view class="product-comment__name">商品评价</view>
-			<!-- 这一页的商品评价部分作为商品评价页的链接 只显示前两个 -->
-			<navigator class="product-comment__list" url="..."> 
-				<view class="product-comment__item">
-					<image src="/../../static/image/product/椭圆411@3x.png"  class="product-comment__item__left"></image>
-					<view class="product-comment__item__right">
-						<view class="product-comment__item__title">
-							<view>{{username}}</view>
-								<view class="product-comment__item__stars">
-								<image v-for="count in scores" class="product-comment__item__starIcon" src="/../../static/image/product/星星黄色.png" mode=""></image>
-								<image v-for="count in 5-scores" class="product-comment__item__starIcon" src="/../../static/image/product/星星灰色.png" mode=""></image>
+			<!-- 这一页的商品评价部分作为商品评价页的链接 只显示第一个 -->
+			<navigator class="product-comment__list" v-for="(item, index) in commentList" :key="index" url="...">
+							<view class="product-comment__item">
+								<image src="/../../static/image/product/椭圆411@3x.png"  class="product-comment__item__left"></image>
+								<view class="product-comment__item__right">
+									<view class="product-comment__item__title">
+										<view>{{item.username}}</view>
+											<view class="product-comment__item__stars">
+											<image v-for="count in item.scores" class="product-comment__item__starIcon" src="/../../static/image/product/星星黄色.png" mode=""></image>
+											<image v-for="count in 5-item.scores" class="product-comment__item__starIcon" src="/../../static/image/product/星星灰色.png" mode=""></image>
+											</view>
+									</view>
+									<view>{{item.content}}</view>
+									<view class="product-comment__item__list">
+										<image class="product-comment__item__item"
+											v-for="(item2, index) in item.photos" :key="index" 
+											:src="item2.img"
+											mode="widthFix"
+										></image>
+									</view>
 								</view>
-						</view>
-						<view>{{content}}</view>
-						<view class="product-comment__item__list">
-							<image class="product-comment__item__item"
-								v-for="(item, index) in photos" :key="index" 
-								:src="item.img"
-								mode="widthFix"
-							></image>
-						</view>
-					</view>
-				</view>
+							</view>
 			<view class="product-comment__more">
 				查看更多相关评价
 			</view>
@@ -113,16 +113,19 @@
 				{img: '/static/image/product/info.jpg', name: '', url:''},
 				{img: '/static/image/product/info.jpg', name: '', url:''},
 			],
-			username:"XYZ123",
-			scores:4,
-			photo:'/../../static/image/product/椭圆411@3x.png',
-			content:"帆布包质量很好，定制的图片也很好看，效果很惊喜！会继续定制的！",
-			photos: [
-				{img: '/static/image/home/蒙版组 8@3x.png', name: '', url:''},
-				{img: '/static/image/home/蒙版组 9@3x.png', name: '', url:''},
-				{img: '/static/image/home/蒙版组 10@3x.png', name: '', url:''},
-				{img: '/static/image/home/蒙版组 11@3x.png', name: '', url:''}
-			]
+			commentList:[
+				{username:"XYZ123",
+				scores:4,
+				photo:'/../../static/image/product/椭圆411@3x.png',
+				content:"帆布包质量很好，定制的图片也很好看，效果很惊喜！会继续定制的！",
+				photos: [
+					{img: '/static/image/home/蒙版组 8@3x.png', name: '', url:''},
+					{img: '/static/image/home/蒙版组 9@3x.png', name: '', url:''},
+					{img: '/static/image/home/蒙版组 10@3x.png', name: '', url:''},
+					{img: '/static/image/home/蒙版组 11@3x.png', name: '', url:''}
+				]
+				},
+			],
 				}
 					},
 					
