@@ -4,7 +4,7 @@
 			<view class="picture-add" @click="choosePicture" v-if="!hasPicture">
 				<view class="picture-add__icon"></view>
 			</view>
-			<image class="picture-body" :src="isTransferred?selectedTransferredPitucre:pictureUrl" mode='aspectFit' v-else>
+			<image class="picture-body" :src="isTransferred?selectedTransferredPicture:pictureUrl" mode='aspectFit' v-else>
 			</image>
 		</view>
 		<view class="style-selector">
@@ -46,7 +46,7 @@
 		<!-- 记得换成isTransferred -->
 		<view class="picture-finish" v-if="hasPicture" @click="generateCard">完成</view>
 		<view class="right-bar" v-if="hasPicture">
-			<view class="right-bar-item right-bar-item--adjust" @click=""></view>
+			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
 			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
 		</view>
 		
@@ -100,7 +100,7 @@
 				selectedStyle: null,
 				transferredPictures:{
 				},
-				selectedTransferredPitucre: null,
+				selectedTransferredPicture: null,
 				isSharing: false
 			}
 		},
@@ -113,7 +113,7 @@
 			return {
 				title: '想定就定，定你所想',
 				path: '/pages/index/index',
-				imageUrl: this.isTransferred? this.selectedTransferredPitucre:this.pictureUrl, // 生成的分享图赋值给到小程序自定义分享图链接
+				imageUrl: this.isTransferred? this.selectedTransferredPicture:this.pictureUrl, // 生成的分享图赋值给到小程序自定义分享图链接
 				success: function () {
 					// 转发成功
 					console.log(shareUrl)
@@ -246,7 +246,7 @@
 				}
 				this.selectedStyle = style;
 				if(this.transferredPictures[style]){
-					this.selectedTransferredPitucre = this.transferredPictures[style];
+					this.selectedTransferredPicture = this.transferredPictures[style];
 				}else{
 					this.transfer(style, res.data.token);
 				}
@@ -275,7 +275,7 @@
 				this.selectedKind = '推荐';
 				this.selectedStyle = null;
 				this.transferredPictures = {};
-				this.selectedTransferredPitucre = null;
+				this.selectedTransferredPicture = null;
 				this.loadingFinished = false;
 			},
 			
@@ -305,15 +305,21 @@
 				});
 				
 				// 请删除此赋值
-				this.selectedTransferredPitucre = this.pictureUrl;
+				this.selectedTransferredPicture = this.pictureUrl;
 				
 				uni.getImageInfo({
-				    src: this.selectedTransferredPitucre,
+				    src: this.selectedTransferredPicture,
 					success: function(image){
-						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${_this.selectedTransferredPitucre}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
+						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${_this.selectedTransferredPicture}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
 						uni.hideLoading();
 					},
 				})
+			},
+			adjustPicture(){
+				// 请删除此赋值
+				this.selectedTransferredPicture = this.pictureUrl;
+				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?url=${this.selectedTransferredPicture}`});
+				uni.hideLoading();
 			}
 			
 		}

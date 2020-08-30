@@ -18,6 +18,16 @@
 		</view>
 		<view class="home-commodities">
 			<view class="home-commodities__title">定制推荐</view>
+			<navigator class="home-commodities__more" open-type="navigate" :url="commodity.url">
+				<text>查看更多</text>
+				<image src="../../static/image/more@3x.png"  class="home-commodities__more__icon"></image>
+			</navigator>
+			<view class="home-commodities__body">
+				<image class="home-commodity" v-for="commodity in commodities" :key="index" :src="commodity.img" @click="checkCommodityDetail(commodity)"></image>
+			</view>
+		</view>
+		<!-- <view class="home-commodities">
+			<view class="home-commodities__title">定制推荐</view>
 			<view class="home-commodity" v-for="(commodity, index) in commodities" :key="index">
 				<view class="home-commodity__name">{{commodity.name}}</view>
 				<navigator class="home-commodity__more" open-type="navigate" :url="commodity.url">
@@ -33,7 +43,7 @@
 					></image>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<tab-bar position="home"></tab-bar>
 	</view>
 </template>
@@ -58,16 +68,12 @@
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 12@3x.png', name: '水彩', url:''}
 				],
 				commodities: [
-					{name: '帆布袋', url: '', items:[
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/33@3x.png', url:''},
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d638e34a356b@3x.png', url:''},
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/888@3x.png', url:''}
-					]},
-					{name: '抱枕', url: '', items:[
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d63c1c25ac60@3x.png', url:''},
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''},
-						{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/666@3x.png', url:''}
-					]}
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/33@3x.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d638e34a356b@3x.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/888@3x.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d63c1c25ac60@3x.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/666@3x.png', url:''}
 				]
 			}
 		},

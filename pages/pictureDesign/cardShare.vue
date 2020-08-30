@@ -1,7 +1,7 @@
 <template>
 	<view class="page-container">
+		<image class="card" :style="{height: canvasHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
-		<!-- <image></image> -->
 		<view class="tip">长按分享保存~</view>
 		<view class="save-button">去设计</view>
 	</view>
@@ -19,16 +19,21 @@
 				pictureUrl: '',
 				pictureWidth: 0,
 				pictureHeight: 0,
-				styleName: ''
+				styleName: '',
+				isAvatarLoaded: false,
+				isMiniProgramCodeLoaded: false,
+				cardUrl: ''
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
-			console.log(option);
 			this.styleName = option.styleName;
 			this.pictureUrl = option.url;
 			this.pictureHeight = option.height;
 			this.pictureWidth = option.width;
 			this.canvasHeight = (option.height/option.width*624 + 354) + 'rpx';
+		},
+		onShow: function(){
+			
 		},
 		computed:{
 			...mapState(['hasLogin', 'nickname' ,'avatarUrl'])
@@ -53,6 +58,7 @@
 			
 			let fontsize = 24/this.rpx;
 			let lineHeight = 32/this.rpx; 
+			ctx.setFontSize(fontsize);
 			// 设置字体
 			ctx.font = fontsize+"px 'PingFang SC'";
 			// 设置颜色
@@ -95,7 +101,10 @@
 					ctx.clip()
 					ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx, 234/_this.rpx + pictureHeightInCanvas, 39, 39)
 			        ctx.restore()
-			        ctx.draw(true)
+					ctx.draw(true, ()=>{
+						_this.isAvatarLoaded = true;
+						_this.canvasToCard();
+					})
 			    },
 				fail: function(err) {
 					console.log(err);
@@ -112,13 +121,40 @@
 					ctx.clip()
 					ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx, 222/_this.rpx + pictureHeightInCanvas, 51, 51)
 			        ctx.restore()
-			        ctx.draw(true)
+			        ctx.draw(true, ()=>{
+						_this.isMiniProgramCodeLoaded = true;
+						_this.canvasToCard();
+					})
 			    },
 				fail: function(err) {
 					console.log(err);
 				}
 			});
+		},
+		methods:{
+			canvasToCard(){
+				let _this = this;
+				console.log(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded);
+				if(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded){
+					return;
+				}
+				uni.canvasToTempFilePath({
+				  x: 0,
+				  y: 0,
+				  width: 662/this.rpx,
+				  height: parseInt(this.canvasHeight.replace('rpx', ''))/this.rpx,
+				  destWidth: 662/this.rpx,
+				  destHeight: parseInt(this.canvasHeight.replace('rpx', ''))/this.rpx,
+				  canvasId: 'card-canvas',
+				  fileType: 'jpg',
+				  success: function(res) {
+					 console.log(res);
+				    _this.cardUrl = res.tempFilePath;
+				  } 
+				})
+			}
 		}
+		
 	}
 	
 </script>

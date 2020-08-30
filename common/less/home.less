@@ -1,19 +1,22 @@
 .home-container{
+	background-color: #F4F4F4;
 	padding-bottom: 176rpx;
 	
 	.home-banner{
 		width: 750rpx;
-		height: 564rpx;
+		height: 568rpx;
 			
 		&__item{
 			width: 750rpx;
-			height: 564rpx;
+			height: 568rpx;
 		}
 	}
 	
 	.home-styles{
-		width: 678rpx;
-		margin: 48rpx 36rpx 0 36rpx;
+		width: 714rpx;
+		margin: 18rpx 0 0 0;
+		padding: 24rpx 0 46rpx 32rpx;
+		background-color: white;
 		
 		&__title{
 			border-left: 6rpx #FFA200 solid;
@@ -27,7 +30,7 @@
 		
 		&__list-container{
 			height: 198rpx;
-			width: 678rpx;
+			width: 714rpx;
 			margin-top: 36rpx;
 		}
 		
@@ -65,8 +68,11 @@
 	}
 	
 	.home-commodities{
-		width: 678rpx;
-		margin: 40rpx 36rpx 0 36rpx;
+		background-color: white;
+		width: 750rpx;
+		margin: 20rpx 0 0 0;
+		padding: 22rpx 32rpx;
+		position: relative;
 		
 		&__title{
 			border-left: 6rpx #FFA200 solid;
@@ -78,25 +84,10 @@
 			color: #333333;
 		}
 		
-	}
-	
-	.home-commodity{
-		margin-top: 22rpx;
-		margin-bottom: 44rpx;
-		position: relative;
-		
-		&__name{
-			width: 678prx;
-			text-align: center;
-			font-size: 28rpx;
-			height: 40rpx;
-			line-height: 40rpx;
-		}
-		
 		&__more{
 			position: absolute;
-			right: 0;
-			top: 4rpx;
+			left: 606rpx;
+			top: 38rpx;
 			font-size: 24rpx;
 			color: #999999;
 			
@@ -109,19 +100,67 @@
 			}
 		}
 		
-		&__list{
-			width: 678rpx;
-			margin-top: 24rpx;
+		&__body{
+			margin: 31rpx 4rpx 0 2rpx;
+			width: 680rpx;
 			display: flex;
 			align-items: flex-start;
 			justify-content: space-between;
+			flex-wrap: wrap;
 		}
 		
-		&__item{
-			width: 212rpx;
-			background-color: #F7F7F7;
-		}
 		
-	}	
+		
+	}
+	
+	.home-commodity{
+		background-color: #F4F4F4;
+		width: 212rpx;
+		height: 212rpx;
+		margin-bottom: 18rpx;
+	}
+	// .home-commodity{
+	// 	margin-top: 22rpx;
+	// 	margin-bottom: 44rpx;
+	// 	position: relative;
+		
+	// 	&__name{
+	// 		width: 678prx;
+	// 		text-align: center;
+	// 		font-size: 28rpx;
+	// 		height: 40rpx;
+	// 		line-height: 40rpx;
+	// 	}
+		
+	// 	&__more{
+	// 		position: absolute;
+	// 		right: 0;
+	// 		top: 4rpx;
+	// 		font-size: 24rpx;
+	// 		color: #999999;
+			
+	// 		&__icon{
+	// 			height: 20rpx;
+	// 			width: 10rpx;
+	// 			display: inline-block;
+	// 			vertical-align: middle;
+	// 			margin-left: 6rpx;
+	// 		}
+	// 	}
+		
+	// 	&__list{
+	// 		width: 678rpx;
+	// 		margin-top: 24rpx;
+	// 		display: flex;
+	// 		align-items: flex-start;
+	// 		justify-content: space-between;
+	// 	}
+		
+	// 	&__item{
+	// 		width: 212rpx;
+	// 		background-color: #F7F7F7;
+	// 	}
+		
+	// }	
 		
 }

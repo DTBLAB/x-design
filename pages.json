@@ -35,6 +35,13 @@
 			    "navigationBarTitleText" : "生成卡片",
 				"backgroundColor": "#FFFFFF"
 			}
+		},
+		{
+		    "path" : "pages/pictureDesign/pictureAdjust",
+			"style" : {
+			    "navigationStyle" : "custom",
+				"navigationBarTextStyle" : "white"
+			}
 		}
         ,{
             "path" : "pages/productlist/productlist",

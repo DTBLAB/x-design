@@ -31,9 +31,21 @@
 	color: white;
 }
 
-.card-canvas{
+.card{
 	// height: 1080rpx;
 	width: 662rpx;
 	margin-top: 28rpx;
 	box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.15);
+}
+
+.card-canvas{
+	// height: 1080rpx;
+	width: 662rpx;
+	box-shadow: 0 0 40rpx rgba(0, 0, 0, 0.15);
+	visibility: hidden;
+	position:absolute;
+	z-index:-1; 
+	left:-10000rpx;
+	top:-10000rpx;
+	overflow: hidden;
 }
