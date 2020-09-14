@@ -16,6 +16,7 @@
 			  backgroundColor="#CDCDCD"
 			  block-size="16"
 			  @changing="sliderChanging($event, 'opacity')"
+			  @change="setAttributes($event, 'opacity')"
 			></slider>
 			<slider
 			  class="attribute-slider"
@@ -31,6 +32,7 @@
 			  backgroundColor="#CDCDCD"
 			  block-size="16"
 			  @changing="sliderChanging($event, attribute)"
+			  @change="setAttributes($event, attribute)"
 			></slider>
 			<scroll-view class="scroll-view_H attributes-container" scroll-x="true" enable-flex="true">
 				<view class="attributes-body">
@@ -46,11 +48,17 @@
 				</view>
 			</scroll-view>
 		</view>
+		
+		<image class="adjust-button adjust-button--back" src="../../static/image/pictureAdjust/back.png" @click="back"></image>
+		<image class="adjust-button adjust-button--reset" src="../../static/image/pictureAdjust/reset.png" @click="reset"></image>
+		<image class="adjust-button adjust-button--finish" src="../../static/image/pictureAdjust/finish.png" @click="finish"></image>
+
 	</view>
 </template>
 
 <script>
 	import WxCaman from '../../node_modules/wx-caman'
+	import { mapMutations } from 'vuex'
 	
 	export default{
 		data(){
@@ -58,6 +66,7 @@
 				pictureWidth: 0,
 				pictureHeight: 0,
 				rawPictureUrl: '',
+				transferredPictureUrl: '',
 				adjustingPictureUrl: '',
 				attributes:['opacity', 'saturation', 'contrast', 'brightness', 'exposure'],
 				selectedAttribute: 'opacity',
@@ -75,46 +84,34 @@
 					brightness: '亮度',
 					exposure: '曝光'
 				},
+				transferredImageData: []
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			console.log(option);
-			this.rawPictureUrl = this.adjustingPictureUrl = option.url;
-			// this.drawPictureToCanvas();
+			this.rawPictureUrl = option.rawPictureUrl;
+			this.transferredPictureUrl = this.adjustingPictureUrl = option.transferredPictureUrl;
+			this.drawPictureToCanvas();
 		},
 		mounted(){
 			
 		},
 		methods:{
+			...mapMutations(['saveAdjustment']),
 			drawPictureToCanvas(){
 				let _this = this;
 			
 				uni.getImageInfo({
-				    src: this.rawPictureUrl,
+				    src: this.transferredPictureUrl,
 				    success: function (image) {
 						_this.pictureHeight = image.height;
 						_this.pictureWidth = image.width;
 						const ctx = uni.createCanvasContext('adjust-canvas');
-						ctx.drawImage(_this.rawPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
-						ctx.draw(false, ()=>{
-							_this.adjust();
-						});
+						ctx.drawImage(_this.transferredPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
+						ctx.draw();
 					},
 				});
 				
-			},
-			adjust(){
-				let _this = this;
-				
-				new WxCaman('adjust-canvas', this.pictureWidth, this.pictureHeight, function () {
-					this.brightness(60);
-					// this.contrast(30)
-					// this.sepia(60)
-					// this.saturation(-30)
-					this.render(function(){
-						_this.canvasToPicture();
-					});
-				});
 			},
 			canvasToPicture(){
 				let _this = this;
@@ -128,17 +125,62 @@
 				  canvasId: 'adjust-canvas',
 				  fileType: 'jpg',
 				  success: function(res) {
-					console.log(res);
 				    _this.adjustingPictureUrl = res.tempFilePath;
+					uni.hideLoading();
 				  } 
 				})
 			},
 			
 			selectAttribute(attr){
+				// console.log('here');
 				this.selectedAttribute = attr; 
 			},
 			sliderChanging(event, attr) {
 				this.values[attr] = event.detail.value;
+			},
+			setAttributes(event, attr){
+				let _this = this;
+				this.values[attr] = event.detail.value;
+				uni.showLoading({
+					title: '图片调整中',
+					mask: true
+				})
+				
+				const ctx = uni.createCanvasContext('adjust-canvas');
+				ctx.clearRect(0, 0, _this.pictureWidth, _this.pictureHeight)
+				
+				// ctx.drawImage(_this.rawPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
+				ctx.globalAlpha = _this.values['opacity']/100;
+				ctx.drawImage(_this.transferredPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
+				ctx.globalAlpha = 1;
+				ctx.draw(true, ()=>{
+					new WxCaman('adjust-canvas', _this.pictureWidth, _this.pictureHeight, function () {
+						this.brightness(_this.values['brightness']);
+						this.contrast(_this.values['contrast']);
+						this.saturation(_this.values['saturation']);
+						this.exposure(_this.values['exposure'])
+						this.render(function(){
+							_this.canvasToPicture();
+						});
+					});			
+				});
+			},
+			back(){
+				uni.navigateBack();
+			},
+			reset(){
+				this.values = {
+					opacity: 100,
+					saturation: 0,
+					contrast: 0,
+					brightness: 0,
+					exposure: 0
+				};
+				this.adjustingPictureUrl = this.transferredPictureUrl;
+			},
+			finish(){
+				this.saveAdjustment(this.adjustingPictureUrl);
+				uni.navigateBack();
 			}
 			
 		}

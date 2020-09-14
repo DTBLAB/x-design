@@ -7,7 +7,7 @@ const http = {
 		let header = config.header || {
 		'content-type': 'application/json;charset=UTF-8'
 		};
-		const token = uni.getStorageSync('token');
+		const token = uni.getStorageSync('userInfo').token;
 		if(token){
 			header['authorization'] = "Bearer " + token;
 		}
@@ -76,7 +76,7 @@ const http = {
 		let data = theData || {};
 		let timeout = config.timeout || 3000;
 		let header = config.header || {};
-		const token = uni.getStorageSync('token');
+		const token = uni.getStorageSync('userInfo').token;
 		if(token){
 			header['authorization'] = "Bearer " + token;
 		}

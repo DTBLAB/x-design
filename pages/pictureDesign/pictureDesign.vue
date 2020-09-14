@@ -70,6 +70,9 @@
 </template>
 
 <script>
+	import { mapMutations } from 'vuex'
+	import { mapState } from 'vuex'
+	
 	export default {
 		data(){
 			return{
@@ -105,6 +108,7 @@
 			}
 		},
 		computed: {
+			...mapState(['adjustedPictureUrl']),
 			selectedStyles(){
 				return this.styles[this.selectedKind]
 			}
@@ -124,7 +128,16 @@
 				}
 			}
 		},
+		onShow() {
+			if(this.adjustedPictureUrl){
+				//这里记得换回来
+				// this.pictureUrl = this.adjustedPictureUrl;
+				this.selectedTransferredPicture = this.adjustedPictureUrl;
+				this.saveAdjustment(null);
+			}
+		},
 		methods: {
+			...mapMutations(['saveAdjustment']),
 			choosePicture(){
 				let _this = this;
 				uni.chooseImage({
@@ -219,7 +232,7 @@
 				this.selectedKind = kind;
 				//this.selectedStyles
 			},
-			selectStyle(style){
+			async selectStyle(style){
 				if(!this.pictureUrl){
 					uni.showToast({
 					    title: "请先选择图片",
@@ -235,8 +248,9 @@
 					});
 					return;
 				}
-				let res = this.getTransferToken();
-				if(res.code !== 0){
+				let res = await this.getTransferToken();
+				console.log(res);
+				if(!res.data || res.data.code !== 0){
 					uni.showToast({
 					    title: res.message,
 					    duration: 1000,
@@ -248,14 +262,13 @@
 				if(this.transferredPictures[style]){
 					this.selectedTransferredPicture = this.transferredPictures[style];
 				}else{
-					this.transfer(style, res.data.token);
+					this.transfer(style, res.data.data.token);
 				}
 				
 			},
 			
-			getTransferToken(){
-				// 后台检验pictures是否达到上限、用户身份是否无误
-				return {code: 0, data:{token: 'test'}};
+			async getTransferToken(){
+				return await this.$http.get('/picture/checkCapacity');
 			},
 			
 			transfer(style, token){
@@ -318,9 +331,9 @@
 			adjustPicture(){
 				// 请删除此赋值
 				this.selectedTransferredPicture = this.pictureUrl;
-				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?url=${this.selectedTransferredPicture}`});
+				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?transferredPictureUrl=${this.selectedTransferredPicture}&rawPictureUrl=${this.pictureUrl}`});
 				uni.hideLoading();
-			}
+			},
 			
 		}
 	}
