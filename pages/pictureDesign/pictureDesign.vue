@@ -72,6 +72,7 @@
 <script>
 	import { mapMutations } from 'vuex'
 	import { mapState } from 'vuex'
+	import baseConfig from '../../config/index';
 	
 	export default {
 		data(){
@@ -104,7 +105,8 @@
 				transferredPictures:{
 				},
 				selectedTransferredPicture: null,
-				isSharing: false
+				isSharing: false,
+				transferToken: null
 			}
 		},
 		computed: {
@@ -248,21 +250,24 @@
 					});
 					return;
 				}
-				let res = await this.getTransferToken();
-				console.log(res);
-				if(!res.data || res.data.code !== 0){
-					uni.showToast({
-					    title: res.message,
-					    duration: 1000,
-						icon: 'none'
-					});
-					return;
+				if(!this.transferToken){
+					let res = await this.getTransferToken();
+					console.log('getToken');
+					if(!res.data || res.data.code !== 0){
+						uni.showToast({
+						    title: res.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					this.transferToken = res.data.data.token;
 				}
 				this.selectedStyle = style;
 				if(this.transferredPictures[style]){
 					this.selectedTransferredPicture = this.transferredPictures[style];
 				}else{
-					this.transfer(style, res.data.data.token);
+					this.transfer(style, this.transferToken);
 				}
 				
 			},
@@ -272,12 +277,39 @@
 			},
 			
 			transfer(style, token){
+				let _this = this;
 				if(!this.pictureData){
 					const imgData = uni.getFileSystemManager().readFileSync(this.pictureUrl, 'base64');
 					const base64 = '' + imgData;
 					this.pictureData = base64;
 					console.log(this.pictureData);
 				}
+				uni.showLoading({
+				    title: '迁移中'
+				});
+				this.$http.post('/transfer', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 30000}).then(result => {
+					console.log('transferResult', result);
+					if(result.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.selectedTransferredPicture = baseConfig.transferBaseUrl + result.data.url;
+					_this.isTransferred = true;
+					_this.transferredPictures[style] = _this.selectedTransferredPicture;
+					uni.hideLoading();
+				}).catch(err => {
+					console.log('transferErr', err);
+					uni.showToast({
+					    title: '迁移失败，请重试',
+					    duration: 1000,
+						icon: 'none'
+					});
+					uni.hideLoading();
+				})
 			},
 			
 			clear(){
@@ -290,6 +322,7 @@
 				this.transferredPictures = {};
 				this.selectedTransferredPicture = null;
 				this.loadingFinished = false;
+				this.transferToken = null;
 			},
 			
 			showSharePanel(){

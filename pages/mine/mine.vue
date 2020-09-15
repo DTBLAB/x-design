@@ -39,7 +39,7 @@
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
-				<view class="mine-block__title">图片库</view>
+				<view class="mine-block__title">我的图片</view>
 				<navigator class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
@@ -53,7 +53,7 @@
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
-				<view class="mine-block__title">商品订单</view>
+				<view class="mine-block__title">购物车</view>
 				<navigator class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>

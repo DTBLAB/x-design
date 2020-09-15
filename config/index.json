@@ -1,0 +1,4 @@
+{
+	"serverBaseUrl": "http://localhost:3000/api",
+	"transferBaseUrl": "http://39.100.233.138:8080/"
+}

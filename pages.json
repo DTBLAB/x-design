@@ -44,7 +44,7 @@
 			}
 		}
         ,{
-            "path" : "pages/productlist/productlist",
+            "path" : "pages/productList/productList",
             "style" : {}
         }
     ],
