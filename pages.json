@@ -1,0 +1,118 @@
+{
+    "pages" : [
+        {
+            "path" : "pages/index/index",
+			"style" : {
+			    "navigationStyle" : "custom"
+			}
+        },
+        {
+            "path" : "pages/mine/mine",
+            "style" : {
+			    "navigationStyle" : "custom",
+				"navigationBarTextStyle" : "black",
+				"navigationBarBackgroundColor" : "#F4F4F4",
+				"backgroundColor": "#F4F4F4"
+            }
+        },
+		{
+		    "path" : "pages/mine/myorders/paymentSuccess",
+		    "style" : {
+				 "navigationBarTitleText" : "支付成功"
+		    }
+		},
+		{
+		    "path" : "pages/mine/myorders/orderInfo",
+		    "style" : {
+				 "navigationBarTitleText" : "订单详情"
+		    }
+		},
+		{
+		    "path" : "pages/mine/myorders/showRate",
+		    "style" : {
+				 "navigationBarTitleText" : "晒单评价"
+		    }
+		},
+		{
+		    "path" : "pages/mine/myorders/confirmOrder",
+		    "style" : {
+				 "navigationBarTitleText" : "确认订单"
+		    }
+		},
+		{
+		    "path" : "pages/login/login",
+			"style" : {
+			    "navigationBarTitleText" : "登录",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+        ,{
+            "path" : "pages/productlist/productlist",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/mine/myorders/mineOrders",
+            "style" : {
+				"navigationBarTitleText" : "我的订单"
+			}
+        }
+        ,{
+            "path" : "component/orderItem/orderItem",
+            "style" : {}
+        }
+		,{
+		    "path" : "component/evaluList/evaluList",
+		    "style" : {}
+		}
+		,{
+		    "path" : "pages/mine/myorders/checkEvalu",
+		    "style" : {
+				 "navigationBarTitleText" : "查看评价"
+		    }
+		}
+        ,{
+            "path" : "pages/mine/myorders/logistics",
+            "style" : {
+				"navigationBarTitleText" : "物流信息"
+			}
+        }
+        ,{
+            "path" : "component/steps/steps",
+            "style" : {}
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "X·DESIGN",
+        "navigationBarBackgroundColor" : "#FFFFFF",
+        "backgroundColor" : "#FFFFFF"
+    }
+  //   "tabBar" : {
+  //       "color" : "#999999",
+  //       "selectedColor" : "#333333",
+  //       "backgroundColor" : "#ffffff",
+		// "height":"100px",
+		// "midButton": {
+		// 	"width": "82px",
+		// 	"height": "45px",
+		// 	"text": "",
+		// 	"iconPath": "static/image/add.png",
+		// 	"iconWidth": "40px"
+		// },
+  //       "list" : [
+  //           {
+  //               "pagePath" : "pages/index/index",
+  //               "text" : "首页",
+  //               "iconPath" : "static/image/home.png",
+  //               "selectedIconPath": "static/image/home.png"
+  //           },
+  //           {
+  //               "pagePath" : "pages/user/user",
+  //               "text" : "我的",
+  //               "iconPath" : "static/image/user.png",
+  //               "selectedIconPath" : "static/image/user.png"
+  //           }
+  //       ]
+  //   }
+	
+}

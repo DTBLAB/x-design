@@ -1,0 +1,111 @@
+.tab-bar-container{
+	position: fixed;
+	height: 176rpx;
+	padding: 0 96rpx;
+	bottom: 0;
+	left: 0;
+	width: 558rpx;
+	background-color: #FFFFFF;
+		
+	.tab-bar-content{
+		width: 100%;
+		height: 108rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: nowrap;
+			
+		.tab-bar-item{
+			height: 72rpx;
+			font-size: 20rpx;
+			color: #999999;
+				
+			&--middle{
+				height: 80rpx;
+				width: 80rpx;
+				display: block;
+			}
+			
+			&--selected{
+				height: 72rpx;
+				font-size: 20rpx;
+				color: #333333;
+			}
+			
+			&__icon{
+				width: 40rpx;
+				height: 40rpx;
+				display: block;
+			}
+			
+			&__text{
+				line-height: 28px;
+				display: block;
+			}
+				
+		}
+	}
+}
+	
+.add-panel{
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	backdrop-filter: blur(50rpx);
+	
+	&__close{
+		position: absolute;
+		width: 48rpx;
+		height: 48rpx;
+		bottom: 128rpx;
+		left: 351rpx;
+	}
+	
+	&__selections{
+		position: absolute;
+		bottom: 354rpx;
+		height: 232rpx;
+		left: 96rpx;
+		width: 558rpx;
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	&__selection{
+		width: 176rpx;
+		
+		&__button{
+			width: 176rpx;
+			height: 176rpx;
+			border-radius: 70rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: white;
+			
+			&__picture{
+				width: 84rpx;
+				height: 80rpx;
+			}
+			
+			&__product{
+				width: 90rpx;
+				height: 80rpx;
+			}
+		}
+		
+		&__text{
+			margin-top: 16rpx;
+			width: 176rpx;
+			height: 40rpx;
+			text-align: center;
+			font-size: 28rpx;
+			line-height: 40rpx;
+		}
+	}
+	
+	
+}

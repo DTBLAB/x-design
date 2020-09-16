@@ -1,0 +1,132 @@
+page {
+	background-color: #F4F4F4;
+}
+
+.mine-container{
+	width: 750rpx;
+	margin-bottom: 196rpx;
+	
+	.mine-info{
+		width: 700rpx;
+		height: 154rpx;
+		
+		margin-left: 50rpx;
+		margin-top: 192rpx;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		
+		&__avatar{
+			margin: 0;
+			width: 124rpx;
+			height: 124rpx;
+			border-radius: 62rpx;
+			display: inline-block;
+			
+			// &--unauthorized{
+			// 	background-size: cover;
+			// 	background-image: url(../../static/image/default-photo.jpg);
+			// }
+		}
+		
+		&__nickname{
+			height: 124rpx;
+			padding: 44rpx 0;
+			font-size: 36rpx;
+			line-height: 36rpx;
+			font-weight: bold;
+			margin-left: 30rpx;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	
+	.mine-block{
+		width: 694rpx;
+		height: 292rpx;
+		margin: 0 28rpx 24rpx 28rpx;
+		background-color: #FFFFFF;
+		border-radius: 12rpx;
+		
+		
+		&__top{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 30rpx 16rpx 32rpx 22rpx;
+			width: 656rpx;
+			height: 44rpx;
+		}
+		
+		&__title{
+			font-size: 32rpx;
+			font-weight: bold;
+		}
+		
+		&__more{
+			font-size: 24rpx;
+			color: #666666;
+			
+			&__icon{
+				height: 20rpx;
+				width: 10rpx;
+				display: inline-block;
+				vertical-align: middle;
+				padding-left: 6rpx;
+			}
+		}
+		
+		&__list-container{
+			height: 144rpx;
+			width: 672rpx;
+			margin-left: 22rpx;
+			overflow: hidden;
+		}
+		
+		&__list{
+			height: 144rpx;
+			width: 1000rpx;
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+		}
+		
+		&__item{
+			width: 144rpx;
+			height: 144rpx;
+			border-radius: 6rpx;
+			margin-right: 12rpx;
+			background-color: #F4F4F4;
+		}
+	}
+	
+	.mine-bottom{
+		width: 694rpx;
+		height: 264rpx;
+		margin: 0 28rpx;
+		background-color: #FFFFFF;
+		border-radius: 12rpx;
+		display: flex;
+		align-content: space-around;
+		justify-content: center;
+		flex-wrap: wrap;
+		
+		&__item{
+			height: 40rpx;
+			width: 634rpx;
+			display: flex;
+			justify-content: space-between;
+			
+			&__text{
+				font-size: 28rpx;
+				line-height: 28rpx;
+			}
+			
+			&__icon{
+				height: 16rpx;
+				width: 8rpx;
+			}
+		}
+	}
+}
