@@ -44,8 +44,8 @@
 		
 		<image class="picture-close" src="../../static/image/pictureDesign/close.png" @click="clear" v-if="hasPicture"></image>
 		<!-- 记得换成isTransferred -->
-		<view class="picture-finish" v-if="hasPicture" @click="generateCard">完成</view>
-		<view class="right-bar" v-if="hasPicture">
+		<view class="picture-finish" v-if="isTransferred" @click="generateCard">完成</view>
+		<view class="right-bar" v-if="isTransferred">
 			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
 			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
 		</view>
@@ -282,7 +282,7 @@
 					const imgData = uni.getFileSystemManager().readFileSync(this.pictureUrl, 'base64');
 					const base64 = '' + imgData;
 					this.pictureData = base64;
-					console.log(this.pictureData);
+					// console.log(this.pictureData);
 				}
 				uni.showLoading({
 				    title: '迁移中'
@@ -297,10 +297,15 @@
 						});
 						return;
 					}
-					_this.selectedTransferredPicture = baseConfig.transferBaseUrl + result.data.url;
-					_this.isTransferred = true;
-					_this.transferredPictures[style] = _this.selectedTransferredPicture;
-					uni.hideLoading();
+					uni.getImageInfo({
+					    src: baseConfig.transferBaseUrl + result.data.url,
+						success: function(image){
+							_this.selectedTransferredPicture = image.path;
+							_this.isTransferred = true;
+							_this.transferredPictures[style] = _this.selectedTransferredPicture;
+							uni.hideLoading();
+						},
+					})
 				}).catch(err => {
 					console.log('transferErr', err);
 					uni.showToast({
@@ -350,20 +355,15 @@
 					mask: true
 				});
 				
-				// 请删除此赋值
-				this.selectedTransferredPicture = this.pictureUrl;
-				
 				uni.getImageInfo({
 				    src: this.selectedTransferredPicture,
 					success: function(image){
-						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${_this.selectedTransferredPicture}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
+						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${image.path}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
 						uni.hideLoading();
 					},
 				})
 			},
 			adjustPicture(){
-				// 请删除此赋值
-				this.selectedTransferredPicture = this.pictureUrl;
 				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?transferredPictureUrl=${this.selectedTransferredPicture}&rawPictureUrl=${this.pictureUrl}`});
 				uni.hideLoading();
 			},

@@ -84,7 +84,8 @@
 					brightness: '亮度',
 					exposure: '曝光'
 				},
-				transferredImageData: []
+				transferredImageData: [],
+				previousOpacity: 100
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
@@ -147,12 +148,15 @@
 				})
 				
 				const ctx = uni.createCanvasContext('adjust-canvas');
-				ctx.clearRect(0, 0, _this.pictureWidth, _this.pictureHeight)
-				
-				// ctx.drawImage(_this.rawPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
-				ctx.globalAlpha = _this.values['opacity']/100;
-				ctx.drawImage(_this.transferredPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
-				ctx.globalAlpha = 1;
+				console.log(_this.previousOpacity !== _this.values['opacity']);
+				if(_this.previousOpacity !== _this.values['opacity']){
+					ctx.clearRect(0, 0, _this.pictureWidth, _this.pictureHeight);
+					ctx.drawImage(_this.rawPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
+					ctx.globalAlpha = _this.values['opacity']/100;
+					ctx.drawImage(_this.transferredPictureUrl, 0, 0, _this.pictureWidth, _this.pictureHeight);
+					ctx.globalAlpha = 1;
+					_this.previousOpacity = _this.values['opacity'];
+				}
 				ctx.draw(true, ()=>{
 					new WxCaman('adjust-canvas', _this.pictureWidth, _this.pictureHeight, function () {
 						this.brightness(_this.values['brightness']);
