@@ -47,6 +47,18 @@
             "path" : "pages/product/product",
             "style" : {}
         }
+        ,{
+            "path" : "pages/mine/myPhotos",
+            "style" : {
+				"navigationBarTitleText" : "我的图片"
+			}
+        }
+        ,{
+            "path" : "pages/product/productDesign",
+            "style" : {
+				"navigationBarTitleText" : "商品编辑"
+			}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",

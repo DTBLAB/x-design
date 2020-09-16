@@ -9,9 +9,11 @@ page {
 	.mine-info{
 		width: 700rpx;
 		height: 154rpx;
-		
-		margin-left: 50rpx;
-		margin-top: 192rpx;
+		background-color:  #FFFFFF;
+		padding-left: 50rpx;
+		//padding-top: 192rpx;
+		padding-top: 138rpx;
+		margin-bottom: 24rpx;
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
@@ -39,21 +41,50 @@ page {
 			display: inline-block;
 			vertical-align: middle;
 		}
+		
 	}
 	
-	.mine-block{
-		width: 694rpx;
-		height: 292rpx;
-		margin: 0 28rpx 24rpx 28rpx;
+	.mine-top{
+		width: 750rpx;
+		height: 244rpx;
+		margin: 0 0rpx 24rpx 0rpx;
 		background-color: #FFFFFF;
-		border-radius: 12rpx;
+		&__container{
+			width: 600rpx;
+			height: 112rpx;
+			margin: 0 75rpx;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		&__item{
+			width: 80rpx;
+			height: 112rpx;
+			font-size:24rpx ;
+			&__icon{
+				width: 72rpx;
+				height: 70rpx;
+			}
+		}
+		}
+	
+	.mine-block{
+		// width: 694rpx;
+		width: 750rpx;
+		height: 292rpx;
+		// margin: 0 28rpx 24rpx 28rpx;
+		margin: 0 0rpx 24rpx 0rpx;
+		background-color: #FFFFFF;
+		// border-radius: 12rpx;
 		
 		
 		&__top{
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			// padding: 30rpx 16rpx 32rpx 22rpx;
 			padding: 30rpx 16rpx 32rpx 22rpx;
+			margin-left:28rpx ;
 			width: 656rpx;
 			height: 44rpx;
 		}
@@ -78,8 +109,9 @@ page {
 		
 		&__list-container{
 			height: 144rpx;
-			width: 672rpx;
-			margin-left: 22rpx;
+			width: 700rpx;
+			// margin-left: 22rpx;
+			margin-left: 50rpx;
 			overflow: hidden;
 		}
 		
@@ -102,9 +134,9 @@ page {
 	}
 	
 	.mine-bottom{
-		width: 694rpx;
+		width: 750rpx;
 		height: 264rpx;
-		margin: 0 28rpx;
+		// margin: 0 28rpx;
 		background-color: #FFFFFF;
 		border-radius: 12rpx;
 		display: flex;

@@ -6,10 +6,37 @@
 			<view class="mine-info__nickname" v-if="hasLogin">{{nickname}}</view>
 			<view class="mine-info__nickname"  v-else>点击登录</view>
 		</view>
+		<view class="mine-top">
+			<view class="mine-block__top">
+				<view class="mine-block__title">我的订单</view>
+				<navigator class="mine-block__more">
+					查看全部
+					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
+				</navigator>
+			</view>
+			<view class="mine-top__container">
+				<navigator class="mine-top__item">
+					<image src="/../../static/image/mine/组 1166@3x.png" class="mine-top__item__icon"></image>
+					待付款
+				</navigator>
+				<navigator class="mine-top__item">
+					<image src="/../../static/image/mine/组 1163@3x.png" class="mine-top__item__icon"></image>
+					待发货
+				</navigator>
+				<navigator class="mine-top__item">
+					<image src="/../../static/image/mine/组 1164@3x.png" class="mine-top__item__icon"></image>
+					待收货
+				</navigator>
+				<navigator class="mine-top__item">
+					<image src="/../../static/image/mine/组 1165@3x.png" class="mine-top__item__icon"></image>
+					待评价
+				</navigator>
+			</view>
+		</view>		
 		<view class="mine-block">
 			<view class="mine-block__top">
-				<view class="mine-block__title">图片库</view>
-				<navigator class="mine-block__more">
+				<view class="mine-block__title">我的图片</view>
+				<navigator class="mine-block__more" url="./myPhotos">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -22,7 +49,7 @@
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
-				<view class="mine-block__title">商品订单</view>
+				<view class="mine-block__title">购物车</view>
 				<navigator class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
@@ -44,7 +71,7 @@
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 			<view class="mine-bottom__item">
-				<view class="mine-bottom__item__text">关于我们</view>
+				<view class="mine-bottom__item__text">关于想定</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 		</view>

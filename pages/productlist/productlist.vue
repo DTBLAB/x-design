@@ -1,10 +1,10 @@
 <template>
 <view class="productlist-container">
 	<view class="productlist__list">
-		<view v-for="(item, index) in productlistImages" :key="index" class="productlist__item">
+		<navigator v-for="(item, index) in productlistImages" :key="index" url="../product/product" class="productlist__item">
 			<image :src="item.img" class="productlist__item__image"></image>
 			<text class="productlist__item__name">{{item.name}}</text>
-		</view>
+		</navigator>
 	</view>
 </view>
 </template>
