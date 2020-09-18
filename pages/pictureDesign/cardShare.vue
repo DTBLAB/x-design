@@ -3,7 +3,7 @@
 		<image class="card" :style="{height: canvasHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
-		<view class="save-button">去设计</view>
+		<navigator class="save-button" url="/pages/productList/productList">去设计</navigator>
 	</view>
 </template>
 
@@ -152,7 +152,8 @@
 				    _this.cardUrl = res.tempFilePath;
 				  } 
 				})
-			}
+			},
+			
 		}
 		
 	}

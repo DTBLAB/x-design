@@ -44,7 +44,7 @@
 		
 		<image class="picture-close" src="../../static/image/pictureDesign/close.png" @click="clear" v-if="hasPicture"></image>
 		<!-- 记得换成isTransferred -->
-		<view class="picture-finish" v-if="isTransferred" @click="generateCard">完成</view>
+		<view class="picture-finish" v-if="isTransferred" @click="finishDesign">完成</view>
 		<view class="right-bar" v-if="isTransferred">
 			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
 			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
@@ -368,6 +368,70 @@
 				uni.hideLoading();
 			},
 			
+			async finishDesign(){
+				let _this = this;
+				const {params, path} = await this.getParams().catch(err => {
+					console.log(err);
+					return;
+				});
+				// try{
+				// 	const result = await this.getParams();
+				// 	console.log(result);
+				// }catch(err){
+				// 	console.log(err);
+				// 	uni.showToast({
+				// 	    title: '网络错误，请重试',
+				// 	    duration: 1000,
+				// 		icon: 'none'
+				// 	});
+				// 	return;
+				// }
+				console.log(_this.selectedTransferredPicture);
+				uni.uploadFile({
+				  url: 'https://x-design-pictures.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
+				  filePath: _this.selectedTransferredPicture,
+				  name: 'file', // 必须填file。
+				  formData: params,
+				  success: (res) => {
+					console.log(res);
+				    if (res.statusCode === 204) {
+				      console.log('上传成功');
+					  _this.savePicture('https://x-design-pictures.oss-cn-hangzhou.aliyuncs.com/'+params.key);
+				    }
+				  },
+				  fail: err => {
+				    console.log(err);
+					uni.showToast({
+					    title: "上传失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				  }
+				});
+				// const imgData = uni.getFileSystemManager().readFileSync(this.pictureUrl, 'base64');
+				// const base64 = '' + imgData;
+				// this.pictureData = base64;
+				
+				this.generateCard();
+			},
+			async getParams(){
+				return await this.$http.get('/picture/getPostObjectParams', {}).then(res => {
+					if(res.data.code !== 0){
+						throw new Error("获取签名失败!");
+					}
+					console.log(res.data.data);
+					return res.data.data;
+				}).catch(err => {
+					throw new Error("获取签名失败!");
+				})
+			},
+			savePicture(url){
+				this.$http.post('/picture/add', {url: url}).then(res => {
+					
+				}).catch(err => {
+					
+				})
+			}
 		}
 	}
 </script>
