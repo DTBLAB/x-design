@@ -107,35 +107,31 @@
 				sales:"首次下单立减10元",
 				expressAddress:"浙江杭州",
 				expressFee:6,
-				productImages:"https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png"
-			}
-		}
-	}
-			current: 0,
-			productinfoImages:[
-				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
-				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
-			],
-			commentList:[
-				{username:"XYZ123",
-				scores:4,
-				photo:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/椭圆411@3x.png',
-				content:"帆布包质量很好，定制的图片也很好看，效果很惊喜！会继续定制的！",
-				photos: [
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 8@3x.png', name: '', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 9@3x.png', name: '', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 10@3x.png', name: '', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 11@3x.png', name: '', url:''}
-				]
-				},
-			],
-				}
+				productImages:"https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
+				current: 0,
+				productinfoImages:[
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
+				],
+				commentList:[{username:"XYZ123",
+					scores:4,
+					photo:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/椭圆411@3x.png',
+					content:"帆布包质量很好，定制的图片也很好看，效果很惊喜！会继续定制的！",
+					photos: [
+						{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 8@3x.png', name: '', url:''},
+						{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 9@3x.png', name: '', url:''},
+						{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 10@3x.png', name: '', url:''},
+						{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 11@3x.png', name: '', url:''}
+					]
 					},
+				],
+			}
+		},
 					
-			methods: {
-				
-					}
-				}
+		methods: {
+		
+		}	,
+	}
 </script>
 
 <style lang="less" scoped>
