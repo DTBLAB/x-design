@@ -1,0 +1,252 @@
+.product-container{
+	background-color: #F4F4F4;
+	width: 750rpx;
+	
+	.product-background{
+		background-color: #F4F4F4;
+		z-index: -1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width:750rpx;
+		height:750rpx;
+	}
+	
+	.product-image{
+		width:490rpx;
+	}
+	// .product-bannercontainer{
+	// 	position: relative;
+	// 	&__count{
+	// 		position: absolute;
+	// 	}
+	// }
+	
+	// .product-banner{
+	// 	width:750rpx;
+	// 	height:750rpx;
+	// 	&__image{
+	// 		height:750rpx;
+	// 		width:750rpx;
+	// 	}
+	// }
+	
+	.product-information{
+		background-color:white;
+		padding-left: 32rpx;
+		padding-right: 32rpx;
+			&__title{
+				text-align: left;
+				font-size: 32rpx;
+				height: 92rpx;
+				line-height: 92rpx;
+			}
+
+			&__top{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 72rpx;
+				line-height: 72rpx;
+			}
+			
+			&__price{
+				color: #F17D16;
+				font-size: 36rpx;
+				font-weight: bold;
+			}
+			
+			&__num{
+				color: #999999;
+				font-size: 24rpx;
+			}
+		}
+	
+	
+	
+	.product-bottom{
+		position: fixed;
+		height: 166rpx;
+		width: 750rpx;
+		z-index: 1;
+		background-color: white;
+		box-shadow: 0rpx -6rpx 20rpx 10rpx rgba(0,0,0,0.05);
+		bottom: 0rpx;
+		display: flex;
+		flex-wrap: nowrap;
+		
+		&__home{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10rpx;
+		margin-left: 32rpx;
+		width: 80rpx;
+		height: 82rpx;
+			&__icon{
+				width: 40rpx;
+			}
+			&__text{
+				font-size: 20rpx;
+				margin-top: 0rpx;
+				color: #999999;
+			}
+		}
+		
+		&__service{
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		margin-top: 10rpx;
+		margin-left: 10rpx;
+		width: 80rpx;
+		height: 82rpx;
+			&__icon{
+				width: 40rpx;
+			}
+			&__text{
+				font-size: 20rpx;
+				color: #999999;
+			}
+		}
+		&__button1{
+			width: 240rpx;
+			height: 82rpx;
+			margin-top: 10rpx;
+			margin-left: 30rpx;
+			font-size: 32rpx;
+			border: 2rpx solid #333333;
+			border-radius: 6rpx;
+			background-color: white;
+		}
+		
+		&__button2{
+			width: 240rpx;
+			height: 82rpx;
+			margin-top: 10rpx;
+			margin-right: 32rpx;
+			font-size: 32rpx;
+			color: white;
+			border-radius: 6rpx;
+			background-color: #333333;
+		}
+	}
+	
+	
+	
+	.product-marketing{
+		background-color:white;
+		padding-left: 32rpx;
+		padding-right: 32rpx;
+		margin-top: 20rpx;
+		&__name{
+			font-size: 28rpx;
+			color: #999999;
+			height: 76rpx;
+			line-height: 76rpx;
+			display: flex;
+		}
+		&__more{
+			margin-left:32rpx;
+			font-size: 28rpx;
+			color: #313131;
+			&__icon{
+				margin-left: 356rpx;
+				height: 20rpx;
+				width: 10rpx;
+			}
+		}
+		&__place{
+			margin-left:32rpx;
+			font-size: 28rpx;
+			color: #313131;
+			&__icon{
+				margin-left: 40rpx;
+				margin-right: 40rpx;
+				height: 24rpx;
+				width: 2rpx;
+			}
+		}
+	}
+	.product-comment{
+		padding-left: 32rpx;
+		padding-right: 32rpx;
+		background-color:white;
+		margin-top: 20rpx;
+		&__name{
+			text-align: left;
+			color: #313131;
+			font-size: 28rpx;
+			height: 90rpx;
+			line-height: 90rpx;
+		}
+		&__list{
+			font-size: 24rpx;
+			line-height: 40rpx;
+			}
+		&__item{
+			margin-top: 20rpx;
+			display: flex;
+			justify-content: space-between;
+			border-bottom: 2rpx solid #F4F4F4;
+			&__left{
+				height: 56rpx;
+				width: 56rpx;
+			}
+			&__right{
+				width: 608rpx;
+			}
+			&__title{
+				display: flex;
+				justify-content: space-between;
+			}
+			&__stars{
+
+			}
+			&__starIcon{
+				margin-left: 14rpx;
+				width: 22rpx;
+				height: 22rpx;
+			}
+			&__list{
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				margin-top:20rpx;
+				margin-bottom: 36rpx;
+			}
+			&__item{
+				height: 142rpx;
+				width: 142rpx;
+			}
+		}
+		&__more{
+			font-size: 28rpx;
+			text-align: center;
+			color: #313131;
+			height: 96rpx;
+			line-height: 96rpx;
+		}
+	}
+	.product-detail{
+		padding-left: 32rpx;
+		background-color:white;
+		margin-top: 20rpx;
+		&__name{
+			text-align: left;
+			color: #313131;
+			font-size: 28rpx;
+			height: 80rpx;
+			line-height: 80rpx;
+		}
+		&__list{
+			&__image{
+				width:686rpx;
+			}
+		}
+	}
+	 
+}
