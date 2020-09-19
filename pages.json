@@ -56,7 +56,19 @@
         ,{
             "path" : "pages/product/productDesign",
             "style" : {
-				"navigationBarTitleText" : "商品编辑"
+				"navigationBarTitleText" : "定制产品"
+			}
+        }
+        ,{
+            "path" : "pages/mine/information",
+            "style" : {
+				"navigationBarTitleText" : "个人资料"
+			}
+        }
+        ,{
+            "path" : "pages/product/sign",
+            "style" : {
+				"navigationBarTitleText" : "签名"
 			}
         }
     ],
