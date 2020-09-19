@@ -18,15 +18,15 @@
 		data() {
 		return {
 			productlistImages: [
-				{img: '/static/image/product/组 1103@3x.png', name: 'T恤', category:''},
-				{img: '/static/image/product/组 1104@3x.png', name: '手机壳', category:''},
-				{img: '/static/image/product/组 1105@3x.png', name: '帆布袋', category:''},
-				{img: '/static/image/product/组 1106@3x.png', name: '明信片', category:''},
-				{img: '/static/image/product/组 1107@3x.png', name: '抱枕', category:''},
-				{img: '/static/image/product/组 1108@3x.png', name: '笔记本', category:''},
-				{img: '/static/image/product/组 1109@3x.png', name: '胸章', category:''},
-				{img: '/static/image/product/组 1110@3x.png', name: '雨伞', category:''},
-				{img: '/static/image/product/组 1111@3x.png', name: '马克杯', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1103@3x.png', name: 'T恤', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1104@3x.png', name: '手机壳', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1105@3x.png', name: '帆布袋', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1106@3x.png', name: '明信片', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1107@3x.png', name: '抱枕', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1108@3x.png', name: '笔记本', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1109@3x.png', name: '胸章', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1110@3x.png', name: '雨伞', category:''},
+				{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1111@3x.png', name: '马克杯', category:''},
 			]
 					}
 					},
