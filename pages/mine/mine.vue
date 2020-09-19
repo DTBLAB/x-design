@@ -40,7 +40,7 @@
 		<view class="mine-block">
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的图片</view>
-				<navigator class="mine-block__more">
+				<navigator class="mine-block__more" url="./myPhotos">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -75,7 +75,7 @@
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 			<view class="mine-bottom__item">
-				<view class="mine-bottom__item__text">关于我们</view>
+				<view class="mine-bottom__item__text">关于想定</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 		</view>

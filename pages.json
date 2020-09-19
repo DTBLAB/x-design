@@ -45,7 +45,38 @@
 		}
         ,{
             "path" : "pages/productList/productList",
+            "style" : {
+				"navigationBarTitleText" : "商品分类",
+				"backgroundColor": "#FFFFFF"
+			}
+        }
+        ,{
+            "path" : "pages/product/product",
             "style" : {}
+        }
+        ,{
+            "path" : "pages/mine/myPhotos",
+            "style" : {
+				"navigationBarTitleText" : "我的图片"
+			}
+        }
+        ,{
+            "path" : "pages/product/productDesign",
+            "style" : {
+				"navigationBarTitleText" : "定制产品"
+			}
+        }
+        ,{
+            "path" : "pages/mine/information",
+            "style" : {
+				"navigationBarTitleText" : "个人资料"
+			}
+        }
+        ,{
+            "path" : "pages/product/sign",
+            "style" : {
+				"navigationBarTitleText" : "签名"
+			}
         }
     ],
     "globalStyle" : {
