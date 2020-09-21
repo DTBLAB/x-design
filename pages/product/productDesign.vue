@@ -46,7 +46,7 @@
 		</view>
 		
 		<view class="product-container">
-			<image class="product-picture" src="../../static/image/product/Tote Bag@3x.png" mode="aspectFit"></image>
+			<image class="product-picture" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/Tote Bag@3x.png" mode="aspectFit"></image>
 		</view>
 		
 		
@@ -62,23 +62,25 @@
 					'样式'
 				],
 				pictures:[
-					{img: '/static/image/product/组 1158@3x.png', name: '', url:''},
-					{img: '/static/image/屏幕快照 2020-05-16 下午4.51.11@3x.png', name: '', url:''},
-					{img: '/static/image/屏幕快照 2020-05-16 下午4.51.11@3x.png', name: '', url:''},
-					{img: '/static/image/屏幕快照 2020-05-16 下午4.51.11@3x.png', name: '', url:''},
-					{img: '/static/image/屏幕快照 2020-05-16 下午4.51.11@3x.png', name: '', url:''},
-					{img: '/static/image/屏幕快照 2020-05-16 下午4.51.11@3x.png', name: '', url:''}
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1158@3x.png', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png', name: '', url:''},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png', name: '', url:''}
 				],
 				patterns:[
-					{img:'../../static/image/product/组 1158@3x.png',name:'',url:''},
-					{img:'../../static/image/product/组 1206@3x.png',name:'',url:''},
-					{img:'../../static/image/product/组 1207@3x.png',name:'',url:''},
-					{img:'../../static/image/product/组 1208@3x.png',name:'',url:''},
-					{img:'../../static/image/product/组 1209@3x.png',name:'',url:''},
-					{img:'../../static/image/product/组 1210@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1158@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1206@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1207@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1208@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1209@3x.png',name:'',url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png',name:'',url:''},
 				],
 				selectedKind: '图片库',
-				
+				pictureUrl: null,
+				category: 0,
+				pid: 0
 			}
 		},
 		computed: {
@@ -96,6 +98,11 @@
 			},
 			selectPicture(Picture){
 				
+			},
+			onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+				this.pid = option.pid;
+				this.category = option.category;
+				console.log(option);
 			},
 		}
 	}

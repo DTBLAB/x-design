@@ -255,7 +255,7 @@
 					console.log('getToken');
 					if(!res.data || res.data.code !== 0){
 						uni.showToast({
-						    title: res.message,
+						    title: res.data.message,
 						    duration: 1000,
 							icon: 'none'
 						});
@@ -348,20 +348,9 @@
 				  }
 				})
 			},
-			generateCard(){
+			generateCard(pid){
 				let _this = this;
-				uni.showLoading({
-				    title: '卡片生成中',
-					mask: true
-				});
-				
-				uni.getImageInfo({
-				    src: this.selectedTransferredPicture,
-					success: function(image){
-						uni.navigateTo({url:`/pages/pictureDesign/cardShare?url=${image.path}&height=${image.height}&width=${image.width}&styleName=${_this.selectedStyle}`});
-						uni.hideLoading();
-					},
-				})
+				uni.navigateTo({url:`/pages/pictureDesign/cardShare?pid=${pid}&url=${this.selectedTransferredPicture}&styleName=${_this.selectedStyle}`});
 			},
 			adjustPicture(){
 				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?transferredPictureUrl=${this.selectedTransferredPicture}&rawPictureUrl=${this.pictureUrl}`});
@@ -412,7 +401,6 @@
 				// const base64 = '' + imgData;
 				// this.pictureData = base64;
 				
-				this.generateCard();
 			},
 			async getParams(){
 				return await this.$http.get('/picture/getPostObjectParams', {}).then(res => {
@@ -426,10 +414,24 @@
 				})
 			},
 			savePicture(url){
+				let _this = this;
 				this.$http.post('/picture/add', {url: url}).then(res => {
-					
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.generateCard(res.data.data.pid);
 				}).catch(err => {
-					
+					console.log(err);
+					uni.showToast({
+					    title: "保存失败",
+					    duration: 1000,
+						icon: 'none'
+					});
 				})
 			}
 		}

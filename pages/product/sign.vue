@@ -1,7 +1,7 @@
 <template>
 	<view class="page-container">
 		<view class="sign-container">
-			<image class="sign-container__background" src="../../static/image/product/重复网格 1@3x.png" mode="widthFix"></image>
+			<image class="sign-container__background" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/重复网格 1@3x.png" mode="widthFix"></image>
 		</view>
 		<view class="sign-selector">
 			
