@@ -75,7 +75,7 @@ const http = {
 		})
 		
 	},
-	get: function(theUrl, theData, config={}){
+	get: function(theUrl, theData={}, config={}){
 		let baseUrl = config.baseUrl || baseConfig.serverBaseUrl;
 		let url = baseUrl + theUrl || '';
 		let data = theData || {};
