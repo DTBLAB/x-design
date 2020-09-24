@@ -1,6 +1,6 @@
 <template>
 	<view class="about-container">
-		<image class="about-image" src="../../static/image/椭圆 400@3x.png" mode="widthFix"></image>
+		<image class="about-image" src="../../static/image/微信图片_20200924193858.png" mode="widthFix"></image>
 		<view class="about-title">
 			想定 X·Design
 		</view>
@@ -36,7 +36,7 @@
 
 .about-image{
 	margin-top: 160rpx;
-	width: 200rpx;
+	width: 300rpx;
 	}
 .about-title{
 	margin-top: 40rpx;
