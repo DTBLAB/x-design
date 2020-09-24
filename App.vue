@@ -41,7 +41,22 @@ body{
 page{
 	height: 100%;
 }
-	
+
+// checkbox样式的修改
+	uni-checkbox .uni-checkbox-input { 
+		background-color: #F4F4F4; 
+		border-radius: 50%; 
+		border: 0rpx; 
+		} 
+		
+	uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked { 
+		background-color: #333333; 
+		color: #fff !important; 
+		border: 0rpx; } 
+		
+	uni-checkbox .uni-checkbox-wrapper { 
+		width: 100%; 
+		}
 	
 /* 解决头条小程序组件内引入字体不生效的问题 */
 /* #ifdef MP-TOUTIAO */

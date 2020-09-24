@@ -78,6 +78,16 @@
 				"navigationBarTitleText" : "签名"
 			}
         }
+        ,{
+            "path" : "pages/cart/cart",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/mine/about",
+            "style" : {
+				"navigationBarTitleText" : "关于想定"
+			}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",
