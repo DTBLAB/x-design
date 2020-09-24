@@ -58,6 +58,18 @@ page{
 		width: 100%; 
 		}
 	
+	// checkbox .wx-checkbox-input{
+	// 	background-color: #F4F4F4;
+	// 	border-radius: 50%; 
+	// 	border: 0rpx; 
+	// }
+	
+	// checkbox .wx-checkbox-input.uni-checkbox-input-checked{
+	// 	background-color: #333333;
+	// 	color: #fff !important; 
+	// 	border: 0rpx; 
+	// }
+	
 /* 解决头条小程序组件内引入字体不生效的问题 */
 /* #ifdef MP-TOUTIAO */
 @font-face {
