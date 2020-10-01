@@ -1,6 +1,6 @@
 <template>
 	<view class="page-container">
-		<image class="card" :style="{height: canvasHeight}" :src="cardUrl" show-menu-by-longpress></image>
+		<image class="card" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
 		<view class="save-button" @click="toProductDesign">去设计</view>
@@ -15,7 +15,8 @@
 		data(){
 			return{
 				rpx: 750/uni.getSystemInfoSync().windowWidth,
-				canvasHeight: '800rpx',
+				canvasHeight: '1600rpx',
+				cardHeight: '800rpx',
 				url: '',
 				pictureUrl: '',
 				pictureWidth: 0,
@@ -51,7 +52,8 @@
 					_this.pictureWidth = image.width;
 					_this.pictureHeight = image.height;
 					_this.pictureUrl = image.path;
-					_this.canvasHeight = (image.height/image.width*624 + 354) + 'rpx';
+					_this.cardHeight = (image.height/image.width*624 + 354) + 'rpx';
+					_this.canvasHeight = (image.height/image.width*624 + 354)*2 + 'rpx';
 					_this.generateCard();
 				},
 				fail: function(error){
@@ -71,9 +73,9 @@
 					uni.canvasToTempFilePath({
 					  x: 0,
 					  y: 0,
-					  width: 662/_this.rpx,
+					  width: 662/_this.rpx*2,
 					  height: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
-					  destWidth: 662/_this.rpx,
+					  destWidth: 662/_this.rpx*2,
 					  destHeight: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
 					  canvasId: 'card-canvas',
 					  fileType: 'png',
@@ -106,24 +108,24 @@
 				
 				// ctx.draw();
 				
-				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 662/this.rpx, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
+				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 662/this.rpx*2, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
 				
-				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*624/this.rpx;
-				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 20/this.rpx, 24/this.rpx, 624/this.rpx, pictureHeightInCanvas);
+				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*624/this.rpx*2;
+				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 20/this.rpx*2, 24/this.rpx*2, 624/this.rpx*2, pictureHeightInCanvas);
 				
 				ctx.beginPath();
-				ctx.lineWidth=1;
+				ctx.lineWidth=1*2;
 				
-				ctx.setLineDash([6/this.rpx, 6/this.rpx]);
+				ctx.setLineDash([6/this.rpx*2, 6/this.rpx*2]);
 				ctx.strokeStyle="#CDCDCD"; // Green path
-				ctx.moveTo(0, 202/this.rpx + pictureHeightInCanvas);
-				ctx.lineTo(662/this.rpx, 202/this.rpx + pictureHeightInCanvas);
+				ctx.moveTo(0, 202/this.rpx*2 + pictureHeightInCanvas);
+				ctx.lineTo(662/this.rpx*2, 202/this.rpx*2 + pictureHeightInCanvas);
 				ctx.stroke(); // Draw it
 				
 				ctx.draw();
 				
-				let fontsize = 24/this.rpx;
-				let lineHeight = 32/this.rpx; 
+				let fontsize = 24/this.rpx*2;
+				let lineHeight = 32/this.rpx*2; 
 				ctx.setFontSize(fontsize);
 				// 设置字体
 				ctx.font = fontsize+"px 'PingFang SC'";
@@ -132,13 +134,13 @@
 				// 设置水平对齐方式
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText(this.nickname, 138/this.rpx, 246/_this.rpx + pictureHeightInCanvas);
-				ctx.fillText("创作了一张", 138/this.rpx, 278/_this.rpx + pictureHeightInCanvas);
+				ctx.fillText(this.nickname, 138/this.rpx*2, 246/_this.rpx*2 + pictureHeightInCanvas);
+				ctx.fillText("创作了一张", 138/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
 				
 				ctx.font = "bold "+fontsize+"px 'PingFang SC'";
-				ctx.fillText(this.styleName+"风格", 258/this.rpx, 278/_this.rpx + pictureHeightInCanvas);
+				ctx.fillText(this.styleName+"风格", 258/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
 				ctx.font = fontsize+"px 'PingFang SC'";
-				ctx.fillText("的图片", (258+24*(this.styleName.length+2))/this.rpx, 278/_this.rpx + pictureHeightInCanvas);
+				ctx.fillText("的图片", (258+24*(this.styleName.length+2))/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
 				
 				ctx.font = "bold "+fontsize+"px 'PingFang SC'";
 				let commonSayings = sayings.commonSayings;
@@ -147,14 +149,14 @@
 				let length = saying.length - 1;
 				
 				ctx.textAlign = "right";
-				ctx.fillText(saying[length], 634/this.rpx, 148/_this.rpx + pictureHeightInCanvas);
+				ctx.fillText(saying[length], 634/this.rpx*2, 148/_this.rpx*2 + pictureHeightInCanvas);
 				
 				ctx.textAlign = "center";
 				if(length === 2 ){
-					ctx.fillText(saying[0], 331/this.rpx, 60/_this.rpx + pictureHeightInCanvas);
-					ctx.fillText(saying[1], 331/this.rpx, 92/_this.rpx + pictureHeightInCanvas);
+					ctx.fillText(saying[0], 331/this.rpx*2, 60/_this.rpx*2 + pictureHeightInCanvas);
+					ctx.fillText(saying[1], 331/this.rpx*2, 92/_this.rpx*2 + pictureHeightInCanvas);
 				}else{
-					ctx.fillText(saying[0], 331/this.rpx, 76/_this.rpx + pictureHeightInCanvas);
+					ctx.fillText(saying[0], 331/this.rpx*2, 76/_this.rpx*2 + pictureHeightInCanvas);
 				}
 				
 				
@@ -163,9 +165,9 @@
 				    success: function (res) {
 						ctx.save()
 						ctx.beginPath()
-						ctx.arc(73/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 39/_this.rpx, 0, 2 * Math.PI)
+						ctx.arc(73/_this.rpx*2, 273/_this.rpx*2 + pictureHeightInCanvas, 39/_this.rpx*2, 0, 2 * Math.PI)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx, 234/_this.rpx + pictureHeightInCanvas, 78/_this.rpx, 78/_this.rpx)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx*2, 234/_this.rpx*2 + pictureHeightInCanvas, 78/_this.rpx*2, 78/_this.rpx*2)
 				        ctx.restore()
 						ctx.draw(true, ()=>{
 							_this.isAvatarLoaded = true;
@@ -184,9 +186,9 @@
 						ctx.save()
 						ctx.beginPath()
 						//ctx.arc(589/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 51/_this.rpx, 0, 2 * Math.PI)
-						ctx.rect(538/_this.rpx, 222/_this.rpx + pictureHeightInCanvas, 51, 51)
+						ctx.rect(538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx, 222/_this.rpx + pictureHeightInCanvas, 51, 51)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
 				        ctx.restore()
 				        ctx.draw(true, ()=>{
 							_this.isMiniProgramCodeLoaded = true;
