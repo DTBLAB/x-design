@@ -285,9 +285,10 @@
 					// console.log(this.pictureData);
 				}
 				uni.showLoading({
-				    title: '迁移中'
+				    title: '迁移中',
+					mask: true
 				});
-				this.$http.post('/transfer', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 30000}).then(result => {
+				this.$http.post('/transfer/', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 30000}).then(result => {
 					console.log('transferResult', result);
 					if(result.data.code !== 0){
 						uni.showToast({

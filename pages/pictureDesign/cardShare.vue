@@ -67,21 +67,24 @@
 				if(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded){
 					return;
 				}
-				uni.canvasToTempFilePath({
-				  x: 0,
-				  y: 0,
-				  width: 662/this.rpx,
-				  height: parseInt(this.canvasHeight.replace('rpx', ''))/this.rpx,
-				  destWidth: 662/this.rpx,
-				  destHeight: parseInt(this.canvasHeight.replace('rpx', ''))/this.rpx,
-				  canvasId: 'card-canvas',
-				  fileType: 'jpg',
-				  success: function(res) {
-					 console.log(res);
-				    _this.cardUrl = res.tempFilePath;
-					uni.hideLoading();
-				  } 
-				})
+				setTimeout(function(){
+					uni.canvasToTempFilePath({
+					  x: 0,
+					  y: 0,
+					  width: 662/_this.rpx,
+					  height: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
+					  destWidth: 662/_this.rpx,
+					  destHeight: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
+					  canvasId: 'card-canvas',
+					  fileType: 'png',
+					  quality: 1.0,
+					  success: function(res) {
+						 console.log(res);
+					    _this.cardUrl = res.tempFilePath;
+						uni.hideLoading();
+					  } 
+					})
+				});
 			},
 			toProductDesign(){
 				uni.navigateTo({
@@ -91,6 +94,20 @@
 			generateCard(){
 				let _this = this;
 				let ctx = uni.createCanvasContext('card-canvas');
+				
+				// ctx.setFillStyle('white');
+				// ctx.fillStyle='white';
+				// ctx.fillRect(0, 0, 662/this.rpx, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
+
+				// ctx.rect(0, 0, 662/this.rpx, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
+				// // it will fill current path
+				// ctx.setFillStyle('white')
+				// ctx.fill()
+				
+				// ctx.draw();
+				
+				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 662/this.rpx, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
+				
 				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*624/this.rpx;
 				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 20/this.rpx, 24/this.rpx, 624/this.rpx, pictureHeightInCanvas);
 				
@@ -148,7 +165,7 @@
 						ctx.beginPath()
 						ctx.arc(73/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 39/_this.rpx, 0, 2 * Math.PI)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx, 234/_this.rpx + pictureHeightInCanvas, 39, 39)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx, 234/_this.rpx + pictureHeightInCanvas, 78/_this.rpx, 78/_this.rpx)
 				        ctx.restore()
 						ctx.draw(true, ()=>{
 							_this.isAvatarLoaded = true;
