@@ -9,7 +9,8 @@
 	height: calc(100% - 376rpx);
 		
 	&__background{
-		width:100%
+		width: 100%;
+		height: 100%;
 	}
 }
 
@@ -20,11 +21,88 @@
 	background-color: white;
 	bottom: 0;
 	
+	&__weight{
+		box-sizing: border-box;
+		width: 750rpx;
+		height: 32rpx;
+		margin: 36rpx 0 42rpx 0;
+		padding: 0 64rpx 0 104rpx;
+		font-size: 28rpx;
+		line-height: 32rpx;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+		&__text{
+			width: 56rpx;
+		}
+		
+		&__slider{
+			width: 460rpx;
+			display: block;
+			margin: 0;
+		}
+	}
+	
 	&__colors{
+		box-sizing: border-box;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		width: 100%;
+		padding: 0 16rpx 0 15rpx;
+	}
+	
+	&__color{
+		box-sizing: border-box;
 		background-color: red;
 		width: 44rpx;
 		height: 44rpx;
-		border: 2rpx #CDCDCD solid;
-		border-radius: 22rpx;
+		border-radius: 44rpx;
+		margin: 0 18rpx 20rpx 18rpx;
+		position: relative;
+		
+		&--white{
+			border: 1rpx #CDCDCD solid;
+		}
+		
+		&__select-mark{
+			position: absolute;
+			box-sizing: border-box;
+			width: 52rpx;
+			height: 52rpx;
+			border-radius: 52rpx;
+			border: 1rpx #CDCDCD solid;
+			top: -4rpx;
+			left: -4rpx;
+		}
 	}
+	
+}
+
+.adjust-button{
+	width: 68rpx;
+	height: 68rpx;
+	z-index: 10;
+	position: absolute;
+	
+	&--reset{
+		left: 26rpx;
+		bottom: 430rpx;
+	}
+	
+	&--finish{
+		right: 22rpx;
+		bottom: 430rpx;
+	}
+}
+
+.sign-canvas{
+	width: 750rpx;
+	height: calc(100% - 376rpx);
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
 }

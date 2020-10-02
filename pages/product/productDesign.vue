@@ -207,6 +207,13 @@
 	}
 </script>
 
+<style>
+page{
+	height: 100%;
+}
+	
+</style>
+
 <style lang="less" scoped>
 @import url('../../common/less/productDesign.less');
 </style>
