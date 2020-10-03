@@ -6,6 +6,7 @@
 			  :style="{width: pictureWidth+'rpx', height: pictureHeight+'rpx'}"
 			  direction="all"
 			  scale="true"
+			  scale-min="1"
 			>
 				<image class="content-picture" :src="selectedPicture"></image>
 			</movable-view>

@@ -1,16 +1,14 @@
 <template>
 	<view class="tab-bar-container">
 		<view class="tab-bar-content">
-			<navigator :class="isHome ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toHome">
-				<image class="tab-bar-item__icon" src="/static/image/home--select.png" v-if="isHome"></image>
-				<image class="tab-bar-item__icon" src="/static/image/home.png" v-else></image>
-				<text class="tab-bar-item__text">首页</text>
+			<navigator @click="toHome">
+				<image class="tab-bar-item" src="/static/image/home--select.png" v-if="isHome"></image>
+				<image class="tab-bar-item" src="/static/image/home.png" v-else></image>
 			</navigator>
 			<image class="tab-bar-item--middle" src="/static/image/add.png" @click="showAddPanel"></image>
-			<navigator :class="isMine ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toMine">
-				<image class="tab-bar-item__icon" src="/static/image/user--select.png" v-if="isMine"></image>
-				<image class="tab-bar-item__icon" src="/static/image/user.png" v-else></image>
-				<text class="tab-bar-item__text">我的</text>
+			<navigator @click="toMine">
+				<image class="tab-bar-item" src="/static/image/user--select.png" v-if="isMine"></image>
+				<image class="tab-bar-item" src="/static/image/user.png" v-else></image>
 			</navigator>
 		</view>
 		<view class="add-panel" v-show="ifShowAddPanel">

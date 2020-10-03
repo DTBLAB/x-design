@@ -6,20 +6,28 @@
 		    </swiper-item>
 		</swiper>
 		<view class="home-styles">
-			<view class="home-styles__title">风格推荐</view>
+			<view class="home-styles__title">热门风格</view>
 			<scroll-view class="scroll-view_H home-styles__list-container" scroll-x="true" enable-flex="true">
 			 <view class="home-styles__list">
-			 	<view v-for="(item, index) in styleImages" :key="index" class="home-styles__item">
-			 	  	<image :src="item.img" class="home-styles__item__image"></image>
-			 	  	<text class="home-styles__item__name">{{item.name}}</text>
+			 	<view
+			 	  class="hot-style"
+			 	  v-for="(style, index) in hotStyles"
+			 	  :key="index"
+			 	  @click="selectStyle(style)"
+			 	>
+			 		<image :src="getStyleSrc(style)" 
+			 		  class="hot-style__image"
+			 		  mode="aspectFill"  
+			 		></image>
+			 		<view class="hot-style__name">{{style}}</view>
 			 	</view>
 			 </view>
 			</scroll-view>
 		</view>
 		<view class="home-commodities">
-			<view class="home-commodities__title">定制推荐</view>
+			<view class="home-commodities__title">精选产品</view>
 			<navigator class="home-commodities__more" open-type="navigate" :url="commodity.url">
-				<text>查看更多</text>
+				<text>更多</text>
 				<image src="../../static/image/more@3x.png"  class="home-commodities__more__icon"></image>
 			</navigator>
 			<view class="home-commodities__body">
@@ -56,29 +64,25 @@
 		data() {
 			return {
 				bannerImages: [
-					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.jpg',
+					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png',
 					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				styleImages: [
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 8@3x.png', name: '龙袍', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 9@3x.png', name: '和玺彩画', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 10@3x.png', name: '敦煌', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 11@3x.png', name: '水墨画', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/蒙版组 12@3x.png', name: '水彩', url:''}
-				],
+				hotStyles: ['赛博朋克', '和玺彩画', '浮世绘', '水墨画', '湿拓画'],
 				commodities: [
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/33@3x.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d638e34a356b@3x.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/888@3x.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/5d63c1c25ac60@3x.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/666@3x.png', url:''}
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product1.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product2.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product3.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product4.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product5.png', url:''},
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product6.png', url:''}
 				]
 			}
 		},
 		methods: {
-
+			getStyleSrc(name){
+				return "https://x-design.oss-cn-hangzhou.aliyuncs.com/styles/"+name+".jpg";
+			},
 		}
 	}
 </script>

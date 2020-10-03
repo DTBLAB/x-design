@@ -1,5 +1,5 @@
 .home-container{
-	background-color: #F4F4F4;
+	background-color: #FFFFFF;
 	padding-bottom: 176rpx;
 	
 	.home-banner{
@@ -13,55 +13,66 @@
 	}
 	
 	.home-styles{
-		width: 714rpx;
-		margin: 18rpx 0 0 0;
-		padding: 24rpx 0 46rpx 32rpx;
+		width: 750rpx;
+		margin: 30rpx 0 78rpx 36rpx;
 		background-color: white;
 		
 		&__title{
-			border-left: 6rpx #FFA200 solid;
-			padding-left: 16rpx;
-			height: 32rpx;
+			height: 42rpx;
 			font-size: 32rpx;
-			line-height: 32rpx;
+			line-height: 42rpx;
 			font-weight: bold;
 			color: #333333;
 		}
 		
 		&__list-container{
-			height: 198rpx;
+			height: 156rpx;
 			width: 714rpx;
-			margin-top: 36rpx;
+			margin-top: 30rpx;
 		}
 		
 		&__list{
-			height: 198rpx;
+			height: 156rpx;
 			display: flex;
 			flex-wrap: nowrap;
 			align-items: center;
 			justify-content: flex-start;
 		}
 		
-		&__item{
-			margin-right: 22rpx;
-			height: 198rpx;
-			width: 140rpx;
+		.hot-style{
+			height: 156rpx;
+			width: 156rpx;
+			margin-right: 14rpx;
+			flex-shrink:0;
+			position: relative;
+			// border: 2rpx #707070 solid;
 			
 			&__image{
-				height: 140rpx;
-				width: 140rpx;
-				display: block;
-				border-radius: 6rpx;
+				width: 100%;
+				height: 100%;
 			}
 			
 			&__name{
-				display: block;
-				margin-top: 24rpx;
-				font-size: 28rpx;
-				line-height: 28rpx;
-				height: 28rpx;
-				width: 140rpx;
+				width: 100%;
+				height: 40rpx;
+				position: absolute;
+				bottom: 0;
+				z-index: 3;
+				font-size: 22rpx;
 				text-align: center;
+				line-height: 40rpx;
+				backdrop-filter: blur(16rpx) brightness(90%);
+				background-color: rgba(255,255,255, 0.60);
+				
+				// &-cover{
+				// 	width: 100%;
+				// 	height: 40rpx;
+				// 	position: absolute;
+				// 	bottom: 0;
+				// 	z-index: 2;
+				// 	background-color: white;
+				// 	opacity: 0.69;
+				// }
 			}
 			
 		}
@@ -70,26 +81,26 @@
 	.home-commodities{
 		background-color: white;
 		width: 750rpx;
-		margin: 20rpx 0 0 0;
-		padding: 22rpx 32rpx;
+		margin: 0;
+		padding: 0 32rpx 50rpx 32rpx;
 		position: relative;
 		
 		&__title{
-			border-left: 6rpx #FFA200 solid;
-			padding-left: 16rpx;
-			height: 32rpx;
+			height: 42rpx;
 			font-size: 32rpx;
-			line-height: 32rpx;
+			line-height: 42rpx;
 			font-weight: bold;
 			color: #333333;
 		}
 		
 		&__more{
 			position: absolute;
-			left: 606rpx;
-			top: 38rpx;
+			left: 652rpx;
+			top: 10rpx;
 			font-size: 24rpx;
 			color: #999999;
+			height: 32rpx;
+			line-height: 32rpx;
 			
 			&__icon{
 				height: 20rpx;
