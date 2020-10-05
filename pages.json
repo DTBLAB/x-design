@@ -34,7 +34,7 @@
             "style" : {}
         }
 		,{
-		    "path" : "pages/add/add",
+		    "path" : "pages/addAddress/addAddres",
 		    "style" : {
 				"navigationBarTitleText" : "添加地址",
 				"backgroundColor": "#F7F7F7"

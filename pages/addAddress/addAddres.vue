@@ -41,7 +41,7 @@
 					<view class="label">
 						详细地址
 					</view>
-					<input class="input__detail" type="text" placeholder="如道路,门牌号,校区,楼栋号等" v-model="form.street"/>
+					<input class="input" type="text" placeholder="如道路,门牌号,校区,楼栋号等" v-model="form.street"/>
 				</cell>
 				<cell class="form-input">
 					<label class="form-input__checkbox">
@@ -114,5 +114,5 @@
 </script>
 
 <style lang="less">
-@import url('../../common/less/add.less');
+@import url('../../common/less/addAddress.less');
 </style>
