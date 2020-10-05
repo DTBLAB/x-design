@@ -1,14 +1,25 @@
 <template>
 	<view class="page-container">
-		<movable-area class="content-box" :class="boxShape">
-			<movable-view 
-			  class="content"
-			  :style="{width: pictureWidth+'rpx', height: pictureHeight+'rpx'}"
+		<movable-area class="content-box" :class="productShape">
+			<movable-area class="pattern-box" :class="patternShape">
+				<movable-view
+				  class="content"
+				  :style="{width: pictureWidth+'rpx', height: pictureHeight+'rpx'}"
+				  direction="all"
+				  scale="true"
+				  scale-min="1"
+				>
+					<image class="content-picture" :src="selectedPicture"></image>
+				</movable-view>
+			</movable-area>
+			<movable-view
+			  class="signature"
+			  :style="{width: signatureWidth+'rpx', height: signatureHeight+'rpx'}"
 			  direction="all"
 			  scale="true"
 			  scale-min="1"
 			>
-				<image class="content-picture" :src="selectedPicture"></image>
+				<image class="signature-picture" :src="signature"></image>
 			</movable-view>
 		</movable-area>
 		<view class="picture-selector">
@@ -70,14 +81,20 @@
 </template>
 
 <script>
+	import { mapMutations } from 'vuex'
+	import { mapState } from 'vuex'
+	
 	export default {
 		data() {
 			return {
-				pictureWidth: 20,
-				pictureHeight: 20,
+				pictureWidth: 0,
+				pictureHeight: 0,
+				signatureWidth: 0,
+				signatureHeight: 0,
 				boxWidth: 456,
 				boxHeight: 430,
-				boxShape: "full-box",
+				patternShape: "full-box",
+				productShape: 'bag-box',
 				pictureKinds:[
 					'图片库',
 					'样式'
@@ -95,18 +112,35 @@
 				pictureUrl: null,
 				category: 0,
 				pid: undefined,
-				selectedPicture: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png'
+				selectedPicture: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png',
+				signature: null
 			}
 		},
 		computed: {
-			selectedStyles(){
-				return this.pictures[this.selectedKind]
-			}
+			...mapState(['signatureUrl'])
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			this.pid = Number(option.pid);
 			this.category = Number(option.category);
 			console.log(this.pid, this.category);
+		},
+		onShow() {
+			let _this = this;
+			if(this.signatureUrl){
+				this.signature = this.signatureUrl;
+				this.saveSignature(null);
+				uni.getImageInfo({
+					src: this.signature,
+					success: function(image) {
+						console.log(image.path);
+						_this.signatureWidth = 100;
+						_this.signatureHeight = 100/image.width*image.height;
+					},
+					fail: function(err){
+						console.log(err);
+					}
+				})
+			}
 		},
 		mounted(){
 			let _this = this;
@@ -152,6 +186,7 @@
 			});
 		},
 		methods: {
+			...mapMutations(['saveSignature']),
 			selectKind(kind){
 				this.selectedKind = kind;
 				console.log(kind)
@@ -186,7 +221,6 @@
 			selectPicture(picture){
 				let _this = this;
 				this.pid = picture.id;
-				console.log(this.pid);
 				this.selectedPicture = picture.url;
 				uni.getImageInfo({
 					src: this.selectedPicture,
@@ -203,7 +237,8 @@
 						console.log(_this.pictureHeight, _this.pictureWidth)
 					}
 				})
-			}
+			},
+			
 		}
 	}
 </script>

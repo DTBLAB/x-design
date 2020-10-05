@@ -16,7 +16,7 @@
 				<slider
 				  class="sign-selector__weight__slider"
 				  min="1"
-				  max="10"
+				  max="30"
 				  step="1"
 				  :value="weight"
 				  activeColor="#FC9A04"
@@ -45,6 +45,8 @@
 </template>
 
 <script>
+	import { mapMutations } from 'vuex'
+	
 	export default {
 		data() {
 			return {
@@ -67,18 +69,21 @@
 			this.ctx.setLineJoin('round');
 		},
 		methods: {
-			setWeight(){
-				
+			...mapMutations(['saveSignature']),
+			setWeight(e){
+				this.weight = e.detail.value;
+				this.redraw();
 			},
 			selectColor(color){
 				this.selectedColor = color;
+				this.redraw();
 			},
 			startLine(e){
 				let x = e.touches[0].x;
 				let y = e.touches[0].y;
 				this.ctx.setLineWidth(this.weight);
-				this.ctx.setStrokeStyle(this.selectedColor)
-				this.ctx.beginPath();
+				this.ctx.setStrokeStyle(this.selectedColor);
+				// this.ctx.beginPath();
 				this.ctx.moveTo(x, y);
 				this.arrIsStart.push(true);
 				this.arrX.push(x);
@@ -97,7 +102,67 @@
 			},
 			endLine(e){
 				// console.log(e);
+			},
+			redraw(){
+				this.ctx.draw();
+				this.ctx.setLineWidth(this.weight);
+				this.ctx.setStrokeStyle(this.selectedColor);
+				for(let i = 0; i < this.arrX.length; i++){
+					let x = this.arrX[i];
+					let y = this.arrY[i];
+					let isStart = this.arrIsStart[i];
+					if(isStart){
+						this.ctx.moveTo(x, y);
+					}else{
+						this.ctx.lineTo(x, y);
+						this.ctx.moveTo(x, y);
+					}
+				}
+				this.ctx.stroke();
+				this.ctx.draw(true);
+			},
+			reset(){
+				this.arrX = [];
+				this.arrY = [];
+				this.arrIsStart = [];
+				this.ctx.draw();
+			},
+			finish(){
+				let _this = this;
+				uni.showLoading({
+					title: '签名保存中',
+					mask: true
+				})
+				let sortedArrX = JSON.parse(JSON.stringify(this.arrX)).sort(function(a,b){return a-b});
+				let sortedArrY = JSON.parse(JSON.stringify(this.arrY)).sort(function(a,b){return a-b});
+				let minX = sortedArrX[0];
+				let minY = sortedArrY[0];
+				let maxX = sortedArrX[sortedArrX.length - 1];
+				let maxY = sortedArrY[sortedArrY.length - 1];
+				
+				// console.log(minX, minY, maxX - minX, maxY - minY);
+				uni.canvasToTempFilePath({
+				  x: minX,
+				  y: minY,
+				  width: maxX - minX,
+				  height: maxY - minY,
+				  destWidth: maxX - minX,
+				  destHeight: maxY - minY,
+				  canvasId: 'sign-canvas',
+				  fileType: 'png',
+				  quality: 1.0,
+				  success: async function(res) {
+					let url = res.tempFilePath;
+					await _this.saveSignature(url);
+					uni.hideLoading();
+					uni.navigateBack();
+				  },
+				  fail:function(err){
+				  	console.log(err);
+				  }
+				})
 			}
+			
 			
 		}
 	}

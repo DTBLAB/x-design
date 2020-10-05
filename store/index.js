@@ -10,7 +10,8 @@ const store = new Vuex.Store({//全局变量定义
         nickname: "",
         token:'',
 		avatarUrl:'/static/image/mine/default-photo.png',
-		adjustedPictureUrl: null
+		adjustedPictureUrl: null,
+		signatureUrl: null
     },
     mutations: {
         login(state, user) {
@@ -35,6 +36,9 @@ const store = new Vuex.Store({//全局变量定义
         },
 		saveAdjustment(state, url){
 			state.adjustedPictureUrl = url;
+		},
+		saveSignature(state, url){
+			state.signatureUrl = url;
 		}
     }
 })
