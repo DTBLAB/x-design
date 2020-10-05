@@ -126,20 +126,20 @@
 		display: flex;
 		/* #endif */
 		flex-direction: row;
-		height: 35px;
-		line-height: 35px;
-		width: 120px;
+		height: 19px;
+		line-height: 19px;
+		width: 62px;
 	}
 
 	.uni-numbox__value {
 		background-color: #ffffff;
-		width: 40px;
-		height: 35px;
+		width: 22px;
+		height: 19px;
 		text-align: center;
-		font-size: 32rpx;
-		border-width: 1rpx;
+		font-size: 24rpx;
+		border-width: 3rpx;
 		border-style: solid;
-		border-color: #e5e5e5;
+		border-color: #CDCDCD;
 		border-left-width: 0;
 		border-right-width: 0;
 	}
@@ -151,18 +151,18 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		width: 35px;
-		height: 35px;
+		width: 20px;
+		height: 19px;
 		/* line-height: $box-line-height;
  */
 		/* text-align: center;
  */
 		font-size: 20px;
 		color: #333;
-		background-color: #f8f8f8;
-		border-width: 1rpx;
+		background-color: #f4f4f4;
+		border-width: 3rpx;
 		border-style: solid;
-		border-color: #e5e5e5;
+		border-color: #CDCDCD;
 		border-top-left-radius: 6rpx;
 		border-bottom-left-radius: 6rpx;
 		border-right-width: 0;
@@ -175,20 +175,22 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		width: 35px;
-		height: 35px;
-		border-width: 1rpx;
+		width: 20px;
+		height: 19px;
+		border-width: 3rpx;
 		border-style: solid;
-		border-color: #e5e5e5;
+		border-color: #CDCDCD;
 		border-top-right-radius: 6rpx;
 		border-bottom-right-radius: 6rpx;
-		background-color: #f8f8f8;
+		background-color: #f4f4f4;
 		border-left-width: 0;
 	}
 
 	.uni-numbox--text {
-		font-size: 40rpx;
-		color: #333;
+		font-size: 24rpx;
+		color: #CDCDCD;
+		/* text-align: center; */
+		/* vertical-align: middle; */
 	}
 
 	.uni-numbox--disabled {

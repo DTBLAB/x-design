@@ -9,7 +9,7 @@
 		<view class="mine-block">
 			<view class="mine-block__top">
 				<view class="mine-block__title">图片库</view>
-				<navigator class="mine-block__more">
+				<navigator class="mine-block__more" url="../myPicture/myPicture">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -34,17 +34,35 @@
 				</view>
 			</view>
 		</view>
+		<view class="mine-block">
+			<view class="mine-block__top">
+				<view class="mine-block__title">购物车</view>
+				<navigator class="mine-block__more" url="../cart/cart">
+					查看全部
+					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
+				</navigator>
+			</view>
+			<view class="mine-block__list-container">
+				<view class="mine-block__list">
+					<image class="mine-block__item" v-for="(item, index) in myCarts" :key="index" :src="item.img"></image>
+				</view>
+			</view>
+		</view>
 		<view class="mine-bottom">
+			<navigator url="../address/address">
+				<view class="mine-bottom__item">
+						<view class="mine-bottom__item__text">地址管理</view>
+						<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
+				</view>
+			</navigator>
 			<view class="mine-bottom__item">
-				<view class="mine-bottom__item__text">地址管理</view>
+				<view class="mine-bottom__item__text">
+					联系客服
+					</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 			<view class="mine-bottom__item">
-				<view class="mine-bottom__item__text">联系客服</view>
-				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
-			</view>
-			<view class="mine-bottom__item">
-				<view class="mine-bottom__item__text">关于我们</view>
+				<view class="mine-bottom__item__text">关于想定</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</view>
 		</view>
@@ -73,6 +91,9 @@
 				myOrders:[
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png', url:''},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png', url:''}
+				],
+				myCarts: [
+					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''}
 				]
 			}
 		},

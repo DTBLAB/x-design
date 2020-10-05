@@ -35,6 +35,53 @@ export default {
 @common-color: #333333;
 @background-color: #F4F4F4;
 
+checkbox .uni-checkbox-input {
+	border-radius: 50%;
+	transform: scale(0.8);
+}
+
+checkbox .uni-checkbox-input.uni-checkbox-input-checked {
+	border: 1px solid #333333;
+	background: #333333;
+	color: #fff !important;
+}
+
+checkbox .uni-checkbox-input.uni-checkbox-input-checked:before {
+	font-size: 18px;
+}
+checkbox .wx-checkbox-input {
+	border-radius: 50%;
+}
+
+checkbox .wx-checkbox-input.uni-checkbox-input-checked {
+	border: 1px solid #333333;
+	background: #333333;
+	color: #fff !important;
+}
+
+checkbox .wx-checkbox-input.uni-checkbox-input-checked:before {
+	font-size: 18px;
+}
+
+
+// checkbox样式重置
+// uni-checkbox .uni-checkbox-input{
+// 	height: 32rpx;
+// 	width: 32rpx;
+// 	border-radius: 16rpx;
+// 	vertical-align: middle;
+// 	margin: 0rpx;
+// }
+// uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked:before{
+// 	color: #FFFFFF;
+// }
+// uni-checkbox:not([disabled]) .uni-checkbox-input:hover{
+// 	border-color: #d1d1d1;
+// }
+// uni-checkbox .uni-checkbox-input.uni-checkbox-input-checked{
+// 	background-color: #FC9A04;
+// }
+
 body{
 	color: @common-color;
 }

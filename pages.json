@@ -33,6 +33,41 @@
             "path" : "pages/productlist/productlist",
             "style" : {}
         }
+		,{
+		    "path" : "pages/add/add",
+		    "style" : {
+				"navigationBarTitleText" : "添加地址",
+				"backgroundColor": "#F7F7F7"
+			}
+		}
+		,{
+		    "path" : "pages/myPicture/myPicture",
+		    "style" : {
+				"navigationBarTitleText" : "我的图片",
+				"backgroundColor": "#F7F7F7"
+			}
+		}
+		,{
+		    "path" : "pages/cart/cart",
+		    "style" : {
+				"navigationBarTitleText" : "购物车",
+				"backgroundColor": "#F7F7F7"
+			}
+		}
+		,{
+		    "path" : "pages/customerService/customerService",
+		    "style" : {
+				"navigationBarTitleText" : "客服",
+				"backgroundColor": "#F7F7F7"
+			}
+		}
+        ,{
+            "path" : "pages/address/address",
+            "style" : {
+				"navigationBarTitleText" : "收货地址",
+				"backgroundColor": "#F7F7F7"
+			}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",
