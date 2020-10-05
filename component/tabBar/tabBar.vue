@@ -1,31 +1,25 @@
 <template>
 	<view class="tab-bar-container">
 		<view class="tab-bar-content">
-			<navigator :class="isHome ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toHome">
-				<image class="tab-bar-item__icon" src="/static/image/home--select.png" v-if="isHome"></image>
-				<image class="tab-bar-item__icon" src="/static/image/home.png" v-else></image>
-				<text class="tab-bar-item__text">首页</text>
+			<navigator @click="toHome">
+				<image class="tab-bar-item" src="/static/image/home--select.png" v-if="isHome"></image>
+				<image class="tab-bar-item" src="/static/image/home.png" v-else></image>
 			</navigator>
 			<image class="tab-bar-item--middle" src="/static/image/add.png" @click="showAddPanel"></image>
-			<navigator :class="isMine ? 'tab-bar-item--selected' : 'tab-bar-item'" @click="toMine">
-				<image class="tab-bar-item__icon" src="/static/image/user--select.png" v-if="isMine"></image>
-				<image class="tab-bar-item__icon" src="/static/image/user.png" v-else></image>
-				<text class="tab-bar-item__text">我的</text>
+			<navigator @click="toMine">
+				<image class="tab-bar-item" src="/static/image/user--select.png" v-if="isMine"></image>
+				<image class="tab-bar-item" src="/static/image/user.png" v-else></image>
 			</navigator>
 		</view>
 		<view class="add-panel" v-show="ifShowAddPanel">
 			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
 			<view class="add-panel__selections">
 				<navigator class="add-panel__selection" url="/pages/pictureDesign/pictureDesign">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__picture" src="/static/image/add//picture.png"></image>
-					</button>
+					<image class="add-panel__selection__button" src="/static/image/add/picture.png"></image>
 					<view class="add-panel__selection__text">定制图片</view>
 				</navigator>
-				<navigator class="add-panel__selection">
-					<button class="add-panel__selection__button">
-						<image class="add-panel__selection__button__product" src="/static/image/add//product.png"></image>
-					</button>
+				<navigator class="add-panel__selection" url="/pages/productList/productList">
+					<image class="add-panel__selection__button" src="/static/image/add/product.png"></image>
 					<view class="add-panel__selection__text">定制商品</view>
 				</navigator>
 			</view>

@@ -7,11 +7,12 @@ page {
 	margin-bottom: 196rpx;
 	
 	.mine-info{
-		width: 700rpx;
-		height: 154rpx;
-		
-		margin-left: 50rpx;
-		margin-top: 192rpx;
+		box-sizing: border-box;
+		width: 750rpx;
+		height: 332rpx;
+		background-color: white;
+		padding-top: 172rpx;
+		padding-left: 50rpx;
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
@@ -41,25 +42,94 @@ page {
 		}
 	}
 	
-	.mine-block{
-		width: 694rpx;
-		height: 292rpx;
-		margin: 0 28rpx 24rpx 28rpx;
+	.mine-orders{
+		width: 750rpx;
+		height: 240rpx;
+		margin: 20rpx 0;
 		background-color: #FFFFFF;
-		border-radius: 12rpx;
-		
+		position: relative;
+		z-index: 0;
 		
 		&__top{
+			box-sizing: border-box;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 30rpx 16rpx 32rpx 22rpx;
-			width: 656rpx;
-			height: 44rpx;
+			padding: 24rpx 32rpx 32rpx 36rpx;
+			width: 750rpx;
+			height: 98rpx;
 		}
 		
 		&__title{
 			font-size: 32rpx;
+			line-height: 42rpx;
+			font-weight: bold;
+		}
+		
+		&__more{
+			font-size: 24rpx;
+			color: #666666;
+			
+			&__icon{
+				height: 20rpx;
+				width: 10rpx;
+				display: inline-block;
+				vertical-align: middle;
+				padding-left: 6rpx;
+			}
+		}
+		
+		&__body{
+			margin-left: 72rpx;
+			width: 606rpx;
+			height: 112rpx;
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			justify-content: space-between;
+		}
+		
+		
+		&__button{
+			width: 72rpx;
+			height: 112rpx;
+			position: relative;
+			
+			&__icon{
+				width: 72rpx;
+				height: 70rpx;
+			}
+			
+			&__text{
+				width: 72rpx;
+				font-size: 24rpx;
+				line-height: 32rpx;
+				height: 32rpx;
+				margin-top: 10rpx;
+				text-align: center;
+			}
+		}
+	}
+	
+	.mine-block{
+		width: 750rpx;
+		height: 292rpx;
+		margin: 0 0 20rpx 0;
+		background-color: #FFFFFF;
+		
+		&__top{
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 24rpx 32rpx 32rpx 36rpx;
+			width: 750rpx;
+			height: 98rpx;
+		}
+		
+		&__title{
+			font-size: 32rpx;
+			line-height: 42rpx;
 			font-weight: bold;
 		}
 		
@@ -78,8 +148,8 @@ page {
 		
 		&__list-container{
 			height: 144rpx;
-			width: 672rpx;
-			margin-left: 22rpx;
+			width: 714rpx;
+			margin-left: 36rpx;
 			overflow: hidden;
 		}
 		
@@ -95,37 +165,37 @@ page {
 		&__item{
 			width: 144rpx;
 			height: 144rpx;
-			border-radius: 6rpx;
 			margin-right: 12rpx;
 			background-color: #F4F4F4;
 		}
 	}
 	
 	.mine-bottom{
-		width: 694rpx;
+		width: 750rpx;
 		height: 264rpx;
-		margin: 0 28rpx;
+		margin: 20rpx 0;
 		background-color: #FFFFFF;
-		border-radius: 12rpx;
 		display: flex;
 		align-content: space-around;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		
 		&__item{
-			height: 40rpx;
-			width: 634rpx;
+			height: 38rpx;
+			width: 660rpx;
+			margin-left: 58rpx;
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 			
 			&__text{
 				font-size: 28rpx;
-				line-height: 28rpx;
+				line-height: 38rpx;
 			}
 			
 			&__icon{
-				height: 16rpx;
-				width: 8rpx;
+				height: 24rpx;
+				width: 12rpx;
 			}
 		}
 	}

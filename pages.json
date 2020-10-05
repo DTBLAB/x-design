@@ -28,11 +28,33 @@
 			    "navigationBarTitleText" : "图片定制",
 				"backgroundColor": "#FFFFFF"
 			}
+		},
+		{
+		    "path" : "pages/pictureDesign/cardShare",
+			"style" : {
+			    "navigationBarTitleText" : "生成卡片",
+				"backgroundColor": "#FFFFFF"
+			}
+		},
+		{
+		    "path" : "pages/pictureDesign/pictureAdjust",
+			"style" : {
+			    "navigationStyle" : "custom",
+				"navigationBarTextStyle" : "white"
+			}
 		}
         ,{
-            "path" : "pages/productlist/productlist",
+            "path" : "pages/productList/productList",
+            "style" : {
+				"navigationBarTitleText" : "商品分类",
+				"backgroundColor": "#FFFFFF"
+			}
+        }
+        ,{
+            "path" : "pages/product/product",
             "style" : {}
         }
+// <<<<<<< HEAD
 		,{
 		    "path" : "pages/addAddress/addAddres",
 		    "style" : {
@@ -68,6 +90,32 @@
 				"backgroundColor": "#F7F7F7"
 			}
         }
+// =======
+        ,{
+            "path" : "pages/mine/myPhotos",
+            "style" : {
+				"navigationBarTitleText" : "我的图片"
+			}
+        }
+        ,{
+            "path" : "pages/product/productDesign",
+            "style" : {
+				"navigationBarTitleText" : "定制产品"
+			}
+        }
+        ,{
+            "path" : "pages/mine/information",
+            "style" : {
+				"navigationBarTitleText" : "个人资料"
+			}
+        }
+        ,{
+            "path" : "pages/product/sign",
+            "style" : {
+				"navigationBarTitleText" : "签名"
+			}
+        }
+// >>>>>>> 583a07fb8b22cecbb1f04554ae1edae97ccc8593
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",

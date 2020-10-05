@@ -1,104 +1,106 @@
 .home-container{
+	background-color: #FFFFFF;
 	padding-bottom: 176rpx;
 	
 	.home-banner{
 		width: 750rpx;
-		height: 564rpx;
+		height: 568rpx;
 			
 		&__item{
 			width: 750rpx;
-			height: 564rpx;
+			height: 568rpx;
 		}
 	}
 	
 	.home-styles{
-		width: 678rpx;
-		margin: 48rpx 36rpx 0 36rpx;
+		width: 750rpx;
+		margin: 30rpx 0 78rpx 36rpx;
+		background-color: white;
 		
 		&__title{
-			border-left: 6rpx #FFA200 solid;
-			padding-left: 16rpx;
-			height: 32rpx;
+			height: 42rpx;
 			font-size: 32rpx;
-			line-height: 32rpx;
+			line-height: 42rpx;
 			font-weight: bold;
 			color: #333333;
 		}
 		
 		&__list-container{
-			height: 198rpx;
-			width: 678rpx;
-			margin-top: 36rpx;
+			height: 156rpx;
+			width: 714rpx;
+			margin-top: 30rpx;
 		}
 		
 		&__list{
-			height: 198rpx;
+			height: 156rpx;
 			display: flex;
 			flex-wrap: nowrap;
 			align-items: center;
 			justify-content: flex-start;
 		}
 		
-		&__item{
-			margin-right: 22rpx;
-			height: 198rpx;
-			width: 140rpx;
+		.hot-style{
+			height: 156rpx;
+			width: 156rpx;
+			margin-right: 14rpx;
+			flex-shrink:0;
+			position: relative;
+			// border: 2rpx #707070 solid;
 			
 			&__image{
-				height: 140rpx;
-				width: 140rpx;
-				display: block;
-				border-radius: 6rpx;
+				width: 100%;
+				height: 100%;
 			}
 			
 			&__name{
-				display: block;
-				margin-top: 24rpx;
-				font-size: 28rpx;
-				line-height: 28rpx;
-				height: 28rpx;
-				width: 140rpx;
+				width: 100%;
+				height: 40rpx;
+				position: absolute;
+				bottom: 0;
+				z-index: 3;
+				font-size: 22rpx;
 				text-align: center;
+				line-height: 40rpx;
+				backdrop-filter: blur(16rpx) brightness(90%);
+				background-color: rgba(255,255,255, 0.60);
+				
+				// &-cover{
+				// 	width: 100%;
+				// 	height: 40rpx;
+				// 	position: absolute;
+				// 	bottom: 0;
+				// 	z-index: 2;
+				// 	background-color: white;
+				// 	opacity: 0.69;
+				// }
 			}
 			
 		}
 	}
 	
 	.home-commodities{
-		width: 678rpx;
-		margin: 40rpx 36rpx 0 36rpx;
+		background-color: white;
+		width: 750rpx;
+		margin: 0;
+		padding: 0 32rpx 50rpx 32rpx;
+		position: relative;
 		
 		&__title{
-			border-left: 6rpx #FFA200 solid;
-			padding-left: 16rpx;
-			height: 32rpx;
+			height: 42rpx;
 			font-size: 32rpx;
-			line-height: 32rpx;
+			line-height: 42rpx;
 			font-weight: bold;
 			color: #333333;
 		}
 		
-	}
-	
-	.home-commodity{
-		margin-top: 22rpx;
-		margin-bottom: 44rpx;
-		position: relative;
-		
-		&__name{
-			width: 678prx;
-			text-align: center;
-			font-size: 28rpx;
-			height: 40rpx;
-			line-height: 40rpx;
-		}
-		
 		&__more{
 			position: absolute;
-			right: 0;
-			top: 4rpx;
+			left: 652rpx;
+			top: 10rpx;
 			font-size: 24rpx;
 			color: #999999;
+			height: 32rpx;
+			line-height: 32rpx;
 			
 			&__icon{
 				height: 20rpx;
@@ -109,19 +111,67 @@
 			}
 		}
 		
-		&__list{
-			width: 678rpx;
-			margin-top: 24rpx;
+		&__body{
+			margin: 31rpx 4rpx 0 2rpx;
+			width: 680rpx;
 			display: flex;
 			align-items: flex-start;
 			justify-content: space-between;
+			flex-wrap: wrap;
 		}
 		
-		&__item{
-			width: 212rpx;
-			background-color: #F7F7F7;
-		}
 		
-	}	
+		
+	}
+	
+	.home-commodity{
+		background-color: #F4F4F4;
+		width: 212rpx;
+		height: 212rpx;
+		margin-bottom: 18rpx;
+	}
+	// .home-commodity{
+	// 	margin-top: 22rpx;
+	// 	margin-bottom: 44rpx;
+	// 	position: relative;
+		
+	// 	&__name{
+	// 		width: 678prx;
+	// 		text-align: center;
+	// 		font-size: 28rpx;
+	// 		height: 40rpx;
+	// 		line-height: 40rpx;
+	// 	}
+		
+	// 	&__more{
+	// 		position: absolute;
+	// 		right: 0;
+	// 		top: 4rpx;
+	// 		font-size: 24rpx;
+	// 		color: #999999;
+			
+	// 		&__icon{
+	// 			height: 20rpx;
+	// 			width: 10rpx;
+	// 			display: inline-block;
+	// 			vertical-align: middle;
+	// 			margin-left: 6rpx;
+	// 		}
+	// 	}
+		
+	// 	&__list{
+	// 		width: 678rpx;
+	// 		margin-top: 24rpx;
+	// 		display: flex;
+	// 		align-items: flex-start;
+	// 		justify-content: space-between;
+	// 	}
+		
+	// 	&__item{
+	// 		width: 212rpx;
+	// 		background-color: #F7F7F7;
+	// 	}
+		
+	// }	
 		
 }

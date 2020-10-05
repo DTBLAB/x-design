@@ -4,7 +4,7 @@
 			<view class="picture-add" @click="choosePicture" v-if="!hasPicture">
 				<view class="picture-add__icon"></view>
 			</view>
-			<image class="picture-body" :src="isTransferred?selectedTransferredPitucre:pictureUrl" mode='aspectFit' v-else>
+			<image class="picture-body" :src="isTransferred?selectedTransferredPicture:pictureUrl" mode='aspectFit' v-else>
 			</image>
 		</view>
 		<view class="style-selector">
@@ -41,29 +41,39 @@
 		</view>
 		
 		<canvas class="compress-canvas" canvas-id="compress-canvas" id="compressCanvas"></canvas>
+		
 		<image class="picture-close" src="../../static/image/pictureDesign/close.png" @click="clear" v-if="hasPicture"></image>
-		<view class="right-bar">
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/adjust.png"></image>
-				<view class="right-bar-item__text">调整</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/share.png"></image>
-				<view class="right-bar-item__text">分享</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/save.png"></image>
-				<view class="right-bar-item__text">保存</view>
-			</view>
-			<view class="right-bar-item">
-				<image class="right-bar-item__icon" src="../../static/image/pictureDesign/product.png"></image>
-				<view class="right-bar-item__text">商品</view>
-			</view>
+		<!-- 记得换成isTransferred -->
+		<view class="picture-finish" v-if="isTransferred" @click="finishDesign">完成</view>
+		<view class="right-bar" v-if="isTransferred">
+			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
+			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
 		</view>
+		
+		<!-- <view class="share-panel-cover" v-if="isSharing">
+			<view class="share-panel">
+				<view class="share-panel__title">分享</view>
+				<image src="../../static/image/add/close.png" class="share-panel__close" @click="hideSharePanel"></image>
+				<view class="share-panel__buttons">
+					<button class="share-panel__button" open-type="share" @click="wechatShare">
+						<image class="share-panel__button__image" src="../../static/image/pictureDesign/wechat-share.png"></image>
+						<view class="share-panel__button__text">微信链接</view>
+					</button>
+					<button class="share-panel__button" @click="generateCard">
+						<image class="share-panel__button__image" src="../../static/image/pictureDesign/picture-share.png"></image>
+						<view class="share-panel__button__text">生成卡片</view>
+					</button>
+				</view>
+			</view>
+		</view> -->
 	</view>
 </template>
 
 <script>
+	import { mapMutations } from 'vuex'
+	import { mapState } from 'vuex'
+	import baseConfig from '../../config/index';
+	
 	export default {
 		data(){
 			return{
@@ -94,15 +104,42 @@
 				selectedStyle: null,
 				transferredPictures:{
 				},
-				selectedTransferredPitucre: null
+				selectedTransferredPicture: null,
+				isSharing: false,
+				transferToken: null
 			}
 		},
 		computed: {
+			...mapState(['adjustedPictureUrl']),
 			selectedStyles(){
 				return this.styles[this.selectedKind]
 			}
 		},
+		onShareAppMessage() {
+			return {
+				title: '想定就定，定你所想',
+				path: '/pages/index/index',
+				imageUrl: this.isTransferred? this.selectedTransferredPicture:this.pictureUrl, // 生成的分享图赋值给到小程序自定义分享图链接
+				success: function () {
+					// 转发成功
+					console.log(shareUrl)
+				},
+				fail: function () {
+					// 转发失败
+					console.log('转发失败')
+				}
+			}
+		},
+		onShow() {
+			if(this.adjustedPictureUrl){
+				//这里记得换回来
+				// this.pictureUrl = this.adjustedPictureUrl;
+				this.selectedTransferredPicture = this.adjustedPictureUrl;
+				this.saveAdjustment(null);
+			}
+		},
 		methods: {
+			...mapMutations(['saveAdjustment']),
 			choosePicture(){
 				let _this = this;
 				uni.chooseImage({
@@ -197,7 +234,7 @@
 				this.selectedKind = kind;
 				//this.selectedStyles
 			},
-			selectStyle(style){
+			async selectStyle(style){
 				if(!this.pictureUrl){
 					uni.showToast({
 					    title: "请先选择图片",
@@ -213,36 +250,72 @@
 					});
 					return;
 				}
-				let res = this.getTransferToken();
-				if(res.code !== 0){
-					uni.showToast({
-					    title: res.message,
-					    duration: 1000,
-						icon: 'none'
-					});
-					return;
+				if(!this.transferToken){
+					let res = await this.getTransferToken();
+					console.log('getToken');
+					if(!res.data || res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					this.transferToken = res.data.data.token;
 				}
 				this.selectedStyle = style;
 				if(this.transferredPictures[style]){
-					this.selectedTransferredPitucre = this.transferredPictures[style];
+					this.selectedTransferredPicture = this.transferredPictures[style];
 				}else{
-					this.transfer(style, res.data.token);
+					this.transfer(style, this.transferToken);
 				}
 				
 			},
 			
-			getTransferToken(){
-				// 后台检验pictures是否达到上限、用户身份是否无误
-				return {code: 0, data:{token: 'test'}};
+			async getTransferToken(){
+				return await this.$http.get('/picture/checkCapacity');
 			},
 			
 			transfer(style, token){
+				let _this = this;
 				if(!this.pictureData){
 					const imgData = uni.getFileSystemManager().readFileSync(this.pictureUrl, 'base64');
 					const base64 = '' + imgData;
 					this.pictureData = base64;
-					console.log(this.pictureData);
+					// console.log(this.pictureData);
 				}
+				uni.showLoading({
+				    title: '迁移中',
+					mask: true
+				});
+				this.$http.post('/transfer/', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 30000}).then(result => {
+					console.log('transferResult', result);
+					if(result.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					uni.getImageInfo({
+					    src: baseConfig.transferBaseUrl + result.data.url,
+						success: function(image){
+							_this.selectedTransferredPicture = image.path;
+							_this.isTransferred = true;
+							_this.transferredPictures[style] = _this.selectedTransferredPicture;
+							uni.hideLoading();
+						},
+					})
+				}).catch(err => {
+					console.log('transferErr', err);
+					uni.showToast({
+					    title: '迁移失败，请重试',
+					    duration: 1000,
+						icon: 'none'
+					});
+					uni.hideLoading();
+				})
 			},
 			
 			clear(){
@@ -253,10 +326,115 @@
 				this.selectedKind = '推荐';
 				this.selectedStyle = null;
 				this.transferredPictures = {};
-				this.selectedTransferredPitucre = null;
+				this.selectedTransferredPicture = null;
 				this.loadingFinished = false;
-			}
+				this.transferToken = null;
+			},
 			
+			showSharePanel(){
+				this.isSharing = true;
+			},
+			hideSharePanel(){
+				this.isSharing = false;
+			},
+			
+			wechatShare(){
+				uni.showShareMenu({
+				  withShareTicket: true,
+				  success: function(res){
+					  console.log('res:',res);
+				  },
+				  fail: function(err){
+					  console.log(err);
+				  }
+				})
+			},
+			generateCard(pid){
+				let _this = this;
+				uni.navigateTo({url:`/pages/pictureDesign/cardShare?pid=${pid}&url=${this.selectedTransferredPicture}&styleName=${_this.selectedStyle}`});
+			},
+			adjustPicture(){
+				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?transferredPictureUrl=${this.selectedTransferredPicture}&rawPictureUrl=${this.pictureUrl}`});
+				uni.hideLoading();
+			},
+			
+			async finishDesign(){
+				let _this = this;
+				const {params, path} = await this.getParams().catch(err => {
+					console.log(err);
+					return;
+				});
+				// try{
+				// 	const result = await this.getParams();
+				// 	console.log(result);
+				// }catch(err){
+				// 	console.log(err);
+				// 	uni.showToast({
+				// 	    title: '网络错误，请重试',
+				// 	    duration: 1000,
+				// 		icon: 'none'
+				// 	});
+				// 	return;
+				// }
+				console.log(_this.selectedTransferredPicture);
+				uni.uploadFile({
+				  url: 'https://x-design-pictures.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
+				  filePath: _this.selectedTransferredPicture,
+				  name: 'file', // 必须填file。
+				  formData: params,
+				  success: (res) => {
+					console.log(res);
+				    if (res.statusCode === 204) {
+				      console.log('上传成功');
+					  _this.savePicture('https://x-design-pictures.oss-cn-hangzhou.aliyuncs.com/'+params.key);
+				    }
+				  },
+				  fail: err => {
+				    console.log(err);
+					uni.showToast({
+					    title: "上传失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				  }
+				});
+				// const imgData = uni.getFileSystemManager().readFileSync(this.pictureUrl, 'base64');
+				// const base64 = '' + imgData;
+				// this.pictureData = base64;
+				
+			},
+			async getParams(){
+				return await this.$http.get('/picture/getPostObjectParams', {}).then(res => {
+					if(res.data.code !== 0){
+						throw new Error("获取签名失败!");
+					}
+					console.log(res.data.data);
+					return res.data.data;
+				}).catch(err => {
+					throw new Error("获取签名失败!");
+				})
+			},
+			savePicture(url){
+				let _this = this;
+				this.$http.post('/picture/add', {url: url}).then(res => {
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.generateCard(res.data.data.pid);
+				}).catch(err => {
+					console.log(err);
+					uni.showToast({
+					    title: "保存失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
+			}
 		}
 	}
 </script>

@@ -6,10 +6,46 @@
 			<view class="mine-info__nickname" v-if="hasLogin">{{nickname}}</view>
 			<view class="mine-info__nickname"  v-else>点击登录</view>
 		</view>
+		<view class="mine-orders">
+			<view class="mine-orders__top">
+				<view class="mine-orders__title">我的订单</view>
+				<navigator class="mine-orders__more">
+					查看全部
+					<image src="/../../static/image/more@3x.png"  class="mine-orders__more__icon"></image>
+				</navigator>
+			</view>
+			<view class="mine-orders__body">
+				<view class="mine-orders__button">
+					<image class="mine-orders__button__icon" src="../../static/image/mine/unpaid.png"></image>
+					<text class="mine-orders__button__text">待付款</text>
+					<badge :num="orderNums[0]" v-if="orderNums[0] !== 0"></badge>
+				</view>
+				<view class="mine-orders__button">
+					<image class="mine-orders__button__icon" src="../../static/image/mine/unshipped.png"></image>
+					<text class="mine-orders__button__text">待发货</text>
+					<badge :num="orderNums[1]" v-if="orderNums[1] !== 0"></badge>
+				</view>
+				<view class="mine-orders__button">
+					<image class="mine-orders__button__icon" src="../../static/image/mine/unreceived.png"></image>
+					<text class="mine-orders__button__text">待收货</text>
+					<badge :num="orderNums[2]" v-if="orderNums[2] !== 0"></badge>
+				</view>
+				<view class="mine-orders__button">
+					<image class="mine-orders__button__icon" src="../../static/image/mine/unrated.png"></image>
+					<text class="mine-orders__button__text">待评价</text>
+					<badge :num="orderNums[3]" v-if="orderNums[3] !== 0"></badge>
+				</view>
+			</view>
+		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
+<<<<<<< HEAD
 				<view class="mine-block__title">图片库</view>
 				<navigator class="mine-block__more" url="../myPicture/myPicture">
+=======
+				<view class="mine-block__title">我的图片</view>
+				<navigator class="mine-block__more" url="./myPhotos">
+>>>>>>> 583a07fb8b22cecbb1f04554ae1edae97ccc8593
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -22,7 +58,7 @@
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
-				<view class="mine-block__title">商品订单</view>
+				<view class="mine-block__title">购物车</view>
 				<navigator class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
@@ -72,10 +108,11 @@
 
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
+	import badge from "@/component/badge/badge.vue"
 	import { mapState } from 'vuex'
 	
 	export default {
-		components: {tabBar},
+		components: {tabBar, badge},
 		data() {
 			return {
 				// isAuthorized: !!uni.getStorageSync('token'),
@@ -92,9 +129,13 @@
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png', url:''},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png', url:''}
 				],
+<<<<<<< HEAD
 				myCarts: [
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''}
 				]
+=======
+				orderNums:[0, 3, 4, 2]
+>>>>>>> 583a07fb8b22cecbb1f04554ae1edae97ccc8593
 			}
 		},
 		computed: mapState(['hasLogin', 'nickname' ,'avatarUrl']),

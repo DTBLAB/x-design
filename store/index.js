@@ -9,7 +9,8 @@ const store = new Vuex.Store({//全局变量定义
         hasLogin: false,
         nickname: "",
         token:'',
-		avatarUrl:'/static/image/mine/default-photo.png'
+		avatarUrl:'/static/image/mine/default-photo.png',
+		adjustedPictureUrl: null
     },
     mutations: {
         login(state, user) {
@@ -31,7 +32,10 @@ const store = new Vuex.Store({//全局变量定义
 			uni.removeStorage({
 				key: 'userInfo'		
 			})
-        }
+        },
+		saveAdjustment(state, url){
+			state.adjustedPictureUrl = url;
+		}
     }
 })
 export default store;

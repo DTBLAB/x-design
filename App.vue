@@ -85,6 +85,9 @@ checkbox .wx-checkbox-input.uni-checkbox-input-checked:before {
 body{
 	color: @common-color;
 }
+page{
+	height: 100%;
+}
 	
 	
 /* 解决头条小程序组件内引入字体不生效的问题 */

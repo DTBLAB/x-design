@@ -1,15 +1,20 @@
+const baseConfig = require('../config/index');
+
 const http = {
 	post: function(theUrl, theData, config={}){
-		let baseUrl = config.baseUrl || 'http://localhost:3000/api';
+		let baseUrl = config.baseUrl || baseConfig.serverBaseUrl;
 		let url = baseUrl + theUrl|| '';
 		let data = theData || {};
 		let timeout = config.timeout || 3000;
 		let header = config.header || {
 		'content-type': 'application/json;charset=UTF-8'
 		};
-		const token = uni.getStorageSync('token');
-		if(token){
+		const token = uni.getStorageSync('userInfo').token;
+		if(token && baseUrl === baseConfig.serverBaseUrl){
 			header['authorization'] = "Bearer " + token;
+		}
+		if(baseUrl === baseConfig.transferBaseUrl){
+			header['authorization'] = theData.token;
 		}
 		let dataType = config.dataType || 'json';
 		let responseType = config.responseType || 'text';
@@ -70,15 +75,18 @@ const http = {
 		})
 		
 	},
-	get: function(theUrl, theData, config={}){
-		let baseUrl = config.baseUrl || 'http://localhost:3000/api';
+	get: function(theUrl, theData={}, config={}){
+		let baseUrl = config.baseUrl || baseConfig.serverBaseUrl;
 		let url = baseUrl + theUrl || '';
 		let data = theData || {};
 		let timeout = config.timeout || 3000;
 		let header = config.header || {};
-		const token = uni.getStorageSync('token');
-		if(token){
+		const token = uni.getStorageSync('userInfo').token;
+		if(token && baseUrl === baseConfig.serverBaseUrl){
 			header['authorization'] = "Bearer " + token;
+		}
+		if(baseUrl === baseConfig.transferBaseUrl){
+			header['authorization'] = theData.token;
 		}
 		let dataType = config.dataType || 'json';
 		let responseType = config.responseType || 'text';
