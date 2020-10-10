@@ -4,20 +4,28 @@
 	background-color: #F4F4F4;
 }
 
-.product-container{
+.body-container{
 	top: 0;
 	width: 750rpx;
 	height: calc(100% - 376rpx);
 	position: absolute;
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	justify-content: center;
 }
 
+.product-container{
+	// width: 490rpx;
+	// height: 640rpx;
+	position: relative;
+	z-index: 5;
+}
+
+
 .product-picture{
-	margin-top: 118rpx;
-	width: 490rpx;
-	height: 640rpx;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
 
 .picture-selector{
@@ -128,8 +136,8 @@
 }
 
 .bag-box{
-	top: 310rpx;
-	left: 140rpx;
+	top: 196rpx;
+	left: 12rpx;
 	width: 456rpx;
 	height: 430rpx;
 }
@@ -144,7 +152,36 @@
 }
 
 .signature-picture{
-	width: 100%;
-	height: 100%;
+	width: calc(100% - 4rpx);
+	height: calc(100% - 4rpx);
+	box-sizing: content-box;
 	border: 2rpx #999999 dotted;
+}
+
+.product-finish{
+	position: absolute;
+	z-index: 10;
+	width: 144rpx;
+	height: 60rpx;
+	top: 32rpx;
+	right: 28rpx;
+	border-radius: 10rpx;
+	text-align: center;
+	font-size: 28rpx;
+	line-height: 60rpx;
+	color: white;
+	background-color: rgba(0, 0, 0, 1);
+}
+
+.product-canvas{
+	// visibility: hidden;
+	// position:absolute;
+	// z-index:-1; 
+	// left:-10000rpx;
+	// top:-10000rpx;
+	// overflow: hidden;
+	position:absolute;
+	left:0;
+	top:100%;
+	
 }

@@ -135,10 +135,10 @@
 				})
 				let sortedArrX = JSON.parse(JSON.stringify(this.arrX)).sort(function(a,b){return a-b});
 				let sortedArrY = JSON.parse(JSON.stringify(this.arrY)).sort(function(a,b){return a-b});
-				let minX = sortedArrX[0];
-				let minY = sortedArrY[0];
-				let maxX = sortedArrX[sortedArrX.length - 1];
-				let maxY = sortedArrY[sortedArrY.length - 1];
+				let minX = sortedArrX[0] - this.weight;
+				let minY = sortedArrY[0] - this.weight;
+				let maxX = sortedArrX[sortedArrX.length - 1] + this.weight;
+				let maxY = sortedArrY[sortedArrY.length - 1] + this.weight;
 				
 				// console.log(minX, minY, maxX - minX, maxY - minY);
 				uni.canvasToTempFilePath({

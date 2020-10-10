@@ -1,0 +1,34 @@
+{
+	"canvasBag": {
+		"picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/Tote Bag@3x.png",
+		"height": 490,
+		"width": 640,
+		"contentWidth": 458,
+		"contentHeight": 436, 
+		"style": "width: 490rpx; height: 640rpx;",
+		"contentStyle": "top: 196rpx; left: 10rpx; width: 458rpx; height: 436rpx;",
+		"patterns": {
+			"full": {
+				"width": 458,
+				"height": 436, 
+				"shape": "rectangle",
+				"style": "top: 0; left: 0; width: 458rpx; height: 436rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
+			},
+			"circle": {
+				"width": 300,
+				"height": 300, 
+				"shape": "circle",
+				"style": "top: 70rpx; left: 86rpx; width: 300rpx; height: 300rpx; border-radius: 150rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
+			},
+			"rectangle": {
+				"width": 240,
+				"height": 308, 
+				"shape": "rectangle",
+				"style": "top: 78rpx; left: 116rpx; width: 240rpx; height: 308rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
+			}
+		}
+	}
+}
