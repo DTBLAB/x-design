@@ -113,10 +113,10 @@
 				],
 				selectedKind: '图片库',
 				productPicture: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/Tote Bag@3x.png",
-				category: 0,
 				pid: undefined,
 				selectedPicture: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mockPicture@3x.png',
 				signature: null,
+				categoryName: 'canvasBag',
 				productInfo: category['canvasBag'],
 				patterns: category['canvasBag'].patterns,
 				selectedPattern: category['canvasBag'].patterns.full
@@ -268,6 +268,10 @@
 			finishDesign(){
 				const query = uni.createSelectorQuery().in(this);
 				let _this = this;
+				uni.showLoading({
+					mask: true,
+					title: "商品保存中"
+				})
 				query.select('#product-container').boundingClientRect();
 				query.select('#content-box').boundingClientRect();
 				query.select('#pattern-box').boundingClientRect();
@@ -316,6 +320,7 @@
 								    },
 									fail: function(err) {
 										console.log(err);
+										uni.hideLoading();
 									}
 								});
 							}else{
@@ -326,6 +331,7 @@
 				    },
 					fail: function(err) {
 						console.log(err);
+						uni.hideLoading();
 					}
 				});
 				
@@ -345,7 +351,11 @@
 				  success: function(res) {
 					 console.log(res.tempFilePath);
 					 _this.generatePreview(product, content, res.tempFilePath);
-				  } 
+				  },
+				  fail: function(err) {
+				  	console.log(err);
+				  	uni.hideLoading();
+				  }
 				})
 			},
 			generatePreview(product, content, original){
@@ -371,19 +381,76 @@
 							  quality: 1.0,
 							  success: function(res) {
 								 console.log(res.tempFilePath);
-								 _this.saveProduct(original, res.tempFilePath);
+								 _this.uploadProductImages(original, res.tempFilePath);
 							  } 
 							})
 						})
 				    },
 					fail: function(err) {
 						console.log(err);
+						uni.hideLoading();
 					}
 				});
 			},
 			
-			saveProduct(original, preview){
-				
+			async uploadProductImages(original, preview){
+				let _this = this;
+				const {originalParams, previewParams} = await this.getParams().catch(err => {
+					console.log(err);
+				  	uni.hideLoading();
+					return;
+				});
+				let uploadedOriginal = null, uploadedPreview = null;
+				uni.uploadFile({
+				  url: 'https://x-design-products.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
+				  filePath: original,
+				  name: 'file', // 必须填file。
+				  formData: originalParams,
+				  success: (res) => {
+					console.log(res);
+				    if (res.statusCode === 204) {
+				      console.log('上传成功');
+					  uploadedOriginal = 'https://x-design-products.oss-cn-hangzhou.aliyuncs.com/'+originalParams.key;
+					  if(uploadedPreview){
+						_this.saveProduct(uploadedOriginal, uploadedPreview, preview);  
+					  }
+				    }
+				  },
+				  fail: err => {
+				    console.log(err);
+					uni.showToast({
+					    title: "上传失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				  	uni.hideLoading();
+				  }
+				});
+				uni.uploadFile({
+				  url: 'https://x-design-previews.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
+				  filePath: preview,
+				  name: 'file', // 必须填file。
+				  formData: previewParams,
+				  success: (res) => {
+					console.log(res);
+				    if (res.statusCode === 204) {
+				      console.log('上传成功');
+					  uploadedPreview = 'https://x-design-previews.oss-cn-hangzhou.aliyuncs.com/'+previewParams.key;
+					  if(uploadedOriginal){
+						_this.saveProduct(uploadedOriginal, uploadedPreview, preview);  
+					  }
+				    }
+				  },
+				  fail: err => {
+				    console.log(err);
+					uni.showToast({
+					    title: "上传失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				  	uni.hideLoading();
+				  }
+				});
 			},
 			async getParams(){
 				return await this.$http.get('/product/getPostObjectParams', {}).then(res => {
@@ -395,6 +462,33 @@
 				}).catch(err => {
 					throw new Error("获取签名失败!");
 				})
+			},
+			async saveProduct(uploadedOriginal, uploadedPreview, preview){
+				let _this = this;
+				this.$http.post('/product/add', {original: uploadedOriginal, preview: uploadedPreview, price: _this.productInfo.price, category: _this.categoryName}).then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.generateCard(preview);
+				}).catch(err => {
+					console.log(err);
+					uni.hideLoading();
+					uni.showToast({
+					    title: "保存失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
+			},
+			generateCard(preview){
+				let _this = this;
+				uni.navigateTo({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}`});
 			},
 			
 		}

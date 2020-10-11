@@ -3,7 +3,7 @@
 		<image class="card" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
-		<view class="save-button" @click="toProductDesign">去定制产品</view>
+		<view class="save-button" @click="toShoppingCart">去下单生产</view>
 	</view>
 </template>
 
@@ -15,8 +15,8 @@
 		data(){
 			return{
 				rpx: 750/uni.getSystemInfoSync().windowWidth,
-				canvasHeight: '1600rpx',
-				cardHeight: '800rpx',
+				canvasHeight: '2112rpx',
+				cardHeight: '1056rpx',
 				url: '',
 				pictureUrl: '',
 				pictureWidth: 0,
@@ -29,9 +29,8 @@
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
-			this.styleName = option.styleName;
+			this.name = option.name;
 			this.url = option.url;
-			this.pid = option.pid;
 		},
 		onShow: function(){
 			

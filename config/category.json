@@ -1,6 +1,8 @@
 {
 	"canvasBag": {
 		"picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/Tote Bag@3x.png",
+		"price": 29.00,
+		"name": "帆布袋",
 		"height": 490,
 		"width": 640,
 		"contentWidth": 458,
