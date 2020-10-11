@@ -295,6 +295,12 @@
 						}else if(_this.selectedPattern.shape === "circle"){
 							ctx.arc(2*pattern.left - 2*content.left + pattern.width, 2*pattern.top - 2*content.top + pattern.height, pattern.width, 0, 2 * Math.PI)
 						}
+						// else if(_this.selectedPattern.shape === "triangle"){
+						// 	ctx.moveTo(2*pattern.left - 2*content.left, 2*pattern.bottom - 2*content.top);
+						// 	ctx.lineTo(2*pattern.right - 2*content.left, 2*pattern.bottom - 2*content.top);
+						// 	ctx.lineTo(pattern.right - content.left, 2*pattern.top - 2*content.top);
+						// 	ctx.closePath();
+						// }
 						ctx.clip()
 						ctx.drawImage(res.path, 0, 0, res.width, res.height, 2*picture.left - 2*content.left, 2*picture.top - 2*content.top, 2*picture.width, 2*picture.height);
 						ctx.restore()
@@ -380,7 +386,7 @@
 				
 			},
 			async getParams(){
-				return await this.$http.get('/picture/getPostObjectParams', {}).then(res => {
+				return await this.$http.get('/product/getPostObjectParams', {}).then(res => {
 					if(res.data.code !== 0){
 						throw new Error("获取签名失败!");
 					}
