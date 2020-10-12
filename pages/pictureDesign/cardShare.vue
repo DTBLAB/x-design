@@ -186,9 +186,9 @@
 						ctx.save()
 						ctx.beginPath()
 						//ctx.arc(589/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 51/_this.rpx, 0, 2 * Math.PI)
-						ctx.rect(538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
+						ctx.rect(538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 102/_this.rpx*2, 102/_this.rpx*2)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 102/_this.rpx*2, 102/_this.rpx*2)
 				        ctx.restore()
 				        ctx.draw(true, ()=>{
 							_this.isMiniProgramCodeLoaded = true;

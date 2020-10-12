@@ -1,7 +1,7 @@
 <template>
 	<view class="page-container">
-		<image class="card" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
-		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
+		<image class="card" style="width: 692rpx" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
+		<canvas class="card-canvas" style="width: 1384rpx" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
 		<view class="save-button" @click="toShoppingCart">去下单生产</view>
 	</view>
@@ -17,10 +17,13 @@
 				rpx: 750/uni.getSystemInfoSync().windowWidth,
 				canvasHeight: '2112rpx',
 				cardHeight: '1056rpx',
+				background: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/cardBackground.png',
 				url: '',
 				pictureUrl: '',
 				pictureWidth: 0,
 				pictureHeight: 0,
+				productWidth: 0,
+				productHeight: 0,
 				styleName: '',
 				isAvatarLoaded: false,
 				isMiniProgramCodeLoaded: false,
@@ -31,6 +34,7 @@
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			this.name = option.name;
 			this.url = option.url;
+			console.log(this.name, this.url)
 		},
 		onShow: function(){
 			
@@ -46,14 +50,30 @@
 			});
 			
 			uni.getImageInfo({
-			    src: this.url,
+			    src: this.background,
 				success: function(image){
 					_this.pictureWidth = image.width;
 					_this.pictureHeight = image.height;
 					_this.pictureUrl = image.path;
-					_this.cardHeight = (image.height/image.width*624 + 354) + 'rpx';
-					_this.canvasHeight = (image.height/image.width*624 + 354)*2 + 'rpx';
-					_this.generateCard();
+					_this.cardHeight = (image.height/image.width*644 + 238) + 'rpx';
+					_this.canvasHeight = (image.height/image.width*644 + 238)*2 + 'rpx';
+					if(_this.productHeight !== 0 ){
+						_this.generateCard();	
+					}
+				},
+				fail: function(error){
+					console.log(error);
+				}
+			});
+			
+			uni.getImageInfo({
+			    src: this.url,
+				success: function(image){
+					_this.productWidth = image.width;
+					_this.productHeight = image.height;
+					if(_this.pictureHeight !== 0 ){
+						_this.generateCard();	
+					}
 				},
 				fail: function(error){
 					console.log(error);
@@ -72,9 +92,9 @@
 					uni.canvasToTempFilePath({
 					  x: 0,
 					  y: 0,
-					  width: 662/_this.rpx*2,
+					  width: 692/_this.rpx*2,
 					  height: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
-					  destWidth: 662/_this.rpx*2,
+					  destWidth: 692/_this.rpx*2,
 					  destHeight: parseInt(_this.canvasHeight.replace('rpx', ''))/_this.rpx,
 					  canvasId: 'card-canvas',
 					  fileType: 'png',
@@ -107,19 +127,25 @@
 				
 				// ctx.draw();
 				
-				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 662/this.rpx*2, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
+				// console.log(_this.pictureUrl, _this.url, _this.avatarUrl)
+				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 692/this.rpx*2, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
 				
-				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*624/this.rpx*2;
-				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 20/this.rpx*2, 24/this.rpx*2, 624/this.rpx*2, pictureHeightInCanvas);
+				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*644/this.rpx*2;
+				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 24/this.rpx*2, 24/this.rpx*2, 644/this.rpx*2, pictureHeightInCanvas);
 				
-				ctx.beginPath();
-				ctx.lineWidth=1*2;
-				
-				ctx.setLineDash([6/this.rpx*2, 6/this.rpx*2]);
-				ctx.strokeStyle="#CDCDCD"; // Green path
-				ctx.moveTo(0, 202/this.rpx*2 + pictureHeightInCanvas);
-				ctx.lineTo(662/this.rpx*2, 202/this.rpx*2 + pictureHeightInCanvas);
-				ctx.stroke(); // Draw it
+				let h, w, l, t;
+				if(this.productWidth/this.productHeight >= 386/504){
+					w = 386/this.rpx*2;
+					h = 386*this.productHeight/this.productWidth/this.rpx*2;
+					l = 152/this.rpx*2;
+					t = ((504 - 386*this.productHeight/this.productWidth)/2 + 250)/this.rpx*2;
+				}else{
+					h = 504/this.rpx*2;
+					w = 504*this.productWidth/this.productHeight/this.rpx*2;
+					t = 250/this.rpx*2;
+					l = ((386 - 504*this.productWidth/this.productHeight)/2 + 152)/this.rpx*2;
+				}
+				ctx.drawImage(_this.url, 0, 0, this.productWidth, this.productHeight, l ,t, w, h);
 				
 				ctx.draw();
 				
@@ -133,40 +159,17 @@
 				// 设置水平对齐方式
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText(this.nickname, 138/this.rpx*2, 246/_this.rpx*2 + pictureHeightInCanvas);
-				ctx.fillText("创作了一张", 138/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
-				
-				ctx.font = "bold "+fontsize+"px 'PingFang SC'";
-				ctx.fillText(this.styleName+"风格", 258/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
-				ctx.font = fontsize+"px 'PingFang SC'";
-				ctx.fillText("的图片", (258+24*(this.styleName.length+2))/this.rpx*2, 278/_this.rpx*2 + pictureHeightInCanvas);
-				
-				ctx.font = "bold "+fontsize+"px 'PingFang SC'";
-				let commonSayings = sayings.commonSayings;
-				let index = Math.floor(Math.random()*commonSayings.length);
-				let saying = commonSayings[index];
-				let length = saying.length - 1;
-				
-				ctx.textAlign = "right";
-				ctx.fillText(saying[length], 634/this.rpx*2, 148/_this.rpx*2 + pictureHeightInCanvas);
-				
-				ctx.textAlign = "center";
-				if(length === 2 ){
-					ctx.fillText(saying[0], 331/this.rpx*2, 60/_this.rpx*2 + pictureHeightInCanvas);
-					ctx.fillText(saying[1], 331/this.rpx*2, 92/_this.rpx*2 + pictureHeightInCanvas);
-				}else{
-					ctx.fillText(saying[0], 331/this.rpx*2, 76/_this.rpx*2 + pictureHeightInCanvas);
-				}
-				
-				
+				ctx.fillText(this.nickname, 144/this.rpx*2, 92/_this.rpx*2 + pictureHeightInCanvas);
+				ctx.fillText("创作了一款" + this.name + ", 你也来试试吧~", 144/this.rpx*2, 124/_this.rpx*2 + pictureHeightInCanvas);
+
 				uni.getImageInfo({
 				    src: this.avatarUrl,
 				    success: function (res) {
 						ctx.save()
 						ctx.beginPath()
-						ctx.arc(73/_this.rpx*2, 273/_this.rpx*2 + pictureHeightInCanvas, 39/_this.rpx*2, 0, 2 * Math.PI)
+						ctx.arc(81/_this.rpx*2, 121/_this.rpx*2 + pictureHeightInCanvas, 39/_this.rpx*2, 0, 2 * Math.PI)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 34/_this.rpx*2, 234/_this.rpx*2 + pictureHeightInCanvas, 78/_this.rpx*2, 78/_this.rpx*2)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 42/_this.rpx*2, 82/_this.rpx*2 + pictureHeightInCanvas, 78/_this.rpx*2, 78/_this.rpx*2)
 				        ctx.restore()
 						ctx.draw(true, ()=>{
 							_this.isAvatarLoaded = true;
@@ -183,11 +186,7 @@
 				    src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/miniProgramCode.png',
 				    success: function (res) {
 						ctx.save()
-						ctx.beginPath()
-						//ctx.arc(589/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 51/_this.rpx, 0, 2 * Math.PI)
-						ctx.rect(538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
-						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 51*2, 51*2)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 64/_this.rpx*2 + pictureHeightInCanvas, 112/_this.rpx*2, 112/_this.rpx*2)
 				        ctx.restore()
 				        ctx.draw(true, ()=>{
 							_this.isMiniProgramCodeLoaded = true;

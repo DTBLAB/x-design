@@ -55,7 +55,7 @@
             "style" : {}
         }
         ,{
-            "path" : "pages/mine/myPhotos",
+            "path" : "pages/mine/myPictures",
             "style" : {
 				"navigationBarTitleText" : "我的图片"
 			}
@@ -78,6 +78,21 @@
 				"navigationBarTitleText" : "签名"
 			}
         }
+		,{
+		    "path" : "pages/product/cardShare",
+			"style" : {
+			    "navigationBarTitleText" : "预览",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+		,{
+		    "path" : "pages/mine/pictureDetail",
+			"style" : {
+			    "navigationBarTitleText" : "图片详情",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+		
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "black",

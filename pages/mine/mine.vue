@@ -40,14 +40,14 @@
 		<view class="mine-block">
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的图片</view>
-				<navigator class="mine-block__more" url="./myPhotos">
+				<navigator class="mine-block__more" url="./myPictures">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
 			</view>
 			<view class="mine-block__list-container">
 				<view class="mine-block__list">
-					<image class="mine-block__item" v-for="(item, index) in myImages" :key="index" :src="item.src"></image>
+					<image class="mine-block__item" v-for="(item, index) in myPictures" :key="index" :src="item.url" mode="aspectFill"></image>
 				</view>
 			</view>
 		</view>
@@ -61,7 +61,7 @@
 			</view>
 			<view class="mine-block__list-container">
 				<view class="mine-block__list">
-					<image class="mine-block__item" v-for="(item, index) in myOrders" :key="index" :src="item.img"></image>
+					<image class="mine-block__item" v-for="(item, index) in myProducts" :key="index" :src="item.preview" mode="aspectFit"></image>
 				</view>
 			</view>
 		</view>
@@ -95,21 +95,36 @@
 				// isAuthorized: !!uni.getStorageSync('token'),
 				// photo: uni.getStorageSync('photo') || '/static/image/mine/photo.png',
 				// nickname: uni.getStorageSync('nickname') || '点击登录',
-				myImages:[
-					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库1.png', url:''},
-					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库2.png', url:''},
-					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库3.png', url:''},
-					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库4.png', url:''},
-					{src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/图库5.png', url:''}	
-				],
-				myOrders:[
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png', url:''}
+				myPictures:[],
+				myProducts:[
+					{preview: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png'},
+					{preview: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png'}
 				],
 				orderNums:[0, 3, 4, 2]
 			}
 		},
 		computed: mapState(['hasLogin', 'nickname' ,'avatarUrl']),
+		mounted(){
+			let _this = this;
+			this.$http.get('/picture/getList').then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				_this.myPictures = res.data.data;
+				
+			}).catch(err => {
+				uni.showToast({
+				    title: "网络问题，图片加载失败",
+				    duration: 1000,
+					icon: 'none'
+				});
+			});
+		},
 		methods: {
 			
 		}
