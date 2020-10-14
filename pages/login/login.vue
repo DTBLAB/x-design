@@ -45,7 +45,7 @@
 						    title: '登录成功',
 						    duration: 2000
 						});
-						uni.navigateBack();
+						uni.redirectTo({url: '/pages/mine/mine'});
 					}else{
 						uni.showToast({
 						    title: result.data.message,

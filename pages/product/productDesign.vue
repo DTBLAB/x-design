@@ -22,7 +22,6 @@
 					  direction="all"
 					  scale="true"
 					  :scale-max="getMaxScale"
-					  scale-min="0.25"
 					  id="signature"
 					>
 						<image class="signature-picture" :src="signature"></image>

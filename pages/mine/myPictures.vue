@@ -18,7 +18,7 @@
 				myPictures: []
 			}
 		},
-		mounted() {
+		onShow() {
 			let _this = this;
 			this.$http.get('/picture/getList').then(res => {
 				if(res.data.code !== 0){

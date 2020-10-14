@@ -64,9 +64,9 @@
 		data() {
 			return {
 				bannerImages: [
-					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png',
-					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
-					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
+					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png'
+					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
+					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
 				hotStyles: ['赛博朋克', '和玺彩画', '浮世绘', '水墨画', '湿拓画'],
 				commodities: [

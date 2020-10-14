@@ -14,10 +14,10 @@
 		<view class="add-panel" v-show="ifShowAddPanel">
 			<image class="add-panel__close" src="/static/image/add/close.png" @click="hideAddPanel"></image>
 			<view class="add-panel__selections">
-				<navigator class="add-panel__selection" url="/pages/pictureDesign/pictureDesign">
+				<view class="add-panel__selection" @click="choosePicture">
 					<image class="add-panel__selection__button" src="/static/image/add/picture.png"></image>
-					<view class="add-panel__selection__text">定制图片</view>
-				</navigator>
+					<view class="add-panel__selection__text">设计图片</view>
+				</view>
 				<navigator class="add-panel__selection" url="/pages/productList/productList">
 					<image class="add-panel__selection__button" src="/static/image/add/product.png"></image>
 					<view class="add-panel__selection__text">定制商品</view>
@@ -64,7 +64,19 @@
 			},
 			hideAddPanel(){
 				this.ifShowAddPanel = false;
-			}
+			},
+			choosePicture(){
+				let _this = this;
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    success: function (res) {
+				        uni.navigateTo({
+				        	url: `/pages/pictureDesign/pictureDesign?url=${res.tempFilePaths[0]}`
+				        });
+				    }
+				});
+			},
 			
 		}
 			

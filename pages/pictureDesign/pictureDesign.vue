@@ -47,7 +47,7 @@
 		<view class="picture-finish" v-if="isTransferred" @click="finishDesign">完成</view>
 		<view class="right-bar" v-if="isTransferred">
 			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
-			<button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button>
+			<!-- <button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button> -->
 		</view>
 		
 		<!-- <view class="share-panel-cover" v-if="isSharing">
@@ -136,6 +136,12 @@
 				// this.pictureUrl = this.adjustedPictureUrl;
 				this.selectedTransferredPicture = this.adjustedPictureUrl;
 				this.saveAdjustment(null);
+			}
+		},
+		onLoad(option){
+			let url = option.url;
+			if(url){
+				this.loadPicture(url);
 			}
 		},
 		methods: {

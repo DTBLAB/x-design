@@ -45,12 +45,12 @@ const http = {
 		                uni.removeStorageSync({key: 'token'});
 		                setTimeout(function() {
 		                    uni.reLaunch({
-		                        url: '/pages/mine/mine'
+		                        url: '/pages/login/login'
 		                    })
 		                }, 1500);
 		                return;
 		            }
-		            if (res.statusCode != 200) {
+		            else if (res.statusCode != 200) {
 		                uni.showToast({
 		                    title: res.data.msg || '网络异常',
 		                    duration: 1500,
@@ -115,14 +115,13 @@ const http = {
 		                    icon: "none"
 		                })
 		                uni.removeStorageSync({key: 'token'});
-		                setTimeout(function() {
-		                    uni.reLaunch({
-		                        url: '/pages/mine/mine'
-		                    })
-		                }, 1500);
-		                return;
+		               setTimeout(function() {
+		                   uni.reLaunch({
+		                       url: '/pages/login/login'
+		                   })
+		               }, 1500);
 		            }
-		            if (res.statusCode != 200) {
+		            else if (res.statusCode != 200) {
 		                uni.showToast({
 		                    title: res.data.msg || '网络异常',
 		                    duration: 1500,

@@ -96,15 +96,12 @@
 				// photo: uni.getStorageSync('photo') || '/static/image/mine/photo.png',
 				// nickname: uni.getStorageSync('nickname') || '点击登录',
 				myPictures:[],
-				myProducts:[
-					{preview: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png'},
-					{preview: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png'}
-				],
+				myProducts:[],
 				orderNums:[0, 3, 4, 2]
 			}
 		},
 		computed: mapState(['hasLogin', 'nickname' ,'avatarUrl']),
-		mounted(){
+		onShow(){
 			let _this = this;
 			this.$http.get('/picture/getList').then(res => {
 				if(res.data.code !== 0){
@@ -116,6 +113,24 @@
 					return;
 				}
 				_this.myPictures = res.data.data;
+				
+			}).catch(err => {
+				uni.showToast({
+				    title: "网络问题，图片加载失败",
+				    duration: 1000,
+					icon: 'none'
+				});
+			});
+			this.$http.get('/product/getList').then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				_this.myProducts = res.data.data;
 				
 			}).catch(err => {
 				uni.showToast({
