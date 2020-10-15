@@ -17,7 +17,7 @@
 							<b>{{p.price}}</b>
 						</view>
 						<view class="">
-							<uni-number-box :min="0" :max="9"></uni-number-box>
+							<wm-numberBox :min="0" :max="9" model="1"></wm-numberBox>
 						</view>
 					</view>
 				</view>
@@ -53,7 +53,7 @@
 </template>
 
 <script>
-	import uniNumberBox from "../../components/uni-number-box/uni-number-box.vue"
+	import wmNumberBox from "@/components/wm-numberBox/wm-number-box.vue"
 	import category from '../../config/category'
 	export default {
 		data() {
@@ -67,7 +67,7 @@
 			this.getdata();
 		},
 		components:{
-			uniNumberBox
+			wmNumberBox
 		},
 		methods: {
 			changeAll(e) {
@@ -83,7 +83,7 @@
 						});
 						return;
 					}
-					_this.myProducts = res.data.data;
+					this.myProducts = res.data.data;
 								
 				}).catch(err => {
 					uni.showToast({
