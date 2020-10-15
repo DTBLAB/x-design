@@ -39,13 +39,8 @@
 		</view>
 		<view class="mine-block">
 			<view class="mine-block__top">
-<<<<<<< HEAD
 				<view class="mine-block__title">图片库</view>
 				<navigator class="mine-block__more" url="../myPicture/myPicture">
-=======
-				<view class="mine-block__title">我的图片</view>
-				<navigator class="mine-block__more" url="./myPhotos">
->>>>>>> 583a07fb8b22cecbb1f04554ae1edae97ccc8593
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -59,7 +54,7 @@
 		<view class="mine-block">
 			<view class="mine-block__top">
 				<view class="mine-block__title">购物车</view>
-				<navigator class="mine-block__more">
+				<navigator class="mine-block__more" url="../cart/cart">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>
@@ -129,13 +124,10 @@
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单1.png', url:''},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/mine/订单2.png', url:''}
 				],
-<<<<<<< HEAD
 				myCarts: [
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png', url:''}
-				]
-=======
+				],
 				orderNums:[0, 3, 4, 2]
->>>>>>> 583a07fb8b22cecbb1f04554ae1edae97ccc8593
 			}
 		},
 		computed: mapState(['hasLogin', 'nickname' ,'avatarUrl']),

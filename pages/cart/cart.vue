@@ -1,20 +1,20 @@
 <template>
 	<view class="">
-		<view v-for="(p,i) in lists" :key="i" class="cart-content">
+		<view v-for="(p,i) in myProducts" :key="i" class="cart-content">
 			<view class="cart-items">
 				<view>
 					<checkbox class="cart-items__checkbox"></checkbox>
 				</view>
 				<view class="cart-items__item">
-					<image src="https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png" mode="" class="cart-items__item__image"></image>
+					<image :src="p.preview" mode="aspectFit" class="cart-items__item__image"></image>
 				</view>
 				<view class="">
 					<view class="cart-title">
-						抱枕
+						{{categoryList[p.category].name}}
 					</view>
 					<view class="cart-numbers">
 						<view class="cart-numbers__font">
-							<b>¥26</b>
+							<b>{{p.price}}</b>
 						</view>
 						<view class="">
 							<uni-number-box :min="0" :max="9"></uni-number-box>
@@ -54,11 +54,13 @@
 
 <script>
 	import uniNumberBox from "../../components/uni-number-box/uni-number-box.vue"
+	import category from '../../config/category'
 	export default {
 		data() {
 			return {
 				checked:true,
-				lists:[]
+				myProducts:[],
+				categoryList: category
 			}
 		},
 		onLoad() {
@@ -72,29 +74,24 @@
 				this.checked?this.checked=false:this.checked=true;
 			},
 			getdata() {
-				var data=[{
-					id:1,
-					img:"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png",
-					title:"抱枕",
-					price:"26",
-					num:1,
-					checked:true
-				},{
-					id:2,
-					img:"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png",
-					title:"帆布袋",
-					price:"26",
-					num:1,
-					checked:true
-				},{
-					id:3,
-					img:"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/111111@3x.png",
-					title:"抱枕",
-					price:"26",
-					num:1,
-					checked:true
-				}];
-				this.lists=data;
+				this.$http.get('/product/getList').then(res => {
+					if(res.data.code !== 0){
+						uni.showToast({
+							title: res.data.message,
+							duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.myProducts = res.data.data;
+								
+				}).catch(err => {
+					uni.showToast({
+						title: "网络问题，图片加载失败",
+						duration: 1000,
+						icon: 'none'
+					});
+				});
 			}
 		}
 	}
