@@ -68,7 +68,9 @@
 				rawPictureUrl: '',
 				transferredPictureUrl: '',
 				adjustingPictureUrl: '',
-				attributes:['opacity', 'saturation', 'contrast', 'brightness', 'exposure'],
+				attributes:['opacity'
+				// , 'saturation', 'contrast', 'brightness', 'exposure',
+				],
 				selectedAttribute: 'opacity',
 				values: {
 					opacity: 100,
@@ -157,16 +159,19 @@
 					ctx.globalAlpha = 1;
 					_this.previousOpacity = _this.values['opacity'];
 				}
-				ctx.draw(true, ()=>{
-					new WxCaman('adjust-canvas', _this.pictureWidth, _this.pictureHeight, function () {
-						this.brightness(_this.values['brightness']);
-						this.contrast(_this.values['contrast']);
-						this.saturation(_this.values['saturation']);
-						this.exposure(_this.values['exposure'])
-						this.render(function(){
-							_this.canvasToPicture();
-						});
-					});			
+				// ctx.draw(true, ()=>{
+				// 	new WxCaman('adjust-canvas', _this.pictureWidth, _this.pictureHeight, function () {
+				// 		this.brightness(_this.values['brightness']);
+				// 		this.contrast(_this.values['contrast']);
+				// 		this.saturation(_this.values['saturation']);
+				// 		this.exposure(_this.values['exposure'])
+				// 		this.render(function(){
+				// 			_this.canvasToPicture();
+				// 		});
+				// 	});			
+				// });
+				ctx.draw(false, ()=>{
+					_this.canvasToPicture();
 				});
 			},
 			back(){

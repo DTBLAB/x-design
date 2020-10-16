@@ -1,0 +1,148 @@
+page {
+	height: 100%;
+	background-color: #F7F7F7;
+}
+
+.cart-content {
+	margin-top: 20rpx;
+	background-color: white;
+	height: 236rpx;
+	display: flex;
+	// justify-content: space-between;
+	// align-items: center;
+}
+	.cart-items {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		&__checkbox{
+			height: 32rpx;
+			width: 32rpx;
+			transform:scale(0.8);
+			margin-left: 32rpx;
+			border-radius: 16rpx;
+		}
+		&__item {
+			width: 188rpx;
+			height: 188rpx;
+			border-radius: 6rpx;
+			margin-left: 28rpx;
+			background-color: #F7F7F7;
+			&__image {
+				width: 200rpx;
+				height: 180rpx;
+				display: block;
+				margin: 0;
+			}
+		}
+	}
+
+	.cart-title{
+		font-size: 28rpx;
+		margin-top: 24rpx;
+		margin-left: 28rpx;
+		
+	}
+	.cart-numbers {
+		width: 410rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-left: 28rpx;
+		margin-top: 102rpx;
+		&__font{
+			font-size: 30rpx;
+			color: #F17D16;
+		}
+	}
+	
+.bottom-bar {
+	position: fixed;
+	background-color: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	height: 98rpx;
+	align-items: center;
+	width: 750rpx;
+	bottom: 68rpx;
+	// padding-left: 32rpx;
+	// padding-right: 32rpx;
+	
+	// .checkbox-round {
+ //    border-radius: 50%;
+ //    vertical-align: middle;
+ //    border: 1px solid #ddd;
+ //    -webkit-appearance: none;
+ //    outline: none;
+ //    cursor: pointer;
+	// }
+
+	// .checkbox-round:checked {
+	// 	background-color: gray;
+	// }
+	.select-all{
+		font-size: 28rpx;
+		padding-left: 32rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+	}
+		.checkbox{
+			// position: fixed;
+			// vertical-align: middle;
+			padding-bottom: 8rpx;
+		}
+		.select-text{
+			padding-left: 16rpx;
+		}
+		
+	.settle-all{
+		padding-right: 32rpx;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		
+	}
+		.settle {
+			width: 240rpx;
+			height: 78rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #333333;
+			border-radius: 6rpx;
+			// padding-right: 32rpx;
+		}
+			.settle-accounts {
+				font-size: 32rpx;
+				font-weight: medium;
+				color: white;
+			}
+		.total {
+			// position: fixed;
+			font-size: 28rpx;
+			padding-right: 24rpx;
+			padding-top: 34rpx;
+			display: inline-block;
+			vertical-align: bottom;
+		}
+			// .border {
+			// 	font-size: 36rpx;
+			// }
+}
+.background {
+	position: fixed;
+	background-color: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	height: 68rpx;
+	align-items: center;
+	width: 750rpx;
+	bottom: 0rpx;
+}
+
+.check-all{
+	transform:scale(0.8);
+	margin-top: 6rpx;
+}

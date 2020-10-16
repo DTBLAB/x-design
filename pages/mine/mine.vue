@@ -54,7 +54,7 @@
 		<view class="mine-block">
 			<view class="mine-block__top">
 				<view class="mine-block__title">购物车</view>
-				<navigator class="mine-block__more">
+				<navigator class="mine-block__more" url="/pages/cart/cart">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</navigator>

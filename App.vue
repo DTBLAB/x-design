@@ -50,4 +50,27 @@ page{
 	src: url('/static/uni.ttf');
 }
 /* #endif */
+
+checkbox .uni-checkbox-input.uni-checkbox-input-checked {
+ border: 1px solid #333333;
+ background: #FC9A04;
+ color: #FC9A04 !important;
+}
+
+checkbox .uni-checkbox-input.uni-checkbox-input-checked:before {
+ font-size: 18px;
+}
+checkbox .wx-checkbox-input {
+ border-radius: 50%;
+}
+
+checkbox .wx-checkbox-input.uni-checkbox-input-checked {
+ border: 1px solid #333333;
+ background: #FC9A04;
+ color: #FC9A04 !important;
+}
+
+checkbox .wx-checkbox-input.uni-checkbox-input-checked:before {
+ font-size: 18px;
+}
 </style>

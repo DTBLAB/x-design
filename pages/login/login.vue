@@ -1,6 +1,6 @@
 <template>
 	<view class="login-container">
-		<view class="login-logo"></view>
+		<image class="login-logo" src="../../static/image/logo.png"></image>
 		<view class="login-name">想定</view>
 		<button class="login-button" open-type="getUserInfo" lang="zh_CN" @getuserinfo="getUserInfo">{{provider}}登录</button>
 		<navigator url="/pages/login/phone" class="login-link">手机号登录/注册</navigator>
