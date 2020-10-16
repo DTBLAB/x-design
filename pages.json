@@ -99,6 +99,20 @@
 				"backgroundColor": "#FFFFFF"
 			}
 		}
+		,{
+		    "path" : "pages/address/address",
+			"style" : {
+			    "navigationBarTitleText" : "收货地址",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+		,{
+		    "path" : "pages/address/addAddress",
+			"style" : {
+			    "navigationBarTitleText" : "添加地址",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
 		
     ],
     "globalStyle" : {

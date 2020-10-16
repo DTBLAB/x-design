@@ -1,0 +1,100 @@
+page {
+	height: 100%;
+	background-color: #F7F7F7;
+}
+
+.myAddress {
+	// height: 100%;
+	// overflow: hidden;
+	// display: flex;
+	// flex-flow: column;
+	// flex-direction: column;
+	// margin: 0 auto;
+	display: flex;
+	justify-content: center;
+
+	.noAddress {
+		font-size: 32rpx;
+		font-weight: medium;
+		color: #999999;
+		padding-top: 580rpx;
+	}
+	
+	.item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 750rpx;
+		background-color: #FFFFFF;
+		margin-top: 16rpx;
+		
+		.address {	
+			width: 656rpx;
+			height: 148rpx;
+			
+			.address-item-top {
+				width: 656rpx;
+				height: 40rpx;
+				padding-left: 32rpx;
+				padding-top: 20rpx;
+				
+				.name {
+					font-size: 28rpx;
+				}
+				
+				.number {
+					padding-left: 28rpx;
+					font-size: 28rpx;
+					color: #999999;
+				}
+				
+			}
+			
+			.address-item-bottom {
+				padding-top: 16rpx;
+				padding-left: 32rpx;
+				width: 656rpx;
+				height: 40rpx;
+							
+				.default {
+					width: 64rpx;
+					height: 28rpx;
+					background-color: rgba(252,154,4,0.2);
+					font-size: 20rpx;
+					color: rgba(252,154,4,1);
+					padding-bottom: 2rpx;
+					margin-right: 16rpx;
+				}
+				
+				.detailed {
+					font-size: 28rpx;
+				}
+			}
+		}
+		.edit {
+			padding-right: 32rpx;
+			width: 30rpx;
+			height: 26rpx; 
+			
+		}
+	}
+	
+
+	
+	.add {
+		width: 642rpx;
+		height: 90rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #333333;
+		border-radius: 6rpx;
+		position: fixed;
+		bottom: 96rpx;
+	}
+		.addAddress {
+			font-size: 32rpx;
+			font-weight: medium;
+			color: white;
+		}
+}

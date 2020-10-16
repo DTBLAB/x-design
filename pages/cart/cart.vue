@@ -145,7 +145,9 @@
 					}
 				}
 				console.log(items);
-				
+				uni.navigateTo({
+					url: "/pages/address/address"
+				});
 			}
 		}
 	}
