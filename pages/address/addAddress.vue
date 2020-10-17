@@ -41,27 +41,29 @@
 					<view class="label">
 						详细地址
 					</view>
-					<input class="input" type="text" placeholder="如道路,门牌号,校区,楼栋号等" v-model="form.street"/>
+					<input class="input" type="text" placeholder="如道路,小区,楼栋号等" v-model="form.street"/>
 				</cell>
 				<cell class="form-input">
 					<label class="form-input__checkbox">
-						<checkbox class="form-input__button" :value="checked" /><text style="font-size: 28rpx; color: #999999;">设为默认地址</text>
+						<evan-radio class="form-input__radio" :label="isDefault" clearable primary-color="#FC9A04" icon-size="14"></evan-radio>
 					</label>
+					<text style="font-size: 28rpx; color: #999999;">设为默认地址</text>
 				</cell>
 			</list>
 		</view>
 		<view class="save">
-			<navigator type="button" @click="submit" class="save__text">保存</navigator>
+			<view type="button" @click="submit" class="save__text">保存</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	  import LbPicker from '@/components/lb-picker'
-	  import areaData from '../area-data-min'
+	import LbPicker from '@/components/lb-picker'
+	import EvanRadio from '@/components/evan-radio/evan-radio'
+	import areaData from './area-data-min'
 	export default {
 		components: {
-		  LbPicker
+		  LbPicker, EvanRadio
 		},
 		data() {
 			return {
@@ -74,20 +76,21 @@
 				label3: '',
 				
 				list1: areaData,
-				list2: []
+				list2: [],
+				isDefault: false
 			}
 		},
-		onReady () {
-		  this.$nextTick(() => {
-		    // 此处可以调用getColumnsInfo方法获取默认值的选项信息
-		    const info1 = this.$refs.picker4.getColumnsInfo(this.value4)
-		    const info2 = this.$refs.picker4.getColumnsInfo(this.value5)
-		    console.log('根据value获取的信息：', info1)
-		    console.log('根据value获取的信息：', info2)
-		    this.label4 = info1.item.map(m => m.label).join('-')
-		    this.label5 = info2.item.map(m => m.label).join('-')
-		  })
-		},
+		// onReady () {
+		//   this.$nextTick(() => {
+		//     // 此处可以调用getColumnsInfo方法获取默认值的选项信息
+		//     const info1 = this.$refs.picker3.getColumnsInfo(this.value4)
+		//     const info2 = this.$refs.picker3.getColumnsInfo(this.value5)
+		//     console.log('根据value获取的信息：', info1)
+		//     console.log('根据value获取的信息：', info2)
+		//     this.label4 = info1.item.map(m => m.label).join('-')
+		//     this.label5 = info2.item.map(m => m.label).join('-')
+		//   })
+		// },
 		methods: {
 			handleTap (picker) {
 			    this.$refs[picker].show()

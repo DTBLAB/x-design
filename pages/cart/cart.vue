@@ -2,9 +2,7 @@
 	<view class="">
 		<view v-for="(p,i) in myProducts" :key="i" class="cart-content">
 			<view class="cart-items">
-				<view>
-					<checkbox class="cart-items__checkbox" :checked="statusList[i]" @click="select(i)"></checkbox>
-				</view>
+				<evan-checkbox class="cart-items__checkbox" v-model="statusList[i]" primary-color="#FC9A04" icon-size="16" @change="select(i)"></evan-checkbox>
 				<view class="cart-items__item">
 					<image :src="p.preview" mode="aspectFit" class="cart-items__item__image"></image>
 				</view>
@@ -26,7 +24,7 @@
 		<view class="bottom-bar">
 			<view class="select-all">
 				<view class="checkbox">
-					<radio :checked="checked" @click="changeAll" color="#FC9A04" class="check-all"></radio>
+					<evan-checkbox v-model="checked" primary-color="#FC9A04" icon-size="16" @change="changeAll"></evan-checkbox>
 				</view>
 				<view class="select-text">
 					全选
@@ -52,10 +50,13 @@
 <script>
 	import wmNumberBox from "@/components/wm-numberBox/wm-number-box.vue"
 	import category from '../../config/category'
+	import EvanCheckbox from '@/components/evan-checkbox/evan-checkbox'
 	export default {
 		data() {
 			return {
 				checked:false,
+				// selected: true,
+				// unselected: false,
 				myProducts:[],
 				categoryList: category,
 				statusList: [],
@@ -68,11 +69,11 @@
 			this.getdata();
 		},
 		components:{
-			wmNumberBox
+			wmNumberBox, EvanCheckbox
 		},
 		methods: {
 			changeAll(e) {
-				this.checked = !this.checked;
+				// console.log(this.checked);
 				for(let i=0; i<this.statusList.length; i++){
 					this.statusList[i] = this.checked;
 				}
@@ -84,7 +85,6 @@
 			},
 			checkAll(i){
 				// console.log(i, this.statusList[i]);
-				this.statusList[i] = !this.statusList[i];
 				for(let i=0; i<this.statusList.length; i++){
 					if(!this.statusList[i]){
 						this.checked = false;

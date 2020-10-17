@@ -52,7 +52,7 @@
 			</template>
 		</view>
 		<view class="add">
-			<navigator url="../addAddress/addAddres" class="addAddress">+添加地址</navigator>
+			<navigator url="/pages/address/addAddress" class="addAddress">+添加地址</navigator>
 		</view>
 	</view>
 

@@ -66,10 +66,10 @@
 			</view>
 		</view>
 		<view class="mine-bottom">
-			<view class="mine-bottom__item">
+			<navigator class="mine-bottom__item" url="/pages/address/address">
 				<view class="mine-bottom__item__text">地址管理</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
-			</view>
+			</navigator>
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">联系客服</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
