@@ -106,26 +106,29 @@
 		methods: {
 			handleTap (picker) {
 			    this.$refs[picker].show()
-			  },
-			  handleChange (e) {
-			    console.log('change::', e)
-			  },
-			  handleConfirm (e) {
-			    // 如果存在多个picker，可以在picker上设置dataset属性，confirm中获取，就能区分是哪个picker了
-			    console.log('confirm::', e)
-			    if (e) {
-			      const name = e.dataset.name
-			      const label = e.item.map(m => m.label).join('-')
-			      if (name && label) {
-			        this[name] = label
-			      }
-			    }
-			  },
-			  handleCancel (e) {
-			    console.log('cancel::', e)
-			  }
+			},
+			handleChange (e) {
+				console.log('change::', e)
+			},
+			handleConfirm (e) {
+				// 如果存在多个picker，可以在picker上设置dataset属性，confirm中获取，就能区分是哪个picker了
+				console.log('confirm::', e)
+				if (e) {
+					const name = e.dataset.name
+					const label = e.item.map(m => m.label).join('-')
+					if (name && label) {
+						this[name] = label
+					}
+				}
+			},
+			handleCancel (e) {
+				console.log('cancel::', e)
+			},
+			submit(){
+				console.log(this.area);
 			}
 		}
+	}
 </script>
 
 <style lang="less">

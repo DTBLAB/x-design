@@ -1,12 +1,12 @@
 <template>
-	<view class="">
+	<view class="page-container">
 		<view v-for="(p,i) in myProducts" :key="i" class="cart-content">
 			<view class="cart-items">
 				<evan-checkbox class="cart-items__checkbox" v-model="statusList[i]" primary-color="#FC9A04" icon-size="16" @change="select(i)"></evan-checkbox>
 				<view class="cart-items__item">
 					<image :src="p.preview" mode="aspectFit" class="cart-items__item__image"></image>
 				</view>
-				<view class="">
+				<view class="cart-items__body">
 					<view class="cart-title">
 						{{categoryList[p.category].name}}
 					</view>
