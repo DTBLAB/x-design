@@ -3,7 +3,8 @@
 		<image class="card" style="width: 692rpx" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" style="width: 1384rpx" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
-		<view class="save-button" @click="toShoppingCart">去下单生产</view>
+		<!-- <view class="save-button" @click="toShoppingCart">去下单生产</view> -->
+		<view class="save-button" @click="saveOriginal">去下单生产</view>
 	</view>
 </template>
 
@@ -19,6 +20,7 @@
 				cardHeight: '1056rpx',
 				background: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/cardBackground.png',
 				url: '',
+				original: '',
 				pictureUrl: '',
 				pictureWidth: 0,
 				pictureHeight: 0,
@@ -34,6 +36,7 @@
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			this.name = option.name;
 			this.url = option.url;
+			this.original = option.original;
 			console.log(this.name, this.url)
 		},
 		onShow: function(){
@@ -196,6 +199,14 @@
 				    },
 					fail: function(err) {
 						console.log(err);
+					}
+				});
+			},
+			saveOriginal(){
+				uni.saveImageToPhotosAlbum({
+					filePath: this.original,
+					success: function () {
+						console.log('save success');
 					}
 				});
 			}

@@ -436,7 +436,7 @@
 				      console.log('上传成功');
 					  uploadedPreview = 'https://x-design-previews.oss-cn-hangzhou.aliyuncs.com/'+previewParams.key;
 					  if(uploadedOriginal){
-						_this.saveProduct(uploadedOriginal, uploadedPreview, preview);  
+						_this.saveProduct(uploadedOriginal, uploadedPreview, preview, original);  
 					  }
 				    }
 				  },
@@ -462,7 +462,7 @@
 					throw new Error("获取签名失败!");
 				})
 			},
-			async saveProduct(uploadedOriginal, uploadedPreview, preview){
+			async saveProduct(uploadedOriginal, uploadedPreview, preview, original){
 				let _this = this;
 				this.$http.post('/product/add', {original: uploadedOriginal, preview: uploadedPreview, price: _this.productInfo.price, category: _this.categoryName}).then(res => {
 					uni.hideLoading();
@@ -474,7 +474,7 @@
 						});
 						return;
 					}
-					_this.generateCard(preview);
+					_this.generateCard(preview, original);
 				}).catch(err => {
 					console.log(err);
 					uni.hideLoading();
@@ -485,9 +485,9 @@
 					});
 				})
 			},
-			generateCard(preview){
+			generateCard(preview, original){
 				let _this = this;
-				uni.navigateTo({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}`});
+				uni.navigateTo({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}&original=${original}`});
 			},
 			
 		}

@@ -8,47 +8,27 @@
 				</view>				
 			</view>
 			<template v-else>
-				<view class="item">
+				<view v-for="(address, index) in addressList" :key="index" class="item">
 					<view class="address">
 						<view class="address-item-top">
 							<text class="name">
-								余杭⻄西兰花
+								{{address.consignee}}
 							</text>
 							<text class="number">
-								12373628265
+								{{address.phone}}
 							</text>
 						</view>
 						<view class="address-item-bottom">
-							<text v-if="true" class="default">
+							<text v-if="address.isDefault" class="default">
 								默认
 							</text>
 							<text class="detailed">
-								浙江省杭州市 XX区 XX街道 XX路路XX号
+								{{address.province}}{{address.city}} {{address.district}} {{address.detail}}
 							</text>
 						</view>
 					</view>
-					<image src="../../static/image/edit.png" mode="" class="edit"></image>
+					<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress"></image>
 				</view>
-				<view class="item">
-					<view class="address">
-						<view class="address-item-top">
-							<text class="name">
-								余杭⻄西兰花
-							</text>
-							<text class="number">
-								12373628265
-							</text>
-						</view>
-						<view class="address-item-bottom">
-							<text class="detailed">
-								浙江省杭州市 XX区 XX街道 XX路路XX号
-							</text>
-						</view>
-					</view>
-					<image src="../../static/image/edit.png" mode="" class="edit"></image>
-				</view>
-
-
 			</template>
 		</view>
 		<view class="add">
@@ -62,16 +42,20 @@
 	export default {
 		data() {
 			return {
-				address: {
-					
-				}
+				addressList: [
+					{id: 1, consignee: '西蓝花', phone: '12373628265', province: '浙江省', city: '宁波市', district: '鄞州区', detail: '江南路1689号 浙江大学软件学院', isDefault: true}
+				]
 			}
 		},
 		methods: {
-			add() {
+			// add() {
+			// 	uni.navigateTo({
+			// 		url: '/pages/address/add'
+			// 	})
+			// },
+			editAddress(aid){
 				uni.navigateTo({
-					url: '/pages/address/add'
-				})
+					url: `/pages/address/addAddress?aid=${aid}`				})
 			}
 			
 		}

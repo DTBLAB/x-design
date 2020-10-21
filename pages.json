@@ -109,7 +109,7 @@
 		,{
 		    "path" : "pages/address/addAddress",
 			"style" : {
-			    "navigationBarTitleText" : "添加地址",
+			    "navigationBarTitleText" : "添加收货地址",
 				"backgroundColor": "#FFFFFF"
 			}
 		}

@@ -6,20 +6,20 @@
 					<view class="label">
 						收货人
 					</view>
-					<input class="input" v-model="form.name" placeholder="请填写收货人姓名"/>
+					<input class="input" v-model="form.consignee" placeholder="请填写收货人姓名" maxlength="10"/>
 				</cell>
 				<cell class="form-input">
 					<view class="label">
 						手机号
 					</view>
-					<input class="input" v-model="form.mobile" placeholder="请填写收货手机号码"/>
+					<input class="input" v-model="form.phone" placeholder="请填写收货手机号码" maxlength="11"/>
 				</cell>
 				<cell class="form-input">
 					<view class="label">
 						所在地区
 					</view>
 						<lb-picker ref="picker3"
-							v-model="value3"
+							v-model="area"
 							mode="multiSelector"
 							:list="list1"
 							:level="3"
@@ -41,11 +41,11 @@
 					<view class="label">
 						详细地址
 					</view>
-					<input class="input" type="text" placeholder="如道路,小区,楼栋号等" v-model="form.street"/>
+					<input class="input" type="text" placeholder="如道路,小区,楼栋号等" v-model="form.detail"/>
 				</cell>
 				<cell class="form-input">
 					<label class="form-input__checkbox">
-						<evan-radio class="form-input__radio" :label="isDefault" clearable primary-color="#FC9A04" icon-size="14"></evan-radio>
+						<evan-checkbox class="form-input__radio" v-model="form.isDefault" clearable primary-color="#FC9A04" icon-size="14"></evan-checkbox>
 					</label>
 					<text style="font-size: 28rpx; color: #999999;">设为默认地址</text>
 				</cell>
@@ -59,25 +59,37 @@
 
 <script>
 	import LbPicker from '@/components/lb-picker'
-	import EvanRadio from '@/components/evan-radio/evan-radio'
+	import EvanCheckbox from '@/components/evan-checkbox/evan-checkbox'
 	import areaData from './area-data-min'
 	export default {
 		components: {
-		  LbPicker, EvanRadio
+		  LbPicker, EvanCheckbox
 		},
 		data() {
 			return {
+				aid: undefined,
 				form: {
-					name: '',
-					mobile: '',
-					street: ''
+					consignee: '',
+					phone: '',
+					detail: '',
+					isDefault: false,
+					province: '',
+					city: '',
 				},
-				value3: [],
+				area: [],
 				label3: '',
 				
 				list1: areaData,
 				list2: [],
 				isDefault: false
+			}
+		},
+		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			this.aid = option.aid;
+			if(this.aid){
+				uni.setNavigationBarTitle({
+					title: "编辑收货地址"
+				})
 			}
 		},
 		// onReady () {
