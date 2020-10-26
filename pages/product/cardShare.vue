@@ -4,7 +4,7 @@
 		<canvas class="card-canvas" style="width: 1384rpx" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
 		<!-- <view class="save-button" @click="toShoppingCart">去下单生产</view> -->
-		<view class="save-button" @click="saveOriginal">去下单生产</view>
+		<view class="save-button" @click="savePreview">去下单生产</view>
 	</view>
 </template>
 
@@ -202,9 +202,9 @@
 					}
 				});
 			},
-			saveOriginal(){
+			savePreview(){
 				uni.saveImageToPhotosAlbum({
-					filePath: this.original,
+					filePath: this.url,
 					success: function () {
 						console.log('save success');
 					}

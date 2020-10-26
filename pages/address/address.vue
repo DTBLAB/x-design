@@ -47,6 +47,27 @@
 				]
 			}
 		},
+		onShow(){
+			let _this = this;
+			this.$http.get('/address/getList').then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				_this.addressList = res.data.data;
+				
+			}).catch(err => {
+				uni.showToast({
+				    title: "网络问题，地址加载失败",
+				    duration: 1000,
+					icon: 'none'
+				});
+			});
+		},
 		methods: {
 			// add() {
 			// 	uni.navigateTo({

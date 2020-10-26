@@ -26,6 +26,12 @@
 					>
 						<image class="signature-picture" :src="signature"></image>
 					</movable-view>
+					<!-- <view v-if="selectedPattern.decorations" class="decorations"> -->
+					<image v-if="selectedPattern.decorations" v-for="(decoration, index) in selectedPattern.decorations" :key="index" class="decoration" :style="decoration.style" :src="decoration.url"></image>
+					<!-- </view> -->
+					<!-- <view v-if="selectedPattern.decorations" v-for="(decoration, item) in selectedPattern.decorations" :key="index" class="decoration" :style="decoration.style">
+						<image class="decoration__image" :style="decoration.style" :url="decoration.url"></image>
+					</view> -->
 				</movable-area>
 			</view>
 		</view>
@@ -58,7 +64,7 @@
 				</view>
 				
 				<view class="picture-selector__items" v-if="selectedKind === '样式'">
-					<view class="picture-selector__item" v-for="(item, index) in patterns" :key="index">
+					<view class="picture-selector__item" v-for="(item, index) in patterns" :key="index" :class="{'picture-selector__item--selected': item.name===selectedPattern.name}">
 						<image class="picture-selector__item__image" 
 						  :src="item.img" 
 						  mode="widthFix"
@@ -86,7 +92,8 @@
 <script>
 	import { mapMutations } from 'vuex'
 	import { mapState } from 'vuex'
-	import category from '../../config/category'
+	// import category from '../../config/category'
+	import category from '../../config/whiteMoldData'
 	
 	export default {
 		data() {
@@ -118,7 +125,8 @@
 				categoryName: 'canvasBag',
 				productInfo: category['canvasBag'],
 				patterns: category['canvasBag'].patterns,
-				selectedPattern: category['canvasBag'].patterns.full
+				selectedPattern: category['canvasBag'].patterns.full,
+				categoryList: category
 			}
 		},
 		computed: {
@@ -129,8 +137,11 @@
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			this.pid = Number(option.pid);
-			this.category = Number(option.category);
-			console.log(this.pid, this.category);
+			this.categoryName = option.category;
+			console.log(this.pid, this.categoryName);
+			this.productInfo = this.categoryList[this.categoryName];
+			this.patterns = this.categoryList[this.categoryName].patterns;
+			this.selectedPattern = this.categoryList[this.categoryName].patterns.full;
 		},
 		onShow() {
 			let _this = this;
@@ -159,21 +170,21 @@
 			let _this = this;
 			
 			// 这段记得注释掉
-			uni.getImageInfo({
-				src: this.selectedPicture,
-				success: function(image){
-					let h = _this.imageHeight = image.height;
-					let w = _this.imageWidth = image.width;
-					if(h/w > _this.selectedPattern.height/_this.selectedPattern.width){
-						_this.pictureWidth = _this.selectedPattern.width;
-						_this.pictureHeight = _this.selectedPattern.width * h/w;
-					}else{
-						_this.pictureHeight = _this.selectedPattern.height;
-						_this.pictureWidth = _this.selectedPattern.height * w/h;
-					}
-					console.log(_this.pictureHeight, _this.pictureWidth)
-				}
-			})
+			// uni.getImageInfo({
+			// 	src: this.selectedPicture,
+			// 	success: function(image){
+			// 		let h = _this.imageHeight = image.height;
+			// 		let w = _this.imageWidth = image.width;
+			// 		if(h/w > _this.selectedPattern.height/_this.selectedPattern.width){
+			// 			_this.pictureWidth = _this.selectedPattern.width;
+			// 			_this.pictureHeight = _this.selectedPattern.width * h/w;
+			// 		}else{
+			// 			_this.pictureHeight = _this.selectedPattern.height;
+			// 			_this.pictureWidth = _this.selectedPattern.height * w/h;
+			// 		}
+			// 		console.log(_this.pictureHeight, _this.pictureWidth)
+			// 	}
+			// })
 			
 			this.$http.get('/picture/getList').then(res => {
 				if(res.data.code !== 0){
@@ -238,8 +249,8 @@
 				uni.getImageInfo({
 					src: this.selectedPicture,
 					success: function(image){
-						let h = image.height;
-						let w = image.width;
+						let h = _this.imageHeight = image.height;
+						let w = _this.imageWidth = image.width;
 						if(h/w > _this.selectedPattern.height/_this.selectedPattern.width){
 							_this.pictureWidth = _this.selectedPattern.width;
 							_this.pictureHeight = _this.selectedPattern.width * h/w;
@@ -307,14 +318,14 @@
 						ctx.clip()
 						ctx.drawImage(res.path, 0, 0, res.width, res.height, 2*picture.left - 2*content.left, 2*picture.top - 2*content.top, 2*picture.width, 2*picture.height);
 						ctx.restore()
-						ctx.draw(false, ()=>{
+						ctx.draw(false, async ()=>{
 							if(_this.signature){
 								uni.getImageInfo({
 								    src: _this.signature,
 								    success: function (res) {
 										ctx.drawImage(res.path, 0, 0, res.width, res.height, 2*signature.left - 2*content.left, 2*signature.top - 2*content.top, 2*signature.width, 2*signature.height);
-										ctx.draw(true, ()=>{
-											_this.generateOriginalPicture(product, content);
+										ctx.draw(true, async ()=>{
+											await _this.drawDecorations(ctx, product, content);
 										})
 								    },
 									fail: function(err) {
@@ -323,7 +334,7 @@
 									}
 								});
 							}else{
-								_this.generateOriginalPicture(product, content);
+								await _this.drawDecorations(ctx, product, content);
 							}
 							
 						})
@@ -490,6 +501,54 @@
 				uni.navigateTo({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}&original=${original}`});
 			},
 			
+			getImageInfo(src){
+				return new Promise((resolve, reject) => {
+					uni.getImageInfo({
+						src: src,
+						success: function (image) {
+							resolve(image)
+						},
+						fail: function(err) {
+							console.log(err)
+							reject(err)
+						}
+						
+					});
+				
+				})
+			},
+			async getDecorationPaths(){
+				let images = [];
+				let image;
+				console.log(this.selectedPattern.decorations);
+				for(let decoration of this.selectedPattern.decorations){
+					console.log(decoration);
+					image = await this.getImageInfo(decoration.url);
+					images.push(image);
+				}
+				return images;
+			},
+			async drawDecorations(ctx, product, content){
+				let images = await this.getDecorationPaths();
+				const query = uni.createSelectorQuery().in(this);
+				let _this = this;
+				
+				query.selectAll('.decoration').boundingClientRect()
+				.exec((res) => {
+					let decorations = res[0];
+					// console.log(decorations);
+					for(let i = 0; i<decorations.length; i++){
+						let decoration = decorations[i];
+						let image = images[i];
+						console.log(decoration, image);
+						ctx.drawImage(image.path, 0, 0, image.width, image.height, 2*decoration.left - 2*content.left, 2*decoration.top - 2*content.top, 2*decoration.width, 2*decoration.height);
+					}
+					ctx.draw(true, ()=>{
+						_this.generateOriginalPicture(product, content);
+					});
+				});
+				
+			}
 		}
 	}
 </script>

@@ -75,6 +75,7 @@
 					isDefault: false,
 					province: '',
 					city: '',
+					district: ''
 				},
 				area: [],
 				label3: '',
@@ -117,7 +118,10 @@
 					const name = e.dataset.name
 					const label = e.item.map(m => m.label).join('-')
 					if (name && label) {
-						this[name] = label
+						this[name] = label;
+						this.form.province = e.item[0].label;
+						this.form.city = e.item[1].label;
+						this.form.district = e.item[2].label;
 					}
 				}
 			},
@@ -125,7 +129,71 @@
 				console.log('cancel::', e)
 			},
 			submit(){
-				console.log(this.area);
+				console.log(this.form);
+				if(this.form.consignee === ''){
+					uni.showToast({
+						duration: 1000,
+						title: '请填写收货人姓名',
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.form.phone === ''){
+					uni.showToast({
+						duration: 1000,
+						title: '请填写收货手机号码',
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.form.phone.length !== 11){
+					uni.showToast({
+						duration: 1000,
+						title: '手机号码格式错误',
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.area.length === 0){
+					uni.showToast({
+						duration: 1000,
+						title: '请选择所在地区',
+						icon: 'none'
+					});
+					return;
+				}
+				if(this.form.detail === ''){
+					uni.showToast({
+						duration: 1000,
+						title: '请填写详细地址',
+						icon: 'none'
+					});
+					return;
+				}
+				uni.showLoading({
+					mask: true,
+					title: '地址保存中'
+				})
+				this.$http.post('/address/add', this.form).then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					uni.navigateBack();
+				}).catch(err => {
+					console.log(err);
+					uni.hideLoading();
+					uni.showToast({
+					    title: "保存失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
 			}
 		}
 	}

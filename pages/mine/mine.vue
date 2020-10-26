@@ -9,10 +9,10 @@
 		<view class="mine-orders">
 			<view class="mine-orders__top">
 				<view class="mine-orders__title">我的订单</view>
-				<navigator class="mine-orders__more">
+				<view class="mine-orders__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-orders__more__icon"></image>
-				</navigator>
+				</view>
 			</view>
 			<view class="mine-orders__body">
 				<view class="mine-orders__button">
@@ -37,34 +37,34 @@
 				</view>
 			</view>
 		</view>
-		<view class="mine-block">
+		<navigator class="mine-block" url="./myPictures">
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的图片</view>
-				<navigator class="mine-block__more" url="./myPictures">
+				<view class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
-				</navigator>
+				</view>
 			</view>
 			<view class="mine-block__list-container">
 				<view class="mine-block__list">
 					<image class="mine-block__item" v-for="(item, index) in myPictures" :key="index" :src="item.url" mode="aspectFill"></image>
 				</view>
 			</view>
-		</view>
-		<view class="mine-block">
+		</navigator>
+		<navigator class="mine-block" url="/pages/cart/cart">
 			<view class="mine-block__top">
 				<view class="mine-block__title">购物车</view>
-				<navigator class="mine-block__more" url="/pages/cart/cart">
+				<view class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
-				</navigator>
+				</view>
 			</view>
 			<view class="mine-block__list-container">
 				<view class="mine-block__list">
 					<image class="mine-block__item" v-for="(item, index) in myProducts" :key="index" :src="item.preview" mode="aspectFit"></image>
 				</view>
 			</view>
-		</view>
+		</navigator>
 		<view class="mine-bottom">
 			<navigator class="mine-bottom__item" url="/pages/address/address">
 				<view class="mine-bottom__item__text">地址管理</view>
