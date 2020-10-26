@@ -11,6 +11,7 @@
 		"contentStyle": "top: 196rpx; left: 10rpx; width: 458rpx; height: 436rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 458,
 				"height": 436, 
 				"shape": "rectangle",
@@ -18,6 +19,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 300,
 				"height": 300, 
 				"shape": "circle",
@@ -25,6 +27,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 240,
 				"height": 308, 
 				"shape": "rectangle",
@@ -46,6 +49,7 @@
 		"contentStyle": "top: 252rpx; left: 194rpx; width: 286rpx; height: 252rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 286,
 				"height": 252, 
 				"shape": "rectangle",
@@ -53,6 +57,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 212,
 				"height": 212, 
 				"shape": "circle",
@@ -60,6 +65,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 196,
 				"height": 250, 
 				"shape": "rectangle",
@@ -81,6 +87,7 @@
 		"contentStyle": "top: 208rpx; left: 214rpx; width: 344rpx; height: 682rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 344,
 				"height": 682, 
 				"shape": "rectangle",
@@ -88,6 +95,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 278,
 				"height": 278, 
 				"shape": "circle",
@@ -95,6 +103,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 196,
 				"height": 250, 
 				"shape": "rectangle",
@@ -116,6 +125,7 @@
 		"contentStyle": "top: 88rpx; left: 16rpx; width: 458rpx; height: 458rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 458,
 				"height": 458, 
 				"shape": "rectangle",
@@ -123,6 +133,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 326,
 				"height": 326, 
 				"shape": "circle",
@@ -130,6 +141,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 258,
 				"height": 330, 
 				"shape": "rectangle",
@@ -151,6 +163,7 @@
 		"contentStyle": "top: 170rpx; left: 36rpx; width: 584rpx; height: 584rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 584,
 				"height": 584, 
 				"shape": "circle",
@@ -172,6 +185,7 @@
 		"contentStyle": "top: 202rpx; left: 90rpx; width: 530rpx; height: 484rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 530,
 				"height": 484, 
 				"shape": "rectangle",
@@ -179,6 +193,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 326,
 				"height": 326, 
 				"shape": "circle",
@@ -186,6 +201,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 258,
 				"height": 330, 
 				"shape": "rectangle",
@@ -265,6 +281,7 @@
 		"contentStyle": "top: 160rpx; left: 18rpx; width: 532rpx; height: 412rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 532,
 				"height": 412, 
 				"shape": "rectangle",
@@ -272,6 +289,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
+				"name": "circle",
 				"width": 326,
 				"height": 326, 
 				"shape": "circle",
@@ -279,6 +297,7 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
 			},
 			"rectangle": {
+				"name": "rectangle",
 				"width": 158,
 				"height": 330, 
 				"shape": "rectangle",
@@ -300,6 +319,7 @@
 		"contentStyle": "top: 310rpx; left: 152rpx; width: 254rpx; height: 332rpx;",
 		"patterns": {
 			"full": {
+				"name": "full",
 				"width": 254,
 				"height": 332, 
 				"shape": "rectangle",
