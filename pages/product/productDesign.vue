@@ -98,6 +98,7 @@
 	export default {
 		data() {
 			return {
+				radio: 6,
 				imageWidth: 0,
 				imageHeight: 0,
 				pictureWidth: 0,
@@ -293,10 +294,11 @@
 			},
 			generateProduct(product, content, pattern, picture, signature){
 				let _this = this;
+				let r = this.radio;
 				let isPictureDrawn, isSignatureDrawn;
-				// console.log(product, content, pattern, picture, signature);
-				this.canvasHeight = 2*content.height;
-				this.canvasWidth = 2*content.width;
+				console.log(product, content, pattern, picture, signature);
+				this.canvasHeight = r*content.height;
+				this.canvasWidth = r*content.width;
 				let ctx = uni.createCanvasContext('product-canvas');
 				uni.getImageInfo({
 				    src: this.selectedPicture,
@@ -305,9 +307,9 @@
 						ctx.beginPath()
 						//ctx.arc(589/_this.rpx, 273/_this.rpx + pictureHeightInCanvas, 51/_this.rpx, 0, 2 * Math.PI)
 						if(_this.selectedPattern.shape === "rectangle"){
-							ctx.rect(2*pattern.left - 2*content.left, 2*pattern.top - 2*content.top, 2*pattern.width, 2*pattern.height);
+							ctx.rect(r*pattern.left - r*content.left, r*pattern.top - r*content.top, r*pattern.width, r*pattern.height);
 						}else if(_this.selectedPattern.shape === "circle"){
-							ctx.arc(2*pattern.left - 2*content.left + pattern.width, 2*pattern.top - 2*content.top + pattern.height, pattern.width, 0, 2 * Math.PI)
+							ctx.arc(r*pattern.left - r*content.left + r*pattern.width/2, r*pattern.top - r*content.top + r*pattern.height/2, r*pattern.width/2, 0, 2 * Math.PI)
 						}
 						// else if(_this.selectedPattern.shape === "triangle"){
 						// 	ctx.moveTo(2*pattern.left - 2*content.left, 2*pattern.bottom - 2*content.top);
@@ -316,14 +318,14 @@
 						// 	ctx.closePath();
 						// }
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 2*picture.left - 2*content.left, 2*picture.top - 2*content.top, 2*picture.width, 2*picture.height);
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, r*picture.left - r*content.left, r*picture.top - r*content.top, r*picture.width, r*picture.height);
 						ctx.restore()
 						ctx.draw(false, async ()=>{
 							if(_this.signature){
 								uni.getImageInfo({
 								    src: _this.signature,
 								    success: function (res) {
-										ctx.drawImage(res.path, 0, 0, res.width, res.height, 2*signature.left - 2*content.left, 2*signature.top - 2*content.top, 2*signature.width, 2*signature.height);
+										ctx.drawImage(res.path, 0, 0, res.width, res.height, r*signature.left - r*content.left, r*signature.top - r*content.top, r*signature.width, r*signature.height);
 										ctx.draw(true, async ()=>{
 											await _this.drawDecorations(ctx, product, content);
 										})
@@ -348,13 +350,14 @@
 			},
 			generateOriginalPicture(product, content){
 				let _this = this;
+				let r = this.radio;
 				uni.canvasToTempFilePath({
 				  x: 0,
 				  y: 0,
-				  width: 2*content.width,
-				  height: 2*content.height,
-				  destWidth: 2*content.width,
-				  destHeight: 2*content.height,
+				  width: r*content.width,
+				  height: r*content.height,
+				  destWidth: r*content.width,
+				  destHeight: r*content.height,
 				  canvasId: 'product-canvas',
 				  fileType: 'png',
 				  quality: 1.0,
@@ -370,22 +373,23 @@
 			},
 			generatePreview(product, content, original){
 				let _this = this;
-				this.canvasHeight = 2*product.height;
-				this.canvasWidth = 2*product.width;
+				let r = this.radio;
+				this.canvasHeight = r*product.height;
+				this.canvasWidth = r*product.width;
 				let ctx = uni.createCanvasContext('product-canvas');
 				uni.getImageInfo({
 				    src: this.productInfo.picture,
 				    success: function (res) {
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 0, 0, 2*product.width, 2*product.height);
-						ctx.drawImage(original, 0, 0, 2*content.width, 2*content.height, 2*content.left - 2*product.left, 2*content.top - 2*product.top, 2*content.width, 2*content.height);
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 0, 0, r*product.width, r*product.height);
+						ctx.drawImage(original, 0, 0, r*content.width, r*content.height, r*content.left - r*product.left, r*content.top - r*product.top, r*content.width, r*content.height);
 						ctx.draw(false, ()=>{
 							uni.canvasToTempFilePath({
 							  x: 0,
 							  y: 0,
-							  width: 2*product.width,
-							  height: 2*product.height,
-							  destWidth: 2*product.width,
-							  destHeight: 2*product.height,
+							  width: r*product.width,
+							  height: r*product.height,
+							  destWidth: r*product.width,
+							  destHeight: r*product.height,
 							  canvasId: 'product-canvas',
 							  fileType: 'png',
 							  quality: 1.0,
@@ -532,6 +536,7 @@
 				let images = await this.getDecorationPaths();
 				const query = uni.createSelectorQuery().in(this);
 				let _this = this;
+				let r = this.radio;
 				
 				query.selectAll('.decoration').boundingClientRect()
 				.exec((res) => {
@@ -541,7 +546,7 @@
 						let decoration = decorations[i];
 						let image = images[i];
 						// console.log(decoration, image);
-						ctx.drawImage(image.path, 0, 0, image.width, image.height, 2*decoration.left - 2*content.left, 2*decoration.top - 2*content.top, 2*decoration.width, 2*decoration.height);
+						ctx.drawImage(image.path, 0, 0, image.width, image.height, r*decoration.left - r*content.left, r*decoration.top - r*content.top, r*decoration.width, r*decoration.height);
 					}
 					ctx.draw(true, ()=>{
 						_this.generateOriginalPicture(product, content);
