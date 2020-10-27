@@ -4,7 +4,7 @@
 		<canvas class="card-canvas" style="width: 1384rpx" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
 		<view class="tip">长按分享保存~</view>
 		<!-- <view class="save-button" @click="toShoppingCart">去下单生产</view> -->
-		<view class="save-button" @click="savePreview">去下单生产</view>
+		<view class="save-button" @click="saveOriginal">去下单生产</view>
 	</view>
 </template>
 
@@ -37,7 +37,7 @@
 			this.name = option.name;
 			this.url = option.url;
 			this.original = option.original;
-			console.log(this.name, this.url)
+			// console.log(this.name, this.original)
 		},
 		onShow: function(){
 			
@@ -87,7 +87,7 @@
 		methods:{
 			canvasToCard(){
 				let _this = this;
-				console.log(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded);
+				// console.log(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded);
 				if(!this.isAvatarLoaded || !this.isMiniProgramCodeLoaded){
 					return;
 				}
@@ -103,7 +103,7 @@
 					  fileType: 'png',
 					  quality: 1.0,
 					  success: function(res) {
-						 console.log(res);
+						// console.log(res);
 					    _this.cardUrl = res.tempFilePath;
 						uni.hideLoading();
 					  } 
@@ -202,11 +202,19 @@
 					}
 				});
 			},
-			savePreview(){
+			saveOriginal(){
+				// console.log(this.original)
 				uni.saveImageToPhotosAlbum({
-					filePath: this.url,
+					filePath: this.original,
 					success: function () {
-						console.log('save success');
+						uni.showToast({
+						    title: "保存成功",
+						    duration: 1000,
+							icon: 'none'
+						});
+					},
+					fail:function(err){
+						console.log(err);
 					}
 				});
 			}

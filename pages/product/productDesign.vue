@@ -138,7 +138,7 @@
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
 			this.pid = Number(option.pid);
 			this.categoryName = option.category;
-			console.log(this.pid, this.categoryName);
+			// console.log(this.pid, this.categoryName);
 			this.productInfo = this.categoryList[this.categoryName];
 			this.patterns = this.categoryList[this.categoryName].patterns;
 			this.selectedPattern = this.categoryList[this.categoryName].patterns.full;
@@ -213,7 +213,7 @@
 			...mapMutations(['saveSignature']),
 			selectKind(kind){
 				this.selectedKind = kind;
-				console.log(kind)
+				// console.log(kind)
 				//this.selectedStyles
 			},
 			loadPicture(){
@@ -235,7 +235,7 @@
 							_this.pictureHeight = _this.selectedPattern.height;
 							_this.pictureWidth = _this.selectedPattern.height * w/h;
 						}
-						console.log(_this.pictureHeight, _this.pictureWidth)
+						// console.log(_this.pictureHeight, _this.pictureWidth)
 					}
 				})
 			},
@@ -258,7 +258,7 @@
 							_this.pictureHeight = _this.selectedPattern.height;
 							_this.pictureWidth = _this.selectedPattern.height * w/h;
 						}
-						console.log(_this.pictureHeight, _this.pictureWidth)
+						// console.log(_this.pictureHeight, _this.pictureWidth)
 					}
 				})
 			},
@@ -294,7 +294,7 @@
 			generateProduct(product, content, pattern, picture, signature){
 				let _this = this;
 				let isPictureDrawn, isSignatureDrawn;
-				console.log(product, content, pattern, picture, signature);
+				// console.log(product, content, pattern, picture, signature);
 				this.canvasHeight = 2*content.height;
 				this.canvasWidth = 2*content.width;
 				let ctx = uni.createCanvasContext('product-canvas');
@@ -359,7 +359,7 @@
 				  fileType: 'png',
 				  quality: 1.0,
 				  success: function(res) {
-					 console.log(res.tempFilePath);
+					 // console.log(res.tempFilePath);
 					 _this.generatePreview(product, content, res.tempFilePath);
 				  },
 				  fail: function(err) {
@@ -390,7 +390,7 @@
 							  fileType: 'png',
 							  quality: 1.0,
 							  success: function(res) {
-								 console.log(res.tempFilePath);
+								 // console.log(res.tempFilePath);
 								 _this.uploadProductImages(original, res.tempFilePath);
 							  } 
 							})
@@ -417,12 +417,12 @@
 				  name: 'file', // 必须填file。
 				  formData: originalParams,
 				  success: (res) => {
-					console.log(res);
+					// console.log(res);
 				    if (res.statusCode === 204) {
-				      console.log('上传成功');
+				      // console.log('上传成功');
 					  uploadedOriginal = 'https://x-design-products.oss-cn-hangzhou.aliyuncs.com/'+originalParams.key;
 					  if(uploadedPreview){
-						_this.saveProduct(uploadedOriginal, uploadedPreview, preview);  
+						_this.saveProduct(uploadedOriginal, uploadedPreview, preview, original);  
 					  }
 				    }
 				  },
@@ -442,9 +442,9 @@
 				  name: 'file', // 必须填file。
 				  formData: previewParams,
 				  success: (res) => {
-					console.log(res);
+					// console.log(res);
 				    if (res.statusCode === 204) {
-				      console.log('上传成功');
+				      // console.log('上传成功');
 					  uploadedPreview = 'https://x-design-previews.oss-cn-hangzhou.aliyuncs.com/'+previewParams.key;
 					  if(uploadedOriginal){
 						_this.saveProduct(uploadedOriginal, uploadedPreview, preview, original);  
@@ -467,7 +467,7 @@
 					if(res.data.code !== 0){
 						throw new Error("获取签名失败!");
 					}
-					console.log(res.data.data);
+					// console.log(res.data.data);
 					return res.data.data;
 				}).catch(err => {
 					throw new Error("获取签名失败!");
@@ -520,9 +520,9 @@
 			async getDecorationPaths(){
 				let images = [];
 				let image;
-				console.log(this.selectedPattern.decorations);
+				// console.log(this.selectedPattern.decorations);
 				for(let decoration of this.selectedPattern.decorations){
-					console.log(decoration);
+					// console.log(decoration);
 					image = await this.getImageInfo(decoration.url);
 					images.push(image);
 				}
@@ -540,7 +540,7 @@
 					for(let i = 0; i<decorations.length; i++){
 						let decoration = decorations[i];
 						let image = images[i];
-						console.log(decoration, image);
+						// console.log(decoration, image);
 						ctx.drawImage(image.path, 0, 0, image.width, image.height, 2*decoration.left - 2*content.left, 2*decoration.top - 2*content.top, 2*decoration.width, 2*decoration.height);
 					}
 					ctx.draw(true, ()=>{
