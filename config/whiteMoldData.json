@@ -215,27 +215,27 @@
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/postcard@3x.png",
         "name": "明信片",
         "price": 9.00,
-		"height": 872,
-		"width": 674,
-		"contentWidth": 580,
-		"contentHeight": 396, 
-		"style": "width: 674rpx; height: 872rpx;",
-		"contentStyle": "top: 240rpx; left: 46rpx; width: 580rpx; height: 396rpx;",
+		"height": 400,
+		"width": 592,
+		"contentWidth": 592,
+		"contentHeight": 400, 
+		"style": "width: 592rpx; height: 400rpx;",
+		"contentStyle": "top: 0rpx; left: 0rpx; width: 592rpx; height: 400rpx;",
 		"patterns": {
 			"full": {
 				"name": "full",
-				"width": 580,
-				"height": 396, 
+				"width": 592,
+				"height": 400, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
+				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"wenbohui": {
 				"name": "wenbohui",
-				"width": 580,
-				"height": 396, 
+				"width": 592,
+				"height": 400, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
+				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E5%8D%9A%E4%BC%9A.png",
 				"decorations": [
 					{
@@ -246,10 +246,10 @@
 			},
 			"halloween": {
 				"name": "halloween",
-				"width": 580,
-				"height": 396, 
+				"width": 592,
+				"height": 400, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
+				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82.png",
 				"decorations": [
 					{

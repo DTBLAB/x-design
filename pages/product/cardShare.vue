@@ -53,30 +53,14 @@
 			});
 			
 			uni.getImageInfo({
-			    src: this.background,
+			    src: this.url,
 				success: function(image){
 					_this.pictureWidth = image.width;
 					_this.pictureHeight = image.height;
 					_this.pictureUrl = image.path;
-					_this.cardHeight = (image.height/image.width*644 + 238) + 'rpx';
-					_this.canvasHeight = (image.height/image.width*644 + 238)*2 + 'rpx';
-					if(_this.productHeight !== 0 ){
-						_this.generateCard();	
-					}
-				},
-				fail: function(error){
-					console.log(error);
-				}
-			});
-			
-			uni.getImageInfo({
-			    src: this.url,
-				success: function(image){
-					_this.productWidth = image.width;
-					_this.productHeight = image.height;
-					if(_this.pictureHeight !== 0 ){
-						_this.generateCard();	
-					}
+					_this.cardHeight = (image.height/image.width*524 + 180 + 328) + 'rpx';
+					_this.canvasHeight = (image.height/image.width*524 + 180 + 328)*2 + 'rpx';
+					_this.generateCard();
 				},
 				fail: function(error){
 					console.log(error);
@@ -133,22 +117,31 @@
 				// console.log(_this.pictureUrl, _this.url, _this.avatarUrl)
 				ctx.drawImage('/static/image/white.png', 0, 0, 331, 331, 0, 0, 692/this.rpx*2, Number(_this.canvasHeight.replace('rpx',''))/this.rpx);
 				
-				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*644/this.rpx*2;
-				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 24/this.rpx*2, 24/this.rpx*2, 644/this.rpx*2, pictureHeightInCanvas);
+				let pictureHeightInCanvas = this.pictureHeight/this.pictureWidth*524/this.rpx*2;
+				ctx.drawImage(_this.pictureUrl, 0, 0, this.pictureWidth, this.pictureHeight, 84/this.rpx*2, 164/this.rpx*2, 524/this.rpx*2, pictureHeightInCanvas);
 				
-				let h, w, l, t;
-				if(this.productWidth/this.productHeight >= 386/504){
-					w = 386/this.rpx*2;
-					h = 386*this.productHeight/this.productWidth/this.rpx*2;
-					l = 152/this.rpx*2;
-					t = ((504 - 386*this.productHeight/this.productWidth)/2 + 250)/this.rpx*2;
-				}else{
-					h = 504/this.rpx*2;
-					w = 504*this.productWidth/this.productHeight/this.rpx*2;
-					t = 250/this.rpx*2;
-					l = ((386 - 504*this.productWidth/this.productHeight)/2 + 152)/this.rpx*2;
-				}
-				ctx.drawImage(_this.url, 0, 0, this.productWidth, this.productHeight, l ,t, w, h);
+				// let h, w, l, t;
+				// if(this.productWidth/this.productHeight >= 386/504){
+				// 	w = 386/this.rpx*2;
+				// 	h = 386*this.productHeight/this.productWidth/this.rpx*2;
+				// 	l = 152/this.rpx*2;
+				// 	t = ((504 - 386*this.productHeight/this.productWidth)/2 + 250)/this.rpx*2;
+				// }else{
+				// 	h = 504/this.rpx*2;
+				// 	w = 504*this.productWidth/this.productHeight/this.rpx*2;
+				// 	t = 250/this.rpx*2;
+				// 	l = ((386 - 504*this.productWidth/this.productHeight)/2 + 152)/this.rpx*2;
+				// }
+				// ctx.drawImage(_this.url, 0, 0, this.productWidth, this.productHeight, l ,t, w, h);
+				
+				ctx.beginPath();
+				ctx.lineWidth=1*2;
+				
+				ctx.setLineDash([6/this.rpx*2, 6/this.rpx*2]);
+				ctx.strokeStyle="#CDCDCD"; // Green path
+				ctx.moveTo(0, 328/this.rpx*2 + pictureHeightInCanvas);
+				ctx.lineTo(662/this.rpx*2, 328/this.rpx*2 + pictureHeightInCanvas);
+				ctx.stroke(); // Draw it
 				
 				ctx.draw();
 				
@@ -162,17 +155,17 @@
 				// 设置水平对齐方式
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
-				ctx.fillText(this.nickname, 144/this.rpx*2, 92/_this.rpx*2 + pictureHeightInCanvas);
-				ctx.fillText("创作了一款" + this.name + ", 你也来试试吧~", 144/this.rpx*2, 124/_this.rpx*2 + pictureHeightInCanvas);
+				ctx.fillText(this.nickname, 144/this.rpx*2, (58+328)/_this.rpx*2 + pictureHeightInCanvas);
+				ctx.fillText("创作了一款" + this.name + ", 你也来试试吧~", 144/this.rpx*2, (90+328)/_this.rpx*2 + pictureHeightInCanvas);
 
 				uni.getImageInfo({
 				    src: this.avatarUrl,
 				    success: function (res) {
 						ctx.save()
 						ctx.beginPath()
-						ctx.arc(81/_this.rpx*2, 121/_this.rpx*2 + pictureHeightInCanvas, 39/_this.rpx*2, 0, 2 * Math.PI)
+						ctx.arc(81/_this.rpx*2, (87+328)/_this.rpx*2 + pictureHeightInCanvas, 39/_this.rpx*2, 0, 2 * Math.PI)
 						ctx.clip()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 42/_this.rpx*2, 82/_this.rpx*2 + pictureHeightInCanvas, 78/_this.rpx*2, 78/_this.rpx*2)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 42/_this.rpx*2, (48+328)/_this.rpx*2 + pictureHeightInCanvas, 78/_this.rpx*2, 78/_this.rpx*2)
 				        ctx.restore()
 						ctx.draw(true, ()=>{
 							_this.isAvatarLoaded = true;
@@ -189,7 +182,7 @@
 				    src: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/miniProgramCode.png',
 				    success: function (res) {
 						ctx.save()
-						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 64/_this.rpx*2 + pictureHeightInCanvas, 112/_this.rpx*2, 112/_this.rpx*2)
+						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, (30+328)/_this.rpx*2 + pictureHeightInCanvas, 112/_this.rpx*2, 112/_this.rpx*2)
 				        ctx.restore()
 				        ctx.draw(true, ()=>{
 							_this.isMiniProgramCodeLoaded = true;

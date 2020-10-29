@@ -68,7 +68,7 @@
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				hotStyles: ['赛博朋克', '浮世绘', '国画梅花', '和玺彩画', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
+				hotStyles: ['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
 				commodities: [
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product1.png', url:''},
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product2.png', url:''},
