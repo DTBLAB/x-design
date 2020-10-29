@@ -15,7 +15,7 @@
 				"width": 458,
 				"height": 436, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 458rpx; height: 436rpx;",
+				"style": "top: 0; left: 0; width: 458rpx; height: 436rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -31,7 +31,7 @@
 				"width": 240,
 				"height": 308, 
 				"shape": "rectangle",
-				"style": "top: 78rpx; left: 116rpx; width: 240rpx; height: 308rpx;",
+				"style": "top: 78rpx; left: 116rpx; width: 240rpx; height: 308rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -53,7 +53,7 @@
 				"width": 286,
 				"height": 252, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 286rpx; height: 252rpx;",
+				"style": "top: 0; left: 0; width: 286rpx; height: 252rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -69,7 +69,7 @@
 				"width": 196,
 				"height": 250, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 46rpx; width: 196rpx; height: 250rpx;",
+				"style": "top: 0; left: 46rpx; width: 196rpx; height: 250rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -91,7 +91,7 @@
 				"width": 344,
 				"height": 682, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 344rpx; height: 682rpx;",
+				"style": "top: 0; left: 0; width: 344rpx; height: 682rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -107,7 +107,7 @@
 				"width": 196,
 				"height": 250, 
 				"shape": "rectangle",
-				"style": "top: 176rpx; left: 80rpx; width: 196rpx; height: 250rpx;",
+				"style": "top: 176rpx; left: 80rpx; width: 196rpx; height: 250rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -129,7 +129,7 @@
 				"width": 458,
 				"height": 458, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 458rpx; height: 458rpx;",
+				"style": "top: 0; left: 0; width: 458rpx; height: 458rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -145,7 +145,7 @@
 				"width": 258,
 				"height": 330, 
 				"shape": "rectangle",
-				"style": "top: 64rpx; left: 100rpx; width: 258rpx; height: 330rpx;",
+				"style": "top: 64rpx; left: 100rpx; width: 258rpx; height: 330rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -189,7 +189,7 @@
 				"width": 530,
 				"height": 484, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 530rpx; height: 484rpx;",
+				"style": "top: 0; left: 0; width: 530rpx; height: 484rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -205,7 +205,7 @@
 				"width": 258,
 				"height": 330, 
 				"shape": "rectangle",
-				"style": "top: 76rpx; left: 126rpx; width: 258rpx; height: 330rpx;",
+				"style": "top: 76rpx; left: 126rpx; width: 258rpx; height: 330rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -227,7 +227,7 @@
 				"width": 580,
 				"height": 396, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx;",
+				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"wenbohui": {
@@ -235,7 +235,7 @@
 				"width": 580,
 				"height": 396, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx;",
+				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E5%8D%9A%E4%BC%9A.png",
 				"decorations": [
 					{
@@ -249,7 +249,7 @@
 				"width": 580,
 				"height": 396, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx;",
+				"style": "top: 0; left: 0; width: 580rpx; height: 396rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82.png",
 				"decorations": [
 					{
@@ -285,7 +285,7 @@
 				"width": 532,
 				"height": 412, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 532rpx; height: 412rpx;",
+				"style": "top: 0; left: 0; width: 532rpx; height: 412rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {
@@ -301,7 +301,7 @@
 				"width": 158,
 				"height": 330, 
 				"shape": "rectangle",
-				"style": "top: 42rpx; left: 136rpx; width: 158rpx; height: 330rpx;",
+				"style": "top: 42rpx; left: 136rpx; width: 158rpx; height: 330rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
@@ -315,7 +315,7 @@
 		"width": 646,
 		"contentWidth": 254,
 		"contentHeight": 332, 
-		"style": "width: 323rpx; height: 418rpx;",
+		"style": "width: 646rpx; height: 836rpx;",
 		"contentStyle": "top: 310rpx; left: 152rpx; width: 254rpx; height: 332rpx;",
 		"patterns": {
 			"full": {
@@ -323,7 +323,7 @@
 				"width": 254,
 				"height": 332, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 254rpx; height: 332rpx;",
+				"style": "top: 0; left: 0; width: 254rpx; height: 332rpx; border-radius: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			}
 		}

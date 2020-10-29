@@ -68,7 +68,7 @@
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				hotStyles: ['赛博朋克', '和玺彩画', '浮世绘', '水墨画', '湿拓画'],
+				hotStyles: ['赛博朋克', '浮世绘', '国画梅花', '和玺彩画', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
 				commodities: [
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product1.png', url:''},
 					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product2.png', url:''},
@@ -83,6 +83,18 @@
 			getStyleSrc(name){
 				return "https://x-design.oss-cn-hangzhou.aliyuncs.com/styles/"+name+".jpg";
 			},
+			selectStyle(style){
+				let _this = this;
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    success: function (res) {
+				        uni.navigateTo({
+				        	url: `/pages/pictureDesign/pictureDesign?url=${res.tempFilePaths[0]}&style=${style}`
+				        });
+				    }
+				});
+			}
 		}
 	}
 </script>

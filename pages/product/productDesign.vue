@@ -22,6 +22,7 @@
 					  direction="all"
 					  scale="true"
 					  :scale-max="getMaxScale"
+					  x="1000"
 					  id="signature"
 					>
 						<image class="signature-picture" :src="signature"></image>
@@ -143,6 +144,9 @@
 			this.productInfo = this.categoryList[this.categoryName];
 			this.patterns = this.categoryList[this.categoryName].patterns;
 			this.selectedPattern = this.categoryList[this.categoryName].patterns.full;
+			if(750/uni.getSystemInfoSync().windowWidth<1){
+				this.radio = 6/Math.ceil(uni.getSystemInfoSync().windowWidth/750);
+			}
 		},
 		onShow() {
 			let _this = this;
@@ -283,14 +287,20 @@
 					mask: true,
 					title: "商品保存中"
 				})
-				query.select('#product-container').boundingClientRect();
-				query.select('#content-box').boundingClientRect();
-				query.select('#pattern-box').boundingClientRect();
-				query.select('#content').boundingClientRect();
-				query.select('#signature').boundingClientRect()
-				.exec((res) => {
-					_this.generateProduct(res[0], res[1], res[2], res[3], res[4]);
-				});
+				try{
+					query.select('#product-container').boundingClientRect();
+					query.select('#content-box').boundingClientRect();
+					query.select('#pattern-box').boundingClientRect();
+					query.select('#content').boundingClientRect();
+					query.select('#signature').boundingClientRect()
+					.exec((res) => {
+						_this.generateProduct(res[0], res[1], res[2], res[3], res[4]);
+					});
+				}catch(e){
+					console.log(e);
+					uni.hideLoading();
+				}
+				
 			},
 			generateProduct(product, content, pattern, picture, signature){
 				let _this = this;
@@ -402,6 +412,11 @@
 				    },
 					fail: function(err) {
 						console.log(err);
+						uni.showToast({
+						    title: "上传失败",
+						    duration: 1000,
+							icon: 'none'
+						});
 						uni.hideLoading();
 					}
 				});
@@ -428,7 +443,15 @@
 					  if(uploadedPreview){
 						_this.saveProduct(uploadedOriginal, uploadedPreview, preview, original);  
 					  }
-				    }
+				    }else{
+						console.log(res);
+						uni.showToast({
+						    title: "上传失败",
+						    duration: 1000,
+							icon: 'none'
+						});
+						uni.hideLoading();
+					}
 				  },
 				  fail: err => {
 				    console.log(err);
@@ -453,7 +476,15 @@
 					  if(uploadedOriginal){
 						_this.saveProduct(uploadedOriginal, uploadedPreview, preview, original);  
 					  }
-				    }
+				    }else{
+						console.log(res);
+						uni.showToast({
+						    title: "上传失败",
+						    duration: 1000,
+							icon: 'none'
+						});
+						uni.hideLoading();
+					}
 				  },
 				  fail: err => {
 				    console.log(err);
@@ -533,10 +564,15 @@
 				return images;
 			},
 			async drawDecorations(ctx, product, content){
-				let images = await this.getDecorationPaths();
-				const query = uni.createSelectorQuery().in(this);
 				let _this = this;
 				let r = this.radio;
+				
+				if(!this.selectedPattern.decorations){
+					_this.generateOriginalPicture(product, content);
+					return;
+				}
+				let images = await this.getDecorationPaths();
+				const query = uni.createSelectorQuery().in(this);
 				
 				query.selectAll('.decoration').boundingClientRect()
 				.exec((res) => {

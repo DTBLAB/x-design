@@ -88,17 +88,15 @@
 				    '艺术家',
 				    '中国风',
 				    '亚文化',
-				    '节日',
 				    '其他'
 				],
 				styles: {
-				    '推荐': ['赛博朋克', '浮世绘', '国画梅花', '和玺彩画', '蜡笔画', '水墨画', '星空', '康定斯基'],
-				    '绘画': ['沙画', '蜡笔画', '水墨画', '线描', '国画梅花', '湿拓画', '铅笔画', '水彩'],
-				    '艺术家': ['星空', '毕加索', '波洛克', '康定斯基', '孟菲斯', '齐白石'],
+				    '推荐': ['赛博朋克', '浮世绘', '国画梅花', '和玺彩画', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
+				    '绘画': ['沙画', '蜡笔画', '水墨画', '线描', '国画梅花', '湿拓画', '铅笔画', '水彩画'],
+				    '艺术家': ['梵高', '毕加索', '波洛克', '康定斯基', '孟菲斯', '齐白石'],
 				    '中国风': ['剪纸', '刺绣', '青花瓷', '和玺彩画', '龙袍', '敦煌', '鹿'],
-				    '亚文化': ['赛博朋克', '卡通贴纸', '上海外滩', '波普插画', '马赛克'],
-				    '节日': ['万圣节1', '万圣节2'],
-				    '其他': ['土耳其瓷器', '阿拉伯地毯', '埃及纹身', '泰国绘画']
+				    '亚文化': ['赛博朋克', '卡通', '炫彩霓虹', '波普', '马赛克'],
+				    '其他': ['土耳其瓷器', '阿拉伯地毯', '印度纹身', '泰国绘画']
 				},
 				selectedKind: '推荐',
 				selectedStyle: null,
@@ -106,7 +104,8 @@
 				},
 				selectedTransferredPicture: null,
 				isSharing: false,
-				transferToken: null
+				transferToken: null,
+				optionStyle: undefined,
 			}
 		},
 		computed: {
@@ -140,8 +139,12 @@
 		},
 		onLoad(option){
 			let url = option.url;
+			let style = option.style
 			if(url){
 				this.loadPicture(url);
+			}
+			if(style){
+				this.optionStyle = style;
 			}
 		},
 		methods: {
@@ -187,19 +190,22 @@
 				        console.log(image);
 						let height = image.height;
 						let width = image.width;
-						if(Math.max(height, width) <= 2000){
+						if(Math.max(height, width) <= 4000){
 							_this.loadingFinished = true;
+							if(_this.optionStyle){
+								_this.selectStyle(_this.optionStyle);
+							}
 							return;
 						}
 						
 						let newHeight = 0;
 						let newWidth = 0;
 						if(height >= width){
-							newHeight = 2000;
-							newWidth = 2000/height*width;
+							newHeight = 4000;
+							newWidth = 4000/height*width;
 						}else{
-							newWidth = 2000;
-							newHeight = 2000/width*height;
+							newWidth = 4000;
+							newHeight = 4000/width*height;
 						}
 						
 						console.log(width, height, newWidth, newHeight);
@@ -220,12 +226,15 @@
 								  console.log(res);
 							    _this.pictureUrl = res.tempFilePath;
 								_this.loadingFinished = true;
-								uni.getImageInfo({
-								    src: _this.pictureUrl,
-								    success: function (image2) {
-										console.log('image2', image2)
-									}
-								})
+								if(_this.optionStyle){
+									_this.selectStyle(_this.optionStyle);
+								}
+								// uni.getImageInfo({
+								//     src: _this.pictureUrl,
+								//     success: function (image2) {
+								// 		console.log('image2', image2)
+								// 	}
+								// })
 							  } 
 							})
 						});
@@ -291,10 +300,10 @@
 					// console.log(this.pictureData);
 				}
 				uni.showLoading({
-				    title: '迁移中',
+				    title: '风格化中',
 					mask: true
 				});
-				this.$http.post('/transfer/', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 30000}).then(result => {
+				this.$http.post('/transfer/', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 90000}).then(result => {
 					console.log('transferResult', result);
 					if(result.data.code !== 0){
 						uni.showToast({

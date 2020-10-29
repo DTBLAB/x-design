@@ -26,7 +26,7 @@
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1107@3x.png', name: '抱枕', category: 'pillow'},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1108@3x.png', name: '笔记本', category: 'notebook'},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1109@3x.png', name: '胸章', category: 'badge'},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1110@3x.png', name: '雨伞', category: 7},
+					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1110@3x.png', name: '丝巾', category: 'silkScarf'},
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1111@3x.png', name: '马克杯', category: 'mug'},
 				]
 			}
