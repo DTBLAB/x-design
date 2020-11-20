@@ -31,7 +31,7 @@
 				<image src="../../static/image/more@3x.png"  class="home-commodities__more__icon"></image>
 			</view>
 			<view class="home-commodities__body">
-				<image class="home-commodity" v-for="commodity in commodities" :key="index" :src="commodity.img" @click="checkCommodityDetail(commodity)"></image>
+				<image class="home-commodity" v-for="(commodity,index) in commodities" :key="index" :src="commodity.preview" @click="checkCommodityDetail(commodity)"></image>
 			</view>
 		</view>
 		<!-- <view class="home-commodities">
@@ -58,6 +58,7 @@
 
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
+	import selectedCommodities from '../../config/selectedCommodities'
 	
 	export default {
 		components: {tabBar},
@@ -69,14 +70,7 @@
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
 				hotStyles: ['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
-				commodities: [
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product1.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product2.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product3.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product4.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product5.png', url:''},
-					{img:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product6.png', url:''}
-				]
+				commodities: selectedCommodities
 			}
 		},
 		methods: {
@@ -94,6 +88,11 @@
 				        });
 				    }
 				});
+			},
+			checkCommodityDetail(commodity){
+				uni.navigateTo({
+					url: `/pages/product/product?id=${commodity.id}&category=${commodity.category}`
+				})
 			}
 		}
 	}

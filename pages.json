@@ -51,10 +51,6 @@
 			}
         }
         ,{
-            "path" : "pages/product/product",
-            "style" : {}
-        }
-        ,{
             "path" : "pages/mine/myPictures",
             "style" : {
 				"navigationBarTitleText" : "我的图片"
@@ -110,6 +106,13 @@
 		    "path" : "pages/address/addAddress",
 			"style" : {
 			    "navigationBarTitleText" : "添加收货地址",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+		,{
+		    "path" : "pages/product/product",
+			"style" : {
+			    "navigationBarTitleText" : "商品详情",
 				"backgroundColor": "#FFFFFF"
 			}
 		}

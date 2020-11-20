@@ -1,7 +1,7 @@
 <template>
 	<view class="product-container">
 		<view class="product-background">
-			<image class="product-image" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png" mode="widthFix"></image>
+			<image class="product-image" :src="preview" mode="widthFix"></image>
 		</view>
 			
 <!-- 		<view class="prodcut-bannercontainer">
@@ -26,9 +26,9 @@
 		</view>
 		
 		<view class="product-information">
-			<view class="product-information__title">{{productName}}</view>
+			<view class="product-information__title">{{productInfo.name}}</view>
 			<view class="product-information__top">
-				<view class="product-information__price">￥ {{productPrize.toFixed(2)}}</view>
+				<view class="product-information__price">￥ {{productInfo.price}}</view>
 				<view class="product-information__num">{{productSold}}人已购买</view> 
 			</view>
 		</view>
@@ -60,8 +60,8 @@
 									<view class="product-comment__item__title">
 										<view>{{item.username}}</view>
 											<view class="product-comment__item__stars">
-											<image v-for="count in item.scores" class="product-comment__item__starIcon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/星星黄色.png" mode=""></image>
-											<image v-for="count in 5-item.scores" class="product-comment__item__starIcon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/星星灰色.png" mode=""></image>
+											<image v-for="count in item.scores" :key="index" class="product-comment__item__starIcon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/星星黄色.png" mode=""></image>
+											<image v-for="count in 5-item.scores" :key="index" class="product-comment__item__starIcon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/星星灰色.png" mode=""></image>
 											</view>
 									</view>
 									<view>{{item.content}}</view>
@@ -96,6 +96,8 @@
 
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
+	import category from '../../config/whiteMoldData'
+	import selectedCommodities from '../../config/selectedCommodities'
 	
 	export default {
 		components: {tabBar},
@@ -125,9 +127,21 @@
 					]
 					},
 				],
+				id: 0,
+				categoryList: category,
+				commodities: selectedCommodities,
+				categoryName: 'canvasBag',
+				productInfo: category['canvasBag'],
+				preview: "",//"https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png"
 			}
 		},
-					
+		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			this.id = Number(option.id);
+			this.preview = selectedCommodities[this.id].preview;
+			this.categoryName = option.category;
+			// console.log(this.pid, this.categoryName);
+			this.productInfo = this.categoryList[this.categoryName];
+		},
 		methods: {
 		
 		}	,

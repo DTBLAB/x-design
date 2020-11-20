@@ -366,7 +366,7 @@
 			},
 			generateCard(pid){
 				let _this = this;
-				uni.navigateTo({url:`/pages/pictureDesign/cardShare?pid=${pid}&url=${this.selectedTransferredPicture}&styleName=${_this.selectedStyle}`});
+				uni.reLaunch({url:`/pages/pictureDesign/cardShare?pid=${pid}&url=${this.selectedTransferredPicture}&styleName=${_this.selectedStyle}`});
 			},
 			adjustPicture(){
 				uni.navigateTo({url:`/pages/pictureDesign/pictureAdjust?transferredPictureUrl=${this.selectedTransferredPicture}&rawPictureUrl=${this.pictureUrl}`});

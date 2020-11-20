@@ -49,7 +49,7 @@
 
 <script>
 	import wmNumberBox from "@/components/wm-numberBox/wm-number-box.vue"
-	import category from '../../config/category'
+	import category from '../../config/whiteMoldData'
 	import EvanCheckbox from '@/components/evan-checkbox/evan-checkbox'
 	export default {
 		data() {

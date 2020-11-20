@@ -533,7 +533,7 @@
 			},
 			generateCard(preview, original){
 				let _this = this;
-				uni.navigateTo({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}&original=${original}`});
+				uni.reLaunch({url:`/pages/product/cardShare?url=${preview}&name=${_this.productInfo.name}&original=${original}`});
 			},
 			
 			getImageInfo(src){
