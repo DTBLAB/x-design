@@ -73,4 +73,10 @@ checkbox .wx-checkbox-input.uni-checkbox-input-checked {
 checkbox .wx-checkbox-input.uni-checkbox-input-checked:before {
  font-size: 18px;
 }
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
 </style>
