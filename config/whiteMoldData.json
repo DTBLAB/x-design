@@ -174,39 +174,39 @@
 	},
 
 	"pillow": {
-        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/pillow@3x.png",
-        "name": "抱枕",
-        "price": 59.00,
-		"height": 872,
-		"width": 674,
-		"contentWidth": 530,
-		"contentHeight": 484, 
-		"style": "width: 674rpx; height: 872rpx;",
-		"contentStyle": "top: 202rpx; left: 90rpx; width: 530rpx; height: 484rpx;",
+        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/pillow%403x.png",
+        "height": 576,
+        "width": 576,
+        "contentWidth": 576,
+        "contentHeight": 576, 
+        "style": "width: 576rpx; height: 576rpx;",
+        "contentStyle": "top: 0; left: 0; width: 576rpx; height: 576rpx;",
 		"patterns": {
 			"full": {
 				"name": "full",
-				"width": 530,
-				"height": 484, 
+				"width": 576,
+				"height": 576, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 530rpx; height: 484rpx; border-radius: 1rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
-			},
-			"circle": {
-				"name": "circle",
-				"width": 326,
-				"height": 326, 
-				"shape": "circle",
-				"style": "top: 90rpx; left: 92rpx; width: 326rpx; height: 326rpx; border-radius: 163rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
-			},
-			"rectangle": {
-				"name": "rectangle",
-				"width": 258,
-				"height": 330, 
-				"shape": "rectangle",
-				"style": "top: 76rpx; left: 126rpx; width: 258rpx; height: 330rpx; border-radius: 1rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
+				"style": "top: 0; left: 0; width: 576rpx; height: 576rpx; border-radius: 1rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png",
+				"decorations": [
+					{
+						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8A.png",
+						"style": "top: 0; left: 0; width: 578rpx; height: 64rpx;"
+					},
+					{
+						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8B.png",
+						"style": "bottom: 0; left: 26rpx; width: 516rpx; height: 52rpx;"
+					},
+					{
+						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%B7%A6.png",
+						"style": "top: 44rpx; left: 0; width: 68rpx; height: 536rpx;"
+					},
+					{
+						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%8F%B3.png",
+						"style": "top: 44rpx; right: 0; width: 76rpx; height: 536rpx;"
+					}
+				]
 			}
 		}
 	},

@@ -13,16 +13,8 @@
 		</view> -->
 		
 		<view class="product-bottom">
-			<navigator class="product-bottom__home" url="../index/index">
-				<image class="product-bottom__home__icon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/首页.png" mode="widthFix"></image>
-				<text class="product-bottom__home__text">首页</text>
-			</navigator>
-			<navigator class="product-bottom__service">
-				<image class="product-bottom__service__icon" src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/客服.png" mode="widthFix"></image>
-				<text class="product-bottom__service__text">客服</text>
-			</navigator>
 			<button class="product-bottom__button1" type="default">加入购物车</button>
-			<button class="product-bottom__button2"type="default">立即购买</button>
+			<button class="product-bottom__button2" type="default">立即购买</button>
 		</view>
 		
 		<view class="product-information">

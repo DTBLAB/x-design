@@ -67,6 +67,8 @@
 			this.ctx = uni.createCanvasContext('sign-canvas');
 			this.ctx.setLineCap('round');
 			this.ctx.setLineJoin('round');
+			this.ctx.shadowBlur = 1;
+			this.ctx.shadowColor = '#000';
 		},
 		methods: {
 			...mapMutations(['saveSignature']),
@@ -104,7 +106,11 @@
 				// console.log(e);
 			},
 			redraw(){
-				this.ctx.draw();
+				this.ctx = uni.createCanvasContext('sign-canvas');
+				this.ctx.setLineCap('round');
+				this.ctx.setLineJoin('round');
+				this.ctx.shadowBlur = 1;
+				this.ctx.shadowColor = '#000';
 				this.ctx.setLineWidth(this.weight);
 				this.ctx.setStrokeStyle(this.selectedColor);
 				for(let i = 0; i < this.arrX.length; i++){
@@ -119,13 +125,18 @@
 					}
 				}
 				this.ctx.stroke();
-				this.ctx.draw(true);
+				this.ctx.draw(false);
 			},
 			reset(){
+				this.ctx.draw(false);
 				this.arrX = [];
 				this.arrY = [];
 				this.arrIsStart = [];
-				this.ctx.draw();
+				this.ctx = uni.createCanvasContext('sign-canvas');
+				this.ctx.setLineCap('round');
+				this.ctx.setLineJoin('round');
+				this.ctx.shadowBlur = 1;
+				this.ctx.shadowColor = '#000';
 			},
 			finish(){
 				let _this = this;

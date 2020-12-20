@@ -24,8 +24,10 @@
 					  :scale-max="getMaxScale"
 					  x="1000"
 					  id="signature"
+					  v-if="signature"
 					>
 						<image class="signature-picture" :src="signature"></image>
+						<image class="signature-close" v-if="signature" src="../../static/image/close.png" @click="clearSignature"></image>
 					</movable-view>
 					<!-- <view v-if="selectedPattern.decorations" class="decorations"> -->
 					<image v-if="selectedPattern.decorations" v-for="(decoration, index) in selectedPattern.decorations" :key="index" class="decoration" :style="decoration.style" :src="decoration.url"></image>
@@ -39,7 +41,7 @@
 		<view class="picture-selector">
 			<scroll-view class="scroll-view_H picture-selector__items-container" scroll-x="true" enable-flex="true">
 				<view class="picture-selector__items" v-if="selectedKind === '图片库'">
-					<view class="picture-selector__item">
+					<view class="picture-selector__item" @click="designPicture">
 						<image src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1158@3x.png" class="picture-selector__item__image"></image>
 					</view>
 					<view 
@@ -589,7 +591,25 @@
 					});
 				});
 				
+			},
+			
+			designPicture(){
+				let _this = this;
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+				    success: function (res) {
+				        uni.reLaunch({
+				        	url: `/pages/pictureDesign/pictureDesign?url=${res.tempFilePaths[0]}`
+				        });
+				    }
+				});
+			},
+			
+			clearSignature(){
+				this.signature = null;
 			}
+			
 		}
 	}
 </script>

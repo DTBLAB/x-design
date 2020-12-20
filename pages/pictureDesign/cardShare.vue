@@ -2,7 +2,7 @@
 	<view class="page-container">
 		<image class="card" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
-		<view class="tip">长按分享保存~</view>
+		<view class="tip">长按保存分享~</view>
 		<view class="save-button" @click="toProductDesign">去定制产品</view>
 	</view>
 </template>

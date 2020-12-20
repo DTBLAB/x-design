@@ -2,7 +2,7 @@
 	<view class="page-container">
 		<image class="card" style="width: 692rpx" :style="{height: cardHeight}" :src="cardUrl" show-menu-by-longpress></image>
 		<canvas class="card-canvas" style="width: 1384rpx" :style="{height: canvasHeight}" canvas-id="card-canvas"></canvas>
-		<view class="tip">长按分享保存~</view>
+		<view class="tip">长按保存分享~</view>
 		<!-- <view class="save-button" @click="toShoppingCart">去下单生产</view> -->
 		<view class="save-button" @click="saveOriginal">去下单生产</view>
 	</view>
@@ -156,7 +156,7 @@
 				ctx.textAlign = "left";
 				ctx.textBaseline = "top";
 				ctx.fillText(this.nickname, 144/this.rpx*2, (58+328)/_this.rpx*2 + pictureHeightInCanvas);
-				ctx.fillText("创作了一款" + this.name + ", 你也来试试吧~", 144/this.rpx*2, (90+328)/_this.rpx*2 + pictureHeightInCanvas);
+				ctx.fillText("创作了一款" + this.name, 144/this.rpx*2, (90+328)/_this.rpx*2 + pictureHeightInCanvas);
 
 				uni.getImageInfo({
 				    src: this.avatarUrl,
