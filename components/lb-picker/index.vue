@@ -20,6 +20,7 @@
     </view>
 
     <view v-if="visible || inline"
+      ref="container"
       :class="[
         'lb-picker-container',
         !inline ? 'lb-picker-container-fixed' : '',
@@ -90,7 +91,7 @@
           </view>
 
           <!-- 暂无数据 -->
-          <view v-if="isEmpty && !loading"
+          <view v-if="isEmpty && !loading && mode !== 'dateSelector'"
             class="lb-picker-empty">
             <slot name="empty">
               <text class="lb-picker-empty-text"
@@ -154,6 +155,29 @@
             :formatter="formatter"
             @change="handleChange">
           </unlinked-selector-picker>
+
+          <!-- 日期选择 -->
+          <date-selector-picker v-if="mode === 'dateSelector' && !loading"
+            :ref="mode"
+            :value="value"
+            :mode="mode"
+            :visible="visible"
+            :height="pickerContentHeight"
+            :inline="inline"
+            :column-style="columnStyle"
+            :active-column-style="activeColumnStyle"
+            :align="align"
+            :formatter="formatter"
+            :format="format"
+            :display-format="displayFormat"
+            :start-date="startDate"
+            :end-date="endDate"
+            :default-time-limit="defaultTimeLimit"
+            :is-show-chinese="isShowChinese"
+            :ch-config="pickerChConfig"
+            :filter="filter"
+            @change="handleChange">
+          </date-selector-picker>
         </view>
 
         <!-- 选择器底部插槽 -->
@@ -170,15 +194,28 @@ const defaultProps = {
   value: 'value',
   children: 'children'
 }
+const defaultChConfig = {
+  year: '年',
+  month: '月',
+  day: '日',
+  hour: '时',
+  minute: '分',
+  second: '秒'
+}
+// #ifdef APP-NVUE
+const animation = weex.requireModule('animation')
+// #endif
 import { getColumns } from './utils'
 import SelectorPicker from './pickers/selector-picker'
 import MultiSelectorPicker from './pickers/multi-selector-picker'
 import UnlinkedSelectorPicker from './pickers/unlinked-selector-picker'
+import DateSelectorPicker from './pickers/date-selector-picker'
 export default {
   components: {
     SelectorPicker,
     MultiSelectorPicker,
-    UnlinkedSelectorPicker
+    UnlinkedSelectorPicker,
+    DateSelectorPicker
   },
   props: {
     value: [String, Number, Array],
@@ -270,7 +307,27 @@ export default {
       type: Number,
       default: 500
     },
-    formatter: Function
+    formatter: Function,
+    format: {
+      type: String,
+      default: 'YYYY-MM-DD'
+    },
+    displayFormat: {
+      type: String,
+      default: 'YYYY-MM-DD'
+    },
+    startDate: String,
+    endDate: String,
+    defaultTimeLimit: {
+      type: Number,
+      default: 20
+    },
+    isShowChinese: {
+      type: Boolean,
+      default: true
+    },
+    chConfig: Object,
+    filter: Function
   },
   data () {
     return {
@@ -279,7 +336,8 @@ export default {
       maskBgColor: defaultMaskBgColor,
       myValue: this.value,
       picker: {},
-      pickerProps: Object.assign({}, defaultProps, this.props)
+      pickerProps: Object.assign({}, defaultProps, this.props),
+      pickerChConfig: Object.assign({}, defaultChConfig, this.chConfig)
     }
   },
   computed: {
@@ -287,7 +345,8 @@ export default {
       return 34 * this.columnNum + 'px'
     },
     isEmpty () {
-      if (!this.list) return true
+      if (this.mode === 'dateSelector') return false
+      if (!this.list && this.mode !== 'dateSelector') return true
       if (this.list && !this.list.length) return true
       return false
     }
@@ -299,15 +358,21 @@ export default {
       setTimeout(() => {
         this.maskBgColor = this.maskColor
         this.containerVisible = true
+        // #ifdef APP-NVUE
+        this.wxAnimation(0)
+        // #endif
       }, 20)
     },
     hide () {
       if (this.inline) return
       this.maskBgColor = defaultMaskBgColor
       this.containerVisible = false
+      // #ifdef APP-NVUE
+      this.wxAnimation('100%')
+      // #endif
       setTimeout(() => {
         this.visible = false
-      }, 200)
+      }, 300)
     },
     handleCancel () {
       this.$emit('cancel', this.picker)
@@ -327,7 +392,10 @@ export default {
         if (this.canHide) this.hide()
       }
     },
-    handleChange ({ value, item, index, change }) {
+    handleChange ({ value, valueArr, item, index, change }) {
+      if (this.mode === 'dateSelector') {
+        this.picker.valueArr = valueArr
+      }
       this.picker.value = value
       this.picker.item = item
       this.picker.index = index
@@ -344,6 +412,17 @@ export default {
       }
     },
     moveHandle () {},
+    // #ifdef APP-NVUE
+    wxAnimation (num) {
+      const $container = this.$refs.container
+      animation.transition($container, {
+        styles: {
+          transform: `translateY(${num})`
+        },
+        duration: 300
+      })
+    },
+    // #endif 
     getColumnsInfo (value, type = 1) {
       let columnsInfo = getColumns(
         {
@@ -382,6 +461,9 @@ export default {
     },
     props (newProps) {
       this.pickerProps = Object.assign({}, defaultProps, newProps)
+    },
+    chConfig (newVal) {
+      this.pickerChConfig = Object.assign({}, defaultChConfig, newVal)
     }
   }
 }

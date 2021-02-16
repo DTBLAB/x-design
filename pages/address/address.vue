@@ -27,7 +27,7 @@
 							</text>
 						</view>
 					</view>
-					<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress"></image>
+					<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress(address.id)"></image>
 				</view>
 			</template>
 		</view>

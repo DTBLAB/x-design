@@ -31,6 +31,7 @@
 	/* #endif */
 }
 
+/* #ifndef APP-NVUE */
 .lb-picker-container-animation {
 	transition-property: transform;
 	transition-duration: 0.3s;
@@ -39,6 +40,8 @@
 .lb-picker-container-show {
 	transform: translateY(0);
 }
+
+/* #endif */
 
 .lb-picker-header {
 	position: relative;
@@ -58,19 +61,6 @@
 }
 
 /* #ifndef APP-NVUE */
-.lb-picker-header::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	height: 1px;
-	clear: both;
-	border-bottom: 1px solid #e5e5e5;
-	color: #e5e5e5;
-	transform-origin: 0 100%;
-	transform: scaleY(0.5);
-}
 
 .lb-picker-header::after {
 	content: "";
@@ -123,7 +113,7 @@
 	background-color: #fff;
 }
 
-/* #ifndef APP-PLUS */
+/* #ifndef APP-NVUE */
 .lb-picker-content-safe-buttom {
 	padding-bottom: 0;
 	padding-bottom: constant(safe-area-inset-bottom);

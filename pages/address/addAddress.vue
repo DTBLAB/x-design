@@ -86,11 +86,32 @@
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			let _this = this;
 			this.aid = option.aid;
 			if(this.aid){
 				uni.setNavigationBarTitle({
 					title: "编辑收货地址"
 				})
+				this.$http.get('/address/get', {aid: this.aid}).then(res => {
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					_this.form = res.data.data;
+					let data = res.data.data
+					_this.label3 = data.province + '-' + data.city + '-' + data.district;
+					
+				}).catch(err => {
+					uni.showToast({
+					    title: "网络问题，地址加载失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				});
 			}
 		},
 		// onReady () {
@@ -174,7 +195,8 @@
 					mask: true,
 					title: '地址保存中'
 				})
-				this.$http.post('/address/add', this.form).then(res => {
+				let url = this.aid ? '/address/add' : '/address/save';
+				this.$http.post(url, this.form).then(res => {
 					uni.hideLoading();
 					if(res.data.code !== 0){
 						uni.showToast({
