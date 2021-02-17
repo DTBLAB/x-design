@@ -195,7 +195,7 @@
 					mask: true,
 					title: '地址保存中'
 				})
-				let url = this.aid ? '/address/add' : '/address/save';
+				let url = this.aid ? '/address/update' : '/address/add';
 				this.$http.post(url, this.form).then(res => {
 					uni.hideLoading();
 					if(res.data.code !== 0){

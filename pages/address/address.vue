@@ -27,7 +27,10 @@
 							</text>
 						</view>
 					</view>
-					<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress(address.id)"></image>
+					<view>
+						<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress(address.id)"></image>
+						<image src="../../static/image/delete--grey.png" mode="" class="delete" @click="deleteAddress(address.id)"></image>
+					</view>
 				</view>
 			</template>
 		</view>
@@ -77,7 +80,60 @@
 			editAddress(aid){
 				uni.navigateTo({
 					url: `/pages/address/addAddress?aid=${aid}`				})
+			},
+			deleteAddress(aid){
+				let _this = this;
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确认删除此地址？',
+				    success: function (res) {
+				        if (res.confirm) {
+							_this.$http.post('/address/delete', {aid: aid}).then(res => {
+								if(res.data.code !== 0){
+									uni.showToast({
+									    title: res.data.message,
+									    duration: 1000,
+										icon: 'none'
+									});
+									return;
+								}else{
+									uni.showToast({
+									    title: '删除成功',
+									    duration: 1000,
+										icon: 'success'
+									});
+									_this.$http.get('/address/getList').then(res => {
+										if(res.data.code !== 0){
+											uni.showToast({
+											    title: res.data.message,
+											    duration: 1000,
+												icon: 'none'
+											});
+											return;
+										}
+										_this.addressList = res.data.data;
+										
+									}).catch(err => {
+										uni.showToast({
+										    title: "网络问题，地址加载失败",
+										    duration: 1000,
+											icon: 'none'
+										});
+									});
+								}
+								
+							}).catch(err => {
+								uni.showToast({
+								    title: "网络问题，地址删除失败",
+								    duration: 1000,
+									icon: 'none'
+								});
+							});
+				        }
+				    }
+				});
 			}
+			
 			
 		}
 	}
