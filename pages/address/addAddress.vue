@@ -175,7 +175,7 @@
 					});
 					return;
 				}
-				if(this.area.length === 0){
+				if(this.form.province === '' || this.form.city === '' || this.form.district === ''){
 					uni.showToast({
 						duration: 1000,
 						title: '请选择所在地区',
