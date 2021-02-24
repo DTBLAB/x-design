@@ -37,7 +37,7 @@
 					<!-- {{sum}} -->
 				</view>
 				<view class="settle">
-					<view class="settle-accounts" @click="placeOrder">结算<text v-if="numSum !== 0">({{numSum}})</text></view>
+					<view class="settle-accounts" @click="toConfirmOrder">结算<text v-if="numSum !== 0">({{numSum}})</text></view>
 				</view>
 			</view>
 		</view>
@@ -144,9 +144,13 @@
 						items.push(products[i]);
 					}
 				}
-				console.log(items);
+				try {
+				    uni.setStorageSync('orderItems', items);
+				} catch (e) {
+				    console.log(e);
+				}
 				uni.navigateTo({
-					url: "/pages/address/address"
+					url: "/pages/order/confirmOrder"
 				});
 			}
 		}

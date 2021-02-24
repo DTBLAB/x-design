@@ -1,0 +1,62 @@
+<template>
+	<view>
+		<view class="background">
+			<view >
+				<image class="success-icon" src="../../../static/image/panyment success.png"></image>
+			</view>
+			<span class="successword">支付成功</span>
+			<span class="money">已支付￥64.00</span>
+			<span class="data">预计七个工作日内，即{{newDate}}发货</span>
+			<view class="btn-content">
+				<view class="btn btn-checkorders" @click="tomineOrders">查看订单</view>
+				<view class="btn btn-backindex" @click="toindex">返回首页</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	
+	export default {
+		mounted: function () {
+		  this.$nextTick(function () {
+			this.resetTime()
+		  })
+		},
+		data() {
+			return {
+				newDate: ''
+			}
+		},
+			
+		methods:{
+			resetTime: function(){
+				let date = new Date();
+				date.setDate(date.getDate() + 7);
+				let month = (date.getMonth() + 1)
+				month = month<10?`0${month}`:month
+				let day = date.getDate()
+				day = day<10?`0${day}`:day;
+				let newDate = month + "月" + day+ "日"
+				this.newDate = newDate
+			},
+			tomineOrders:function(){
+				uni.navigateTo({
+					url: '/pages/mine/myorders/mineOrders'
+				})
+			},
+			toindex:function(){
+				uni.navigateTo({
+					url: '/pages/index/index'
+				})
+			},
+			
+		},
+		
+		
+	}
+</script>
+
+<style lang="less" scoped>
+@import url('../../../common/less/payment success.less');
+</style>
