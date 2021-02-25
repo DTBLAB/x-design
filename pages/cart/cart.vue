@@ -135,7 +135,7 @@
 					});
 				});
 			},
-			placeOrder(){
+			toConfirmOrder(){
 				let items = [];
 				let products = JSON.parse(JSON.stringify(this.myProducts));
 				for(let i=0; i<this.myProducts.length; i++){

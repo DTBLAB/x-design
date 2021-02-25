@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="page-container">
 		<view class="adrre-info">
 			<view class="userInfo">
 				<view class="userName">{{orderInfo.addressInfo.username}}</view>
@@ -8,22 +8,22 @@
 			<view class="shipping-address">{{orderInfo.addressInfo.address}}</view>
 		</view>
 		<view class="detail">
-			<view class="commodity">
-				<image class="commodity-pic" src="../../../static/image/pillow.png"></image>
+			<view v-for="item in orderInfo.items" :key="item" class="commodity">
+				<image class="commodity-pic" :src="item.preview"></image>
 				<view class="commo-info">
 					<view class="commo-detail">
-						<span class="item-name">{{orderInfo.storeInfo.name}}</span>
-						<span class="item-price" >￥{{orderInfo.storeInfo.price}}</span>
+						<span class="item-name">{{categoryList[item.category].name}}</span>
+						<span class="item-price" >￥{{item.price}}</span>
 					</view>
-					<uni-number-box class="count"></uni-number-box>
+					<view class="count">× {{item.num}}</view>
 				</view>
 			</view>
 			<view class="delivery">
 				<view class="delivery-info">
 					<view class="ways">配送方式</view>
-					<view class="pay">快递￥{{orderInfo.storeInfo.express}}</view>
+					<view class="pay">快递￥{{orderInfo.express}}</view>
 				</view>
-				<view class="total">共{{orderInfo.storeInfo.count}}件商品，合计<span>¥{{ComputePriceTotal}}</span></view>
+				<view class="total">共{{orderInfo.items.length}}件商品，合计<span>¥{{ComputePriceTotal}}</span></view>
 			</view>
 		</view>
 		<view class="sub-order">
@@ -35,6 +35,8 @@
 
 <script>
 	import uniNumberBox from "@/components/uni-number-box/uni-number-box.vue"
+	import category from '../../config/whiteMoldData'
+	
 	export default{
 		components: {uniNumberBox},
 		data(){
@@ -45,13 +47,10 @@
 						phone: '12373628265',
 						address: '浙江省杭州市 XX区 XX街道 XX路路XX号'
 					},
-					storeInfo: {
-						name: '帆布袋',
-						price: 29,
-						count:2,
-						express: '6'
-					}
+					items: [],
+					express: 6
 				},
+				categoryList: category
 			}
 		},
 		method:{
@@ -62,6 +61,8 @@
 			    const value = uni.getStorageSync('orderItems');
 			    if (value) {
 			        console.log(value);
+					this.orderInfo.items = value;
+					uni.removeStorageSync('storage_key');
 			    }
 			} catch (e) {
 			    // error
@@ -70,12 +71,12 @@
 		},
 		computed: {
 			ComputePriceTotal() {
-				return this.orderInfo.storeInfo.count *  this.orderInfo.storeInfo.price +  Number(this.orderInfo.storeInfo.express)
+				return 100;
 			}
 		}
 	}
 </script>
 
 <style lang="less" scoped>
-@import url('../../../common/less/confirmOrder.less');
+@import url('../../common/less/confirmOrder.less');
 </style>

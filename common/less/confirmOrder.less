@@ -1,0 +1,110 @@
+page{
+	background-color: #f4f4f4;
+}
+
+.page-container{
+	background-color: #F4F4F4;
+	width: 750rpx;
+	height:100%;
+}
+
+.adrre-info{
+	margin-top:16rpx;
+	font-size: 28rpx;
+	padding:28rpx 32rpx;
+	background-color: #fff;
+	.userInfo{
+		display: flex;
+		.userName{
+			color:#313131;
+		}
+		.userPhone{
+			margin-left:28rpx;
+			color:#999;
+		}
+	}
+	.shipping-address{
+		margin-top:12rpx;
+		color:#313131;
+	}
+}
+.detail{
+	font-size: 28rpx;
+	min-height:450rpx;
+	background-color: #fff;
+	margin-top: 16rpx;
+	margin-bottom: 210rpx;
+	padding: 0 32rpx 34rpx 32rpx;
+	.commodity{
+		padding-top: 40rpx;
+		height:260rpx;
+		border-bottom:2rpx solid #f4f4f4;
+		display: flex;
+		.commodity-pic{
+			width:220rpx;
+			height:220rpx;
+			background-color: #f4f4f4;
+		}
+		.commo-info{
+			margin-left:40rpx;
+			width:460rpx;
+			position: relative;
+			
+			.commo-detail{
+				display: flex;
+				.item-price{
+					margin-left:auto;
+				}
+			}
+			.count{
+				right: 0;
+				position: absolute;
+				bottom: 42rpx;
+			}
+		}
+}
+	.delivery{
+		margin-top:40rpx;
+		.delivery-info{
+			justify-content: space-between;
+			display: flex;
+			.ways{
+				
+			}
+			.pay{
+				
+			}
+		}
+		.total{
+			margin-top:60rpx;
+			text-align: right;
+		}
+	}
+}
+.sub-order{
+	position:fixed;
+	bottom: 0;
+	height:166rpx;
+	background-color: #fff;
+	display: flex;
+	padding: 0 32rpx;
+	width: 686.4rpx;
+	.sumPrice{
+		font-size: 28rpx;
+		position: relative;
+		top:40rpx;
+		margin-left: 280rpx;
+	}
+	.btn-submit{
+		border-radius: 4rpx;
+		height:78rpx;
+		width:240rpx;
+		background-color: #333;
+		color:#fff;
+		text-align: center;
+		line-height: 70rpx;
+		font-size: 32rpx;
+		margin-left: 24rpx;
+		margin-top: 10rpx;
+	}
+}
