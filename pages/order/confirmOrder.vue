@@ -1,12 +1,14 @@
 <template>
 	<view class="page-container">
-		<view class="adrre-info">
+		
+		<view class="adrre-info" v-if="orderInfo.address">
 			<view class="userInfo">
-				<view class="userName">{{orderInfo.addressInfo.username}}</view>
-				<view class="userPhone">{{orderInfo.addressInfo.phone}}</view>
+				<view class="userName">{{orderInfo.address.consignee}}</view>
+				<view class="userPhone">{{orderInfo.address.phone}}</view>
 			</view>
-			<view class="shipping-address">{{orderInfo.addressInfo.address}}</view>
+			<view class="shipping-address">{{orderInfo.address.province+orderInfo.address.city+" "+orderInfo.address.district+" "+orderInfo.address.detail}}</view>
 		</view>
+		<view class="adrre-info" v-else>请选择收货地址</view>
 		<view class="detail">
 			<view v-for="item in orderInfo.items" :key="item" class="commodity">
 				<image class="commodity-pic" :src="item.preview"></image>
@@ -23,11 +25,11 @@
 					<view class="ways">配送方式</view>
 					<view class="pay">快递￥{{orderInfo.express}}</view>
 				</view>
-				<view class="total">共{{orderInfo.items.length}}件商品，合计<span>¥{{ComputePriceTotal}}</span></view>
+				<view class="total">共{{orderInfo.items.length}}件商品，合计<span>¥{{computeTotal}}</span></view>
 			</view>
 		</view>
 		<view class="sub-order">
-			<view class="sumPrice">合计<span style="font-size:36rpx;font-weight: 700;">¥{{ComputePriceTotal}}</span></view>
+			<view class="sumPrice">合计<span style="font-size:36rpx;font-weight: 700;margin-left: 12rpx;">¥{{computeTotal}}</span></view>
 			<view class="btn-submit" @click="submitOrder">提交订单</view>
 		</view>
 	</view>
@@ -42,19 +44,44 @@
 		data(){
 			return{
 				orderInfo: {
-					addressInfo: {
-						username:'余杭⻄西兰花',
-						phone: '12373628265',
-						address: '浙江省杭州市 XX区 XX街道 XX路路XX号'
-					},
+					address: null,
 					items: [],
 					express: 6
 				},
 				categoryList: category
 			}
 		},
-		method:{
-			
+		methods:{
+			submitOrder(){
+				uni.showLoading({
+					mask: true,
+					title: "订单提交中"
+				})
+				this.$http.post('/order/place', this.orderInfo).then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+					}else{
+						uni.showToast({
+						    title: "下单成功，前往支付",
+						    duration: 1000,
+							icon: 'success'
+						});
+					}
+				}).catch(err => {
+					console.log(err);
+					uni.hideLoading();
+					uni.showToast({
+					    title: "保存失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
+			}
 		},
 		onLoad(){
 			try {
@@ -67,11 +94,33 @@
 			} catch (e) {
 			    // error
 			}
+			
+			let _this = this;
+			this.$http.get('/address/getDefault').then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				if(res.data.data){
+					_this.orderInfo.address = res.data.data;
+				}
+				
+			}).catch(err => {
+				console.log(err);
+			});
 
 		},
 		computed: {
-			ComputePriceTotal() {
-				return 100;
+			computeTotal() {
+				let sum = this.orderInfo.express;
+				for(let item of this.orderInfo.items){
+					sum += item.price*item.num;
+				}
+				return sum;
 			}
 		}
 	}

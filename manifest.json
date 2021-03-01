@@ -8,7 +8,9 @@
     "app-plus" : {
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
-        "modules" : {},
+        "modules" : {
+            "Payment" : {}
+        },
         "distribute" : {
             "android" : {
                 "permissions" : [
@@ -37,7 +39,15 @@
                 ]
             },
             "ios" : {},
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "payment" : {
+                    "weixin" : {
+                        "__platform__" : [ "ios", "android" ],
+                        "appid" : "wx9e38a82721b23a62",
+                        "UniversalLinks" : ""
+                    }
+                }
+            }
         }
     },
     "quickapp" : {},
