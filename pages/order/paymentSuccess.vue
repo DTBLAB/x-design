@@ -2,7 +2,7 @@
 	<view>
 		<view class="background">
 			<view >
-				<image class="success-icon" src="../../../static/image/panyment success.png"></image>
+				<image class="success-icon" src="../../static/image/panyment success.png"></image>
 			</view>
 			<span class="successword">支付成功</span>
 			<span class="money">已支付￥64.00</span>
@@ -58,5 +58,5 @@
 </script>
 
 <style lang="less" scoped>
-@import url('../../../common/less/payment success.less');
+@import url('../../common/less/payment success.less');
 </style>

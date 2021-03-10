@@ -46,13 +46,15 @@
 				orderInfo: {
 					address: null,
 					items: [],
-					express: 6
+					express: 6,
+					discount: 0
 				},
 				categoryList: category
 			}
 		},
 		methods:{
 			submitOrder(){
+				let _this = this;
 				uni.showLoading({
 					mask: true,
 					title: "订单提交中"
@@ -71,16 +73,66 @@
 						    duration: 1000,
 							icon: 'success'
 						});
+						let data = res.data.data;
+						uni.requestPayment({
+						    provider: 'wxpay',
+						    timeStamp: data.timeStamp,
+						    nonceStr: data.nonceStr,
+						    package: data.package,
+						    signType: data.signType,
+						    paySign: data.paySign,
+						    success: function (res) {
+						        // console.log('success:' + JSON.stringify(res));
+								_this.finishPayment();
+						    },
+						    fail: function (err) {
+						        uni.showToast({
+						            title: "支付失败",
+						            duration: 1000,
+						        	icon: 'none'
+						        });
+								uni.redirectTo({
+									url: '/pages/cart/cart'
+								})
+						    }
+						});
 					}
 				}).catch(err => {
 					console.log(err);
 					uni.hideLoading();
 					uni.showToast({
-					    title: "保存失败",
+					    title: "下单失败",
 					    duration: 1000,
 						icon: 'none'
 					});
 				})
+			},
+			finishPayment(){
+				uni.showLoading({
+					mask: true,
+					title: "支付中"
+				})
+				this.$http.get('/order/checkPayment').then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					uni.showToast({
+					    title: "支付成功",
+					    duration: 1000,
+						icon: 'success'
+					});
+					uni.redirectTo({
+						url: '/pages/order/paymentSuccess'
+					})
+				}).catch(err => {
+					console.log(err);
+				});
 			}
 		},
 		onLoad(){
