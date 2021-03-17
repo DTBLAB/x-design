@@ -26,10 +26,10 @@
 		</view>
 		<view class="home-commodities">
 			<view class="home-commodities__title">精选产品</view>
-			<view class="home-commodities__more">
+			<!-- <view class="home-commodities__more">
 				<text>更多</text>
 				<image src="../../static/image/more@3x.png"  class="home-commodities__more__icon"></image>
-			</view>
+			</view> -->
 			<view class="home-commodities__body">
 				<image class="home-commodity" v-for="(commodity,index) in commodities" :key="index" :src="commodity.preview" @click="checkCommodityDetail(commodity)"></image>
 			</view>
@@ -69,7 +69,8 @@
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				hotStyles: ['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
+				hotStyles: ['飞天', '敦煌壁画', '敦煌九色鹿', '唐朝服饰纹样', '大唐盛世', '唐三彩' ],
+				//['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
 				commodities: selectedCommodities
 			}
 		},

@@ -13,8 +13,8 @@
 		</view> -->
 		
 		<view class="product-bottom">
-			<button class="product-bottom__button1" type="default">加入购物车</button>
-			<button class="product-bottom__button2" type="default">立即购买</button>
+			<button class="product-bottom__button1" type="default" @click="addToCart">加入购物车</button>
+			<button class="product-bottom__button2" type="default" @click="placeOrder">立即购买</button>
 		</view>
 		
 		<view class="product-information">
@@ -101,7 +101,7 @@
 				sales:"首次下单立减10元",
 				expressAddress:"浙江杭州",
 				expressFee:6,
-				productImages:"https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
+				productImages: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
 				current: 0,
 				productinfoImages:[
 					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
@@ -135,7 +135,12 @@
 			this.productInfo = this.categoryList[this.categoryName];
 		},
 		methods: {
-		
+			addToCart(){
+				
+			},
+			placeOrder(){
+				
+			}
 		}	,
 	}
 </script>

@@ -175,7 +175,9 @@
 
 	"pillow": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/pillow%403x.png",
-        "height": 576,
+        "name": "抱枕",
+		"price": 54,
+		"height": 576,
         "width": 576,
         "contentWidth": 576,
         "contentHeight": 576, 

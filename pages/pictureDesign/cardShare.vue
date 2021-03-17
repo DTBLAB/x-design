@@ -190,11 +190,16 @@
 						ctx.clip()
 						ctx.drawImage(res.path, 0, 0, res.width, res.height, 538/_this.rpx*2, 222/_this.rpx*2 + pictureHeightInCanvas, 102/_this.rpx*2, 102/_this.rpx*2)
 				        ctx.restore()
-				        ctx.draw(true, ()=>{
-							_this.isMiniProgramCodeLoaded = true;
-							// console.log('mploaded');
-							_this.canvasToCard();
-						})
+						try{
+							ctx.draw(true, ()=>{
+								_this.isMiniProgramCodeLoaded = true;
+								// console.log('mploaded');
+								_this.canvasToCard();
+							})
+						}catch(err){
+							console.log(err);
+						}
+				        
 				    },
 					fail: function(err) {
 						console.log(err);

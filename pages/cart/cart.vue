@@ -36,9 +36,9 @@
 					合计<text style="font-size: 36rpx; font-weight: bold; margin-left: 14rpx;">¥ {{total}}</text>
 					<!-- {{sum}} -->
 				</view>
-				<view class="settle">
-					<view class="settle-accounts" @click="toConfirmOrder">结算<text v-if="numSum !== 0">({{numSum}})</text></view>
-				</view>
+				<button class="settle" @click="toConfirmOrder" :disabled="disabled">
+					<view class="settle-accounts">结算<text v-if="numSum !== 0">({{numSum}})</text></view>
+				</button>
 			</view>
 		</view>
 		<view class="background">
@@ -62,7 +62,8 @@
 				statusList: [],
 				numList: [],
 				total: 0,
-				numSum: 0
+				numSum: 0,
+				disabled: true
 			}
 		},
 		onLoad() {
@@ -82,6 +83,7 @@
 			select(i){
 				this.checkAll(i);
 				this.calculateTotal();
+				this.disabled = this.checkBlank();
 			},
 			checkAll(i){
 				// console.log(i, this.statusList[i]);
@@ -152,7 +154,18 @@
 				uni.navigateTo({
 					url: "/pages/order/confirmOrder"
 				});
+			},
+			checkBlank(){
+				for(let i=0; i<this.statusList.length; i++){
+					if(this.statusList[i]){
+						return false;
+					}
+				}
+				return true;
 			}
+		},
+		computed:{
+			
 		}
 	}
 	

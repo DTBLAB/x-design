@@ -67,8 +67,8 @@
 			this.ctx = uni.createCanvasContext('sign-canvas');
 			this.ctx.setLineCap('round');
 			this.ctx.setLineJoin('round');
-			this.ctx.shadowBlur = 1;
-			this.ctx.shadowColor = '#000';
+			// this.ctx.shadowBlur = 1;
+			// this.ctx.shadowColor = '#000';
 		},
 		methods: {
 			...mapMutations(['saveSignature']),
@@ -78,6 +78,8 @@
 			},
 			selectColor(color){
 				this.selectedColor = color;
+				this.ctx.shadowBlur = 1;
+				this.ctx.shadowColor = color;
 				this.redraw();
 			},
 			startLine(e){
@@ -98,11 +100,13 @@
 				this.arrIsStart.push(false);
 				this.arrX.push(x);
 				this.arrY.push(y);
-				this.ctx.stroke();
-				this.ctx.draw(true);
+				// this.ctx.stroke();
+				// this.ctx.draw(true);
 				this.ctx.moveTo(x, y);
 			},
 			endLine(e){
+				this.ctx.stroke();
+				this.ctx.draw(true);
 				// console.log(e);
 			},
 			redraw(){

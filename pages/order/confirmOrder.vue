@@ -1,17 +1,17 @@
 <template>
 	<view class="page-container">
 		
-		<view class="adrre-info" v-if="orderInfo.address">
+		<view class="adrre-info" v-if="orderInfo.address" @click="selectAddress">
 			<view class="userInfo">
 				<view class="userName">{{orderInfo.address.consignee}}</view>
 				<view class="userPhone">{{orderInfo.address.phone}}</view>
 			</view>
 			<view class="shipping-address">{{orderInfo.address.province+orderInfo.address.city+" "+orderInfo.address.district+" "+orderInfo.address.detail}}</view>
 		</view>
-		<view class="adrre-info" v-else>请选择收货地址</view>
+		<view class="adrre-info" v-else @click="selectAddress">请选择收货地址</view>
 		<view class="detail">
 			<view v-for="item in orderInfo.items" :key="item" class="commodity">
-				<image class="commodity-pic" :src="item.preview"></image>
+				<image class="commodity-pic" :src="item.preview" mode="aspectFit"></image>
 				<view class="commo-info">
 					<view class="commo-detail">
 						<span class="item-name">{{categoryList[item.category].name}}</span>
@@ -32,7 +32,7 @@
 			<view class="sumPrice">合计<span style="font-size:36rpx;font-weight: 700;margin-left: 12rpx;">¥{{computeTotal}}</span></view>
 			<view class="btn-submit" @click="submitOrder">提交订单</view>
 		</view>
-	</view>
+	</view> 
 </template>
 
 <script>
@@ -55,12 +55,29 @@
 		methods:{
 			submitOrder(){
 				let _this = this;
+				if(!this.orderInfo.address){
+					uni.showToast({
+						icon:"none",
+						title:"请选择地址",
+						duration:1000
+					})
+					return;
+				}
+				if(!this.orderInfo.items || this.orderInfo.items.length === 0){
+					uni.showToast({
+						icon:"none",
+						title:"商品不得为空",
+						duration:1000
+					})
+					return;
+				}
 				uni.showLoading({
 					mask: true,
 					title: "订单提交中"
 				})
 				this.$http.post('/order/place', this.orderInfo).then(res => {
 					uni.hideLoading();
+					// console.log(res);
 					if(res.data.code !== 0){
 						uni.showToast({
 						    title: res.data.message,
@@ -83,7 +100,7 @@
 						    paySign: data.paySign,
 						    success: function (res) {
 						        // console.log('success:' + JSON.stringify(res));
-								_this.finishPayment();
+								_this.finishPayment(data.out_trade_no);
 						    },
 						    fail: function (err) {
 						        uni.showToast({
@@ -107,12 +124,12 @@
 					});
 				})
 			},
-			finishPayment(){
+			finishPayment(out_trade_no){
 				uni.showLoading({
 					mask: true,
 					title: "支付中"
 				})
-				this.$http.get('/order/checkPayment').then(res => {
+				this.$http.get('/order/checkPayment', {out_trade_no: out_trade_no}).then(res => {
 					uni.hideLoading();
 					if(res.data.code !== 0){
 						uni.showToast({
@@ -133,13 +150,18 @@
 				}).catch(err => {
 					console.log(err);
 				});
+			},
+			selectAddress(){
+				uni.navigateTo({
+					url: "/pages/address/address?isSelecting=true"
+				})
 			}
 		},
 		onLoad(){
 			try {
 			    const value = uni.getStorageSync('orderItems');
 			    if (value) {
-			        console.log(value);
+			        // console.log(value);
 					this.orderInfo.items = value;
 					uni.removeStorageSync('storage_key');
 			    }
@@ -165,6 +187,13 @@
 				console.log(err);
 			});
 
+		},
+		onShow() {
+			let address = uni.getStorageSync("selectedAddress");
+			uni.removeStorageSync("selectedAddress")
+			if (address) {
+			    this.orderInfo.address = address;
+			}
 		},
 		computed: {
 			computeTotal() {

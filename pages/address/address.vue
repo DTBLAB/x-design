@@ -8,7 +8,7 @@
 				</view>				
 			</view>
 			<template v-else>
-				<view v-for="(address, index) in addressList" :key="index" class="item">
+				<view v-for="(address, index) in addressList" :key="index" class="item" @click="selectAddress(address)">
 					<view class="address">
 						<view class="address-item-top">
 							<text class="name">
@@ -45,6 +45,7 @@
 	export default {
 		data() {
 			return {
+				isSelecting: false,
 				addressList: [
 					{id: 1, consignee: '西蓝花', phone: '12373628265', province: '浙江省', city: '宁波市', district: '鄞州区', detail: '江南路1689号 浙江大学软件学院', isDefault: true}
 				]
@@ -71,6 +72,12 @@
 				});
 			});
 		},
+		onLoad: function (option) {
+			if(option.isSelecting){
+				this.isSelecting = true;
+			}
+		},
+		
 		methods: {
 			// add() {
 			// 	uni.navigateTo({
@@ -132,6 +139,12 @@
 				        }
 				    }
 				});
+			},
+			selectAddress(address){
+				if(this.isSelecting){
+					uni.setStorageSync('selectedAddress',address)
+					uni.navigateBack();
+				}
 			}
 			
 			
