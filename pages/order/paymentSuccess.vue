@@ -5,7 +5,7 @@
 				<image class="success-icon" src="../../static/image/panyment success.png"></image>
 			</view>
 			<span class="successword">支付成功</span>
-			<span class="money">已支付￥64.00</span>
+			<span class="money">已支付￥{{actual}}</span>
 			<span class="data">预计七个工作日内，即{{newDate}}发货</span>
 			<view class="btn-content">
 				<view class="btn btn-checkorders" @click="tomineOrders">查看订单</view>
@@ -25,7 +25,8 @@
 		},
 		data() {
 			return {
-				newDate: ''
+				newDate: '',
+				actual: 0
 			}
 		},
 			
@@ -52,7 +53,9 @@
 			},
 			
 		},
-		
+		onLoad(option) {
+			this.actual=option.actual;
+		}
 		
 	}
 </script>

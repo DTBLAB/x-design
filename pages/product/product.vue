@@ -95,6 +95,7 @@
 		components: {tabBar},
 		data() {
 			return {
+				product: {},
 				productName:"帆布包",
 				productPrize:29.00,
 				productSold:100,
@@ -128,18 +129,48 @@
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			let _this = this;
 			this.id = Number(option.id);
-			this.preview = selectedCommodities[this.id].preview;
 			this.categoryName = option.category;
 			// console.log(this.pid, this.categoryName);
 			this.productInfo = this.categoryList[this.categoryName];
+			
+			if(option.public){
+				this.preview = selectedCommodities[this.id].preview;
+				this.product = {preview: this.preview, origin: selectedCommodities[this.id].origin, price: this.productInfo.price, category: this.categoryName, num: 1};
+			}else{
+				this.$http.get('/product/get', {id: this.id}).then(res => {
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					// console.log(res.data)
+					_this.preview = res.data.data.preview;
+					_this.product = res.data.data;
+					_this.product.num = 1;
+				}).catch(err => {
+					console.log(err)
+					uni.showToast({
+					    title: "网络问题，地址加载失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				});
+			}
 		},
 		methods: {
 			addToCart(){
 				
 			},
 			placeOrder(){
-				
+				uni.setStorageSync('orderItems', [this.product]);
+				uni.navigateTo({
+					url: "/pages/order/confirmOrder"
+				})
 			}
 		}	,
 	}

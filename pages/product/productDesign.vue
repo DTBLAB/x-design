@@ -522,7 +522,11 @@
 						});
 						return;
 					}
-					_this.generateCard(preview, original);
+					//_this.generateCard(preview, original);
+					// console.log(res.data.data);
+					uni.reLaunch({
+						url: "/pages/product/product?id="+res.data.data.pid+"&category="+_this.categoryName
+					})
 				}).catch(err => {
 					console.log(err);
 					uni.hideLoading();

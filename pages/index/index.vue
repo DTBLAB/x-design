@@ -92,7 +92,7 @@
 			},
 			checkCommodityDetail(commodity){
 				uni.navigateTo({
-					url: `/pages/product/product?id=${commodity.id}&category=${commodity.category}`
+					url: `/pages/product/product?id=${commodity.id}&category=${commodity.category}&public=true`
 				})
 			}
 		}

@@ -145,7 +145,7 @@
 						icon: 'success'
 					});
 					uni.redirectTo({
-						url: '/pages/order/paymentSuccess'
+						url: '/pages/order/paymentSuccess?actual='+res.data.data.actual
 					})
 				}).catch(err => {
 					console.log(err);
