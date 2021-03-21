@@ -69,7 +69,7 @@
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				hotStyles: ['飞天', '敦煌壁画', '敦煌九色鹿', '唐朝服饰纹样', '大唐盛世', '唐三彩' ],
+				hotStyles: ['天王', '飞天', '九天阊阖', '金刚', '唐珐琅', '敦煌壁画', '唐装', '唐三彩', '藻井', '唐织锦', '鸟含花锦', '吴带当风', '辟邪神兽', '门神'],
 				//['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
 				commodities: selectedCommodities
 			}

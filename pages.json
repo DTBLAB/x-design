@@ -127,6 +127,12 @@
 		    "style" : {
 				 "navigationBarTitleText" : "支付成功"
 		    }
+		},
+		{
+		    "path" : "pages/order/myOrders",
+		    "style" : {
+				 "navigationBarTitleText" : "我的订单"
+		    }
 		}
 		
     ],

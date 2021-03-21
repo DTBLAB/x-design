@@ -6,7 +6,7 @@
 			<view class="mine-info__nickname" v-if="hasLogin">{{nickname}}</view>
 			<view class="mine-info__nickname"  v-else>点击登录</view>
 		</view>
-		<view class="mine-orders">
+		<view class="mine-orders" @click="checkOrders">
 			<view class="mine-orders__top">
 				<view class="mine-orders__title">我的订单</view>
 				<view class="mine-orders__more">
@@ -141,7 +141,11 @@
 			});
 		},
 		methods: {
-			
+			checkOrders(){
+				uni.navigateTo({
+					url:"/pages/order/myOrders"
+				})
+			}
 		}
 	}
 </script>

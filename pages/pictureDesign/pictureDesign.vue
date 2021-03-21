@@ -6,6 +6,8 @@
 			</view>
 			<image class="picture-body" :src="isTransferred?selectedTransferredPicture:pictureUrl" mode='aspectFit' v-else>
 			</image>
+			<image class="raw" :src="pictureUrl" mode='aspectFit' v-show="isCheckingRaw">
+			</image>
 		</view>
 		<view class="style-selector">
 			<scroll-view class="scroll-view_H style-selector__tabs-container" scroll-x="true" enable-flex="true">
@@ -46,6 +48,7 @@
 		<!-- 记得换成isTransferred -->
 		<view class="picture-finish" v-if="isTransferred" @click="finishDesign">完成</view>
 		<view class="right-bar" v-if="isTransferred">
+			<view class="right-bar-item right-bar-item--check-raw" @touchstart="checkRaw" @touchend="hideRaw"></view>
 			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
 			<!-- <button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button> -->
 		</view>
@@ -99,21 +102,20 @@
 				//     '其他': ['土耳其瓷器', '阿拉伯地毯', '印度纹身', '泰国绘画']
 				// },
 				styleKinds: [
-				    '唐朝元素',
-				    '世界多元',
+				    '大唐风韵',
 				    '传统文化',
-				    '独立小众',
-				    '节日庆典'
+				    '多元文化',
+				    '世界名家',
+				    '独特小众'
 				],
 				styles: {
-					'推荐': ['飞天', '敦煌壁画', '敦煌九色鹿', '唐朝服饰纹样', '大唐盛世', '唐三彩' ],
-				    '唐朝元素': ['敦煌壁画', '飞天', '敦煌九色鹿', '大唐盛世', '敦煌藻井', '唐朝珐琅', '唐朝服饰纹样', '唐朝服饰纹样2', '唐三彩', '唐三彩2'],
-				    '世界多元': ['毕加索', '波洛克', '梵高', '弗朗兹', '葛饰北斋', '关山月', '康定斯基', '米罗', '莫奈', '穆夏', '齐白石', '吴冠中', '塞尚', '杜尚', '蒙德里安', '达芬奇', '克林姆特'],
-				    '传统文化': ['刺绣', '敦煌菩萨', '和玺彩画', '龙袍纹样', '门神', '明清彩釉', '明清官服', '青花瓷', '四大金刚', '戏蝶', '水墨画', '凤凰于飞', '剪纸', '花鸟古画', '唐卡'],
-				    '独立小众': ['波普艺术', '灯塔版画', '蜡笔画', '马赛克', '朋克插画', '沙画', '湿拓', '数字彩绘', '水彩', '水墨', '贴纸', '线描', '炫彩霓虹', '花与鲸', '点彩', '帆船', '鹿', '飞行家' ],
-				    '节日庆典': ['春节福娃', '农历虎年', '万圣南瓜', '中秋月兔']
+				    '大唐风韵': ['天王', '飞天', '九天阊阖', '金刚', '唐珐琅', '敦煌壁画', '唐装', '唐三彩', '藻井', '唐织锦', '鸟含花锦', '吴带当风', '辟邪神兽', '门神'],
+				    '传统文化': ['刺绣', '敦煌飞天', '和玺彩画', '五彩祥云纹', '明清彩釉', '朝服', '青花瓷', '戏蝶', '水墨', '唐卡', '凤凰于飞', '剪纸', '藏传唐卡', '瑞鹤图', '水墨工笔', '漆器纹', '工笔白描', '千里江山图', '扎染', '鹿', '九色鹿'],
+				    '多元文化': ['莫桑比克画', '泰国宫殿', '泰国马赛克', '土耳其壁画', '卢旺达油画', '泰国油彩', '突尼斯文字', '孟加拉绘画', '土耳其瓷器', '孟加拉地毯', '亚美尼亚绘画', '印度纹身', '日本版画', '缅甸雨伞', '韩国彩扇'],
+				    '世界名家': ['毕加索', '波洛克', '梵高', '弗朗兹', '葛饰北斋', '关山月', '康定斯基', '米罗', '莫奈', '穆夏', '齐白石', '吴冠中', '塞尚', '杜尚', '蒙德里安', '达芬奇', '克林姆特', '山形博导', '爱德华蒙克', '杜迪拜拉莫夫', '永山裕子', '克劳斯'],
+				    '独特小众': ['波普艺术', '灯塔版画', '线描水彩', '赛博朋克', '沙画', '湿拓', '立体折纸', '水彩', '贴纸', '线描', '炫彩霓虹', '花与鲸', '帆船', '几何三原色', '孔雀翎', '幽莲', '简约撞色', '可爱卡通', '粉色西瓜', '油彩', '铅笔素描', '简笔画']
 				},
-				selectedKind: '推荐',
+				selectedKind: '大唐风韵',
 				selectedStyle: null,
 				transferredPictures:{
 				},
@@ -121,6 +123,7 @@
 				isSharing: false,
 				transferToken: null,
 				optionStyle: undefined,
+				isCheckingRaw: false
 			}
 		},
 		computed: {
@@ -464,6 +467,12 @@
 						icon: 'none'
 					});
 				})
+			},
+			checkRaw(){
+				this.isCheckingRaw = true;
+			},
+			hideRaw(){
+				this.isCheckingRaw = false;
 			}
 		}
 	}

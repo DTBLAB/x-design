@@ -1,0 +1,68 @@
+.order-item{
+	background-color: #fff;
+	height: 280rpx;
+	margin-bottom: 10rpx;
+	padding:30rpx;
+	.order-info{
+		display: flex;
+		justify-content: space-between;
+		.order-pic{
+			width: 190rpx;
+			height: 190rpx;
+			background-size: cover;
+		}
+		.order-detail{
+			width: 475rpx;
+			font-size: 28rpx;
+			color: #313131;
+			.main-info{
+				display: flex;
+				justify-content: space-between;
+				padding-bottom: 12rpx;
+			}
+			.count{
+				color: #999;
+				padding-bottom: 52rpx;
+				text-align: right;
+			}
+			.total{
+				font-size: 24rpx;
+				color: #333;
+				text-align: right;
+				span{
+					font-size: 32rpx;
+				}
+			}
+		}
+	}
+	.order-action{
+		display: flex;
+		justify-content: space-between;
+		padding-top: 32rpx;
+		span{
+			color: #313131;
+			font-size: 24rpx;
+		}
+		.btn-content{
+			display: flex;
+			.btn{
+				width: 144rpx;
+				height: 50rpx;
+				border: 1px solid #cdcdcd;
+				color: #cdcdcd;
+				border-radius: 50rpx;
+				text-align: center;
+				line-height: 50rpx;
+				font-size: 24rpx;
+				margin-right: 16rpx;
+				&:last-child{
+					margin-right: 0;
+				}
+				&.btn-yellow{
+					border: 1px solid #FC9A04;
+					color: #FC9A04;
+				}
+			}
+		}
+	}
+}

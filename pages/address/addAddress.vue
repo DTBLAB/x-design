@@ -60,7 +60,7 @@
 <script>
 	import LbPicker from '@/components/lb-picker'
 	import EvanCheckbox from '@/components/evan-checkbox/evan-checkbox'
-	import areaData from './area-data-min'
+	import areaData from './area-data-min2'
 	export default {
 		components: {
 		  LbPicker, EvanCheckbox

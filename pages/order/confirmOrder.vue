@@ -46,7 +46,7 @@
 				orderInfo: {
 					address: null,
 					items: [],
-					express: 6,
+					express: 0,
 					discount: 0
 				},
 				categoryList: category
@@ -108,9 +108,9 @@
 						            duration: 1000,
 						        	icon: 'none'
 						        });
-								uni.redirectTo({
-									url: '/pages/cart/cart'
-								})
+								// uni.redirectTo({
+								// 	url: '/pages/cart/cart'
+								// })
 						    }
 						});
 					}
@@ -155,6 +155,19 @@
 				uni.navigateTo({
 					url: "/pages/address/address?isSelecting=true"
 				})
+			},
+			calculateExpress(){
+				if(this.orderInfo.address && this.orderInfo.address.province){
+					let province = this.orderInfo.address.province;
+					const farProvinces = ['新疆维吾尔自治区', '西藏自治区', '内蒙古自治区', '青海省', '甘肃省', '宁夏回族自治区'];
+					const specialProvinces = ['澳门特别行政区', '香港特别行政区', '台湾省'];
+					if(farProvinces.indexOf(province)>=0){
+						this.orderInfo.express = 20;
+					}
+					if(specialProvinces.indexOf(province)>=0){
+						this.orderInfo.express = 99;
+					}
+				}
 			}
 		},
 		onLoad(){
@@ -181,6 +194,7 @@
 				}
 				if(res.data.data){
 					_this.orderInfo.address = res.data.data;
+					this.calculateExpress();
 				}
 				
 			}).catch(err => {
@@ -193,6 +207,7 @@
 			uni.removeStorageSync("selectedAddress")
 			if (address) {
 			    this.orderInfo.address = address;
+				this.calculateExpress();
 			}
 		},
 		computed: {

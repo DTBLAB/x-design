@@ -48,7 +48,7 @@
 			},
 			orderDetail(){
 				uni.navigateTo({
-					url: "/pages/mine/myorders/orderInfo"
+					url: "/pages/order/orderInfo"
 				})
 			}
 		},
@@ -56,5 +56,5 @@
 </script>
 
 <style lang="less" scoped>
-@import url('../../../common/less/mineOrders.less');
+@import url('../../common/less/myOrders.less');
 </style>
