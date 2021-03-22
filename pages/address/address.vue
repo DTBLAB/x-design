@@ -27,9 +27,9 @@
 							</text>
 						</view>
 					</view>
-					<view>
-						<image src="../../static/image/edit.png" mode="" class="edit" @click="editAddress(address.id)"></image>
-						<image src="../../static/image/delete--grey.png" mode="" class="delete" @click="deleteAddress(address.id)"></image>
+					<view hover-stop-propagation="true">
+						<image src="../../static/image/edit.png" mode="" class="edit" @click.stop="editAddress(address.id)"></image>
+						<image src="../../static/image/delete--grey.png" mode="" class="delete" @click.stop="deleteAddress(address.id)"></image>
 					</view>
 				</view>
 			</template>

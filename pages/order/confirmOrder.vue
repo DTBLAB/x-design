@@ -25,7 +25,7 @@
 					<view class="ways">配送方式</view>
 					<view class="pay">快递￥{{orderInfo.express}}</view>
 				</view>
-				<view class="total">共{{orderInfo.items.length}}件商品，合计<span>¥{{computeTotal}}</span></view>
+				<view class="total">共{{total}}件商品，合计<span>¥{{computeTotal}}</span></view>
 			</view>
 		</view>
 		<view class="sub-order">
@@ -49,6 +49,7 @@
 					express: 0,
 					discount: 0
 				},
+				total: 0,
 				categoryList: category
 			}
 		},
@@ -162,7 +163,7 @@
 					const farProvinces = ['新疆维吾尔自治区', '西藏自治区', '内蒙古自治区', '青海省', '甘肃省', '宁夏回族自治区'];
 					const specialProvinces = ['澳门特别行政区', '香港特别行政区', '台湾省'];
 					if(farProvinces.indexOf(province)>=0){
-						this.orderInfo.express = 20;
+						this.orderInfo.express = 20 * this.total;
 					}
 					if(specialProvinces.indexOf(province)>=0){
 						this.orderInfo.express = 99;
@@ -177,6 +178,12 @@
 			        // console.log(value);
 					this.orderInfo.items = value;
 					uni.removeStorageSync('storage_key');
+					
+					let num = 0;
+					for(let i=0; i<value.length; i++){
+						num += value[i].num;
+					}
+					this.total = num;
 			    }
 			} catch (e) {
 			    // error

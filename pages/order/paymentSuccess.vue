@@ -8,8 +8,8 @@
 			<span class="money">已支付￥{{actual}}</span>
 			<span class="data">预计七个工作日内，即{{newDate}}发货</span>
 			<view class="btn-content">
-				<view class="btn btn-checkorders" @click="tomineOrders">查看订单</view>
-				<view class="btn btn-backindex" @click="toindex">返回首页</view>
+				<view class="btn btn-checkorders" @click="toMyOrders">查看订单</view>
+				<view class="btn btn-backindex" @click="toIndex">返回首页</view>
 			</view>
 		</view>
 	</view>
@@ -41,13 +41,13 @@
 				let newDate = month + "月" + day+ "日"
 				this.newDate = newDate
 			},
-			tomineOrders:function(){
-				uni.navigateTo({
-					url: '/pages/mine/myorders/mineOrders'
+			toMyOrders:function(){
+				uni.reLaunch({
+					url: '/pages/order/myOrders'
 				})
 			},
-			toindex:function(){
-				uni.navigateTo({
+			toIndex:function(){
+				uni.reLaunch({
 					url: '/pages/index/index'
 				})
 			},
