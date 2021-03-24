@@ -1,4 +1,4 @@
 {
-	"serverBaseUrl": "https://www.designist.cn/api",
+	"serverBaseUrl": "http://localhost:3000/api",
 	"transferBaseUrl": "https://www.designist.cn"
 }

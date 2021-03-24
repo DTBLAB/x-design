@@ -356,7 +356,7 @@
 				this.pictureUrl = null;
 				this.pictureData = null;
 				this.isTransferred = false;
-				this.selectedKind = '推荐';
+				this.selectedKind = this.styleKinds[0];
 				this.selectedStyle = null;
 				this.transferredPictures = {};
 				this.selectedTransferredPicture = null;
