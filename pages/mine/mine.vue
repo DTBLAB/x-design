@@ -15,25 +15,25 @@
 				</view>
 			</view>
 			<view class="mine-orders__body">
-				<view class="mine-orders__button">
+				<!-- <view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unpaid.png"></image>
 					<text class="mine-orders__button__text">待付款</text>
 					<badge :num="orderNums[0]" v-if="orderNums[0] !== 0"></badge>
-				</view>
+				</view> -->
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unshipped.png"></image>
 					<text class="mine-orders__button__text">待发货</text>
-					<badge :num="orderNums[1]" v-if="orderNums[1] !== 0"></badge>
+					<!-- <badge :num="orderNums[1]" v-if="orderNums[1] !== 0"></badge> -->
 				</view>
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unreceived.png"></image>
 					<text class="mine-orders__button__text">待收货</text>
-					<badge :num="orderNums[2]" v-if="orderNums[2] !== 0"></badge>
+					<!-- <badge :num="orderNums[2]" v-if="orderNums[2] !== 0"></badge> -->
 				</view>
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unrated.png"></image>
 					<text class="mine-orders__button__text">待评价</text>
-					<badge :num="orderNums[3]" v-if="orderNums[3] !== 0"></badge>
+					<!-- <badge :num="orderNums[3]" v-if="orderNums[3] !== 0"></badge> -->
 				</view>
 			</view>
 		</view>
@@ -53,7 +53,7 @@
 		</navigator>
 		<navigator class="mine-block" url="/pages/cart/cart">
 			<view class="mine-block__top">
-				<view class="mine-block__title">购物车</view>
+				<view class="mine-block__title">我的产品</view>
 				<view class="mine-block__more">
 					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>

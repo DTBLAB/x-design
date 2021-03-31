@@ -42,7 +42,7 @@
 			return {
 				aaa: '1111',
 				orderItemList:[{'pic':'../../static/image/canvas-bag.png','name':'帆布包','price':16,'count':2,status:'待发货'},{'pic':'../../static/image/pillow.png','name':'抱枕','price':26,'count':1,status:'已发货'},{'pic':'../../static/image/notebook.png','name':'笔记本','price':16,'count':1,status:'待评价'}],
-				items: ['全部','待付款','待发货','待收货','待评价'],
+				items: ['全部','待发货','待收货','待评价'],
 				current: 0
 			}
 		},

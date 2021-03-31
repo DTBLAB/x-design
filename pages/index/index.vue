@@ -2,11 +2,11 @@
 	<view class="home-container">
 		<swiper class="home-banner" indicator-dots="true" indicator-color="rgba(255, 255, 255, .5)" indicator-active-color="white"  autoplay="true" circular="true">
 		    <swiper-item v-for="(item, index) in bannerImages" :key="index">
-		        <image class="home-banner__item" :src="item">A</image>
+		        <navigator :url="item.url"><image class="home-banner__item" :src="item.src"></image></navigator>
 		    </swiper-item>
 		</swiper>
 		<view class="home-styles">
-			<view class="home-styles__title">热门风格</view>
+			<view class="home-styles__title">大唐风韵</view>
 			<scroll-view class="scroll-view_H home-styles__list-container" scroll-x="true" enable-flex="true">
 			 <view class="home-styles__list">
 			 	<view
@@ -58,20 +58,20 @@
 
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
-	import selectedCommodities from '../../config/selectedCommodities'
+	import selectedProducts from '../../config/selectedProducts'
 	
 	export default {
 		components: {tabBar},
 		data() {
 			return {
 				bannerImages: [
-					'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png'
+					{src:'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png',url:'/pages/product/productDesign?category=postcard'}
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner2.jpg',
 					// 'https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner3.jpg'
 				],
-				hotStyles: ['天王', '飞天', '九天阊阖', '金刚', '唐珐琅', '敦煌壁画', '唐装', '唐三彩', '藻井', '唐织锦', '鸟含花锦', '吴带当风', '辟邪神兽', '门神'],
+				hotStyles: ['飞天', '金刚', '吴带当风', '辟邪神兽', '唐织锦', '鸟含花锦', '藻井', '唐珐琅', '敦煌壁画', '唐装', '唐三彩', '天王', '门神', '九天阊阖'],
 				//['赛博朋克', '浮世绘', '和玺彩画', '水彩画', '国画梅花', '蜡笔画', '铅笔画', '梵高', '康定斯基', '万圣节', '波普'],
-				commodities: selectedCommodities
+				commodities: selectedProducts
 			}
 		},
 		methods: {

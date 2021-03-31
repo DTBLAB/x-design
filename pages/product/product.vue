@@ -13,7 +13,7 @@
 		</view> -->
 		
 		<view class="product-bottom">
-			<button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入购物车</button>
+			<button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button>
 			<button class="product-bottom__button2" type="default" @click="placeOrder">立即购买</button>
 		</view>
 		
@@ -89,7 +89,7 @@
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
 	import category from '../../config/whiteMoldData'
-	import selectedCommodities from '../../config/selectedCommodities'
+	import selectedCommodities from '../../config/selectedProducts'
 	
 	export default {
 		components: {tabBar},
@@ -101,7 +101,7 @@
 				productSold:100,
 				sales:"首次下单立减10元",
 				expressAddress:"浙江杭州",
-				expressFee:6,
+				expressFee:0,
 				productImages: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
 				current: 0,
 				productinfoImages:[
@@ -139,7 +139,7 @@
 			if(option.public){
 				this.disabled = false;
 				this.preview = selectedCommodities[this.id].preview;
-				this.product = {preview: this.preview, origin: selectedCommodities[this.id].origin, price: this.productInfo.price, category: this.categoryName, num: 1};
+				this.product = {preview: this.preview, original: selectedCommodities[this.id].original, price: this.productInfo.price, category: this.categoryName, num: 1};
 			}else{
 				this.$http.get('/product/get', {id: this.id}).then(res => {
 					if(res.data.code !== 0){
@@ -166,7 +166,30 @@
 		},
 		methods: {
 			addToCart(){
-				
+				this.$http.post('/product/add', this.product).then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					uni.showToast({
+					    title: '成功加入我的产品',
+					    duration: 1000,
+						icon: 'none'
+					});
+				}).catch(err => {
+					console.log(err);
+					uni.hideLoading();
+					uni.showToast({
+					    title: "添加失败",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
 			},
 			placeOrder(){
 				uni.setStorageSync('orderItems', [this.product]);

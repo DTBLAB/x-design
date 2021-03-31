@@ -1,0 +1,8 @@
+[
+	{"id": 0, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product1.png", "category":"canvasBag", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/canvasBag.png"},
+	{"id": 1, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product2.png", "category":"pillow", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/pillow.png"},
+	{"id": 2, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product3.png", "category":"mug", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/mug.png"},
+	{"id": 3, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product4.png", "category":"notebook", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product4.png"},
+	{"id": 4, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product5.png", "category":"tshirt", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/tshirt%403x.png"},
+	{"id": 5, "preview":"https://x-design.oss-cn-hangzhou.aliyuncs.com/home/product6.png", "category":"case", "original":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/tshirt%403x.png"}
+]

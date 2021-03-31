@@ -127,6 +127,7 @@
 					for(let i = 0; i<res.data.data.length; i++){
 						this.statusList.push(false);
 						this.numList.push(1);
+						res.data.data[i].price = this.categoryList[res.data.data[i].category].price;
 					}
 					this.myProducts = res.data.data;
 				}).catch(err => {
