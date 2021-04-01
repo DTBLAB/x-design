@@ -13,7 +13,7 @@
 		</view> -->
 		
 		<view class="product-bottom">
-			<button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button>
+			<!-- <button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button> -->
 			<button class="product-bottom__button2" type="default" @click="placeOrder">立即购买</button>
 		</view>
 		
@@ -42,9 +42,8 @@
 			 </view>
 		</view>
 			
-		<view class="product-comment">
+<!-- 		<view class="product-comment">
 			<view class="product-comment__name">商品评价</view>
-			<!-- 这一页的商品评价部分作为商品评价页的链接 只显示第一个 -->
 			<navigator class="product-comment__list" v-for="(item, index) in commentList" :key="index" url="...">
 							<view class="product-comment__item">
 								<image src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/椭圆411@3x.png"  class="product-comment__item__left"></image>
@@ -70,11 +69,11 @@
 				查看更多相关评价
 			</view>
 			</navigator>
-		</view>
+		</view> -->
 			
 			
 		<view class="product-detail">
-			<view class="product-detail__name">商品详情</view>
+			<!-- <view class="product-detail__name">商品详情</view> -->
 			<view class="product-detail__list">
 				<!-- <view v-for="(item, index) in productinfoImages" :key="index">
 					<image :src="item.img" class="product-detail__list__image" mode="widthFix"></image>
@@ -101,7 +100,7 @@
 				productName:"帆布包",
 				productPrize:29.00,
 				productSold:100,
-				sales:"首次下单立减10元",
+				sales:"满一件包邮",
 				expressAddress:"浙江杭州",
 				expressFee:0,
 				productImages: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",

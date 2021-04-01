@@ -130,6 +130,9 @@
 						res.data.data[i].price = this.categoryList[res.data.data[i].category].price;
 					}
 					this.myProducts = res.data.data;
+					uni.setNavigationBarTitle({
+						title: "我的产品(" + this.myProducts.length + "/20)"
+					})
 				}).catch(err => {
 					uni.showToast({
 						title: "网络问题，图片加载失败",

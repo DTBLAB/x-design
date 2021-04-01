@@ -524,9 +524,16 @@
 					}
 					//_this.generateCard(preview, original);
 					// console.log(res.data.data);
-					uni.reLaunch({
-						url: "/pages/product/product?id="+res.data.data.pid+"&category="+_this.categoryName
-					})
+					uni.showToast({
+					    title: "已存至我的产品",
+					    duration: 2000,
+						icon: 'success',
+					});
+					setTimeout(()=>{
+						uni.reLaunch({
+							url: "/pages/product/product?id="+res.data.data.pid+"&category="+_this.categoryName
+						})
+					}, 2000);
 				}).catch(err => {
 					console.log(err);
 					uni.hideLoading();

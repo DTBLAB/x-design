@@ -236,7 +236,7 @@
 		"contentWidth": 638,
 		"contentHeight": 638, 
 		"style": "width: 750rpx; height: 750rpx;",
-		"contentStyle": "top: 56rpx; left: 56rpx; wi dth: 638rpx; height: 638rpx;",
+		"contentStyle": "top: 56rpx; left: 56rpx; width: 638rpx; height: 638rpx;",
 		"patterns": {
 			"full": {
 				"name": "full",
@@ -303,7 +303,7 @@
 				"width": 464,
 				"height": 654, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 464rpx; height: 654rpx; border-radius: 0, 24rpx, 24rpx, 0;",
+				"style": "top: 0; left: 0; width: 464rpx; height: 654rpx; border-radius: 0 24rpx 24rpx 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
 			"circle": {

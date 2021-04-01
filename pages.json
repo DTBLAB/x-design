@@ -46,7 +46,7 @@
         ,{
             "path" : "pages/productList/productList",
             "style" : {
-				"navigationBarTitleText" : "商品分类",
+				"navigationBarTitleText" : "产品分类",
 				"backgroundColor": "#FFFFFF"
 			}
         }
@@ -133,7 +133,13 @@
 		    "style" : {
 				 "navigationBarTitleText" : "我的订单"
 		    }
-		}
+		},
+		{
+            "path" : "pages/mine/myProducts",
+            "style" : {
+				"navigationBarTitleText" : "我的产品"
+			}
+        }
 		
     ],
     "globalStyle" : {

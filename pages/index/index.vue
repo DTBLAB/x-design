@@ -25,7 +25,7 @@
 			</scroll-view>
 		</view>
 		<view class="home-commodities">
-			<view class="home-commodities__title">精选产品</view>
+			<view class="home-commodities__title">精选商品</view>
 			<!-- <view class="home-commodities__more">
 				<text>更多</text>
 				<image src="../../static/image/more@3x.png"  class="home-commodities__more__icon"></image>
