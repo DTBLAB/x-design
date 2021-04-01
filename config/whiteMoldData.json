@@ -2,7 +2,7 @@
 	"canvasBag": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/canvasBag@3x.png",
         "name": "帆布包",
-        "price": 39.00,
+        "price": 59.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 494,
@@ -40,7 +40,7 @@
 	"tshirt": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/tshirt@3x.png",
         "name": "短袖",
-        "price": 49.00,
+        "price": 59.00,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 236,
@@ -78,7 +78,7 @@
 	"sweater": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/sweater@3x.png",
         "name": "卫衣",
-        "price": 59.00,
+        "price": 79.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 236,
@@ -116,7 +116,7 @@
 	"keychain": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/keychain@3x.png",
         "name": "钥匙扣",
-        "price": 10.00,
+        "price": 19.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 286,
@@ -154,7 +154,7 @@
 	"mousePad": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mousePad@3x.png",
         "name": "鼠标垫",
-        "price": 12.00,
+        "price": 19.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 638,
@@ -192,7 +192,7 @@
 	"case": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/case@3x.png",
         "name": "手机壳",
-        "price": 16.00,
+        "price": 29.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 322,
@@ -230,7 +230,7 @@
 	"silkScarf": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/silkScarf@3x.png",
         "name": "丝巾",
-        "price": 60.00,
+        "price": 128.00,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 638,
@@ -268,7 +268,7 @@
 	"badge": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/badge@3x.png",
         "name": "胸章",
-        "price": 5.00,
+        "price": 5.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 620,
@@ -290,7 +290,7 @@
 	"notebook": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/notebook@3x.png",
         "name": "笔记本",
-        "price": 20.00,
+        "price": 29.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 464,
@@ -328,7 +328,7 @@
 	"mug": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mug@3x.png",
         "name": "马克杯",
-        "price": 30.00,
+        "price": 36.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 314,
@@ -350,7 +350,7 @@
 	"pillow": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/pillow%403x.png",
 		"name": "抱枕",
-        "price": 30.00,
+        "price": 59.90,
         "height": 576,
         "width": 576,
         "contentWidth": 576,
@@ -407,5 +407,9 @@
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			}
 		}
+	},
+	"scroll": {
+        "name": "卷轴",
+        "price": 269.90
 	}
 }

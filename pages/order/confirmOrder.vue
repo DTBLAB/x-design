@@ -1,6 +1,5 @@
 <template>
 	<view class="page-container">
-		
 		<view class="adrre-info" v-if="orderInfo.address" @click="selectAddress">
 			<view class="userInfo">
 				<view class="userName">{{orderInfo.address.consignee}}</view>
@@ -32,6 +31,13 @@
 			<view class="sumPrice">合计<span style="font-size:36rpx;font-weight: 700;margin-left: 12rpx;">¥{{computeTotal}}</span></view>
 			<view class="btn-submit" @click="submitOrder">提交订单</view>
 		</view>
+		
+		<view class="collection-code-container" v-if="showing">
+			<image class="collection-code" src="../../static/image/collection-code.png" mode="widthFix"></image>
+			<div class="total">￥{{computeTotal}}</div>
+			<button class="goPay" @click="requestPayment">已支付，点此输入密码123456</button>
+			<div class="goBack" @click="hideCollectionCode">返回确认订单界面</div>
+		</view>
 	</view> 
 </template>
 
@@ -50,7 +56,9 @@
 					discount: 0
 				},
 				total: 0,
-				categoryList: category
+				categoryList: category,
+				payParams: null,
+				showing: false
 			}
 		},
 		methods:{
@@ -76,7 +84,7 @@
 					mask: true,
 					title: "订单提交中"
 				})
-				this.$http.post('/order/place', this.orderInfo).then(res => {
+				this.$http.post('/order/place', this.orderInfo, {timeout: 30000}).then(res => {
 					uni.hideLoading();
 					// console.log(res);
 					if(res.data.code !== 0){
@@ -91,29 +99,8 @@
 						    duration: 1000,
 							icon: 'success'
 						});
-						let data = res.data.data;
-						uni.requestPayment({
-						    provider: 'wxpay',
-						    timeStamp: data.timeStamp,
-						    nonceStr: data.nonceStr,
-						    package: data.package,
-						    signType: data.signType,
-						    paySign: data.paySign,
-						    success: function (res) {
-						        // console.log('success:' + JSON.stringify(res));
-								_this.finishPayment(data.out_trade_no);
-						    },
-						    fail: function (err) {
-						        uni.showToast({
-						            title: "支付失败",
-						            duration: 1000,
-						        	icon: 'none'
-						        });
-								// uni.redirectTo({
-								// 	url: '/pages/cart/cart'
-								// })
-						    }
-						});
+						_this.payParams = res.data.data;
+						_this.showCollectionCode();
 					}
 				}).catch(err => {
 					console.log(err);
@@ -124,6 +111,39 @@
 						icon: 'none'
 					});
 				})
+			},
+			showCollectionCode(){
+				this.showing = true;
+			},
+			hideCollectionCode(){
+				this.showing = false;
+			},
+			requestPayment(){
+				let data = this.payParams;
+				let _this = this;
+				
+				uni.requestPayment({
+				    provider: 'wxpay',
+				    timeStamp: data.timeStamp,
+				    nonceStr: data.nonceStr,
+				    package: data.package,
+				    signType: data.signType,
+				    paySign: data.paySign,
+				    success: function (res) {
+				        // console.log('success:' + JSON.stringify(res));
+						_this.finishPayment(data.out_trade_no);
+				    },
+				    fail: function (err) {
+				        uni.showToast({
+				            title: "支付失败",
+				            duration: 1000,
+				        	icon: 'none'
+				        });
+						// uni.redirectTo({
+						// 	url: '/pages/cart/cart'
+						// })
+				    }
+				});
 			},
 			finishPayment(out_trade_no){
 				uni.showLoading({

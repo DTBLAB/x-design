@@ -76,9 +76,10 @@
 		<view class="product-detail">
 			<view class="product-detail__name">商品详情</view>
 			<view class="product-detail__list">
-				<view v-for="(item, index) in productinfoImages" :key="index">
+				<!-- <view v-for="(item, index) in productinfoImages" :key="index">
 					<image :src="item.img" class="product-detail__list__image" mode="widthFix"></image>
-				</view>
+				</view> -->
+				<image :src="productDetail" class="product-detail__list__image" mode="widthFix"></image>
 			</view>
 		</view>
 
@@ -90,6 +91,7 @@
 	import tabBar from "@/component/tabBar/tabBar.vue"
 	import category from '../../config/whiteMoldData'
 	import selectedCommodities from '../../config/selectedProducts'
+	import details from '../../config/detail'
 	
 	export default {
 		components: {tabBar},
@@ -104,10 +106,7 @@
 				expressFee:0,
 				productImages: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
 				current: 0,
-				productinfoImages:[
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
-					{img: 'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg', name: '', url:''},
-				],
+				productDetail:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg',
 				commentList:[{username:"XYZ123",
 					scores:4,
 					photo:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/椭圆411@3x.png',
@@ -122,6 +121,7 @@
 				],
 				id: 0,
 				categoryList: category,
+				detailList: details,
 				commodities: selectedCommodities,
 				categoryName: 'canvasBag',
 				productInfo: category['canvasBag'],
@@ -135,10 +135,12 @@
 			this.categoryName = option.category;
 			// console.log(this.pid, this.categoryName);
 			this.productInfo = this.categoryList[this.categoryName];
+			this.productDetail = this.detailList[this.categoryName];
 			
 			if(option.public){
 				this.disabled = false;
 				this.preview = selectedCommodities[this.id].preview;
+				this.productDetail = selectedCommodities[this.id].original;
 				this.product = {preview: this.preview, original: selectedCommodities[this.id].original, price: this.productInfo.price, category: this.categoryName, num: 1};
 			}else{
 				this.$http.get('/product/get', {id: this.id}).then(res => {
