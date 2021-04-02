@@ -287,7 +287,7 @@
 				let _this = this;
 				uni.showLoading({
 					mask: true,
-					title: "商品保存中"
+					title: "产品保存中"
 				})
 				try{
 					query.select('#product-container').boundingClientRect();

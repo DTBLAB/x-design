@@ -51,8 +51,8 @@
 				</view>
 			</view>
 		</navigator>
-		<navigator class="mine-block" url="/pages/cart/cart">
-		<!-- <navigator class="mine-block" url="/pages/mine/myProducts">	 -->
+		<!-- <navigator class="mine-block" url="/pages/cart/cart"> -->
+		<navigator class="mine-block" url="/pages/mine/myProducts">	
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的产品</view>
 				<view class="mine-block__more">

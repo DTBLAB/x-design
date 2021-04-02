@@ -16,7 +16,8 @@
 						<span class="item-name">{{categoryList[item.category].name}}</span>
 						<span class="item-price" >￥{{item.price}}</span>
 					</view>
-					<view class="count">× {{item.num}}</view>
+					<view class="count"><wm-numberBox :min="0" :max="99" model="1" :value="orderInfo.items[i].num" @change="inputChange" :ID="i"></wm-numberBox>
+</view>
 				</view>
 			</view>
 			<view class="delivery">
@@ -35,18 +36,20 @@
 		<view class="collection-code-container" v-if="showing">
 			<image class="collection-code" src="../../static/image/collection-code.png" mode="widthFix"></image>
 			<div class="total">￥{{computeTotal}}</div>
-			<button class="goPay" @click="requestPayment">已支付，点此输入密码123456</button>
+			<button class="goPay" @click="requestPayment">已支付，点此输入密码123654</button>
 			<div class="goBack" @click="hideCollectionCode">返回确认订单界面</div>
 		</view>
 	</view> 
 </template>
 
 <script>
+	import wmNumberBox from "@/components/wm-numberBox/wm-number-box.vue"
 	import uniNumberBox from "@/components/uni-number-box/uni-number-box.vue"
 	import category from '../../config/whiteMoldData'
 	
+	
 	export default{
-		components: {uniNumberBox},
+		components: {wmNumberBox},
 		data(){
 			return{
 				orderInfo: {
@@ -189,6 +192,19 @@
 						this.orderInfo.express = 99;
 					}
 				}
+			},
+			inputChange(e){
+				let {value, id} = e;
+				let i = Number(id);
+				this.orderInfo.items[i].num = value;
+				this.calculateTotal();
+			},
+			calculateTotal(){
+				let sum = 0;
+				for(let item of this.orderInfo.items){
+					sum += item.num;
+				}
+				this.total = sum;
 			}
 		},
 		onLoad(){
