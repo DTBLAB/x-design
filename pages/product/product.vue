@@ -30,7 +30,7 @@
 				活动
 				<view class="product-marketing__more">
 				{{sales}}
-				<image src="/../../static/image/more@3x.png"  class="product-marketing__more__icon"></image>
+				<!-- <image src="/../../static/image/more@3x.png"  class="product-marketing__more__icon"></image> -->
 				</view>
 			</navigator>
 			<view class="product-marketing__name">发货
@@ -39,7 +39,16 @@
 					<image src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/直线139@3x.png"  class="product-marketing__place__icon"></image>
 					快递：￥{{expressFee.toFixed(2)}}
 				</view>
-			 </view>
+			</view>
+			<view class="product-marketing__name">型号
+				<view class="product-marketing__place">
+					<picker @change="selectModel" :value="modelIndex" :range="modelList">
+						<view class="uni-input model-picker">{{modelList[modelIndex]}}</view>
+						<!-- <text class="more">更多</text> -->
+						<image src="/../../static/image/more@3x.png"  class="more-icon"></image>
+					</picker>
+				</view>
+			</view>
 		</view>
 			
 <!-- 		<view class="product-comment">
@@ -89,6 +98,7 @@
 <script>
 	import tabBar from "@/component/tabBar/tabBar.vue"
 	import category from '../../config/whiteMoldData'
+	import models from '../../config/model'
 	import selectedCommodities from '../../config/selectedProducts'
 	import details from '../../config/detail'
 	
@@ -125,7 +135,10 @@
 				categoryName: 'canvasBag',
 				productInfo: category['canvasBag'],
 				preview: "",//"https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png"
-				disabled: true
+				disabled: true,
+				
+				modelList: models['canvasBag'],
+				modelIndex: 0
 			}
 		},
 		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
@@ -135,12 +148,13 @@
 			// console.log(this.pid, this.categoryName);
 			this.productInfo = this.categoryList[this.categoryName];
 			this.productDetail = this.detailList[this.categoryName];
+			this.modelList = models[this.categoryName];
 			
 			if(option.public){
 				this.disabled = false;
 				this.preview = selectedCommodities[this.id].preview;
 				this.productDetail = selectedCommodities[this.id].original;
-				this.product = {preview: this.preview, original: selectedCommodities[this.id].original, price: this.productInfo.price, category: this.categoryName, num: 1};
+				this.product = {preview: this.preview, original: selectedCommodities[this.id].original, price: this.productInfo.price, category: this.categoryName, num: 1, model: this.modelList[this.modelIndex]};
 			}else{
 				this.$http.get('/product/get', {id: this.id}).then(res => {
 					if(res.data.code !== 0){
@@ -154,6 +168,7 @@
 					// console.log(res.data)
 					_this.preview = res.data.data.preview;
 					_this.product = res.data.data;
+					_this.product.model = _this.modelList[_this.modelIndex];
 					_this.product.num = 1;
 				}).catch(err => {
 					console.log(err)
@@ -197,8 +212,12 @@
 				uni.navigateTo({
 					url: "/pages/order/confirmOrder"
 				})
+			},
+			selectModel(e){
+				this.modelIndex = e.target.value;
+				this.product.model =  this.modelList[this.modelIndex];
 			}
-		}	,
+		}
 	}
 </script>
 

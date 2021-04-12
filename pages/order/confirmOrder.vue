@@ -16,6 +16,7 @@
 						<span class="item-name">{{categoryList[item.category].name}}</span>
 						<span class="item-price" >￥{{item.price}}</span>
 					</view>
+					<view class="model">{{item.model}}</view>
 					<view class="count"><wm-numberBox :min="0" :max="99" model="1" :value="orderInfo.items[i].num" @change="inputChange" :ID="i"></wm-numberBox>
 </view>
 				</view>

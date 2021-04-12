@@ -3,6 +3,8 @@
 		<image :src="url" class="picture" mode="aspectFit"></image>
 		<image src="../../static/image/delete.png" class="delete" @click="confirmDelete"></image>
 		<view class="index">{{index}}/20</view>
+		
+		<button class="button" @click="toDesignProduct">去定制产品</button>
 	</div>
 </template>
 
@@ -58,6 +60,11 @@
 					uni.navigateBack();
 				}).catch(err => {
 					throw new Error("获取签名失败!");
+				})
+			},
+			toDesignProduct(){
+				uni.navigateTo({
+					url: '/pages/productList/productList?pid='+this.pid
 				})
 			}
 		}

@@ -7,6 +7,7 @@
 					<span class="name">{{categoryList[item.category].name}}</span>
 					<span class="price">¥{{item.price}}</span>
 				</view>
+				<view class="model">{{item.model}}</view>
 				<view class="count">x{{item.num}}</view>
 				<view class="total">共{{item.num}}件商品，合计<span>¥{{item.actual}}</span></view>
 			</view>

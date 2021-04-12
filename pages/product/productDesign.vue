@@ -130,7 +130,8 @@
 				productInfo: category['canvasBag'],
 				patterns: category['canvasBag'].patterns,
 				selectedPattern: category['canvasBag'].patterns.full,
-				categoryList: category
+				categoryList: category,
+				color: "白色"
 			}
 		},
 		computed: {
@@ -148,6 +149,12 @@
 			this.selectedPattern = this.categoryList[this.categoryName].patterns.full;
 			if(750/uni.getSystemInfoSync().windowWidth<1){
 				this.radio = 6/Math.ceil(uni.getSystemInfoSync().windowWidth/750);
+			}
+			if(option.colorIndex){
+				this.productInfo.picture = this.productInfo.colorList[Number(option.colorIndex)].url;
+				this.color = this.productInfo.colorList[Number(option.colorIndex)].name;
+			}else{
+				this.color = this.productInfo.colorList[0].name;
 			}
 		},
 		onShow() {
