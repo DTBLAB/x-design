@@ -4,10 +4,10 @@
 		<view v-for="(item, index) in productlistImages" :key="index" class="productlist__item">
 			<image :src="item.img" class="productlist__item__image" @click="chooseCategory(item.category)"></image>
 			<text class="productlist__item__name">{{item.name}}</text>
-			<picker @click="selectCategory(item.category)" @change="selectColor" :value="colorIndex" :range="categoryList[item.category].colorList" 
+			<!-- <picker @click="selectCategory(item.category)" @change="selectColor" :value="colorIndex" :range="categoryList[item.category].colorList" 
 			  range-key="name" v-if="categoryList[item.category].colorList && categoryList[item.category].colorList.length > 1">
 				<view class="cover"></view>
-			</picker>
+			</picker> -->
 		</view>
 	</view>
 </view>

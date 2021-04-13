@@ -89,6 +89,9 @@
 		</view>
 		<view class="product-finish" @click="finishDesign">完成</view>
 		<canvas class="product-canvas" :style="{height: canvasHeight+'px', width: canvasWidth+'px'}" canvas-id="product-canvas"></canvas>
+		<view class="right-bar">
+			<view class="right-bar-item right-bar-item--switch-color" @click="switchColor" v-if="colorList && colorList.length > 1"></view>
+		</view>
 	</view>
 </template>
 
@@ -131,7 +134,9 @@
 				patterns: category['canvasBag'].patterns,
 				selectedPattern: category['canvasBag'].patterns.full,
 				categoryList: category,
-				color: "白色"
+				color: "白色",
+				colorList: [],
+				colorIndex: 0
 			}
 		},
 		computed: {
@@ -150,12 +155,11 @@
 			if(750/uni.getSystemInfoSync().windowWidth<1){
 				this.radio = 6/Math.ceil(uni.getSystemInfoSync().windowWidth/750);
 			}
-			if(option.colorIndex){
-				this.productInfo.picture = this.productInfo.colorList[Number(option.colorIndex)].url;
-				this.color = this.productInfo.colorList[Number(option.colorIndex)].name;
-			}else{
-				this.color = this.productInfo.colorList[0].name;
-			}
+			
+			this.colorList = this.productInfo.colorList;
+			this.color = this.colorList[0].name;
+			this.productInfo.picture = this.colorList[0].url;
+			this.colorIndex = 0;
 		},
 		onShow() {
 			let _this = this;
@@ -626,6 +630,12 @@
 			
 			clearSignature(){
 				this.signature = null;
+			},
+			
+			switchColor(){
+				this.colorIndex = (this.colorIndex + 1) % this.colorList.length;
+				this.color = this.colorList[this.colorIndex].name;
+				this.productInfo.picture = this.colorList[this.colorIndex].url;
 			}
 			
 		}

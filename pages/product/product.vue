@@ -12,10 +12,12 @@
 			</swiper>
 		</view> -->
 		
-		<view class="product-bottom">
+		<picker @change="selectModel" :value="modelIndex" :range="modelList">
 			<!-- <button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button> -->
-			<button class="product-bottom__button2" type="default" @click="placeOrder">立即购买</button>
-		</view>
+			<view class="product-bottom">
+				<button class="product-bottom__button2" type="default">立即购买</button>
+			</view>
+		</picker>
 		
 		<view class="product-information">
 			<view class="product-information__title">{{productInfo.name}}</view>
@@ -40,15 +42,15 @@
 					快递：￥{{expressFee.toFixed(2)}}
 				</view>
 			</view>
-			<view class="product-marketing__name">型号
+			<!-- <view class="product-marketing__name">型号
 				<view class="product-marketing__place">
 					<picker @change="selectModel" :value="modelIndex" :range="modelList">
 						<view class="uni-input model-picker">{{modelList[modelIndex]}}</view>
-						<!-- <text class="more">更多</text> -->
+						
 						<image src="/../../static/image/more@3x.png"  class="more-icon"></image>
 					</picker>
 				</view>
-			</view>
+			</view> -->
 		</view>
 			
 <!-- 		<view class="product-comment">
@@ -216,6 +218,7 @@
 			selectModel(e){
 				this.modelIndex = e.target.value;
 				this.product.model =  this.modelList[this.modelIndex];
+				this.placeOrder();
 			}
 		}
 	}
