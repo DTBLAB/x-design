@@ -16,8 +16,8 @@
 			<span>商品{{stateList[item.state]}}</span>
 			<view class="btn-content">
 				<view class="btn btn-grey" @click="toLogistics">查看物流</view>
-				<view v-if="item.status != '待评价'" class="btn btn-yellow">确认收货</view>
-				<view v-if="item.status == '待评价'" class="btn btn-yellow"  @click="toshowRate">晒单评价</view>
+				<view v-if="item.state === 'delivered'" class="btn btn-yellow">确认收货</view>
+				<view v-if="item.status === 'arrived'" class="btn btn-yellow"  @click="toshowRate">晒单评价</view>
 			</view>
 		</view>
 	</view>
@@ -39,10 +39,10 @@
 			return {
 				categoryList: category,
 				stateList: {
-					created: '未发货',
+					paid: '待发货',
 					delivered: '已发货',
 					arrived: '已签收',
-					rated: '已评价'
+					graded: '已评价'
 				}
 			}
 		},
@@ -59,7 +59,7 @@
 			},
 			toOrderInfo:function(){
 				uni.navigateTo({
-					url: '/pages/mine/myorders/orderInfo'
+					url: '/pages/order/orderInfo?oiid='+this.item.id
 				})
 			},
 		},

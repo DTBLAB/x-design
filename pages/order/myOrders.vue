@@ -3,7 +3,7 @@
 		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="text" active-color="#FC9A04"></uni-segmented-control>
         <view class="content">
 			<view class="order-list" >
-				<order-item v-for="(item,index) in orderItemList" :key="index" :item="item" @click="orderDetail"></order-item>
+				<order-item v-for="(item,index) in orderItemList" :key="index" :item="item"></order-item>
 			</view>
         </view>
 	</view>
@@ -52,11 +52,11 @@
 					this.current = e.currentIndex;
 				}
 			},
-			orderDetail(){
-				uni.navigateTo({
-					url: "/pages/order/orderInfo"
-				})
-			}
+			// orderDetail(){
+			// 	uni.navigateTo({
+			// 		url: "/pages/order/orderInfo"
+			// 	})
+			// }
 		},
 	}
 </script>

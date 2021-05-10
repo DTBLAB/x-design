@@ -95,7 +95,8 @@
 					url: `/pages/product/product?id=${commodity.id}&category=${commodity.category}&public=true`
 				})
 			}
-		}
+		},
+		
 	}
 </script>
 

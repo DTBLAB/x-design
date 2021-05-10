@@ -36,7 +36,7 @@ const http = {
 		            // if (loading) {
 		            //     uni.hideLoading();
 		            // }
-		            if (res.data.code === 401) {
+		            if (res.statusCode === 401) {
 		                uni.showToast({
 		                    title: res.data.msg || '登陆过期，请重新登录',
 		                    duration: 1500,

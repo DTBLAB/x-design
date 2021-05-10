@@ -12,12 +12,15 @@
 			</swiper>
 		</view> -->
 		
-		<picker @change="selectModel" :value="modelIndex" :range="modelList">
+		<picker @change="selectModel" :value="modelIndex" :range="modelList" v-if="colorList.length > 1">
 			<!-- <button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button> -->
 			<view class="product-bottom">
 				<button class="product-bottom__button2" type="default">立即购买</button>
 			</view>
 		</picker>
+		<view class="product-bottom" v-else>
+			<button class="product-bottom__button2" type="default" @click="placeOrder">立即购买</button>
+		</view>
 		
 		<view class="product-information">
 			<view class="product-information__title">{{productInfo.name}}</view>
@@ -210,6 +213,9 @@
 				})
 			},
 			placeOrder(){
+				if(!this.product.model){
+					this.product.model = this.modelList[0];
+				}
 				uni.setStorageSync('orderItems', [this.product]);
 				uni.navigateTo({
 					url: "/pages/order/confirmOrder"
