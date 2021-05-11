@@ -4,8 +4,8 @@
 			<view class="logistics-info">
 				<image class="logisticslogo" src="../../static/image/logistics-icon.png"></image>
 				<view class="new-trace" v-if="orderInfo.state !== 'paid'">
-					<view class="trace">{{traceInfo[0].AcceptStation}}</view>
-					<view class="time">{{traceInfo[0].AcceptTime}}</view>
+					<view class="trace">{{orderInfo.expressInfo.list[0].status}}</view>
+					<view class="time">{{orderInfo.expressInfo.list[0].time}}</view>
 				</view>
 				<view v-else class="new-trace">待发货</view>
 			</view>
@@ -83,8 +83,9 @@ export default {
 					return;
 				}
 				_this.orderInfo = res.data.data;
-				
+				console.log(_this.orderInfo)
 			}).catch(err => {
+				console.log(err);
 				uni.showToast({
 				    title: "网络问题，地址加载失败",
 				    duration: 1000,
