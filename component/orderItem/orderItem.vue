@@ -15,7 +15,8 @@
 		<view class="order-action">
 			<span>商品{{stateList[item.state]}}</span>
 			<view class="btn-content">
-				<view class="btn btn-grey" @click="toLogistics">查看物流</view>
+				<view class="btn btn-yellow" v-if="item.state === 'delivered'" @click="toLogistics">查看物流</view>
+				<view class="btn" v-if="item.state === 'paid'">暂无物流</view>
 				<view v-if="item.state === 'delivered'" class="btn btn-yellow">确认收货</view>
 				<view v-if="item.status === 'arrived'" class="btn btn-yellow"  @click="toshowRate">晒单评价</view>
 			</view>
@@ -49,7 +50,7 @@
 		methods: {
 			toLogistics: function(item){
 				uni.navigateTo({
-					url: '/pages/mine/myorders/logistics?price = item.price & count = item.count & name = item.name'
+					url: '/pages/order/logistics?oiid='+this.item.id
 				})
 			},
 			toshowRate:function(){

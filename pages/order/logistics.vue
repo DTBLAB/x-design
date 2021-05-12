@@ -2,9 +2,9 @@
 	<view>
 		<view class="logistics-info">
 			<view class="name">{{name}}</view>
-			<view class="number">运单号:{{number}}</view>
+			<view class="number">运单号:{{orderInfo.trackingNumber}}</view>
 		</view>
-		<steps v-if="traceData.Traces.length != 0" :options="traceData.Traces" direction="column"></steps>
+		<steps v-if="orderInfo.expressInfo.list.length !== 0" :options="orderInfo.expressInfo.list" direction="column"></steps>
 		<view v-else class="no-trace">暂无物流信息</view>
 	</view>
 </template>
@@ -13,69 +13,39 @@
 	import Steps from "@/component/steps/steps.vue"
 	export default {
 		components: {Steps},
-		mounted: function () {
-		  this.$nextTick(function () {
-			this.item = this.$route.query.item
-			this.getTraceData()
-		  })
+		onLoad: function (option) { //option为object类型，会序列化上个页面传递的参数
+			let _this = this;
+			this.oiid = parseInt(option.oiid);
+			this.$http.get('/order/getItem', {oiid: this.oiid}).then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				_this.orderInfo = res.data.data;
+			}).catch(err => {
+				console.log(err);
+				uni.showToast({
+				    title: "网络问题，物流信息加载失败",
+				    duration: 1000,
+					icon: 'none'
+				});
+			});
 		},
 		data() {
 			return {
-				name: 'XX快递',
-				number:'12345678',
-				item: {},
-				traceData: { "EBusinessID": "1237100", "Traces": [], "State": "0", "ShipperCode": "ZTO", "LogisticCode": "638650888018", "Success": true, "Reason": "暂无轨迹信息"}
+				orderInfo: {},
 			}
 		},
 		methods: {
-			getTraceData(){
-				//this.name = this.item.key
-				// let _this = this;
-				// //发起网络请求,
-				// _this.$http.get('http://api.kdniao.com/Ebusiness/EbusinessOrderHandle.aspx', { "OrderCode": "", "CustomerName": "001K12345", "ShipperCode": "JD", "LogisticCode": "VA00003618100", }).then(result => {
-				// 	if(result.Success){
-				// 		//有物流信息
-				//		this.traceData = result;
-				// 	}else{
-				// 		//没有物流信息
-				// 	}
-				// }).catch(err => {
-				// 	uni.showToast({
-				// 	    title: '网络错误，请重试',
-				// 	    duration: 2000,
-				// 		icon: 'none'
-				// 	});
-				// });
-				this.traceData = { 
-					"EBusinessID": "1237100", 
-					"OrderCode": "", 
-					"ShipperCode": "ZTO", 
-					"LogisticCode": "638650888018", 
-					"Success": true, 
-					"State": 3, 
-					"Traces": [{ 
-							"AcceptTime": "2020-06-03 20:52:41", 
-							"AcceptStation": "杭州转运中心已发出，下一站广州转运中心", 
-						},{ 
-							"AcceptTime": "2020-06-03 20:52:41", 
-							"AcceptStation": "已揽收，XXXXXXXXXXXX已收件", 
-						},{ 
-							"AcceptTime": "2020-06-03 20:52:41", 
-							"AcceptStation": "已发货，包裹正在等待揽收", 
-						},{ 
-							"AcceptTime": "2020-06-03 20:52:41", 
-							"AcceptStation": "您的订单正在制作中",
-						},{
-							"AcceptTime": "2020-06-03 20:52:41",
-							"AcceptStation": "订单已支付",
-						},
-					],
-				}
-			}
+			
 		}
 	}
 </script>
 
 <style lang="less" scoped>
-@import url('../../../common/less/logistics.less');
+@import url('../../common/less/logistics.less');
 </style>

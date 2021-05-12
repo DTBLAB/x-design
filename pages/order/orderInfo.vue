@@ -3,7 +3,7 @@
 		<view class="logistics-address">
 			<view class="logistics-info">
 				<image class="logisticslogo" src="../../static/image/logistics-icon.png"></image>
-				<view class="new-trace" v-if="orderInfo.state !== 'paid'">
+				<view class="new-trace" v-if="orderInfo.state !== 'paid'" @click="toLogistics">
 					<view class="trace">{{orderInfo.expressInfo.list[0].status}}</view>
 					<view class="time">{{orderInfo.expressInfo.list[0].time}}</view>
 				</view>
@@ -87,7 +87,7 @@ export default {
 			}).catch(err => {
 				console.log(err);
 				uni.showToast({
-				    title: "网络问题，地址加载失败",
+				    title: "网络问题，订单加载失败",
 				    duration: 1000,
 					icon: 'none'
 				});
@@ -108,10 +108,11 @@ export default {
 		},
 		
 		methods: {
-			getInfo(){
-				//请求
-				
-			}
+			toLogistics: function(item){
+				uni.navigateTo({
+					url: '/pages/order/logistics?oiid='+this.orderInfo.id
+				})
+			},
 		}
 	}
 	
