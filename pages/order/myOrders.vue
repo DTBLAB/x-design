@@ -1,9 +1,9 @@
 <template>
-	<view>
-		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="text" active-color="#FC9A04"></uni-segmented-control>
+	<view class="page-container">
+		<uni-segmented-control :current="current" :values="items" @clickItem="onClickItem" style-type="text" active-color="#FC9A04" class="top-bar"></uni-segmented-control>
         <view class="content">
 			<view class="order-list" >
-				<order-item v-for="(item,index) in orderItemList" :key="index" :item="item"></order-item>
+				<order-item v-for="(item,index) in orderItemList" :key="index" :item="item" @arrive="refresh"></order-item>
 			</view>
         </view>
 	</view>
@@ -28,7 +28,6 @@
 					return;
 				}
 				_this.orderItemList = res.data.data;
-				
 			}).catch(err => {
 				uni.showToast({
 				    title: "网络问题，订单加载失败",
@@ -48,10 +47,62 @@
 		},
 		methods: {
 			onClickItem(e) {
+				// console.log(e);
 				if (this.current !== e.currentIndex) {
 					this.current = e.currentIndex;
 				}
+				this.getItemsByState();
 			},
+			getItemsByState(){
+				// console.log("here");
+				let _this = this;
+				const stateList = ['all', 'paid', 'delivered', 'arrived'];
+				let state = stateList[this.current];
+				if(state === "all"){
+					this.$http.get('/order/getItemList').then(res => {
+						if(res.data.code !== 0){
+							uni.showToast({
+							    title: res.data.message,
+							    duration: 1000,
+								icon: 'none'
+							});
+							return;
+						}
+						_this.orderItemList = res.data.data;
+						
+					}).catch(err => {
+						uni.showToast({
+						    title: "网络问题，订单加载失败",
+						    duration: 1000,
+							icon: 'none'
+						});
+						console.log(err);
+					});
+				}else{
+					this.$http.get('/order/getItemList?state='+state).then(res => {
+						if(res.data.code !== 0){
+							uni.showToast({
+							    title: res.data.message,
+							    duration: 1000,
+								icon: 'none'
+							});
+							return;
+						}
+						_this.orderItemList = res.data.data;
+						
+					}).catch(err => {
+						uni.showToast({
+						    title: "网络问题，订单加载失败",
+						    duration: 1000,
+							icon: 'none'
+						});
+						console.log(err);
+					});
+				}
+			},
+			refresh(e) {
+				this.getItemsByState();
+			}
 			// orderDetail(){
 			// 	uni.navigateTo({
 			// 		url: "/pages/order/orderInfo"

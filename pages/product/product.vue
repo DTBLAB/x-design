@@ -216,6 +216,7 @@
 				if(!this.product.model){
 					this.product.model = this.modelList[0];
 				}
+				this.product.num = 1;
 				uni.setStorageSync('orderItems', [this.product]);
 				uni.navigateTo({
 					url: "/pages/order/confirmOrder"

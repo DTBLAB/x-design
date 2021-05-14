@@ -17,8 +17,7 @@
 						<span class="item-price" >￥{{item.price}}</span>
 					</view>
 					<view class="model">{{item.model}}</view>
-					<view class="count"><wm-numberBox :min="0" :max="99" model="1" :value="orderInfo.items[i].num" @change="inputChange" :ID="i"></wm-numberBox>
-</view>
+					<view class="count"><wm-numberBox :min="min" :max="max" model="1" :value="inputNum" @change="inputChange" :ID="i"></wm-numberBox></view>
 				</view>
 			</view>
 			<view class="delivery">
@@ -34,12 +33,12 @@
 			<view class="btn-submit" @click="submitOrder">提交订单</view>
 		</view>
 		
-		<view class="collection-code-container" v-if="showing">
+		<!-- <view class="collection-code-container" v-if="showing">
 			<image class="collection-code" src="../../static/image/collection-code.png" mode="widthFix"></image>
 			<div class="total">￥{{computeTotal}}</div>
 			<button class="goPay" @click="requestPayment">已支付，点此输入密码123654</button>
 			<div class="goBack" @click="hideCollectionCode">返回确认订单界面</div>
-		</view>
+		</view> -->
 	</view> 
 </template>
 
@@ -62,7 +61,11 @@
 				total: 0,
 				categoryList: category,
 				payParams: null,
-				showing: false
+				showing: false,
+				
+				min: 1,
+				max: 99,
+				inputNum: 1
 			}
 		},
 		methods:{
@@ -104,7 +107,7 @@
 							icon: 'success'
 						});
 						_this.payParams = res.data.data;
-						_this.showCollectionCode();
+						_this.requestPayment();
 					}
 				}).catch(err => {
 					console.log(err);
@@ -198,6 +201,7 @@
 				let {value, id} = e;
 				let i = Number(id);
 				this.orderInfo.items[i].num = value;
+				this.inputNum = value;
 				this.calculateTotal();
 			},
 			calculateTotal(){
@@ -211,16 +215,20 @@
 		onLoad(){
 			try {
 			    const value = uni.getStorageSync('orderItems');
+				// console.log(value);
 			    if (value) {
-			        // console.log(value);
+			        console.log(value);
 					this.orderInfo.items = value;
-					uni.removeStorageSync('storage_key');
+					uni.removeStorageSync('orderItems');
 					
 					let num = 0;
 					for(let i=0; i<value.length; i++){
+						this.orderInfo.items[i].num = value[i].num
+						this.orderInfo.items[i].price
 						num += value[i].num;
 					}
 					this.total = num;
+			        console.log(this.orderInfo.items);
 			    }
 			} catch (e) {
 			    // error
@@ -256,11 +264,11 @@
 		},
 		computed: {
 			computeTotal() {
-				let sum = this.orderInfo.express;
+				let sum = this.orderInfo.express*100;
 				for(let item of this.orderInfo.items){
-					sum += item.price*item.num;
+					sum += item.price*item.num*100;
 				}
-				return sum;
+				return Number(sum/100).toFixed(2);
 			}
 		}
 	}

@@ -17,8 +17,8 @@
 			<view class="btn-content">
 				<view class="btn btn-yellow" v-if="item.state === 'delivered'" @click="toLogistics">查看物流</view>
 				<view class="btn" v-if="item.state === 'paid'">暂无物流</view>
-				<view v-if="item.state === 'delivered'" class="btn btn-yellow">确认收货</view>
-				<view v-if="item.status === 'arrived'" class="btn btn-yellow"  @click="toshowRate">晒单评价</view>
+				<view v-if="item.state === 'delivered'" class="btn btn-yellow" @click="confirmArrival">确认收货</view>
+				<view v-if="item.state === 'arrived'" class="btn btn-yellow"  @click="toshowRate">晒单评价</view>
 			</view>
 		</view>
 	</view>
@@ -63,6 +63,37 @@
 					url: '/pages/order/orderInfo?oiid='+this.item.id
 				})
 			},
+			confirmArrival(){
+				let _this = this;
+				uni.showLoading({
+					mask: true
+				})
+				this.$http.post('/order/confirmArrival', {oiid: this.item.id}).then(res => {
+					uni.hideLoading();
+					if(res.data.code !== 0){
+						uni.showToast({
+						    title: res.data.message,
+						    duration: 1000,
+							icon: 'none'
+						});
+						return;
+					}
+					uni.showToast({
+					    title: "确认收货成功",
+					    duration: 1000,
+						icon: 'none'
+					});
+					_this.$emit('arrive');
+				}).catch(err => {
+					console.log(err);
+					uni.hideLoading();
+					uni.showToast({
+					    title: "确认失败，请检查网络",
+					    duration: 1000,
+						icon: 'none'
+					});
+				})
+			}
 		},
 		computed: {
 			computedTotal() {

@@ -19,11 +19,11 @@
 		props:{
 			value:{
 				type:[Number,String],	//设置默认值
-				default:0
+				default:1
 			},
 			min:{
 				type:Number,	//设置最小数量
-				default:0
+				default:1
 			},
 			max:{
 				type:Number,	//设置最大数量
