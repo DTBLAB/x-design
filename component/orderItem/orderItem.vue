@@ -55,7 +55,7 @@
 			},
 			toshowRate:function(){
 				uni.navigateTo({
-					url:'/pages/mine/myorders/showRate'
+					url:'/pages/review/publishReview?oiid='+this.item.id
 				})
 			},
 			toOrderInfo:function(){

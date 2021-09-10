@@ -151,6 +151,12 @@
 		    "style" : {
 				 "navigationBarTitleText" : "物流信息"
 		    }
+		},
+		{
+		    "path" : "pages/review/publishReview",
+		    "style" : {
+				 "navigationBarTitleText" : "发表评价"
+		    }
 		}
 		
     ],

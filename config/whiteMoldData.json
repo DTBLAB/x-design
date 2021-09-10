@@ -367,7 +367,7 @@
 		"contentWidth": 314,
 		"contentHeight": 454, 
 		"style": "width: 750rpx; height: 750rpx;",
-		"contentStyle": "top: 142rpx; left: 62rpx; width: 314px; height: 454rpx;",
+		"contentStyle": "top: 142rpx; left: 62rpx; width: 314rpx; height: 454rpx;",
 		"patterns": {
 			"full": {
 				"name": "full",

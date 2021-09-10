@@ -1,0 +1,121 @@
+page {
+	background-color: #F4F4F4;
+}
+
+.reviews{
+	width: 750rpx;
+	min-height: 628rpx;
+	margin: 20rpx 0;
+	background-color: #FFFFFF;
+	position: relative;
+	z-index: 0;
+	padding: 18rpx 32rpx 46rpx 32rpx;
+	
+	.picname{
+		width: 686rpx;
+		height: 90rpx;
+		background-color: #FFFFFF;
+		display: flex;
+		align-items: center;
+		padding-bottom: 21rpx;
+		border-bottom: 2rpx solid #F4F4F4;
+		
+		.pic{
+			width: 90rpx;
+			height: 90rpx;
+			background-color: #555555;
+			
+			image{
+				height: 100%;
+				width: 100%;
+			}
+		}
+		
+		.name{
+		font-size: 24rpx;
+		font-weight: bold;	
+		margin: 24rpx;
+		color: #313131;
+		}
+	}
+	
+	.rate{
+		width: 686rpx;
+		height: 108rpx;
+		background-color: #FFFFFF;
+		display: flex;
+		align-items: center;
+		
+		.ratename{
+			font-size: 28rpx;
+			font-weight: bold;
+			color: #313131;
+			padding-bottom: 16rpx;
+			padding-right: 12rpx;
+		}
+		
+		.ratestars{
+			
+			.nostar{
+				width: 50rpx;
+				height: 50rpx;
+			}
+			
+			.star{
+				width: 50rpx;
+				height: 50rpx;	
+			}
+		}
+	}
+	
+	.feedback{
+		width: 686rpx;
+		height: 228rpx;
+	}
+	
+	.pics{
+		width: 686rpx;
+		min-height: 154rpx;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		
+		.pic{
+			width: 134rpx;
+			height: 134rpx;
+			display: block;
+			margin: 0 0 20rpx 32rpx;
+		}
+		
+	}
+}
+
+.save {
+	width: 642rpx;
+	height: 90rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #333333;
+	border-radius: 6rpx;
+	margin: auto;
+	margin-top: 24rpx;
+
+	&__text {
+		font-size: 32rpx;
+		font-weight: medium;
+		color: white;
+	}
+}
+
+.compress-canvas{
+	width: 4000px;
+	height: 4000px;
+	visibility: hidden;
+	position:absolute;
+	z-index:-1; 
+	left:-10000rpx;
+	top:-10000rpx;
+	overflow: hidden;
+}
