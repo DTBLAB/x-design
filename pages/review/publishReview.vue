@@ -6,7 +6,7 @@
 					<image :src="orderInfo.preview" mode="aspectFill"></image>
 				</view>
 				<view class="name">
-					帆布袋
+					{{categoryList[orderInfo.category].name}}
 				</view>
 			</view>
 			<view class="rate">
@@ -45,10 +45,13 @@
 </template>
 
 <script>
+	import category from '../../config/whiteMoldData'
+	
 export default {
 	data () {
 	  return {
-		activeNum: 0,
+		categoryList: category,
+		activeNum: 5,
 		noStarUrl: '../../static/image/starGray.png',
 		starUrl: '../../static/image/starYellow.png',
 		tempPics: [],
@@ -253,7 +256,7 @@ export default {
 				// console.log(res);
 			    if (res.statusCode === 204) {
 					_this.uploadResults.push(true);
-					_this.uploadedPics.push('https://x-design-pictures.oss-cn-shanghai.aliyuncs.com/'+params.key);
+					_this.uploadedPics.push('https://x-design-review.oss-cn-shanghai.aliyuncs.com/'+params.key);
 					_this.judgeIfSuccess();
 			    }else{
 					console.log(res.statusCode);
@@ -301,7 +304,7 @@ export default {
 		},
 		createReview(){
 			let _this = this;
-			this.$http.post('/review/add', {grade: _this.activeNum, content: _this.content, pics: _this.uploadedPics, oiid: _this.orderInfo.id}).then(res => {
+			this.$http.post('/review/add', {grade: _this.activeNum, content: _this.content, pics: _this.uploadedPics, oid: _this.orderInfo.id, category: _this.orderInfo.category, model: _this.orderInfo.model}).then(res => {
 				if(res.data.code !== 0){
 					uni.hideLoading();
 					uni.showToast({
@@ -317,6 +320,9 @@ export default {
 				    duration: 2000,
 					icon: 'success'
 				});
+				uni.navigateTo({
+					url: '/pages/order/myOrders'
+				})
 			}).catch(err => {
 				throw new Error("获取签名失败!");
 				uni.hideLoading();
@@ -326,6 +332,8 @@ export default {
 					icon: 'success'
 				});
 			})
+			_this.uploadResults = [];
+			_this.uploadedPics = [];
 		}
 	}
 }
