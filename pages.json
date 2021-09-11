@@ -157,6 +157,12 @@
 		    "style" : {
 				 "navigationBarTitleText" : "发表评价"
 		    }
+		},
+		{
+		    "path" : "pages/review/myReviews",
+		    "style" : {
+				 "navigationBarTitleText" : "我的评价"
+		    }
 		}
 		
     ],

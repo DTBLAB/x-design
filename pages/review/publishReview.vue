@@ -304,7 +304,7 @@ export default {
 		},
 		createReview(){
 			let _this = this;
-			this.$http.post('/review/add', {grade: _this.activeNum, content: _this.content, pics: _this.uploadedPics, oid: _this.orderInfo.id, category: _this.orderInfo.category, model: _this.orderInfo.model}).then(res => {
+			this.$http.post('/review/add', {grade: _this.activeNum, content: _this.content, pics: _this.uploadedPics, oid: _this.orderInfo.id}).then(res => {
 				if(res.data.code !== 0){
 					uni.hideLoading();
 					uni.showToast({
@@ -315,14 +315,14 @@ export default {
 					return;
 				}
 				console.log(res.data.data);
+				uni.redirectTo({
+					url: '/pages/order/myOrders'
+				})
 				uni.showToast({
 				    title: "上传成功",
 				    duration: 2000,
 					icon: 'success'
 				});
-				uni.navigateTo({
-					url: '/pages/order/myOrders'
-				})
 			}).catch(err => {
 				throw new Error("获取签名失败!");
 				uni.hideLoading();

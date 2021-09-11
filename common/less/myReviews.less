@@ -1,0 +1,149 @@
+page {
+	height: 100%;
+	background-color: #F4F4F4;
+}
+
+.container{
+	background-color: #F4F4F4;
+	position: absolute;
+	top: 0;
+	min-height: 100%;
+}
+
+.review{
+	width: 750rpx;
+	margin-top: 20rpx;
+	padding-bottom: 18rpx;
+	background-color: #FFFFFF;
+	
+	.topBar{		
+		margin-top: 20rpx;
+		display: flex;
+		justify-content: space-between;
+		
+		.userInfo{
+			height: 60rpx;
+			display: flex;
+			align-items: center;
+			padding-top: 20rpx;
+			padding-left: 32rpx;
+			
+			.userPic{
+				width: 60rpx;
+				height: 60rpx;
+				background-color: #F0AD4E;
+				border-radius: 30rpx;
+				margin-right: 8rpx;
+			}
+			
+			.userName{
+				font-size: 28rpx;
+				font-weight: medium;
+			}
+		}
+		.delete{
+			width: 30rpx;
+			height: 30rpx;
+			margin-top: 20rpx;
+			margin-right: 32rpx;
+			// background-color: #DD524D;
+		}
+	}
+
+	.date{
+		font-size: 24rpx;
+		color: #BDBDBD;
+		padding-left: 32rpx;
+		padding-top: 32rpx;
+		display: flex;
+		justify-content: space-between;
+
+		
+		.stars{
+			padding-right: 28rpx;
+			
+			.nostar{
+				width: 50rpx;
+				height: 50rpx;
+			}
+			
+			.star{
+				width: 50rpx;
+				height: 50rpx;	
+			}
+		}
+	}
+	
+	.productComment{
+		font-size: 28rpx;
+		padding-left: 32rpx;
+	}
+	
+	.reviewPictures{
+		width: 750rpx;
+		padding-top: 18rpx;
+		padding-left: 20rpx;
+		padding-bottom: 32rpx;
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		
+		image{
+			display: block;
+			width: 220rpx;
+			height: 220rpx;
+			margin: 10rpx 10rpx;
+		}
+	}
+	
+	.productDetail{
+
+		width: 686rpx;
+		height: 160rpx;
+		background-color: #f2f2f2;
+		margin-left: 32rpx;
+		display: flex;
+		font-size: 28rpx;
+		
+		.productImg{
+			width: 160rpx;
+			height: 160rpx;
+			background-color: #f0f0f0;
+			
+			image{
+				width: 100%;
+				height: 100%;
+			}
+		}
+		
+		.productStat{
+			display: flex;
+			flex-flow: column;
+			padding-left: 20rpx;
+			justify-content: space-between;
+			.name{
+				display: flex;
+				padding-top: 6rpx;
+				.name1{
+					padding-right: 20rpx;
+				}
+			}
+			
+			.money{
+				display: flex;
+				padding-bottom: 6rpx;
+				.money1{
+					font-size: 28rpx;
+					padding-right: 26rpx;
+				}
+				
+				.money2{
+					color: #F2994A;
+					font-size: 24rpx;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

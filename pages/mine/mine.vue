@@ -71,6 +71,10 @@
 				<view class="mine-bottom__item__text">地址管理</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
 			</navigator>
+			<navigator class="mine-bottom__item" url="/pages/review/myReviews">
+				<view class="mine-bottom__item__text">我的评价</view>
+				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
+			</navigator>
 			<view class="mine-bottom__item">
 				<view class="mine-bottom__item__text">联系客服</view>
 				<image class="mine-bottom__item__icon" src="/../../static/image/more@3x.png"></image>
