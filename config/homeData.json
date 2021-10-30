@@ -1,0 +1,7 @@
+{
+    "bannerImages": [
+        { "src": "https://x-design.oss-cn-hangzhou.aliyuncs.com/home/banner1.png", "url": "/pages/product/productDesign?category=postcard" }
+    ],
+    "styleKindName": "万圣幻宴",
+    "hotStyles": ["恐怖南瓜", "诡异之森", "迷幻花", "血色霓裳", "血腥玛丽", "小丑回魂", "禁止呼吸", "皮囊", "惊变2023", "哀嚎禁地"]
+}

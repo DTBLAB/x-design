@@ -96,14 +96,15 @@
 					// console.log(res);
 					if(res.data.code !== 0){
 						uni.showToast({
-						    title: res.data.message,
-						    duration: 1000,
+						    // title: res.data.message,
+							title: "请删除重添加小程序，即可正常付款",
+						    duration: 2000,
 							icon: 'none'
 						});
 					}else{
 						uni.showToast({
 						    title: "下单成功，前往支付",
-						    duration: 1000,
+						    duration: 2000,
 							icon: 'success'
 						});
 						_this.payParams = res.data.data;

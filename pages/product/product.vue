@@ -12,7 +12,7 @@
 			</swiper>
 		</view> -->
 		
-		<picker @change="selectModel" :value="modelIndex" :range="modelList" v-if="colorList.length > 1">
+		<picker @change="selectModel" :value="modelIndex" :range="modelList" v-if="modelList.length > 1">
 			<!-- <button class="product-bottom__button1" type="default" @click="addToCart" :disabled="disabled">加入我的产品</button> -->
 			<view class="product-bottom">
 				<button class="product-bottom__button2" type="default">立即购买</button>
