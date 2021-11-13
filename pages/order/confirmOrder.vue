@@ -96,8 +96,8 @@
 					// console.log(res);
 					if(res.data.code !== 0){
 						uni.showToast({
-						    // title: res.data.message,
-							title: "请删除重添加小程序，即可正常付款",
+						    title: res.data.message,
+							// title: "请删除重添加小程序，即可正常付款",
 						    duration: 2000,
 							icon: 'none'
 						});
@@ -162,8 +162,9 @@
 					uni.hideLoading();
 					if(res.data.code !== 0){
 						uni.showToast({
-						    title: res.data.message,
-						    duration: 1000,
+						    // title: res.data.message,
+							title: "请删除重添加小程序，即可正常付款",
+						    duration: 2000,
 							icon: 'none'
 						});
 						return;
@@ -193,8 +194,11 @@
 					if(farProvinces.indexOf(province)>=0){
 						this.orderInfo.express = 20 * this.total;
 					}
-					if(specialProvinces.indexOf(province)>=0){
+					else if(specialProvinces.indexOf(province)>=0){
 						this.orderInfo.express = 99;
+					}
+					else{
+						this.orderInfo.express = 0;
 					}
 				}
 			},

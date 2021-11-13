@@ -120,7 +120,7 @@
 				expressFee:0,
 				productImages: "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/product.png",
 				current: 0,
-				productDetail:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/info.jpg',
+				productDetail:'',
 				commentList:[{username:"XYZ123",
 					scores:4,
 					photo:'https://x-design.oss-cn-hangzhou.aliyuncs.com/product/椭圆411@3x.png',
