@@ -218,7 +218,7 @@
 						console.log(width, height, newWidth, newHeight);
 						
 						const ctx = uni.createCanvasContext('compress-canvas');
-						ctx.drawImage(_this.pictureUrl, 0, 0, width, height, 0, 0, newWidth, newHeight);
+						ctx.drawImage(_this.pictureUrl, 0, 0, newWidth, newHeight);
 						ctx.draw(false, ()=>{
 							uni.canvasToTempFilePath({
 							  x: 0,

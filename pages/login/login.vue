@@ -70,7 +70,7 @@
 						    title: '登录成功',
 						    duration: 2000
 						});
-						uni.redirectTo({url: '/pages/mine/mine'});
+						uni.navigateBack();
 					}else{
 						uni.showToast({
 						    title: result.data.message,

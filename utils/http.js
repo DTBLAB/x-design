@@ -44,7 +44,7 @@ const http = {
 		                })
 		                uni.removeStorageSync({key: 'token'});
 		                setTimeout(function() {
-		                    uni.reLaunch({
+		                    uni.navigateTo({
 		                        url: '/pages/login/login'
 		                    })
 		                }, 1500);
@@ -116,7 +116,7 @@ const http = {
 		                })
 		                uni.removeStorageSync({key: 'token'});
 		               setTimeout(function() {
-		                   uni.reLaunch({
+		                   uni.navigateTo({
 		                       url: '/pages/login/login'
 		                   })
 		               }, 1500);

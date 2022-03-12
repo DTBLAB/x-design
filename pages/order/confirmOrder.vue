@@ -249,7 +249,7 @@
 					});
 					return;
 				}
-				if(res.data.data){
+				if(res.data.data && !!res.data.data){
 					_this.orderInfo.address = res.data.data;
 					this.calculateExpress();
 				}

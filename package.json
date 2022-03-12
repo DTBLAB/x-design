@@ -1,0 +1,28 @@
+{
+  "name": "x-design",
+  "version": "1.0.0",
+  "description": "本项目为浙江大学DTBLAB的风格迁移产品设计定制小程序前端项目。\r 本项目采用uni-app框架开发。",
+  "main": "main.js",
+  "dependencies": {
+    "@hyoga/uni-socket.io": "^3.0.4",
+    "image-tools": "^1.4.0",
+    "lena.js": "^0.8.0",
+    "nodemailer": "^6.7.2",
+    "socket.io-stream": "^0.9.1",
+    "wx-caman": "^1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DTBLAB/x-design.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DTBLAB/x-design/issues"
+  },
+  "homepage": "https://github.com/DTBLAB/x-design#readme"
+}

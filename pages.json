@@ -110,6 +110,13 @@
 			}
 		}
 		,{
+		    "path" : "pages/address/addAddressToTool",
+			"style" : {
+			    "navigationBarTitleText" : "上传收货地址",
+				"backgroundColor": "#FFFFFF"
+			}
+		}
+		,{
 		    "path" : "pages/product/product",
 			"style" : {
 			    "navigationBarTitleText" : "商品详情",
