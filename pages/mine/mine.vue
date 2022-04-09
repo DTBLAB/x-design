@@ -10,7 +10,6 @@
 			<view class="mine-orders__top">
 				<view class="mine-orders__title">我的订单</view>
 				<view class="mine-orders__more">
-					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-orders__more__icon"></image>
 				</view>
 			</view>
@@ -23,17 +22,17 @@
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unshipped.png"></image>
 					<text class="mine-orders__button__text">待发货</text>
-					<!-- <badge :num="orderNums[1]" v-if="orderNums[1] !== 0"></badge> -->
+					<badge :num="orderNums[1]" v-if="orderNums[1] !== 0"></badge>
 				</view>
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unreceived.png"></image>
 					<text class="mine-orders__button__text">待收货</text>
-					<!-- <badge :num="orderNums[2]" v-if="orderNums[2] !== 0"></badge> -->
+					<badge :num="orderNums[2]" v-if="orderNums[2] !== 0"></badge>
 				</view>
 				<view class="mine-orders__button">
 					<image class="mine-orders__button__icon" src="../../static/image/mine/unrated.png"></image>
 					<text class="mine-orders__button__text">待评价</text>
-					<!-- <badge :num="orderNums[3]" v-if="orderNums[3] !== 0"></badge> -->
+					<badge :num="orderNums[3]" v-if="orderNums[3] !== 0"></badge>
 				</view>
 			</view>
 		</view>
@@ -41,7 +40,6 @@
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的图片</view>
 				<view class="mine-block__more">
-					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</view>
 			</view>
@@ -56,7 +54,6 @@
 			<view class="mine-block__top">
 				<view class="mine-block__title">我的产品</view>
 				<view class="mine-block__more">
-					查看全部
 					<image src="/../../static/image/more@3x.png"  class="mine-block__more__icon"></image>
 				</view>
 			</view>
@@ -136,6 +133,26 @@
 					return;
 				}
 				_this.myProducts = res.data.data;
+				
+			}).catch(err => {
+				uni.showToast({
+				    title: "网络问题，图片加载失败",
+				    duration: 1000,
+					icon: 'none'
+				});
+			});
+			
+			this.$http.get('/order/getOrderNums').then(res => {
+				if(res.data.code !== 0){
+					uni.showToast({
+					    title: res.data.message,
+					    duration: 1000,
+						icon: 'none'
+					});
+					return;
+				}
+				console.log(res);
+				_this.orderNums = res.data.data;
 				
 			}).catch(err => {
 				uni.showToast({

@@ -344,24 +344,7 @@
 						ctx.drawImage(res.path, 0, 0, res.width, res.height, r*picture.left - r*content.left, r*picture.top - r*content.top, r*picture.width, r*picture.height);
 						ctx.restore()
 						ctx.draw(false, async ()=>{
-							if(_this.signature){
-								uni.getImageInfo({
-								    src: _this.signature,
-								    success: function (res) {
-										ctx.drawImage(res.path, 0, 0, res.width, res.height, r*signature.left - r*content.left, r*signature.top - r*content.top, r*signature.width, r*signature.height);
-										ctx.draw(true, async ()=>{
-											await _this.drawDecorations(ctx, product, content);
-										})
-								    },
-									fail: function(err) {
-										console.log(err);
-										uni.hideLoading();
-									}
-								});
-							}else{
-								await _this.drawDecorations(ctx, product, content);
-							}
-							
+							await _this.drawDecorations(ctx, product, content, signature);
 						})
 				    },
 					fail: function(err) {
@@ -587,7 +570,7 @@
 				}
 				return images;
 			},
-			async drawDecorations(ctx, product, content){
+			async drawDecorations(ctx, product, content, signature){
 				let _this = this;
 				let r = this.radio;
 				
@@ -609,7 +592,23 @@
 						ctx.drawImage(image.path, 0, 0, image.width, image.height, r*decoration.left - r*content.left, r*decoration.top - r*content.top, r*decoration.width, r*decoration.height);
 					}
 					ctx.draw(true, ()=>{
-						_this.generateOriginalPicture(product, content);
+						if(_this.signature){
+							uni.getImageInfo({
+							    src: _this.signature,
+							    success: function (res) {
+									ctx.drawImage(res.path, 0, 0, res.width, res.height, r*signature.left - r*content.left, r*signature.top - r*content.top, r*signature.width, r*signature.height);
+									ctx.draw(true, async ()=>{
+										_this.generateOriginalPicture(product, content);
+									})
+							    },
+								fail: function(err) {
+									console.log(err);
+									uni.hideLoading();
+								}
+							});
+						}else{
+							_this.generateOriginalPicture(product, content);
+						}
 					});
 				});
 				
