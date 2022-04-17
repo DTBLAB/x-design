@@ -90,6 +90,7 @@ export default {
 		  that.activeNum = num
 		},
 		choosePictures(){
+			console.log('choose')
 			let _this = this;
 			
 			uni.chooseImage({

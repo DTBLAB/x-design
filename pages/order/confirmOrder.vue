@@ -44,7 +44,7 @@
 
 <script>
 	import wmNumberBox from "@/components/wm-numberBox/wm-number-box.vue"
-	import uniNumberBox from "@/components/uni-number-box/uni-number-box.vue"
+	// import uniNumberBox from "@/components/uni-number-box/uni-number-box.vue"
 	import category from '../../config/whiteMoldData'
 	
 	

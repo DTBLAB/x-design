@@ -197,7 +197,7 @@
 				        console.log(image);
 						let height = image.height;
 						let width = image.width;
-						if(Math.max(height, width) <= 2000){
+						if(Math.max(height, width) <= 1500){
 							_this.loadingFinished = true;
 							if(_this.optionStyle){
 								_this.selectStyle(_this.optionStyle);
@@ -208,11 +208,11 @@
 						let newHeight = 0;
 						let newWidth = 0;
 						if(height >= width){
-							newHeight = 2000;
-							newWidth = 2000/height*width;
+							newHeight = 1500;
+							newWidth = 1500/height*width;
 						}else{
-							newWidth = 2000;
-							newHeight = 2000/width*height;
+							newWidth = 1500;
+							newHeight = 1500/width*height;
 						}
 						
 						console.log(width, height, newWidth, newHeight);
