@@ -10,5 +10,7 @@
     "silkScarf":"https://x-design.oss-cn-hangzhou.aliyuncs.com/detail/silkScarf.png",
     "sweater":"https://x-design.oss-cn-hangzhou.aliyuncs.com/detail/sweater.png",
     "tshirt":"https://x-design.oss-cn-hangzhou.aliyuncs.com/detail/tshirt.png",
-	"scroll":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/scroll.png"
+	"scroll":"https://x-design.oss-cn-hangzhou.aliyuncs.com/selectedProducts/scroll.png",
+    "umbrella":"https://x-design.oss-cn-hangzhou.aliyuncs.com/detail/umbrella.png",
+    "decorativePicture":"https://x-design.oss-cn-hangzhou.aliyuncs.com/detail/decorativePicture.png"
 }

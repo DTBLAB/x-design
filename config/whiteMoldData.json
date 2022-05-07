@@ -50,50 +50,7 @@
 			{"name": "黑色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/tshirtBlack@3x.png"}
 		],
         "name": "短袖",
-        "price": 69.00,
-		"height": 750,
-		"width": 750,
-		"contentWidth": 236,
-		"contentHeight": 192, 
-		"style": "width: 750rpx; height: 750rpx;",
-		"contentStyle": "top: 190rpx; left: 258rpx; width: 236rpx; height: 192rpx;",
-		"patterns": {
-			"full": {
-				"name": "full",
-				"width": 236,
-				"height": 192, 
-				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 236rpx; height: 192rpx; border-radius: 1rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
-			},
-			"circle": {
-				"name": "circle",
-				"width": 178,
-				"height": 178, 
-				"shape": "circle",
-				"style": "top: 8rpx; left: 28rpx; width: 178rpx; height: 178rpx; border-radius: 89rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
-			},
-			"rectangle": {
-				"name": "rectangle",
-				"width": 118,
-				"height": 156, 
-				"shape": "rectangle",
-				"style": "top: 18rpx; left: 58rpx; width: 118rpx; height: 156rpx; border-radius: 1rpx;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
-			}
-		}
-	},
-
-	"sweater": {
-        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/sweater@3x.png",
-		"preview": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/hoodie.png",
-		"colorList": [
-			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/sweater@3x.png"},
-			{"name": "黑色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/sweaterBlack@3x.png"}
-		],
-        "name": "卫衣",
-        "price": 108.00,
+        "price": 89.00,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 236,
@@ -177,7 +134,7 @@
 			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/mousePad@3x.png"}
 		],
         "name": "鼠标垫",
-        "price": 19.90,
+        "price": 18.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 638,
@@ -211,6 +168,57 @@
 			}
 		}
 	},
+
+	"postcard": {
+        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/postcard@3x.png",
+		"preview": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/%E7%BB%84%201106%403x.png",
+		"colorList": [
+			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/postcard@3x.png"}
+		],
+        "name": "明信片",
+        "price": 9.90,
+		"height": 400,
+		"width": 592,
+		"contentWidth": 592,
+		"contentHeight": 400, 
+		"style": "width: 750rpx; height: 400rpx;",
+		"contentStyle": "top: 0rpx; left: 79rpx; width: 592rpx; height: 400rpx;",
+		"patterns": {
+			"full": {
+				"name": "full",
+				"width": 592,
+				"height": 400, 
+				"shape": "rectangle",
+				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 1rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
+			},
+			"halloween": {
+				"name": "halloween",
+				"width": 592,
+				"height": 400, 
+				"shape": "rectangle",
+				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 0;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E4%B8%89.png",
+				"decorations": [{
+					"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E4%B8%89%E4%B8%8A.png",
+					"style": "top: 2rpx; left: 0; width: 530rpx; height: 70rpx;"
+				},
+				{
+					"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E4%B8%89%E5%B7%A6.png",
+					"style": "top: 71rpx; left: 0; width: 62rpx; height: 330rpx;"
+				},
+				{
+					"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E4%B8%89%E4%B8%8B.png",
+					"style": "top: 332rpx; left: 62rpx; width: 468rpx; height: 70rpx;"
+				},
+				{
+					"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E6%96%87%E4%B8%89%E5%8F%B3.png",
+					"style": "top: 1rpx; left: 529rpx; width: 62rpx; height: 400rpx;"
+				}]
+			}
+		}
+	},
+
 
 	"case": {
         "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/case@3x.png",
@@ -303,13 +311,31 @@
 			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/badge@3x.png"}
 		],
         "name": "胸章",
-        "price": 5.90,
+        "price": 15.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 620,
 		"contentHeight": 620, 
 		"style": "width: 750rpx; height: 750rpx;",
 		"contentStyle": "top: 66rpx; left: 66rpx; width: 620rpx; height: 620rpx;",
+		"edge": [
+			{
+				"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/edge/badge01.png",
+				"style": "top: 0; left: 0; width: 155rpx; height: 155rpx;"
+			},
+			{
+				"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/edge/badge02.png",
+				"style": "top: 0; left: 465rpx; width: 155rpx; height: 155rpx;"
+			},
+			{
+				"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/edge/badge03.png",
+				"style": "top: 465rpx; left: 465rpx; width: 155rpx; height: 155rpx;"
+			},
+			{
+				"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/edge/badge04.png",
+				"style": "top: 465rpx; left: 0; width: 155rpx; height: 155rpx;"
+			}
+		],
 		"patterns": {
 			"full": {
 				"name": "full",
@@ -329,7 +355,7 @@
 			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/notebook@3x.png"}
 		],
         "name": "笔记本",
-        "price": 29.90,
+        "price": 25.90,
 		"height": 750,
 		"width": 750,
 		"contentWidth": 464,
@@ -397,13 +423,31 @@
 			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/pillow%403x.png"}
 		],
 		"name": "抱枕",
-        "price": 49.00,
+        "price": 69.90,
         "height": 576,
         "width": 576,
         "contentWidth": 576,
         "contentHeight": 576, 
         "style": "width: 576rpx; height: 576rpx;",
         "contentStyle": "top: 0; left: 0; width: 576rpx; height: 576rpx;",
+		"edge": [
+			{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8A.png",
+			"style": "top: 0; left: 0; width: 578rpx; height: 64rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8B.png",
+			"style": "bottom: 0; left: 26rpx; width: 516rpx; height: 52rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%B7%A6.png",
+			"style": "top: 44rpx; left: 0; width: 68rpx; height: 536rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%8F%B3.png",
+			"style": "top: 44rpx; right: 0; width: 76rpx; height: 536rpx;"
+		}
+	],
 		"patterns": {
 			"full": {
 				"name": "full",
@@ -412,24 +456,7 @@
 				"shape": "rectangle",
 				"style": "top: 0; left: 0; width: 576rpx; height: 576rpx; border-radius: 1rpx;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png",
-				"decorations": [
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8A.png",
-						"style": "top: 0; left: 0; width: 578rpx; height: 64rpx;"
-					},
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E4%B8%8B.png",
-						"style": "bottom: 0; left: 26rpx; width: 516rpx; height: 52rpx;"
-					},
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%B7%A6.png",
-						"style": "top: 44rpx; left: 0; width: 68rpx; height: 536rpx;"
-					},
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%8A%B1%E6%9E%95-%E5%8F%B3.png",
-						"style": "top: 44rpx; right: 0; width: 76rpx; height: 536rpx;"
-					}
-				]
+				"decorations": []
 			}
 		}
 	},
@@ -441,108 +468,82 @@
 			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/umbrella%403x.png"}
 		],
 		"name": "雨伞",
-        "price": 49.00,
-        "height": 750,
-        "width": 750,
-        "contentWidth": 523,
-        "contentHeight": 523, 
-        "style": "width: 750rpx; height: 750rpx;",
-        "contentStyle": "top: 114rpx; left: 114rpx; width: 523rpx; height: 523rpx;",
+        "price": 79.90,
+        "height": 534,
+        "width": 534,
+        "contentWidth": 534,
+        "contentHeight": 534, 
+        "style": "width: 534rpx; height: 534rpx;",
+        "contentStyle": "top: 0; left: 0; width: 534rpx; height: 534rpx;",
+		"edge": [{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E-%E5%B7%A6%E4%B8%8A.png",
+			"style": "top: -2rpx; left: -2rpx; width: 156rpx; height: 156rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E-%E5%B7%A6%E4%B8%8B.png",
+			"style": "top: 380rpx; left: -2rpx; width: 156rpx; height: 156rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E-%E5%8F%B3%E4%B8%8A.png",
+			"style": "top: -2rpx; left: 380rpx; width: 156rpx; height: 156rpx;"
+		},
+		{
+			"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E-%E5%8F%B3%E4%B8%8B.png",
+			"style": "top: 380rpx; left: 380rpx; width: 156rpx; height: 156rpx;"
+		}
+	],
 		"patterns": {
 			"full": {
 				"name": "full",
-				"width": 523,
-				"height": 523, 
+				"width": 534,
+				"height": 534, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 523rpx; height: 523rpx; border-radius: 1rpx;",
+				"style": "top: 0; left: 0; width: 534rpx; height: 534rpx; border-radius: 1rpx;border: 0;",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png",
-				"decorations": [
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%B7%A6%E4%B8%8A.png",
-						"style": "top: 0; left: 0; width: 267rpx; height: 267rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E4%B8%AD%E4%B8%8A.png",
-						"style": "top: 0; left: 267rpx; width: 217rpx; height: 114rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%8F%B3%E4%B8%8A.png",
-						"style": "top: 0; left: 484rpx; width: 266rpx; height: 267rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%8F%B3%E4%B8%AD.png",
-						"style": "top: 267rpx; left: 636rpx; width: 114rpx; height: 217rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%8F%B3%E4%B8%8B.png",
-						"style": "top: 484rpx; left: 484rpx; width: 266rpx; height: 266rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E4%B8%AD%E4%B8%8B.png",
-						"style": "top: 636rpx; left: 267rpx; width: 217rpx; height: 114rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%B7%A6%E4%B8%8B.png",
-						"style": "top: 484rpx; left: 0; width: 267rpx; height: 266rpx;"
-					},
-                    {
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E9%9B%A8%E4%BC%9E%E5%B7%A6%E4%B8%AD.png",
-						"style": "top: 267rpx; left: 0; width: 114rpx; height: 217rpx;"
-					}
-				]
+				"decorations": []
 			}
 		}
 	},
 
-	"postcard": {
-        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/postcard@3x.png",
-		"preview": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/%E7%BB%84%201106%403x.png",
+	"decorativePicture": {
+        "picture": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/decorativePicture%403x.png",
+		"preview": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/%E7%BB%84%201113%403x.png",
 		"colorList": [
-			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/postcard@3x.png"}
+			{"name": "白色", "url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/decorativePicture%403x.png"}
 		],
-        "name": "明信片",
-        "price": 9.00,
-		"height": 400,
-		"width": 592,
-		"contentWidth": 592,
-		"contentHeight": 400, 
-		"style": "width: 750rpx; height: 400rpx;",
-		"contentStyle": "top: 0rpx; left: 79rpx; width: 592rpx; height: 400rpx;",
+        "name": "装饰画",
+        "price": 59.90,
+		"height": 750,
+		"width": 750,
+		"contentWidth": 464,
+		"contentHeight": 654, 
+		"style": "width: 750rpx; height: 750rpx;",
+		"contentStyle": "top: 48rpx; left: 142rpx; width: 464rpx; height: 654rpx;",
 		"patterns": {
 			"full": {
 				"name": "full",
-				"width": 592,
-				"height": 400, 
+				"width": 464,
+				"height": 654, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 1rpx;",
+				"style": "top: 0; left: 0; width: 464rpx; height: 654rpx; border-radius: 1rpx",
 				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/组 1210@3x.png"
 			},
-			"halloween": {
-				"name": "halloween",
-				"width": 592,
-				"height": 400, 
+			"circle": {
+				"name": "circle",
+				"width": 376,
+				"height": 376, 
+				"shape": "circle",
+				"style": "top: 140rpx; left: 46rpx; width: 376rpx; height: 376rpx; border-radius: 188rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/circle.png"
+			},
+			"rectangle": {
+				"name": "rectangle",
+				"width": 306,
+				"height": 404, 
 				"shape": "rectangle",
-				"style": "top: 0; left: 0; width: 592rpx; height: 400rpx; border-radius: 0;",
-				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/patterns/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82.png",
-				"decorations": [
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82%E5%B7%A6.png",
-						"style": "top: 132rpx; left: 0; width: 186rpx; height: 268rpx;"
-					},
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82%E4%B8%AD.png",
-						"style": "top: 301rpx; left: 186rpx; width: 216rpx; height: 99rpx;"
-					},
-					{
-						"url": "https://x-design.oss-cn-hangzhou.aliyuncs.com/decorations/%E6%98%8E%E4%BF%A1%E7%89%87-%E4%B8%87%E5%9C%A3%E8%8A%82%E5%8F%B3.png",
-						"style": "top: 162rpx; left: 402rpx; width: 198rpx; height: 238rpx;"
-					}
-				]
+				"style": "top: 126rpx; left: 80rpx; width: 306rpx; height: 404rpx; border-radius: 1rpx;",
+				"img": "https://x-design.oss-cn-hangzhou.aliyuncs.com/product/rectangle.png"
 			}
 		}
-	},
-	"scroll": {
-        "name": "卷轴",
-        "price": 269.90
 	}
 }

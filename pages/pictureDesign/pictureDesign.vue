@@ -46,9 +46,11 @@
 		
 		<image class="picture-close" src="../../static/image/pictureDesign/close.png" @click="clear" v-if="hasPicture"></image>
 		<!-- 记得换成isTransferred -->
-		<view class="picture-finish" v-if="isTransferred" @click="finishDesign">完成</view>
+		<view class="picture-finish" v-if="hasPicture" @click="finishDesign">完成</view>
 		<view class="right-bar" v-if="isTransferred">
-			<view class="right-bar-item right-bar-item--check-raw" @touchstart="checkRaw" @touchend="hideRaw"></view>
+			<!-- <view class="right-bar-item right-bar-item--check-raw" @touchstart="checkRaw" @touchend="hideRaw"></view> -->
+			<view class="right-bar-item right-bar-item--check-raw" @click="reverse"></view>
+			<view class="right-bar-item right-bar-item--face" @click="faceBeautify" v-if="isTransferred"></view>
 			<view class="right-bar-item right-bar-item--adjust" @click="adjustPicture"></view>
 			<!-- <button class="right-bar-item right-bar-item--share" open-type="share" @click="wechatShare"></button> -->
 		</view>
@@ -307,7 +309,7 @@
 					// console.log(this.pictureData);
 				}
 				uni.showLoading({
-				    title: '风格化中',
+				    title: 'AI风格化中',
 					mask: true
 				});
 				this.$http.post('/transfer/', {styleID: style, token: token, pictureData: this.pictureData}, {baseUrl: baseConfig.transferBaseUrl, timeout: 90000}).then(result => {
@@ -398,7 +400,10 @@
 				// 	});
 				// 	return;
 				// }
-				console.log(_this.selectedTransferredPicture);
+				// console.log(_this.selectedTransferredPicture);
+				if(!_this.isTransferred){
+					_this.selectedTransferredPicture = _this.pictureUrl;
+				}
 				uni.uploadFile({
 				  url: 'https://x-design-pictures.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
 				  filePath: _this.selectedTransferredPicture,
@@ -462,6 +467,11 @@
 			},
 			hideRaw(){
 				this.isCheckingRaw = false;
+			},
+			reverse(){
+				this.isTransferred = false;
+				this.selectedTransferredPicture = null;
+				this.selectedStyle = null;
 			}
 		}
 	}

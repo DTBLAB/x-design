@@ -15,7 +15,7 @@ const store = new Vuex.Store({//全局变量定义
     },
     mutations: {
         login(state, user) {
-			console.log(user)
+			// console.log(user)
             state.nickname = user.nickname || '';
             state.avatarUrl = user.avatarUrl || '/static/image/mine/default-photo.png';
             state.hasLogin = true;

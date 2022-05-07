@@ -31,6 +31,7 @@
 					</movable-view>
 					<!-- <view v-if="selectedPattern.decorations" class="decorations"> -->
 					<image v-if="selectedPattern.decorations" v-for="(decoration, index) in selectedPattern.decorations" :key="index" class="decoration" :style="decoration.style" :src="decoration.url"></image>
+					<image v-if="productInfo.edge" v-for="(edge, index) in productInfo.edge" :key="index" class="edge" :style="edge.style" :src="edge.url"></image>
 					<!-- </view> -->
 					<!-- <view v-if="selectedPattern.decorations" v-for="(decoration, item) in selectedPattern.decorations" :key="index" class="decoration" :style="decoration.style">
 						<image class="decoration__image" :style="decoration.style" :url="decoration.url"></image>
@@ -369,7 +370,9 @@
 				  quality: 1.0,
 				  success: function(res) {
 					 // console.log(res.tempFilePath);
-					 _this.generatePreview(product, content, res.tempFilePath);
+					 // _this.generatePreview(product, content, res.tempFilePath);
+					 _this.drawPreview(product, content, res.tempFilePath);
+					 // _this.drawEdges(ctx, product, content, res.tempFilePath);
 				  },
 				  fail: function(err) {
 				  	console.log(err);
@@ -377,34 +380,21 @@
 				  }
 				})
 			},
-			generatePreview(product, content, original){
+			drawPreview(product, content, original){
 				let _this = this;
 				let r = this.radio;
+				
 				this.canvasHeight = r*product.height;
 				this.canvasWidth = r*product.width;
+				
 				let ctx = uni.createCanvasContext('product-canvas');
+				
 				uni.getImageInfo({
 				    src: this.productInfo.picture,
 				    success: function (res) {
 						ctx.drawImage(res.path, 0, 0, res.width, res.height, 0, 0, r*product.width, r*product.height);
 						ctx.drawImage(original, 0, 0, r*content.width, r*content.height, r*content.left - r*product.left, r*content.top - r*product.top, r*content.width, r*content.height);
-						ctx.draw(false, ()=>{
-							uni.canvasToTempFilePath({
-							  x: 0,
-							  y: 0,
-							  width: r*product.width,
-							  height: r*product.height,
-							  destWidth: r*product.width,
-							  destHeight: r*product.height,
-							  canvasId: 'product-canvas',
-							  fileType: 'png',
-							  quality: 1.0,
-							  success: function(res) {
-								 // console.log(res.tempFilePath);
-								 _this.uploadProductImages(original, res.tempFilePath);
-							  } 
-							})
-						})
+						_this.drawEdges(ctx, product, content, original);
 				    },
 					fail: function(err) {
 						console.log(err);
@@ -417,6 +407,28 @@
 					}
 				});
 			},
+			generatePreview(ctx, product, original){
+				let _this = this;
+				let r = this.radio;
+				
+				ctx.draw(false, ()=>{
+					uni.canvasToTempFilePath({
+					  x: 0,
+					  y: 0,
+					  width: r*product.width,
+					  height: r*product.height,
+					  destWidth: r*product.width,
+					  destHeight: r*product.height,
+					  canvasId: 'product-canvas',
+					  fileType: 'png',
+					  quality: 1.0,
+					  success: function(res) {
+						 // console.log(res.tempFilePath);
+						 _this.uploadProductImages(original, res.tempFilePath);
+					  } 
+					})
+				})
+			},
 			
 			async uploadProductImages(original, preview){
 				let _this = this;
@@ -425,6 +437,7 @@
 				  	uni.hideLoading();
 					return;
 				});
+				// console.log(original, preview, originalParams, previewParams)
 				let uploadedOriginal = null, uploadedPreview = null;
 				uni.uploadFile({
 				  url: 'https://x-design-products.oss-cn-hangzhou.aliyuncs.com/', // 开发者服务器的URL。
@@ -575,7 +588,23 @@
 				let r = this.radio;
 				
 				if(!this.selectedPattern.decorations){
-					_this.generateOriginalPicture(product, content);
+					if(_this.signature){
+						uni.getImageInfo({
+						    src: _this.signature,
+						    success: function (res) {
+								ctx.drawImage(res.path, 0, 0, res.width, res.height, r*signature.left - r*content.left, r*signature.top - r*content.top, r*signature.width, r*signature.height);
+								ctx.draw(true, async ()=>{
+									_this.generateOriginalPicture(product, content);
+								})
+						    },
+							fail: function(err) {
+								console.log(err);
+								uni.hideLoading();
+							}
+						});
+					}else{
+						_this.generateOriginalPicture(product, content);
+					}
 					return;
 				}
 				let images = await this.getDecorationPaths();
@@ -610,6 +639,40 @@
 							_this.generateOriginalPicture(product, content);
 						}
 					});
+				});
+				
+			},
+			
+			async getEdgePaths(){
+				let images = [];
+				let image;
+				// console.log(this.selectedPattern.decorations);
+				for(let edge of this.productInfo.edge){
+					// console.log(decoration);
+					image = await this.getImageInfo(edge.url);
+					images.push(image);
+				}
+				return images;
+			},
+			async drawEdges(ctx, product, content, original){
+				let _this = this;
+				let r = this.radio;
+				
+				let images = await this.getEdgePaths();
+				const query = uni.createSelectorQuery().in(this);
+				// let ctx = uni.createCanvasContext('product-canvas');
+				
+				query.selectAll('.edge').boundingClientRect()
+				.exec((res) => {
+					let edges = res[0];
+					// console.log(decorations);
+					for(let i = 0; i < edges.length; i++){
+						let edge = edges[i];
+						let image = images[i];
+						// console.log(decoration, image);
+						ctx.drawImage(image.path, 0, 0, image.width, image.height, r*edge.left - r*content.left, r*edge.top - r*content.top, r*edge.width, r*edge.height);
+					}
+					_this.generatePreview(ctx, product, original);
 				});
 				
 			},

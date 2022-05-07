@@ -26,7 +26,7 @@
 			<view class="product-information__title">{{productInfo.name}}</view>
 			<view class="product-information__top">
 				<view class="product-information__price">￥ {{productInfo.price}}</view>
-				<view class="product-information__num">{{productSold}}人已购买</view> 
+				<!-- <view class="product-information__num">{{productSold}}人已购买</view> -->
 			</view>
 		</view>
 			
@@ -44,6 +44,9 @@
 					<image src="https://x-design.oss-cn-hangzhou.aliyuncs.com/product/直线139@3x.png"  class="product-marketing__place__icon"></image>
 					快递：￥{{expressFee.toFixed(2)}}
 				</view>
+			</view>
+			<view class="product-marketing__attetion">
+				定制产品除质量问题外，不退不换
 			</view>
 			<!-- <view class="product-marketing__name">型号
 				<view class="product-marketing__place">
