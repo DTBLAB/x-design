@@ -7,7 +7,7 @@
     "@hyoga/uni-socket.io": "^3.0.4",
     "image-tools": "^1.4.0",
     "lena.js": "^0.8.0",
-    "nodemailer": "^6.7.2",
+    "nodemailer": "^7.0.7",
     "socket.io-stream": "^0.9.1",
     "wx-caman": "^1.0.1"
   },
